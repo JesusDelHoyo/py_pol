@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.2. py_pol.jones_vector module &mdash; Python polarization 1.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.3. py_pol.jones_matrix module" href="jones_matrix.html" />
+    <link rel="prev" title="1.1. py_pol.py_pol module" href="py_pol.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Python polarization
+          </a>
+              <div class="version">
+                1.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">1. Python polarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../modules.html">4. py_pol</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../py_pol.html">1. py_pol package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="py_pol.html">1.1. py_pol.py_pol module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1.2. py_pol.jones_vector module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jones_matrix.html">1.3. py_pol.jones_matrix module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stokes.html">1.4. py_pol.stokes module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mueller.html">1.5. py_pol.mueller module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drawings.html">1.6. py_pol.drawings module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">1.7. py_pol.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">3. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">4. History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">5. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python polarization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../modules.html"><span class="section-number">4. </span>py_pol</a> &raquo;</li>
+          <li><a href="../../py_pol.html"><span class="section-number">1. </span>py_pol package</a> &raquo;</li>
+      <li><span class="section-number">1.2. </span>py_pol.jones_vector module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/py_pol/jones_vector.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="module-py_pol.jones_vector">
+<span id="py-pol-jones-vector-module"></span><h1><span class="section-number">1.2. </span>py_pol.jones_vector module<a class="headerlink" href="#module-py_pol.jones_vector" title="Permalink to this headline"></a></h1>
+<p>Jones_vector objects describe light polarization states in the Jones formalism.</p>
+<dl class="simple">
+<dt><strong>Class fields</strong></dt><dd><ul class="simple">
+<li><p><strong>M</strong>: 2xN array containing all the Jones vectors.</p></li>
+<li><p><strong>name</strong>: Name of the object for print purposes.</p></li>
+<li><p><strong>shape</strong>: Shape desired for the outputs.</p></li>
+<li><p><strong>size</strong>: Number of stores Jones vectors.</p></li>
+<li><p><strong>type</strong>: Type of the object ('Jones_vector'). This is used for determining the object class as using isinstance may throw unexpected results in .ipynb files.</p></li>
+<li><p><strong>parameters</strong>: Object of class <em>Parameters_Jones_vector</em>.</p></li>
+<li><p><strong>checks</strong>: Object of class <em>Checks_Jones_vector</em>.</p></li>
+</ul>
+</dd>
+<dt><strong>Parent methods</strong></dt><dd><ul class="simple">
+<li><p><strong>clear</strong>:  Removes data and name form Jones vector.</p></li>
+<li><p><strong>copy</strong>:  Creates a copy of the Jones_vector object.</p></li>
+<li><p><strong>stretch</strong>:  Stretches a Jones vector of size 1.</p></li>
+<li><p><strong>shape_like</strong>:  Takes the shape of another object to use as its own.</p></li>
+<li><p><strong>reshape</strong>: Changes the shape of the object.</p></li>
+<li><p><strong>flatten</strong>:  Transforms N-D objects into 1-D objects (0-D if only 1 element).</p></li>
+<li><p><strong>flip</strong>: Flips the object along some dimensions.</p></li>
+<li><p><strong>get_list</strong>: Creates a list with single elements.</p></li>
+<li><p><strong>from_list</strong>: Creates the object from a list of single elements.</p></li>
+<li><p><strong>concatenate</strong>: Canocatenates several objects into a single one.</p></li>
+<li><p><strong>draw</strong>: Draws the components of the object.</p></li>
+<li><p><strong>clear</strong>: Clears the information of the object.</p></li>
+</ul>
+</dd>
+<dt><strong>Generation methods</strong></dt><dd><ul class="simple">
+<li><p><strong>from_components</strong>: Creates a Jones_vector object directly from the electric field components $E_x$ and $E_y$.</p></li>
+<li><p><strong>from_matrix</strong>: Creates a Jones_vector object directly from a 2 x shape numpy array.</p></li>
+<li><p><strong>from_list</strong>: Creates a Jones_vector object directly from a list of 2 or 2x1 numpy arrays.</p></li>
+<li><p><strong>from_distribution</strong>: Creates a Jones vector from the temporal evolution of the electric field components.</p></li>
+<li><p><strong>from_Stokes</strong>: Creates a Jones vector from a Stokes object. Take into account that only pure (totally polarized) Stokes vectors must be transformed to Jones vectors, and thet even for them, the global phase might be unknown.</p></li>
+<li><p><strong>linear_light</strong>: Creates a state of linear polarization with the desired angle.</p></li>
+<li><p><strong>circular_light</strong>: Creates a state of circular polarization.</p></li>
+<li><p><strong>eliptical_light</strong>: Creates a state of eliptical polarization.</p></li>
+<li><p><strong>general_azimuth_ellipticity</strong>: Creates a Jones vector from the azimuth, ellipticity and amplitude parameters.</p></li>
+<li><p><strong>general_charac_angles</strong>: Creates a Jones vector from the characteristic angles and amplitude parameters.</p></li>
+</ul>
+</dd>
+<dt><strong>Manipulation methods</strong></dt><dd><ul class="simple">
+<li><p><strong>simplify</strong>:  Simplifies the Jones vector in several ways.</p></li>
+<li><p><strong>rotate</strong>: Rotates the Jones vector.</p></li>
+<li><p><strong>sum</strong>: Calculates the summatory of the Jones vectors in the object.</p></li>
+<li><p><strong>reciprocal</strong>: Calculates the Jones vector that propagates backwards.</p></li>
+<li><p><strong>orthogonal</strong>: Calculates the orthogonal Jones vector.</p></li>
+<li><p><strong>normalize</strong>: Normalize the electric field to be normalized in electric field amplitude or intensity.</p></li>
+<li><p><strong>rotate_to_azimuth</strong>: Rotates the Jones vector to have a certain azimuth.</p></li>
+<li><p><strong>remove_global_phase</strong>: Calculates the global phase of the electric field (respect to the X component) and removes it.</p></li>
+<li><p><strong>add_global_phase</strong>: Adds a global phase to the Jones vector.</p></li>
+<li><p><strong>set_global_phase</strong>: Sets the global phase of the Jones vector.</p></li>
+<li><p><strong>add_delay</strong>: Adds a phase to the Y component of the electric field of the Jones vector.</p></li>
+</ul>
+</dd>
+<dt><strong>Drawing methods</strong></dt><dd><ul class="simple">
+<li><p><strong>draw_ellipse</strong>:  Draws the polarization ellipse of the Jones vector.</p></li>
+<li><p><strong>draw_poincare</strong>: Draws the light state in the Poincare sphere.</p></li>
+</ul>
+</dd>
+<dt><strong>Parameters subclass methods</strong></dt><dd><ul class="simple">
+<li><p><strong>matrix</strong>:  Gets a numpy array with all the vectors (similat to object.M).</p></li>
+<li><p><strong>components</strong>: Calculates the electric field components of the Jones vector.</p></li>
+<li><p><strong>amplitudes</strong>: Calculates the electric field amplitudes of the Jones vector.</p></li>
+<li><p><strong>intensity</strong>: Calculates the intensity of the Jones vector.</p></li>
+<li><p><strong>irradiance</strong>: Calculates the irradiance of the Jones vector.</p></li>
+<li><p><strong>alpha</strong>: Calculates the ratio between electric field amplitude angle ($|E_x|$/$|E_y|$).</p></li>
+<li><p><strong>delay / delta</strong>: Calculates the delay (phase shift) between Ex and Ey components of the electric field.</p></li>
+<li><p><strong>charac_angles</strong>: Calculates both alpha and delay, the characteristic angles of the Jones vector.</p></li>
+<li><p><strong>azimuth</strong>: Calculates azimuth, that is, the orientation angle of the major axis.</p></li>
+<li><p><strong>ellipticity_angle</strong>: Calculates the ellipticity angle.</p></li>
+<li><p><strong>azimuth_ellipticity</strong>: Calculates both azimuth and ellipticity angles.</p></li>
+<li><p><strong>ellipse_axes</strong>: Calculates the length of major and minor axis (a,b).</p></li>
+<li><p><strong>ellipticity_param</strong>: Calculates the ellipticity parameter, b/a.</p></li>
+<li><p><strong>eccentricity</strong>: Calculates the eccentricity, the complementary of the ellipticity parameter.</p></li>
+<li><p><strong>global_phase</strong>: Calculates the global phase of the Jones vector (respect to the X component of the electric field).</p></li>
+<li><p><strong>degree_linear_polarization</strong>: Calculates the degree of linear polarization of the Jones vector.</p></li>
+<li><p><strong>degree_circular_polarization</strong>: Calculates the degree of circular polarization of the Jones vector.</p></li>
+<li><p><strong>norm</strong>: Calculates the norm of the Jones vector (same as intensity for Jones vectors).</p></li>
+<li><p><strong>get_all</strong>: Returns a dictionary with all the parameters of Jones vector.</p></li>
+</ul>
+</dd>
+<dt><strong>Checks subclass methods</strong></dt><dd><ul class="simple">
+<li><p><strong>is_linear</strong>: Checks if the Jones vector is lienarly polarized.</p></li>
+<li><p><strong>is_circular</strong>: Checks if the Jones vector is circularly polarized.</p></li>
+<li><p><strong>is_right_handed</strong>: Checks if the Jones vector rotation direction is right handed.</p></li>
+<li><p><strong>is_left_handed</strong>: Checks if the Jones vector rotation direction is left handed.</p></li>
+<li><p><strong>get_all</strong>: Returns a dictionary with all the checks of Jones vector.</p></li>
+</ul>
+</dd>
+<dt><strong>Auxiliar functions</strong></dt><dd><ul class="simple">
+<li><p><strong>create_Jones_vectors</strong>: Function to create several Jones_vector objects at once.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.jones_vector.create_Jones_vectors">
+<span class="sig-prename descclassname"><span class="pre">py_pol.jones_vector.</span></span><span class="sig-name descname"><span class="pre">create_Jones_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'E'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#create_Jones_vectors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.create_Jones_vectors" title="Permalink to this definition"></a></dt>
+<dd><p>Function that creates several Jones_vector objects at the same time from a list of names or a number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>list</em><em> or </em><em>tuple</em>) -- name of vector for string representation. If list or tuple, it also represents the number of objects to be created.</p></li>
+<li><p><strong>N</strong> (<em>int</em>) -- Number of elements to be created. This parameter is overrided if name is a list or tuple. Defeult: 1.</p></li>
+<li><p><strong>out_object</strong> (<em>bool</em>) -- If True and the result is a list of length 1, return a Jones_vector object instead. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of Jones vectors</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>E (<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a> or list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.jones_vector.set_printoptions">
+<span class="sig-prename descclassname"><span class="pre">py_pol.jones_vector.</span></span><span class="sig-name descname"><span class="pre">set_printoptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_spaces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#set_printoptions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.set_printoptions" title="Permalink to this definition"></a></dt>
+<dd><p>Function that modifies the global print options parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N_print_list</strong> (<em>int</em>) -- Number of matrices that will be printed as a list if the shape of the object is 1D. Default: None</p></li>
+<li><p><strong>print_list_spaces</strong> (<em>int</em>) -- Number ofspaces between matrices if they are printed as a list. Default: None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_pol.jones_vector.</span></span><span class="sig-name descname"><span class="pre">Jones_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'E'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="py_pol.html#py_pol.py_pol.Py_pol" title="py_pol.py_pol.Py_pol"><code class="xref py py-class docutils literal notranslate"><span class="pre">py_pol.py_pol.Py_pol</span></code></a></p>
+<p>Class for Jones vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>M</strong> (<em>np.ndarray</em>) -- 2xN array containing all the Jones vectors.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) -- Name of the object for print purposes.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- Shape desired for the outputs.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) -- Number of stores Jones vectors.</p></li>
+<li><p><strong>ndim</strong> (<em>int</em>) -- Number of dimensions for representation purposes.</p></li>
+<li><p><strong>type</strong> (<em>string</em>) -- Type of the object ('Jones_vector'). This is used for determining the object class as using isinstance may throw unexpected results in .ipynb files.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.self.parameters">
+<span class="sig-prename descclassname"><span class="pre">self.</span></span><span class="sig-name descname"><span class="pre">parameters</span></span><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.self.parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Class containing the measurable parameters of the Jones vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.self.checks">
+<span class="sig-prename descclassname"><span class="pre">self.</span></span><span class="sig-name descname"><span class="pre">checks</span></span><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.self.checks" title="Permalink to this definition"></a></dt>
+<dd><p>Class containing the methods that check something about the Jones vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.rotate">
+<span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.rotate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.rotate" title="Permalink to this definition"></a></dt>
+<dd><p>Rotates a jones vector a certain angle.</p>
+<p>M_rotated = rotation_matrix_Jones(-angle) * self.M</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float</em>) -- Rotation angle in radians. Default: 0</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, the original element is not updated. Default: False.</p></li>
+<li><p><strong>change_name</strong> (<em>bool</em>) -- If True and angle is of size 1, changes the object name adding &#64; XX deg, being XX the total rotation angle. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Rotated object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.reciprocal">
+<span class="sig-name descname"><span class="pre">reciprocal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.reciprocal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.reciprocal" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the recirpocal of the Jones vector, so the light is propagated in the opposite direction. It is calculated as Ey = -Ey.</p>
+<p class="rubric">References</p>
+<p>J.J. Gil, R. Ossikovsky &quot;Polarized light and the Mueller Matrix approach&quot;, CRC Press (2016), pp TODO.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, the original element is not updated. Default: False.</p></li>
+<li><p><strong>change_name</strong> (<em>bool</em>) -- If True, changes the object name adding Recip. of at the beggining of the name. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Reciprocal Jones matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.orthogonal">
+<span class="sig-name descname"><span class="pre">orthogonal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.orthogonal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.orthogonal" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the orthogonal of the Jones vector.</p>
+<p class="rubric">References</p>
+<p>J.J. Gil, R. Ossikovsky &quot;Polarized light and the Mueller Matrix approach&quot;, CRC Press (2016), pp 125.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, the original element is not updated. Default: False.</p></li>
+<li><p><strong>change_name</strong> (<em>bool</em>) -- If True, changes the object name adding Recip. of at the beggining of the name. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Reciprocal Jones matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.sum">
+<span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.sum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.sum" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the sum of Jones vectors stored in the object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>list</em><em> or </em><em>tuple</em>) -- Axes along which the summatory is performed. If None, all matrices are summed.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, the original element is not updated. Default: False.</p></li>
+<li><p><strong>change_name</strong> (<em>bool</em>) -- If True, changes the object name adding Recip. of at the beggining of the name. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Modified object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'amplitude'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.normalize" title="Permalink to this definition"></a></dt>
+<dd><p>Function that normalizes the Jones vectors in amplitude or intensity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kind</strong> (<em>string</em>) -- Field amplitude or intensity. Default: AMPLITUDE.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, self is not updated. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Normalized Jones vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.rotate_to_azimuth">
+<span class="sig-name descname"><span class="pre">rotate_to_azimuth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">azimuth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.rotate_to_azimuth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.rotate_to_azimuth" title="Permalink to this definition"></a></dt>
+<dd><p>Function that rotates the Jones vector to have a certain azimuth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>azimuth</strong> (<em>string</em><em> or </em><em>np.ndarray</em>) -- Azimuth of the Jones vector. 'X', 'Y', '-X' and '-Y' are the same as 0, 90, 180 and 270 degrees respectively. Default: 0.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, self is not updated. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Jones vector rotated.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.remove_global_phase">
+<span class="sig-name descname"><span class="pre">remove_global_phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.remove_global_phase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.remove_global_phase" title="Permalink to this definition"></a></dt>
+<dd><p>Function that transforms the Jones vector removing the global phase, so the first component of the electric field is real and positive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>keep</strong> (<em>bool</em>) -- If True, self is not updated. Default: False.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Recalculated Jones vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.add_global_phase">
+<span class="sig-name descname"><span class="pre">add_global_phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.add_global_phase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.add_global_phase" title="Permalink to this definition"></a></dt>
+<dd><p>Function that adds a phase to the Jones vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phase</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) -- Phase to be added to the Jones vector. Default: 0.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, self is not updated. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Recalculated Jones vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.set_global_phase">
+<span class="sig-name descname"><span class="pre">set_global_phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.set_global_phase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.set_global_phase" title="Permalink to this definition"></a></dt>
+<dd><p>Function that sets the phase of the Jones vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phase</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) -- Phase to be added to the Jones vector. Default: 0.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, self is not updated. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Recalculated Jones vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.add_delay">
+<span class="sig-name descname"><span class="pre">add_delay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.add_delay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.add_delay" title="Permalink to this definition"></a></dt>
+<dd><p>Function that adds a phase to the Y component of the electric field of the Jones vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delay</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) -- Phase to be added to the Y component of the Jones vector. Default: 0.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, self is not updated. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Recalculated Jones vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.draw_ellipse">
+<span class="sig-name descname"><span class="pre">draw_ellipse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.draw_ellipse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.draw_ellipse" title="Permalink to this definition"></a></dt>
+<dd><p>Draws polarization ellipse of Jones vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>E</strong> (<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector"><em>Jones_vector</em></a><em> or </em><a class="reference internal" href="stokes.html#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes"><em>Stokes</em></a>) -- Light object.</p></li>
+<li><p><strong>N_angles</strong> (<em>int</em>) -- Number of angles to plot the ellipses. Default: 91.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) -- name of filename to save the figure.</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em>) -- A tuple of length 2 containing the figure size. Default: (8,8).</p></li>
+<li><p><strong>limit</strong> (<em>float</em>) -- limit for drawing. If empty, it is obtained from amplitudes.</p></li>
+<li><p><strong>draw_arrow</strong> (<em>bool</em>) -- If True, draws an arrow containing the turning sense of the polarization. Does not work with linear polarization vectors. Default: True.</p></li>
+<li><p><strong>depol_central</strong> (<em>bool</em>) -- If True, draws a central circle containing the unpolarized field amplitude. Default: False.</p></li>
+<li><p><strong>depol_contour</strong> (<em>bool</em>) -- If True, draws a line enveloping the polarization ellipse in order to plot the depolarization. Default: False.</p></li>
+<li><p><strong>depol_prob</strong> (<em>bool</em>) -- If True, plots the probability distribution of the electric field. Default: False.</p></li>
+<li><p><strong>subplots</strong> (<em>string</em><em>, </em><em>tuple</em><em> or </em><em>None</em>) -- If AS_SHAPE, divides the figure in several subplots as the shape of the py_pol object. If INDIVIDUAL, each vector is represented in its own subaxis, trying to use a square grid. If tuple, divides the figure in that same number of subplots. If None, all ellipses are plot in the same axes. Default: None.</p></li>
+<li><p><strong>N_prob</strong> (<em>int</em>) -- Number of points in each dimension for probability distributions. Default: 256.</p></li>
+<li><p><strong>contour_levels</strong> (<em>float</em><em>, </em><em>np.ndarray</em><em>, </em><em>tuple</em><em> or </em><em>list</em>) -- Contains the contour levels (normalized to 1). Default: 0.9.</p></li>
+<li><p><strong>cmap</strong> (<em>str</em><em> or </em><em>color object</em>) -- Default colormap for probability distributions. Default: hot.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>handle to axis.
+fig (handle): handle to figure.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ax (handle)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.draw_poincare">
+<span class="sig-name descname"><span class="pre">draw_poincare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.draw_poincare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.draw_poincare" title="Permalink to this definition"></a></dt>
+<dd><p>&quot;Draws jones vector in the Poincare sphere.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector"><em>Jones_vector</em></a><em> or </em><a class="reference internal" href="stokes.html#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes"><em>Stokes</em></a>) -- Object to be represented.</p></li>
+<li><p><strong>fig</strong> (<em>plotly.graph_objects.Figure</em>) -- Figure to plot the data. Default: None</p></li>
+<li><p><strong>figsize</strong> (<em>2-element iterable</em>) -- Figure size. Default: (6,6)</p></li>
+<li><p><strong>draw_axes</strong> (<em>bool</em>) -- If True, it draws the three axes of the Poincare space. Default: True</p></li>
+<li><p><strong>draw_guides</strong> (<em>bool</em>) -- If True, it draws the circles of S1, S2 and S3 = 0. Default: True</p></li>
+<li><p><strong>kind</strong> (<em>str</em>) -- Choose between 'scatter', 'line', 'scatterline' or 'surf' to represent the data. If surf, the object must be 2D, 3D or 4D. Else, it must be 0D, 1D, 2D or 3D. Default: 'scatter'.</p></li>
+<li><p><strong>depol</strong> (<em>bool</em>) -- If True, the depolarization is taking into account for scatter and line plots shrinking the radius below 1. Default: False.</p></li>
+<li><p><strong>param</strong> (<em>str</em><em>, </em><em>np.ndarray</em><em> or </em><em>None</em>) -- If str, parameter to use as information for the color. Must be a method of Parameters class which returns a single variable. If np.ndarray, must have the same shape as S. Default: None.</p></li>
+<li><p><strong>subplots</strong> (<em>bool</em>) -- If True, it tries to use the first two dimensions as rows and columns. If method == 'surf', this is mandatory. Default: False.</p></li>
+<li><p><strong>in_degrees</strong> (<em>bool</em>) -- If True, transforms the parameters to degrees. Default: False.</p></li>
+<li><p><strong>log</strong> (<em>bool</em>) -- If True, it calculates it in logarithmic scale. Default: False.</p></li>
+<li><p><strong>hover</strong> (<em>str</em>) -- Choose between 'components' (S1, S2, S3) or 'angles' (azimuth, ellipticity). Default: 'components'.</p></li>
+<li><p><strong>colormap</strong> (<em>str</em>) -- Colormap of the plots. Default: 'Blackbody'.</p></li>
+<li><p><strong>show_fig</strong> (<em>bool</em>) -- If True, the figure is inmediately plotted. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Plotly figure.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>fig (go.Figure)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.from_components">
+<span class="sig-name descname"><span class="pre">from_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Ex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.from_components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.from_components" title="Permalink to this definition"></a></dt>
+<dd><p>Creates the Jones vector object form the arrays of electric field components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Ex</strong> (<em>numpy.array</em><em>, </em><em>float</em><em> or </em><em>2x1 tuple/list</em>) -- Electric field amplitude along x axis. This variable can also be a 2x1 tuple or list containing both Ex and Ey.</p></li>
+<li><p><strong>Ey</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Electric field amplitude along y axis. Default: None.</p></li>
+<li><p><strong>global_phase</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Adds a global phase to the Jones vector. Default: 0.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If final object is of size 1, it is stretched to match this size. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.from_matrix">
+<span class="sig-name descname"><span class="pre">from_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.from_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.from_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Create a Jones vector from an external matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>M</strong> (<em>numpy.ndarray</em><em> or </em><em>float</em>) -- New matrix.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.from_distribution">
+<span class="sig-name descname"><span class="pre">from_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Ex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ind_d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_periods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.from_distribution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.from_distribution" title="Permalink to this definition"></a></dt>
+<dd><p>Determine Jones vector from a temporal or spatial electric field distribution [(Ex(t), Ey(t)].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Ex</strong> (<em>numpy.ndarray</em><em> or </em><em>float</em>) -- X component of the electric field.</p></li>
+<li><p><strong>Ey</strong> (<em>numpy.ndarray</em><em> or </em><em>float</em>) -- Y component of the electric field.</p></li>
+<li><p><strong>ind_d</strong> (<em>int</em>) -- Index of the spatial or temporal dimension. Default: -1.</p></li>
+<li><p><strong>method</strong> (<em>string</em>) -- Method for calculating the field amplitude and delay: DIRECT or FIT. Default: direct.</p></li>
+<li><p><strong>N_periods</strong> (<em>float</em>) -- Number of periods in the representation data. It is used by the fit algorithm (real case only) for calculating the frequency. If the value is not exact, convergency may decrease. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.from_Stokes">
+<span class="sig-name descname"><span class="pre">from_Stokes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.from_Stokes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.from_Stokes" title="Permalink to this definition"></a></dt>
+<dd><p>Create a Jones vector from a Stokes vector. This operation is only meaningful for pure (totally polarized) Stokes vectors. For the rest of them, only the polarized part is transformed, and a warning is printed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="stokes.html#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes"><em>Stokes</em></a>) -- Stokes vector object.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.linear_light">
+<span class="sig-name descname"><span class="pre">linear_light</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azimuth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.linear_light"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.linear_light" title="Permalink to this definition"></a></dt>
+<dd><p>Jones vector for polarizer linear light.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amplitude</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of electric field amplitude. Overrides inetnsity if it is different than None. Default: None.</p></li>
+<li><p><strong>azimuth</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of azimuths. Default: 0.</p></li>
+<li><p><strong>intensity</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of intensity. Default: 1.</p></li>
+<li><p><strong>global_phase</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Adds a global phase to the Jones vector. Default: 0.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If final object is of size 1, it is stretched to match this size. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.circular_light">
+<span class="sig-name descname"><span class="pre">circular_light</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'d'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.circular_light"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.circular_light" title="Permalink to this definition"></a></dt>
+<dd><p>Jones vector for polarizer circular light</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kind</strong> (<em>str</em>) -- 'd','r' - right, dextro.
+'l', 'i' - left, levo.</p></li>
+<li><p><strong>amplitude</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of electric field amplitude. Overrides intensity if it is different than None. Default: None.</p></li>
+<li><p><strong>intensity</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of intensity. Default: 1.</p></li>
+<li><p><strong>global_phase</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Adds a global phase to the Jones vector. Default: 0.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If final object is of size 1, it is stretched to match this size. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.elliptical_light">
+<span class="sig-name descname"><span class="pre">elliptical_light</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azimuth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.elliptical_light"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.elliptical_light" title="Permalink to this definition"></a></dt>
+<dd><p>Jones vector of the most general light calculated from the polarization ellipse parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of electric amplitude of x axis. Default: 1.</p></li>
+<li><p><strong>b</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of electric amplitude of y axis. Default: 1.</p></li>
+<li><p><strong>kind</strong> (<em>str</em>) -- 'd','r' - right, dextro.
+'l', 'i' - left, levo.</p></li>
+<li><p><strong>azimuth</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Angle of the a axis respect to the x axis. Default: 0.</p></li>
+<li><p><strong>global_phase</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Adds a global phase to the Jones vector. Default: 0.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If final object is of size 1, it is stretched to match this size. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.general_azimuth_ellipticity">
+<span class="sig-name descname"><span class="pre">general_azimuth_ellipticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">azimuth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ellipticity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.general_azimuth_ellipticity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.general_azimuth_ellipticity" title="Permalink to this definition"></a></dt>
+<dd><p>Jones vector from azimuth, ellipticity angle and amplitude parameters.</p>
+<p class="rubric">References</p>
+<p>J.J. Gil, R. Ossikovsky &quot;Polarized light and the Mueller Matrix approach&quot;, CRC Press (2016), pp 137.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>azimuth</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- [0, pi]: Azimuth. Default: 0.</p></li>
+<li><p><strong>ellipticity</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- [-pi/4, pi/4]: Ellipticity angle. Default: 0.</p></li>
+<li><p><strong>amplitude</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of electric field amplitude. Overrides inetnsity if it is different than None. Default: None.</p></li>
+<li><p><strong>intensity</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of intensity. Default: 1.</p></li>
+<li><p><strong>global_phase</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Adds a global phase to the Jones vector. Default: 0.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If final object is of size 1, it is stretched to match this size. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Jones_vector.general_charac_angles">
+<span class="sig-name descname"><span class="pre">general_charac_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Jones_vector.general_charac_angles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Jones_vector.general_charac_angles" title="Permalink to this definition"></a></dt>
+<dd><p>Jones vector from characteristic angles and amplitude parameters.</p>
+<p class="rubric">References</p>
+<p>J.J. Gil, R. Ossikovsky &quot;Polarized light and the Mueller Matrix approach&quot;, CRC Press (2016), pp 137.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha</strong> (<em>numpy.ndarray</em><em> or </em><em>float</em>) -- Ratio between amplitude of components Ex/Ey of electric field. Default:0</p></li>
+<li><p><strong>delay</strong> (<em>numpy.ndarray</em><em> or </em><em>float</em>) -- Phase delay between Ex and Ey components of the electric field. Default: 0.</p></li>
+<li><p><strong>amplitude</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of electric field amplitude. Overrides inetnsity if it is different than None. Default: None.</p></li>
+<li><p><strong>intensity</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of intensity. Default: 1.</p></li>
+<li><p><strong>global_phase</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Adds a global phase to the Jones vector. Default: 0.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If final object is of size 1, it is stretched to match this size. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_pol.jones_vector.</span></span><span class="sig-name descname"><span class="pre">Parameters_Jones_Vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Jones_vector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for Jones vector parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>jones_vector</strong> (<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector"><em>Jones_vector</em></a>) -- Jones Vector</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.self.parent">
+<span class="sig-prename descclassname"><span class="pre">self.</span></span><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.self.parent" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.get_all" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a dictionary with all the parameters of Jones vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True, print all parameters. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True, draw all plots/images of the parameters. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dictionary with parameters of Jones vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.matrix">
+<span class="sig-name descname"><span class="pre">matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the numpy array of Jones vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>2xN numpy array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.components">
+<span class="sig-name descname"><span class="pre">components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">give_Ez</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.components" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the x and y field components of the Jones vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>give_Ez</strong> (<em>bool</em>) -- If True, it returns the z component of the electric field (all values will be 0). Default: False.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of electric field along x axis.
+Ey (numpy.ndarray or float): Array of electric field along y axis.
+Ez (numpy.ndarray, optional): Array of electric field along z axis.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Ex (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.amplitudes">
+<span class="sig-name descname"><span class="pre">amplitudes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">give_Ez</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.amplitudes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.amplitudes" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the x and y field amplitudes of the Jones vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>give_Ez</strong> (<em>bool</em>) -- If True, it returns the z component of the electric field (all values will be 0). Default: False.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of electric field amplitude along x axis.
+E0y (numpy.ndarray or float): Array of electric field amplitude along y axis.
+E0z (numpy.array, optional): Array of electric field amplitude along z axis.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>E0x (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.norm">
+<span class="sig-name descname"><span class="pre">norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.norm" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the norm of the Jones vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Norm of Jones vectors.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>norma (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.intensity">
+<span class="sig-name descname"><span class="pre">intensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.intensity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.intensity" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the intensity of the Jones vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of intensities.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>intensity (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.irradiance">
+<span class="sig-name descname"><span class="pre">irradiance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.irradiance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.irradiance" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the irradiance of the Jones vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>float</em>) -- Refractive index of the medium. Default: 1</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of irradiance.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>irradiance (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.alpha">
+<span class="sig-name descname"><span class="pre">alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.alpha"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.alpha" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the angle ratio between amplitude of components Ex/Ey of electric field.</p>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="4">
+<li><p>Golstein &quot;Polarized light&quot; 2nd ed Marcel Dekker (2003), 3.4 eq.3-35</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- if True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the electric field amplitude in x axis.
+E0y (numpy.ndarray or float): Array of the electric field amplitude in y axis.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>E0x (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.delay">
+<span class="sig-name descname"><span class="pre">delay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.delay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.delay" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the delay (phase shift) between Ex and Ey components of the electric field.</p>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="4">
+<li><p>Golstein &quot;Polarized light&quot; 2nd ed Marcel Dekker (2003), 3.4 eq.3-33b.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of delay angles.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or float) [0, 2*pi]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.delta">
+<span class="sig-name descname"><span class="pre">delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.delta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.delta" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the delay (phase shift) between Ex and Ey components of the electric field. It is the same method as delay.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of delay angles.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>delta (numpy.ndarray or float) [0, 2*pi]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.charac_angles">
+<span class="sig-name descname"><span class="pre">charac_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.charac_angles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.charac_angles" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the characteristic angles (alpha and delay) of a Jones vector.</p>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="4">
+<li><p>Golstein &quot;Polarized light&quot; 2nd ed Marcel Dekker (2003), 3.4 eq.3-33b.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[0, pi/2]: Array of alpha angles.
+delay (numpy.ndarray or float): [0, 2*pi]: Array of delay angles.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>alpha (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.azimuth">
+<span class="sig-name descname"><span class="pre">azimuth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.azimuth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.azimuth" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates azimuth, that is, the orientation of the major axis.</p>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="10">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Gil, &quot;Polarized light and the Mueller Matrix approach&quot;, pp 137.</p></li>
+</ol>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[0, pi]: Array of azimuth angles.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>azimuth (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.ellipticity_angle">
+<span class="sig-name descname"><span class="pre">ellipticity_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.ellipticity_angle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.ellipticity_angle" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the ellipticity angle.</p>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="10">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Gil, &quot;Polarized light and the Mueller Matrix approach&quot;, pp 137.</p></li>
+</ol>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of ellipticity angles.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ellipticity (numpy.ndarray or float) [-pi/4, pi/4]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.azimuth_ellipticity">
+<span class="sig-name descname"><span class="pre">azimuth_ellipticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.azimuth_ellipticity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.azimuth_ellipticity" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the azimuth and ellipticity angle of a Jones vector.</p>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="10">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Gil, &quot;Polarized light and the Mueller Matrix approach&quot;, pp 137.</p></li>
+</ol>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[0, pi]: Array of azimuth angles.
+ellipticity (numpy.ndarray or float) [-pi/4, pi/4]: Array of ellipticity angles.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>azimuth (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.global_phase">
+<span class="sig-name descname"><span class="pre">global_phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.global_phase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.global_phase" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the phase of the first component of the electric field (which is the reference for global phase in py_pol model).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of global phase.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or float) [0, 2*pi]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.ellipse_axes">
+<span class="sig-name descname"><span class="pre">ellipse_axes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.ellipse_axes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.ellipse_axes" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the length of major and minor axis (a,b) of the polarization elipse.</p>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="4">
+<li><p>Golstein &quot;Polarized light&quot; 2nd ed Marcel Dekker (2003), 3.4 eq.3-30a and 3-30b</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>sort</strong> (<em>bool</em>) -- If True, it sorts a and b to be the major and minor axis respectively. Default: True. TODO: Check why this is neccessary.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Major axis
+b (numpy.ndarray or float): Minor axis</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>a (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.ellipticity_param">
+<span class="sig-name descname"><span class="pre">ellipticity_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.ellipticity_param"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.ellipticity_param" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the ellipticity parameter: the ratio between the minor and major polarization ellipse axes. It's 0 for linearly polarized light and 1 for circulary polarized light.</p>
+<p class="rubric">References</p>
+<p>Handbook of Optics vol 2. 22.16 (eq.7)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of length of ellipticity parameter.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>e (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.eccentricity">
+<span class="sig-name descname"><span class="pre">eccentricity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.eccentricity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.eccentricity" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the eccentricity, the opposite to the ellipticity parameter. It's 1 for linearly polarized light and 0 for circulary polarized light.</p>
+<p class="rubric">References</p>
+<p>Handbook of Optics vol 2. 22.16 (eq.9)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of length of eccentricity parameter.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>e (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.degree_circular_polarization">
+<span class="sig-name descname"><span class="pre">degree_circular_polarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.degree_circular_polarization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.degree_circular_polarization" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the degree of circular polarization: a coefficient that measures the amount of circular polarization in the beam.</p>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="10">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Gil, &quot;Polarized light and the Mueller Matrix approach&quot;, pp 39.</p></li>
+</ol>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- if True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of degree of circular polarization.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dcp (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Parameters_Jones_Vector.degree_linear_polarization">
+<span class="sig-name descname"><span class="pre">degree_linear_polarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Parameters_Jones_Vector.degree_linear_polarization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Parameters_Jones_Vector.degree_linear_polarization" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the degree of linear polarization: a coefficient that measures the amount of linear polarization in the beam.</p>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="10">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Gil, &quot;Polarized light and the Mueller Matrix approach&quot;, pp 39.</p></li>
+</ol>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- if True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of degree of linear polarization.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dcp (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Checks_Jones_Vector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_pol.jones_vector.</span></span><span class="sig-name descname"><span class="pre">Checks_Jones_Vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Jones_vector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Checks_Jones_Vector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Checks_Jones_Vector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for Jones vector checks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>jones_vector</strong> (<a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector"><em>Jones_vector</em></a>) -- Parent object.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Checks_Jones_Vector.self.parent">
+<span class="sig-prename descclassname"><span class="pre">self.</span></span><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#py_pol.jones_vector.Checks_Jones_Vector.self.parent" title="Permalink to this definition"></a></dt>
+<dd><p>Parent object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Checks_Jones_Vector.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Checks_Jones_Vector.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Checks_Jones_Vector.get_all" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a dictionary with all the checks of Jones vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True, print all parameters. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True, draw all plots/images of the parameters. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dictionary with parameters of Jones vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Checks_Jones_Vector.is_linear">
+<span class="sig-name descname"><span class="pre">is_linear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Checks_Jones_Vector.is_linear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Checks_Jones_Vector.is_linear" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates if the Jones vector is linearly polarized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- if True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the condition.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Checks_Jones_Vector.is_circular">
+<span class="sig-name descname"><span class="pre">is_circular</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Checks_Jones_Vector.is_circular"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Checks_Jones_Vector.is_circular" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates if the Jones vector is circularly polarized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the condition.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Checks_Jones_Vector.is_right_handed">
+<span class="sig-name descname"><span class="pre">is_right_handed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Checks_Jones_Vector.is_right_handed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Checks_Jones_Vector.is_right_handed" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates if the Jones polarization rotation direction is right-handed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the condition.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.jones_vector.Checks_Jones_Vector.is_left_handed">
+<span class="sig-name descname"><span class="pre">is_left_handed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/jones_vector.html#Checks_Jones_Vector.is_left_handed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.jones_vector.Checks_Jones_Vector.is_left_handed" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates if the Jones polarization rotation direction is left-handed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the condition.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="py_pol.html" class="btn btn-neutral float-left" title="1.1. py_pol.py_pol module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="jones_matrix.html" class="btn btn-neutral float-right" title="1.3. py_pol.jones_matrix module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Jesus del Hoyo Muñoz / Luis Miguel Sanchez Brea.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

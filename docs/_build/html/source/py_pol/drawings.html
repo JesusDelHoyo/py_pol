@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.6. py_pol.drawings module &mdash; Python polarization 1.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.7. py_pol.utils module" href="utils.html" />
+    <link rel="prev" title="1.5. py_pol.mueller module" href="mueller.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Python polarization
+          </a>
+              <div class="version">
+                1.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">1. Python polarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../modules.html">4. py_pol</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../py_pol.html">1. py_pol package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="py_pol.html">1.1. py_pol.py_pol module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jones_vector.html">1.2. py_pol.jones_vector module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jones_matrix.html">1.3. py_pol.jones_matrix module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stokes.html">1.4. py_pol.stokes module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mueller.html">1.5. py_pol.mueller module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1.6. py_pol.drawings module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">1.7. py_pol.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">3. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">4. History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">5. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python polarization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../modules.html"><span class="section-number">4. </span>py_pol</a> &raquo;</li>
+          <li><a href="../../py_pol.html"><span class="section-number">1. </span>py_pol package</a> &raquo;</li>
+      <li><span class="section-number">1.6. </span>py_pol.drawings module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/py_pol/drawings.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="module-py_pol.drawings">
+<span id="py-pol-drawings-module"></span><h1><span class="section-number">1.6. </span>py_pol.drawings module<a class="headerlink" href="#module-py_pol.drawings" title="Permalink to this headline"></a></h1>
+<p>functions for drawing</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.drawings.draw_ellipse">
+<span class="sig-prename descclassname"><span class="pre">py_pol.drawings.</span></span><span class="sig-name descname"><span class="pre">draw_ellipse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">E</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">91</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(6,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_arrow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depol_central</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depol_contour</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depol_prob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subplots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_prob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contour_levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hot'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/drawings.html#draw_ellipse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.drawings.draw_ellipse" title="Permalink to this definition"></a></dt>
+<dd><p>Draws polarization ellipse of Jones vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>E</strong> (<a class="reference internal" href="jones_vector.html#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector"><em>Jones_vector</em></a><em> or </em><a class="reference internal" href="stokes.html#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes"><em>Stokes</em></a>) -- Light object.</p></li>
+<li><p><strong>N_angles</strong> (<em>int</em>) -- Number of angles to plot the ellipses. Default: 91.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) -- name of filename to save the figure.</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em>) -- A tuple of length 2 containing the figure size. Default: (8,8).</p></li>
+<li><p><strong>limit</strong> (<em>float</em>) -- limit for drawing. If empty, it is obtained from amplitudes.</p></li>
+<li><p><strong>draw_arrow</strong> (<em>bool</em>) -- If True, draws an arrow containing the turning sense of the polarization. Does not work with linear polarization vectors. Default: True.</p></li>
+<li><p><strong>depol_central</strong> (<em>bool</em>) -- If True, draws a central circle containing the unpolarized field amplitude. Default: False.</p></li>
+<li><p><strong>depol_contour</strong> (<em>bool</em>) -- If True, draws a line enveloping the polarization ellipse in order to plot the depolarization. Default: False.</p></li>
+<li><p><strong>depol_prob</strong> (<em>bool</em>) -- If True, plots the probability distribution of the electric field. Default: False.</p></li>
+<li><p><strong>subplots</strong> (<em>string</em><em>, </em><em>tuple</em><em> or </em><em>None</em>) -- If AS_SHAPE, divides the figure in several subplots as the shape of the py_pol object. If INDIVIDUAL, each vector is represented in its own subaxis, trying to use a square grid. If tuple, divides the figure in that same number of subplots. If None, all ellipses are plot in the same axes. Default: None.</p></li>
+<li><p><strong>N_prob</strong> (<em>int</em>) -- Number of points in each dimension for probability distributions. Default: 256.</p></li>
+<li><p><strong>contour_levels</strong> (<em>float</em><em>, </em><em>np.ndarray</em><em>, </em><em>tuple</em><em> or </em><em>list</em>) -- Contains the contour levels (normalized to 1). Default: 0.9.</p></li>
+<li><p><strong>cmap</strong> (<em>str</em><em> or </em><em>color object</em>) -- Default colormap for probability distributions. Default: hot.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>handle to figure.
+ax (list of handles): handles to axes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>fig (handle)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.drawings.draw_poincare">
+<span class="sig-prename descclassname"><span class="pre">py_pol.drawings.</span></span><span class="sig-name descname"><span class="pre">draw_poincare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(6,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_guides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'scatter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subplots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_degrees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'components'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Blackbody'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/drawings.html#draw_poincare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.drawings.draw_poincare" title="Permalink to this definition"></a></dt>
+<dd><p>Function to draw the Jones or Stokes vectors in the Poincare sphere using plotly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="jones_vector.html#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector"><em>Jones_vector</em></a><em> or </em><a class="reference internal" href="stokes.html#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes"><em>Stokes</em></a>) -- Object to be represented.</p></li>
+<li><p><strong>fig</strong> (<em>plotly.graph_objects.Figure</em>) -- Figure to plot the data. Default: None</p></li>
+<li><p><strong>figsize</strong> (<em>2-element iterable</em>) -- Figure size. Default: (6,6)</p></li>
+<li><p><strong>draw_axes</strong> (<em>bool</em>) -- If True, it draws the three axes of the Poincare space. Default: True</p></li>
+<li><p><strong>draw_guides</strong> (<em>bool</em>) -- If True, it draws the circles of S1, S2 and S3 = 0. Default: True</p></li>
+<li><p><strong>kind</strong> (<em>str</em>) -- Choose between 'scatter', 'line', 'scatterline' or 'surf' to represent the data. If surf, the object must be 2D, 3D or 4D. Else, it must be 0D, 1D, 2D or 3D. Default: 'scatter'.</p></li>
+<li><p><strong>depol</strong> (<em>bool</em>) -- If True, the depolarization is taking into account for scatter and line plots shrinking the radius below 1. Default: False.</p></li>
+<li><p><strong>param</strong> (<em>str</em><em>, </em><em>np.ndarray</em><em> or </em><em>None</em>) -- If str, parameter to use as information for the color. Must be a method of Parameters class which returns a single variable. If np.ndarray, must have the same shape as S. Default: None.</p></li>
+<li><p><strong>subplots</strong> (<em>bool</em>) -- If True, it tries to use the first two dimensions as rows and columns. If method == 'surf', this is mandatory. Default: False.</p></li>
+<li><p><strong>in_degrees</strong> (<em>bool</em>) -- If True, transforms the parameters to degrees. Default: False.</p></li>
+<li><p><strong>log</strong> (<em>bool</em>) -- If True, it calculates it in logarithmic scale. Default: False.</p></li>
+<li><p><strong>hover</strong> (<em>str</em>) -- Choose between 'components' (S1, S2, S3) or 'angles' (azimuth, ellipticity). Default: 'components'.</p></li>
+<li><p><strong>colormap</strong> (<em>str</em>) -- Colormap of the plots. Default: 'Blackbody'.</p></li>
+<li><p><strong>show_fig</strong> (<em>bool</em>) -- If True, the figure is inmediately plotted. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Plotly figure.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>fig (go.Figure)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mueller.html" class="btn btn-neutral float-left" title="1.5. py_pol.mueller module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utils.html" class="btn btn-neutral float-right" title="1.7. py_pol.utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Jesus del Hoyo Muñoz / Luis Miguel Sanchez Brea.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

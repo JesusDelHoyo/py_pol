@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.1. py_pol.py_pol module &mdash; Python polarization 1.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2. py_pol.jones_vector module" href="jones_vector.html" />
+    <link rel="prev" title="1. py_pol package" href="../../py_pol.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Python polarization
+          </a>
+              <div class="version">
+                1.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">1. Python polarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../modules.html">4. py_pol</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../py_pol.html">1. py_pol package</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1.1. py_pol.py_pol module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jones_vector.html">1.2. py_pol.jones_vector module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jones_matrix.html">1.3. py_pol.jones_matrix module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stokes.html">1.4. py_pol.stokes module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mueller.html">1.5. py_pol.mueller module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drawings.html">1.6. py_pol.drawings module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">1.7. py_pol.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">3. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">4. History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">5. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python polarization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../modules.html"><span class="section-number">4. </span>py_pol</a> &raquo;</li>
+          <li><a href="../../py_pol.html"><span class="section-number">1. </span>py_pol package</a> &raquo;</li>
+      <li><span class="section-number">1.1. </span>py_pol.py_pol module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/py_pol/py_pol.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="module-py_pol.py_pol">
+<span id="py-pol-py-pol-module"></span><h1><span class="section-number">1.1. </span>py_pol.py_pol module<a class="headerlink" href="#module-py_pol.py_pol" title="Permalink to this headline"></a></h1>
+<p>This is the file with the base classes all py_pol main classes will inherit from. They will have some basic methods common to all classes. These classes is not intended to use except for inheritance.</p>
+<dl class="simple">
+<dt><strong>Class fields</strong></dt><dd><ul class="simple">
+<li><p><strong>M</strong>: Array containing the physical information of the object.</p></li>
+<li><p><strong>name</strong>: Name of the object for print purposes.</p></li>
+<li><p><strong>shape</strong>: Shape desired for the outputs.</p></li>
+<li><p><strong>size</strong>: Number of stores Jones vectors.</p></li>
+<li><p><strong>type</strong>: Type of the object. This is used for determining the object class as using isinstance may throw unexpected results in .ipynb files.</p></li>
+</ul>
+</dd>
+<dt><strong>Manipulation methods</strong></dt><dd><ul class="simple">
+<li><p><strong>clear</strong>:  Removes data and name form Jones vector.</p></li>
+<li><p><strong>copy</strong>:  Creates a copy of the Jones_vector object.</p></li>
+<li><p><strong>stretch</strong>:  Stretches a Jones vector of size 1.</p></li>
+<li><p><strong>shape_like</strong>:  Takes the shape of another object to use as its own.</p></li>
+<li><p><strong>reshape</strong>: Changes the shape of the object.</p></li>
+<li><p><strong>flatten</strong>:  Transforms N-D objects into 1-D objects (0-D if only 1 element).</p></li>
+<li><p><strong>flip</strong>: Flips the object along some dimensions.</p></li>
+<li><p><strong>get_list</strong>: Creates a list with single elements.</p></li>
+<li><p><strong>from_list</strong>: Creates the object from a list of single elements.</p></li>
+<li><p><strong>concatenate</strong>: Canocatenates several objects into a single one.</p></li>
+<li><p><strong>draw</strong>: Draws the components of the object.</p></li>
+<li><p><strong>clear</strong>: Clears the information of the object.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.py_pol.get_options">
+<span class="sig-prename descclassname"><span class="pre">py_pol.py_pol.</span></span><span class="sig-name descname"><span class="pre">get_options</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#get_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.get_options" title="Permalink to this definition"></a></dt>
+<dd><p>TODO</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.py_pol.set_option">
+<span class="sig-prename descclassname"><span class="pre">py_pol.py_pol.</span></span><span class="sig-name descname"><span class="pre">set_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#set_option"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.set_option" title="Permalink to this definition"></a></dt>
+<dd><p>TODO</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_pol.py_pol.</span></span><span class="sig-name descname"><span class="pre">Py_pol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Py_pol'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Basic class where all py_pol main classes will inherit from.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#py_pol.py_pol.Py_pol.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#py_pol.py_pol.Py_pol.type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.M">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">M</span></span><a class="headerlink" href="#py_pol.py_pol.Py_pol.M" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#py_pol.py_pol.Py_pol.size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#py_pol.py_pol.Py_pol.shape" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.ndim">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ndim</span></span><a class="headerlink" href="#py_pol.py_pol.Py_pol.ndim" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.get_list">
+<span class="sig-name descname"><span class="pre">get_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_vectors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol.get_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol.get_list" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list of np.ndarrays. Each array is a vector or matrix corresponding with one element or light source.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- if True and the object is size 1, return an array instead of a list. Default: True.</p></li>
+<li><p><strong>shape_vectors</strong> (<em>bool</em>) -- If True and the object is Jones_vector or Stokes, the output arrays will have dimension 2x1 and 4x1 instead 2 and 4 respectively. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.from_list">
+<span class="sig-name descname"><span class="pre">from_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol.from_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol.from_list" title="Permalink to this definition"></a></dt>
+<dd><p>Create a Py_pol object from a list of numpy arrays of the correct size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>l</strong> (<em>list</em>) -- list of np.ndarrays.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.py_pol.Py_pol" title="py_pol.py_pol.Py_pol">Py_pol</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.concatenate">
+<span class="sig-name descname"><span class="pre">concatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stack</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol.concatenate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol.concatenate" title="Permalink to this definition"></a></dt>
+<dd><p>Create a Py_pol object from an iterable of Py_pol objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>objs</strong> (<em>iterable</em>) -- iterable of Py_pol objects.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>stack</strong> (<em>bool</em>) -- If True and all object shapes are compatible, calculate the new shape from theirs along a new axis.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.py_pol.Py_pol" title="py_pol.py_pol.Py_pol">Py_pol</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.flip">
+<span class="sig-name descname"><span class="pre">flip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol.flip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol.flip" title="Permalink to this definition"></a></dt>
+<dd><p>Flips the order of the elements stored in the object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>list</em><em> or </em><em>tuple</em>) -- Axes along which the flip is performed. If None, the object is flipped as flattened. Default: None.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- if True, the original element is not updated. Default: False.</p></li>
+<li><p><strong>change_name</strong> (<em>bool</em>) -- If True, changes the object name adding Recip. of at the beggining of the name. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Modified object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="jones_vector.html#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.stretch">
+<span class="sig-name descname"><span class="pre">stretch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol.stretch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol.stretch" title="Permalink to this definition"></a></dt>
+<dd><p>Function that stretches an object with a single element to have a higher number of equal elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>length</strong> (<em>int</em>) -- Number of elements.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, self is not updated. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Recalculated Jones vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="jones_vector.html#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a copy of the object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>N</strong> (<em>int</em>) -- Number of copies. Default: 1.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Copied object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.py_pol.Py_pol" title="py_pol.py_pol.Py_pol">Py_pol</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.reshape">
+<span class="sig-name descname"><span class="pre">reshape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol.reshape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol.reshape" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the shape of the object.</p>
+<dl class="simple">
+<dt>Parameter:</dt><dd><p>shape (tuple, list or 1-D np.ndarray): New shape.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.shape_like">
+<span class="sig-name descname"><span class="pre">shape_like</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol.shape_like"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol.shape_like" title="Permalink to this definition"></a></dt>
+<dd><p>Takes the shape of another object.</p>
+<dl class="simple">
+<dt>Parameter:</dt><dd><p>obj (Py_pol or nd.array): Object to take the shape.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.flatten">
+<span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol.flatten"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol.flatten" title="Permalink to this definition"></a></dt>
+<dd><p>Method that flattens the objcet (transforms N-D objects in 1D objects if N&gt;=1).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>keep</strong> (<em>bool</em>) -- If True, self is not updated. Default: False.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Flattened object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.py_pol.Py_pol" title="py_pol.py_pol.Py_pol">Py_pol</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw the components of the object. This is a wrap of parameters.components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>bool</em>) -- if True prints the parameter. Default: False.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol.clear" title="Permalink to this definition"></a></dt>
+<dd><p>Removes data and name form the object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_pol.py_pol.Py_pol_Iterator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_pol.py_pol.</span></span><span class="sig-name descname"><span class="pre">Py_pol_Iterator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/py_pol.html#Py_pol_Iterator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.py_pol.Py_pol_Iterator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Iterator of the Py_pol classes.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../py_pol.html" class="btn btn-neutral float-left" title="1. py_pol package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="jones_vector.html" class="btn btn-neutral float-right" title="1.2. py_pol.jones_vector module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Jesus del Hoyo Muñoz / Luis Miguel Sanchez Brea.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

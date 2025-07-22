@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.3. Example 5: Optical elements polarimetry &mdash; Python polarization 1.1.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Tutorials" href="../../../tutorials.html" />
+    <link rel="prev" title="2.2. Example 4: Light polarimetry" href="Example_4_Light_polarimetry.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Python polarization
+          </a>
+              <div class="version">
+                1.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">1. Python polarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">2. Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../examples.html">3. Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introductory/example.html">1. Introductory</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="example.html">2. Advanced</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Example_3_Analysis.html">2.1. Example 3: Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Example_4_Light_polarimetry.html">2.2. Example 4: Light polarimetry</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">2.3. Example 5: Optical elements polarimetry</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Jones-formalism">2.3.1. Jones formalism</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Mueller-Stokes-formalism">2.3.2. Mueller-Stokes formalism</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">4. py_pol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">3. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">4. History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">5. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Python polarization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../examples.html"><span class="section-number">3. </span>Examples</a> &raquo;</li>
+          <li><a href="example.html"><span class="section-number">2. </span>Advanced</a> &raquo;</li>
+      <li><span class="section-number">2.3. </span>Example 5: Optical elements polarimetry</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/source/examples/advanced/Example_5_Optical_elements_polarimetry.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Example-5:-Optical-elements-polarimetry">
+<h1><span class="section-number">2.3. </span>Example 5: Optical elements polarimetry<a class="headerlink" href="#Example-5:-Optical-elements-polarimetry" title="Permalink to this headline"></a></h1>
+<p>Optical elements polarimetry consists on measuring the influence of an optical element upon a light wave polarization, i.e., its Jones or Mueller matrix of the optical element.</p>
+<p>There are different ways of implementing a polarimeter for optical elements. In this example we will describe one of the common ones: the four-axis polarimeter, a polarimeter composed of a circularly-polarized light source, two rotating quarter-wave plates (linear retarders with 90º retardance), two rotating perfect polarizers and a photodetector:</p>
+<p><img alt="b9a10bfe019b4dbe91f2c23215bfa7b2" class="no-scaled-link" src="../../../_images/Optical_elements_polarimeter.png" style="width: 969px; height: 300px;" /></p>
+<p>Most optical element polarimeters, like this one, are usually divided into two parts: the polarization states generator (PSG) and the polarization states analyzer (PSA). The polarization states generator is the part of the polarimeter capable of generating many polarization states. In our case, it is composed by the first rotating polarizer and waveplate. If both of them are perfect elements, this PSG can generate all the possible polarization states. If the incident light wave is circularly
+polarized, all the generated states will have the same intensity. The second part is the polarization states analyzer (PSA). This part is the same as the light polarimeter described in the previous example.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">py_pol</span> <span class="kn">import</span> <span class="n">degrees</span>
+<span class="kn">from</span> <span class="nn">py_pol.jones_vector</span> <span class="kn">import</span> <span class="n">Jones_vector</span>
+<span class="kn">from</span> <span class="nn">py_pol.jones_matrix</span> <span class="kn">import</span> <span class="n">Jones_matrix</span><span class="p">,</span> <span class="n">create_Jones_matrices</span>
+<span class="kn">from</span> <span class="nn">py_pol.stokes</span> <span class="kn">import</span> <span class="n">Stokes</span><span class="p">,</span> <span class="n">create_Stokes</span>
+<span class="kn">from</span> <span class="nn">py_pol.mueller</span> <span class="kn">import</span> <span class="n">Mueller</span><span class="p">,</span> <span class="n">create_Mueller</span>
+</pre></div>
+</div>
+</div>
+<section id="Jones-formalism">
+<h2><span class="section-number">2.3.1. </span>Jones formalism<a class="headerlink" href="#Jones-formalism" title="Permalink to this headline"></a></h2>
+<p>The most general Jones matrix can be described using 4 parameters. One selection of parameters is:</p>
+<p><span class="math notranslate nohighlight">\(J=\exp\left(i\Phi\right)\left[\begin{array}{cc} J_{0} &amp; J_{1}\exp\left(i\delta_{1}\right)\\ J_{2}\exp\left(i\delta_{2}\right) &amp; J_{3}\exp\left(i\delta_{3}\right) \end{array}\right]\)</span>,</p>
+<p>where the modules <span class="math notranslate nohighlight">\(J_i\)</span> are real and positive and the phases <span class="math notranslate nohighlight">\(\delta_i\)</span> and the global phase <span class="math notranslate nohighlight">\(\Phi\)</span> are real and range between 0 and 360º. In principle, it is not possible to measure the global phase using an intensity detector without using interferometric techniques, so first we will concentrate in measuring the other parameters:</p>
+<p><span class="math notranslate nohighlight">\(J=\left[\begin{array}{cc} J_{0} &amp; J_{1}\exp\left(i\delta_{1}\right)\\ J_{2}\exp\left(i\delta_{2}\right) &amp; J_{3}\exp\left(i\delta_{3}\right) \end{array}\right]\)</span>.</p>
+<p>There are several techniques to determine the 7 remaining parameters of the Jones matrix. Here we are going to implement the method described in “Calibration method to determine the complete Jones matrix of SLMs”, J. Hoyo, L.M. Sanchez-Brea and A. Soria-Garcia, Optics and Lasers in Engineering, Volume 151, April 2022, 106914. This method requires performing 10 intensity measurements, varying the rotation angles of the elements of the PSG and PSA, which we can characterize using the bra-ket
+notation [1]:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(I_{1}=\left|\left\langle 0\text{º},0\text{º}\right|J_{sample}\left|0\text{º},0\text{º}\right\rangle \right|^{2}=J_{0}^{2}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_{2}=\left|\left\langle 0\text{º},0\text{º}\right|J_{sample}\left|90\text{º},0\text{º}\right\rangle \right|^{2}=J_{1}^{2}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_{3}=\left|\left\langle 90\text{º},0\text{º}\right|J_{sample}\left|0\text{º},0\text{º}\right\rangle \right|^{2}=J_{2}^{2}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_{4}=\left|\left\langle 90\text{º},0\text{º}\right|J_{sample}\left|90\text{º},0\text{º}\right\rangle \right|^{2}=J_{3}^{2}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_{5}=\left|\left\langle 0\text{º},0\text{º}\right|J_{sample}\left|0\text{º},-45\text{º}\right\rangle \right|^{2}=\left(J_{0}^{2}+J_{1}^{2}+2J_{0}J_{1}\sin\delta_{1}\right)/2\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_{6}=\left|\left\langle 0\text{º},0\text{º}\right|J_{sample}\left|45\text{º, 0º}\right\rangle \right|^{2}=\left(J_{0}^{2}+J_{1}^{2}+2J_{0}J_{1}\cos\delta_{1}\right)/2\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_{7}=\left|\left\langle 0\text{º},45\text{º}\right|J_{sample}\left|0\text{º},0\text{º}\right\rangle \right|^{2}=\left(J_{0}^{2}+J_{2}^{2}+2J_{0}J_{2}\sin\delta_{2}\right)/2\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_{8}=\left|\left\langle 45\text{º},0\text{º}\right|J_{sample}\left|0\text{º},0\text{º}\right\rangle \right|^{2}=\left(J_{0}^{2}+J_{2}^{2}+2J_{0}J_{2}\cos\delta_{2}\right)/2\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_{9}=\left|\left\langle 90\text{º},0\text{º}\right|J_{sample}\left|0\text{º},-45\text{º}\right\rangle \right|^{2}=\left[J_{2}^{2}+J_{3}^{2}+2J_{2}J_{3}\sin\left(\delta_{3}-\delta_{2}\right)\right]/2\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_{10}=\left|\left\langle 90\text{º},0\text{º}\right|J_{sample}\left|45\text{º},0\text{º}\right\rangle \right|^{2}=\left[J_{2}^{2}+J_{3}^{2}+2J_{2}J_{3}\cos\left(\delta_{3}-\delta_{2}\right)\right]/2\)</span>,</p></li>
+</ol>
+<p>where <span class="math notranslate nohighlight">\(\left|\phi,\chi\right\rangle\)</span> is the state generated by the PSG, <span class="math notranslate nohighlight">\(\left\langle \phi,\chi\right|\)</span> the state analyzed by the PSA (the state with maximum transmission), and <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\chi\)</span> are the azimuth and ellipticity angle. Then, 7 parameters can be calculated from the intensity measurements:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(J_{0}=\sqrt{I_{1}}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(J_{1}=\sqrt{I_{2}}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(J_{2}=\sqrt{I_{3}}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(J_{3}=\sqrt{I_{4}}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta_{1}=\arctan\left(\frac{2I_{5}-I_{1}-I_{2}}{2I_{6}-I_{1}-I_{2}}\right)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta_{2}=\arctan\left(\frac{2I_{7}-I_{1}-I_{3}}{2I_{8}-I_{1}-I_{3}}\right)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta_{3}=\arctan\left(\frac{2I_{9}-I_{3}-I_{4}}{2I_{10}-I_{3}-I_{4}}\right)+\delta_{2}\)</span>.</p></li>
+</ol>
+<p>Let’s simulate the experiment. The first stepp is implementing a function that calculates the intensity depending on the elements angles and another to calculate the matrix parameters from the intensities.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample_polarimeter_measurement</span><span class="p">(</span><span class="n">Jsample</span><span class="p">,</span> <span class="n">angleDG</span><span class="p">,</span> <span class="n">angleRG</span><span class="p">,</span> <span class="n">angleRA</span><span class="p">,</span> <span class="n">angleDA</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function simulates the light polarimeter measurements.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        E: Incident light wave Jones vector.</span>
+<span class="sd">        angleDG: Rotating angle of the diattenuator (polarizer) of the PSG.</span>
+<span class="sd">        angleRG: Rotation angle of the quarter-wave plate of the PSG.</span>
+<span class="sd">        angleRA: Rotation angle of the quarter-wave plate of the PSA.</span>
+<span class="sd">        angleDA: Rotating angle of the diattenuator (polarizer) of the PSA.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        I: Measured intensity.&quot;&quot;&quot;</span>
+    <span class="c1"># Rotate the optical elements</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">Jones_vector</span><span class="p">()</span><span class="o">.</span><span class="n">circular_light</span><span class="p">(</span><span class="n">intensity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># Intensity = 2 produces a normalized light state of intensity 1 after the PSG</span>
+    <span class="n">Jdg</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">()</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">angleDG</span><span class="p">)</span>
+    <span class="n">Jrg</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">()</span><span class="o">.</span><span class="n">quarter_waveplate</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">angleRG</span><span class="p">)</span>
+    <span class="n">Jra</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">()</span><span class="o">.</span><span class="n">quarter_waveplate</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">angleRA</span><span class="p">)</span>
+    <span class="n">Jda</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">()</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">angleDA</span><span class="p">)</span>
+    <span class="c1"># Multiply all objects</span>
+    <span class="n">E_final</span> <span class="o">=</span> <span class="n">Jda</span> <span class="o">*</span> <span class="n">Jra</span> <span class="o">*</span> <span class="n">Jsample</span> <span class="o">*</span> <span class="n">Jrg</span> <span class="o">*</span> <span class="n">Jdg</span> <span class="o">*</span> <span class="n">E</span>
+    <span class="c1"># Measure the intensity</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">E_final</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">intensity</span><span class="p">()</span>
+    <span class="c1"># Return</span>
+    <span class="k">return</span> <span class="n">I</span>
+
+<span class="k">def</span> <span class="nf">matrix_parameters</span><span class="p">(</span><span class="n">I</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function calculates the parameters of the Jones matrix from the intensity measurements.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        I: Array of intensities.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        J0, J1, J2, J3, d1, d2, d3: Matrix parameters.&quot;&quot;&quot;</span>
+    <span class="c1"># Calculate modules</span>
+    <span class="n">J0</span><span class="p">,</span> <span class="n">J1</span><span class="p">,</span> <span class="n">J2</span><span class="p">,</span> <span class="n">J3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">I</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
+    <span class="c1"># Calculate phases</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">I</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="o">*</span><span class="n">I</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span> <span class="p">(</span><span class="mi">360</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+    <span class="n">d2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">I</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="o">*</span><span class="n">I</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span> <span class="p">(</span><span class="mi">360</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+    <span class="n">d3</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">I</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="o">*</span><span class="n">I</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">+</span> <span class="n">d2</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">360</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+    <span class="c1"># Return</span>
+    <span class="k">return</span> <span class="n">J0</span><span class="p">,</span> <span class="n">J1</span><span class="p">,</span> <span class="n">J2</span><span class="p">,</span> <span class="n">J3</span><span class="p">,</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span>
+</pre></div>
+</div>
+</div>
+<p>Now we can check if it works.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a random Jones matrix for the sample</span>
+<span class="n">J0</span><span class="p">,</span> <span class="n">J1</span><span class="p">,</span> <span class="n">J2</span><span class="p">,</span> <span class="n">J3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">Jsample</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">()</span><span class="o">.</span><span class="n">from_components</span><span class="p">([</span><span class="n">J0</span><span class="p">,</span> <span class="n">J1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">d1</span><span class="p">),</span> <span class="n">J2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">d2</span><span class="p">),</span> <span class="n">J3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">d3</span><span class="p">)])</span>
+
+<span class="c1"># Calculate the intensities</span>
+<span class="n">angleDG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">angleRG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">angleRA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">angleDA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">sample_polarimeter_measurement</span><span class="p">(</span><span class="n">Jsample</span><span class="p">,</span> <span class="n">angleDG</span><span class="p">,</span> <span class="n">angleRG</span><span class="p">,</span> <span class="n">angleRA</span><span class="p">,</span> <span class="n">angleDA</span><span class="p">)</span>
+
+<span class="c1"># Calculate the matrix parameters</span>
+<span class="n">J0_calc</span><span class="p">,</span> <span class="n">J1_calc</span><span class="p">,</span> <span class="n">J2_calc</span><span class="p">,</span> <span class="n">J3_calc</span><span class="p">,</span> <span class="n">d1_calc</span><span class="p">,</span> <span class="n">d2_calc</span><span class="p">,</span> <span class="n">d3_calc</span> <span class="o">=</span> <span class="n">matrix_parameters</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+
+<span class="c1"># Compare results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Comparison between original and calculated parameters:&quot;</span><span class="p">)</span>
+<span class="n">original</span> <span class="o">=</span> <span class="p">[</span><span class="n">J0</span><span class="p">,</span> <span class="n">J1</span><span class="p">,</span> <span class="n">J2</span><span class="p">,</span> <span class="n">J3</span><span class="p">,</span> <span class="n">d1</span><span class="o">/</span><span class="n">degrees</span><span class="p">,</span> <span class="n">d2</span><span class="o">/</span><span class="n">degrees</span><span class="p">,</span> <span class="n">d3</span><span class="o">/</span><span class="n">degrees</span><span class="p">]</span>
+<span class="n">calculated</span> <span class="o">=</span> <span class="p">[</span><span class="n">J0_calc</span><span class="p">,</span> <span class="n">J1_calc</span><span class="p">,</span> <span class="n">J2_calc</span><span class="p">,</span> <span class="n">J3_calc</span><span class="p">,</span> <span class="n">d1_calc</span><span class="o">/</span><span class="n">degrees</span><span class="p">,</span> <span class="n">d2_calc</span><span class="o">/</span><span class="n">degrees</span><span class="p">,</span> <span class="n">d3_calc</span><span class="o">/</span><span class="n">degrees</span><span class="p">]</span>
+<span class="n">parameter</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;J0&quot;</span><span class="p">,</span> <span class="s2">&quot;J1&quot;</span><span class="p">,</span> <span class="s2">&quot;J2&quot;</span><span class="p">,</span> <span class="s2">&quot;J3&quot;</span><span class="p">,</span> <span class="s2">&quot;d1 (deg)&quot;</span><span class="p">,</span> <span class="s2">&quot;d2 (deg)&quot;</span><span class="p">,</span> <span class="s2">&quot;d3 (deg)&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- </span><span class="si">{}</span><span class="s2">:   Original = </span><span class="si">{:.4f}</span><span class="s2">;    Calculated = </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">parameter</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">original</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">calculated</span><span class="p">[</span><span class="n">ind</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Comparison between original and calculated parameters:
+- J0:   Original = 0.0666;    Calculated = 0.0666
+- J1:   Original = 0.6734;    Calculated = 0.6734
+- J2:   Original = 0.6419;    Calculated = 0.6419
+- J3:   Original = 0.5885;    Calculated = 0.5885
+- d1 (deg):   Original = 134.6173;    Calculated = 134.6173
+- d2 (deg):   Original = 181.8143;    Calculated = 181.8143
+- d3 (deg):   Original = 274.9632;    Calculated = 274.9632
+</pre></div></div>
+</div>
+<p>The match is perfect.</p>
+</section>
+<section id="Mueller-Stokes-formalism">
+<h2><span class="section-number">2.3.2. </span>Mueller-Stokes formalism<a class="headerlink" href="#Mueller-Stokes-formalism" title="Permalink to this headline"></a></h2>
+<p>The method for determining the Mueller matrix of an optical element is similar to the one for Stokes light polarimetry. The k-th measurement of the light polarimeter experiment is:</p>
+<p><span class="math notranslate nohighlight">\(S_{f}^{k}=\left[\begin{array}{cccc} A_{00}^{k} &amp; A_{01}^{k} &amp; A_{02}^{k} &amp; A_{03}^{k}\\ \bullet &amp; \bullet &amp; \bullet &amp; \bullet\\ \bullet &amp; \bullet &amp; \bullet &amp; \bullet\\ \bullet &amp; \bullet &amp; \bullet &amp; \bullet \end{array}\right]\left[\begin{array}{cccc} M_{00} &amp; M_{01} &amp; M_{02} &amp; M_{03}\\ M_{10} &amp; M_{11} &amp; M_{12} &amp; M_{13}\\ M_{20} &amp; M_{21} &amp; M_{22} &amp; M_{23}\\ M_{30} &amp; M_{31} &amp; M_{32} &amp; M_{33} \end{array}\right]\left[\begin{array}{c} S_{0}^{k}\\ S_{1}^{k}\\ S_{2}^{k}\\ S_{3}^{k} \end{array}\right]=\left[\begin{array}{c} I^{k}\\ \bullet\\ \bullet\\ \bullet \end{array}\right]\)</span>.</p>
+<p>Being <span class="math notranslate nohighlight">\(A^{k}=M_{D2}(\theta_{D2}^{k})*M_{R2}(\theta_{R2}^{k})\)</span> the Mueller matrix of the PSA, <span class="math notranslate nohighlight">\(S^k=M_{R1}(\theta_{R1}^{k})*M_{D1}(\theta_{D1}^{k})*S_i\)</span> the Stokes vector generated by the PSG and <span class="math notranslate nohighlight">\(M_{ij}\)</span> the elements of the Mueller matrix of the sample. Due to the fact that the detector only measures the intensity, only some parts of the Mueller matrix of the PSA are important (the rest of the parameters are replaced by <span class="math notranslate nohighlight">\(\bullet\)</span>). Then, if we consider the 16 required
+measurements:</p>
+<p><span class="math notranslate nohighlight">\(\left[\begin{array}{ccc} A_{00}^{0}S_{0}^{0} &amp; \ldots &amp; A_{03}^{0}S_{3}^{0}\\ \vdots &amp; \ddots &amp; \vdots\\ A_{00}^{16}S_{0}^{16} &amp; \ldots &amp; A_{03}^{16}S_{3}^{16} \end{array}\right]\left[\begin{array}{c} M_{00}\\ \vdots\\ M_{44} \end{array}\right]=\left[\begin{array}{ccc} b_{0,0} &amp; \ldots &amp; b_{0,16}\\ \vdots &amp; \ddots &amp; \vdots\\ b_{16,0} &amp; \ldots &amp; b_{16,16} \end{array}\right]\left[\begin{array}{c} M_{00}\\ \vdots\\ M_{44} \end{array}\right]=\left[\begin{array}{c} I^{0}\\ \vdots\\ I^{16} \end{array}\right]\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(b\)</span> is invertible (<span class="math notranslate nohighlight">\(\det(b)\neq0\)</span>) then <span class="math notranslate nohighlight">\(M_{ij}\)</span> can be easily calculated as <span class="math notranslate nohighlight">\(M_{ij}=b^{-1}I'\)</span>. This condition is satisfied if there are no repeated set of four angles.</p>
+<p>Let us reproduce this numerically. Let us define a function that simulates the experiment and calculates the <span class="math notranslate nohighlight">\(b\)</span> matrix. Also, we will include an error amplitude which we will use in the future.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Mueller_polarimeter_measurement</span><span class="p">(</span><span class="n">Msample</span><span class="p">,</span> <span class="n">Mpol</span><span class="p">,</span> <span class="n">S_ini</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">Ierror</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function simulates the light polarimeter measurements.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        Msample (Mueller): Mueller matrix of the sample.</span>
+<span class="sd">        Mpol (list): List with the four Mueller objects of the polarimeter: Md1, Mr1, Mr2, Md2.</span>
+<span class="sd">        Sini (Stokes): Stokes object of the illumination.</span>
+<span class="sd">        angles (numpy.ndarray): 4xN array with the angles used to perform the measurement.</span>
+<span class="sd">        Ierror (float): Intensity error amplitude.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Ik: Measured intensities vector.</span>
+<span class="sd">        b: b matrix.&quot;&quot;&quot;</span>
+    <span class="c1"># Extract the information from the input parameters</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">angles</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">Md1</span><span class="p">,</span> <span class="n">Mr1</span><span class="p">,</span> <span class="n">Mr2</span><span class="p">,</span> <span class="n">Md2</span> <span class="o">=</span> <span class="n">Mpol</span>
+    <span class="c1"># Rotate the optical elements</span>
+    <span class="n">Md1_rotated</span> <span class="o">=</span> <span class="n">Md1</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="n">angles</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span> <span class="n">keep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">Mr1_rotated</span> <span class="o">=</span> <span class="n">Mr1</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="n">angles</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span> <span class="n">keep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">Mr2_rotated</span> <span class="o">=</span> <span class="n">Mr2</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="n">angles</span><span class="p">[</span><span class="mi">2</span><span class="p">,:],</span> <span class="n">keep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">Md2_rotated</span> <span class="o">=</span> <span class="n">Md2</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="n">angles</span><span class="p">[</span><span class="mi">3</span><span class="p">,:],</span> <span class="n">keep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Multiply the objects as required</span>
+    <span class="n">Sg</span> <span class="o">=</span> <span class="n">Mr1_rotated</span> <span class="o">*</span> <span class="n">Md1_rotated</span> <span class="o">*</span> <span class="n">S_ini</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">Md2_rotated</span> <span class="o">*</span> <span class="n">Mr2_rotated</span>
+    <span class="n">S_final</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">Msample</span> <span class="o">*</span> <span class="n">Sg</span>
+    <span class="c1"># Measure the intensity</span>
+    <span class="n">Ik</span> <span class="o">=</span> <span class="n">S_final</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">intensity</span><span class="p">()</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="n">Ierror</span>
+    <span class="c1"># Calculate the b matrix</span>
+    <span class="n">Ak</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">matrix</span><span class="p">()</span>   <span class="c1"># Extract the 4x4xN matrix of the Mueller object</span>
+    <span class="n">Ak</span> <span class="o">=</span> <span class="n">Ak</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,:]</span>   <span class="c1"># Extract all the first rows</span>
+<span class="c1">#     Ak = np.transpose(Ak)   # Transpose so Ak rows corrrespond to different measurements</span>
+    <span class="n">Sk</span> <span class="o">=</span> <span class="n">Sg</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">matrix</span><span class="p">()</span>   <span class="c1"># Extract the 4xN matrix of the Stokes object</span>
+<span class="c1">#     Sk = np.transpose(Sk)   # Transpose so Sk rows corrrespond to different measurements</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">b</span><span class="p">[</span><span class="n">ind</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">Ak</span><span class="p">[:,</span><span class="n">ind</span><span class="p">],</span> <span class="n">Sk</span><span class="p">[:,</span><span class="n">ind</span><span class="p">])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="c1"># Return</span>
+    <span class="k">return</span> <span class="n">Ik</span><span class="p">,</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<p>Now, we can perform the experiment and see if the calculated Mueller matrix is correct. We will use as sample the product of a random diattenuator, a random polarizer and a random diagonal diattenuator. We will use a circularly polarized light wave for simplicity.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start by defining the polarimeter system</span>
+<span class="n">S_ini</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Light source&#39;</span><span class="p">)</span>
+<span class="n">S_ini</span><span class="o">.</span><span class="n">circular_light</span><span class="p">(</span><span class="n">intensity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Mpol</span> <span class="o">=</span> <span class="n">create_Mueller</span><span class="p">((</span><span class="s1">&#39;Diattenuator 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Retarder 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Retarder 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Diattenuator 2&#39;</span><span class="p">))</span>
+<span class="n">Mpol</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Mpol</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">quarter_waveplate</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Mpol</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">quarter_waveplate</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Mpol</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Create the sample parameters</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.5</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">alphaD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">delayD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mi">360</span><span class="o">*</span><span class="n">degrees</span>
+
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">alphaR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">delayR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mi">360</span><span class="o">*</span><span class="n">degrees</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()]</span>
+
+<span class="c1"># Create the sample</span>
+<span class="n">Md</span><span class="p">,</span> <span class="n">Mr</span><span class="p">,</span> <span class="n">Mp</span> <span class="o">=</span> <span class="n">create_Mueller</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">Md</span><span class="o">.</span><span class="n">diattenuator_charac_angles</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="n">p2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alphaD</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delayD</span><span class="p">)</span>
+<span class="n">Mr</span><span class="o">.</span><span class="n">retarder_charac_angles</span><span class="p">(</span><span class="n">R</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alphaR</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delayR</span><span class="p">)</span>
+<span class="n">Mp</span><span class="o">.</span><span class="n">depolarizer_diagonal</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+
+<span class="n">Msample</span> <span class="o">=</span> <span class="n">Md</span><span class="o">*</span><span class="n">Mr</span><span class="o">*</span><span class="n">Mp</span>
+<span class="n">Msample</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Sample&#39;</span>
+
+<span class="c1"># Now, define the rotation angles for the optical elements</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span> <span class="o">*</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span>
+
+<span class="c1"># Make the measurements</span>
+<span class="n">Ik</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Mueller_polarimeter_measurement</span><span class="p">(</span><span class="n">Msample</span><span class="o">=</span><span class="n">Msample</span><span class="p">,</span> <span class="n">Mpol</span><span class="o">=</span><span class="n">Mpol</span><span class="p">,</span> <span class="n">S_ini</span><span class="o">=</span><span class="n">S_ini</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">)</span>
+
+<span class="c1"># Calculate the original Mueller matrix</span>
+<span class="n">b_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">Ik</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">Ik</span><span class="p">,</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">M_calc</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s1">&#39;Calculated&#39;</span><span class="p">)</span>
+<span class="n">M_calc</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="n">b_inv</span><span class="nd">@Ik</span><span class="p">)</span>
+
+<span class="c1"># Compare the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Msample</span><span class="p">,</span> <span class="n">M_calc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Sample =
+[+0.508 -0.018 +0.093 -0.179]
+[-0.407 +0.022 -0.091 +0.230]
+[-0.038 +0.026 -0.069 -0.070]
+[+0.056 +0.016 +0.136 -0.004]
+ Calculated =
+[+0.508 -0.018 +0.093 -0.179]
+[-0.407 +0.022 -0.091 +0.230]
+[-0.038 +0.026 -0.069 -0.070]
+[+0.056 +0.016 +0.136 -0.004]
+
+</pre></div></div>
+</div>
+<p>As explained in the previous example, experiments are subject to errors. This means that the calculated Mueller matrices will be wrong. However, the error in the calculated matrix can be reduced by oversampling, i.e., taking more than the minimum 16 measurements. In this case, <span class="math notranslate nohighlight">\(b\)</span> will be a Nx16 matrix and <span class="math notranslate nohighlight">\(I'\)</span> a Nx1 vector. Then, <span class="math notranslate nohighlight">\(M_{ij}\)</span> can be calculated using the pseudoinverse of <span class="math notranslate nohighlight">\(b\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(b^+=(b^T*b)^{-1}*b^T\)</span>.</p>
+<p>Let us define a function that performs one polarimetry experiment.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Mueller_polariemter_experiment</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">Ierror</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This funcion simulates a polarimetry experiment with errors in the detection.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        N (int): Number of measurements.</span>
+<span class="sd">        Ierror (float): Intensity error amplitude.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dif (numpy.ndarray): Difference between the calculated and the original array.&quot;&quot;&quot;</span>
+    <span class="c1"># Create the sample parameters</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.5</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span>
+    <span class="n">alphaD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span>
+    <span class="n">delayD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mi">360</span><span class="o">*</span><span class="n">degrees</span>
+
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span>
+    <span class="n">alphaR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span>
+    <span class="n">delayR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mi">360</span><span class="o">*</span><span class="n">degrees</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()]</span>
+
+    <span class="c1"># Create the sample</span>
+    <span class="n">Md</span><span class="p">,</span> <span class="n">Mr</span><span class="p">,</span> <span class="n">Mp</span> <span class="o">=</span> <span class="n">create_Mueller</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">Md</span><span class="o">.</span><span class="n">diattenuator_charac_angles</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="n">p2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alphaD</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delayD</span><span class="p">)</span>
+    <span class="n">Mr</span><span class="o">.</span><span class="n">retarder_charac_angles</span><span class="p">(</span><span class="n">R</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alphaR</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delayR</span><span class="p">)</span>
+    <span class="n">Mp</span><span class="o">.</span><span class="n">depolarizer_diagonal</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+
+    <span class="n">Msample</span> <span class="o">=</span> <span class="n">Md</span><span class="o">*</span><span class="n">Mr</span><span class="o">*</span><span class="n">Mp</span>
+    <span class="n">Msample</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Sample&#39;</span>
+
+    <span class="c1"># Now, define the rotation angles for the optical elements</span>
+    <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span>
+
+    <span class="c1"># Make the measurements</span>
+    <span class="n">Ik</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Mueller_polarimeter_measurement</span><span class="p">(</span><span class="n">Msample</span><span class="o">=</span><span class="n">Msample</span><span class="p">,</span> <span class="n">Mpol</span><span class="o">=</span><span class="n">Mpol</span><span class="p">,</span> <span class="n">S_ini</span><span class="o">=</span><span class="n">S_ini</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span> <span class="n">Ierror</span><span class="o">=</span><span class="n">Ierror</span><span class="p">)</span>
+
+    <span class="c1"># Calculate the Stokes vector</span>
+    <span class="n">b_T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">b_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">b_T</span> <span class="o">@</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">b_inv</span> <span class="o">=</span> <span class="n">b_inv</span> <span class="o">@</span> <span class="n">b_T</span>
+    <span class="n">Ik</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">Ik</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">M_calc</span> <span class="o">=</span> <span class="n">b_inv</span> <span class="o">@</span> <span class="n">Ik</span>
+
+    <span class="c1"># Calculate the difference</span>
+    <span class="n">dif</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">Msample</span><span class="o">.</span><span class="n">M</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">-</span> <span class="n">M_calc</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+
+    <span class="c1"># Return</span>
+    <span class="k">return</span> <span class="n">dif</span>
+</pre></div>
+</div>
+</div>
+<p>Now, lets do the experiment many times, changing the number of measurements and the error amplitude.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define some variables</span>
+<span class="n">Nstat</span> <span class="o">=</span> <span class="mi">100</span>      <span class="c1"># Number of experiments done under the same condition.</span>
+<span class="n">I_errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">])</span>    <span class="c1"># Array of error factors</span>
+<span class="n">Ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>    <span class="c1"># Array of the number of measurements</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-12</span>
+<span class="n">I_wave</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># We will maintain this parameter constant so we can compare the errors easily</span>
+
+<span class="c1"># Create the result variables</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Ns</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">I_errors</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span class="n">legend</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Make the loops changing the variables</span>
+<span class="k">for</span> <span class="n">indI</span><span class="p">,</span> <span class="n">Ierror</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">I_errors</span><span class="p">):</span>   <span class="c1"># Loop in the error amplitude</span>
+    <span class="k">for</span> <span class="n">indN</span><span class="p">,</span> <span class="n">N</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Ns</span><span class="p">):</span>   <span class="c1"># Loop in the number of measurements</span>
+        <span class="c1"># Create the temporal variables</span>
+        <span class="n">aux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Nstat</span><span class="p">))</span>
+        <span class="c1"># Repeat the same conditions several times</span>
+        <span class="k">for</span> <span class="n">indS</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Nstat</span><span class="p">):</span>
+            <span class="c1"># Do the experiment</span>
+            <span class="n">dif</span> <span class="o">=</span> <span class="n">Mueller_polariemter_experiment</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">Ierror</span><span class="o">=</span><span class="n">Ierror</span><span class="p">);</span>
+            <span class="c1"># Calculate the errors</span>
+            <span class="n">aux</span><span class="p">[</span><span class="n">indS</span><span class="p">]</span> <span class="o">=</span> <span class="n">dif</span>
+        <span class="c1"># Calculate the mean square error</span>
+        <span class="n">error</span><span class="p">[</span><span class="n">indN</span><span class="p">,</span> <span class="n">indI</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">aux</span><span class="p">)</span> <span class="o">/</span> <span class="n">Nstat</span>
+    <span class="c1"># Create the legend for the plots</span>
+    <span class="n">legend</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;Ierror = </span><span class="si">{}</span><span class="s1"> %&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Ierror</span><span class="o">*</span><span class="mi">100</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span> <span class="n">error</span><span class="p">[:,:])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">legend</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of measurements&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;MSE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Text(0, 0.5, &#39;MSE&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/source_examples_advanced_Example_5_Optical_elements_polarimetry_15_1.png" src="../../../_images/source_examples_advanced_Example_5_Optical_elements_polarimetry_15_1.png" />
+</div>
+</div>
+<p>These plots show that the error in the determiantion of the Stokes vectors is proportional to the initial error amplitude, and can be decreased increasing the number of measurements.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Example_4_Light_polarimetry.html" class="btn btn-neutral float-left" title="2.2. Example 4: Light polarimetry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../tutorials.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Jesus del Hoyo Muñoz / Luis Miguel Sanchez Brea.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Stokes class &mdash; Python polarization 1.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Mueller class" href="Mueller.html" />
+    <link rel="prev" title="2. Jones_matrix class" href="Jones_matrix.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Python polarization
+          </a>
+              <div class="version">
+                1.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">1. Python polarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">3. Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Jones_vector.html">1. Jones_vector class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jones_matrix.html">2. Jones_matrix class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Stokes class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Creating-an-instance">3.1. Creating an instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Generating-polarization-states">3.2. Generating polarization states</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Features-of-creation-methods">3.2.1. Features of creation methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Basic-operations">3.3. Basic operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Addition-of-two-Stokes-vectors">3.3.1. Addition of two Stokes vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Multiply-by-a-constant">3.3.2. Multiply by a constant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Equality">3.3.3. Equality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Operations-and-multidimensionality">3.3.4. Operations and multidimensionality</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Stokes-vectors-manipulation">3.4. Stokes vectors manipulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Picking-and-setting">3.4.1. Picking and setting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Iterating">3.4.2. Iterating</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Parameters-of-Stokes-vector">3.5. Parameters of Stokes vector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Checks-of-Stokes-vectors">3.6. Checks of Stokes vectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Analysis-of-Stokes-vectors">3.7. Analysis of Stokes vectors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Mueller.html">4. Mueller class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Drawing_docs.html">5. Draw</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">4. py_pol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">5. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">6. History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">7. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python polarization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../tutorials.html">Tutorials</a> &raquo;</li>
+      <li><span class="section-number">3. </span>Stokes class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/tutorial/Stokes.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Stokes-class">
+<h1><span class="section-number">3. </span>Stokes class<a class="headerlink" href="#Stokes-class" title="Permalink to this headline"></a></h1>
+<p>Stokes is a class that manages Stokes vectors. It allows the user to create and manipulate them. The difference between Stokes and Jones formalisms is that Stokes vectors can handle partially polarized light, while Jones vectors can track the global phase of the electric field. However, Stokes objects store the global phase (if any) and use it when it is relevant.</p>
+<section id="Creating-an-instance">
+<h2><span class="section-number">3.1. </span>Creating an instance<a class="headerlink" href="#Creating-an-instance" title="Permalink to this headline"></a></h2>
+<p>An instance must be created before starting to operate with the Stokes vector. The initialization accepts one argument: the name of the vector. This name will be used for printing:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">py_pol.stokes</span> <span class="kn">import</span> <span class="n">Stokes</span><span class="p">,</span> <span class="n">create_Stokes</span><span class="p">,</span> <span class="n">degrees</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 is empty
+
+</pre></div></div>
+</div>
+<p>Several Stokes objects can be created at the same time using the function <em>create_Stokes</em>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S2</span><span class="p">,</span> <span class="n">S3</span> <span class="o">=</span> <span class="n">create_Stokes</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Source 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Source 3&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">,</span> <span class="n">S3</span><span class="p">)</span>
+
+<span class="n">list_of_S</span> <span class="o">=</span> <span class="n">create_Stokes</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list_of_S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 2 is empty
+ Source 3 is empty
+
+[S is empty
+, S is empty
+, S is empty
+]
+</pre></div></div>
+</div>
+</section>
+<section id="Generating-polarization-states">
+<h2><span class="section-number">3.2. </span>Generating polarization states<a class="headerlink" href="#Generating-polarization-states" title="Permalink to this headline"></a></h2>
+<p>As shown in the previous example, the Stokes matrix is initialized with all elements equal to zero. There are many methods that can be used to generate a more desirable vector:</p>
+<ul class="simple">
+<li><p><strong>from_components</strong>: Creates Stokes vectors directly from the 4 elements <span class="math notranslate nohighlight">\(S_0\)</span>, <span class="math notranslate nohighlight">\(S_1\)</span>, <span class="math notranslate nohighlight">\(S_2\)</span>, <span class="math notranslate nohighlight">\(S_3\)</span>.</p></li>
+<li><p><strong>from_matrix</strong>: Creates Stokes vectors from an external 4 x shape numpy array.</p></li>
+<li><p><strong>from_list</strong>: Creates a Jones_vector object directly from a list of 4 or 4x1 numpy arrays.</p></li>
+<li><p><strong>from_Jones</strong>: Creates Stokes vectors from a Jones_vector object.</p></li>
+<li><p><strong>linear_light</strong>: Creates Stokes vectors for pure linear polarizer light.</p></li>
+<li><p><strong>circular_light</strong>: Creates Stokes vectors for pure circular polarizer light.</p></li>
+<li><p><strong>elliptical_light</strong> Creates Stokes vectors for polarizer elliptical light.</p></li>
+<li><p><strong>general_charac_angles</strong> Creates Stokes vectors given by their characteristic angles.</p></li>
+<li><p><strong>general_azimuth_ellipticity</strong> Creates Stokes vectors given by their azimuth and ellipticity.</p></li>
+</ul>
+<p>For a more detailed description of each method, refer to the individual documentation of each one.</p>
+<p>Example: Light linearly polarized.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Linear polarization&quot;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Linear polarization =
+[+1.000]
+[+0.500]
+[+0.866]
+[+0.000]
+
+</pre></div></div>
+</div>
+<p>The previous example only stores one Stokes vector. However, it is possible to store many Stokes vectors in the same object. This is useful specially when the same operation is performed upon all of them, as rotation. In this way, it is not required to use for loops, reducing significantly the computation time.</p>
+<p>There are many ways of creating several Stokes vectors in the same object. The first way is creating an object with several identical vectors. This is performed using the <em>length</em> argument present in most creation methods:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+2.000]   [+2.000]   [+2.000]   [+2.000]   [+2.000]
+[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]
+[+2.000]   [+2.000]   [+2.000]   [+2.000]   [+2.000]
+[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]
+
+</pre></div></div>
+</div>
+<p>A second way of creating several vectors at the same time is using an array as one (or more) of the parameters of the creation methods. Take into account that, if you use this option, all parameters must have the same number of elements or just one element. Otherwise, the program will throw an exception.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="n">angles</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+2.000]   [+2.000]   [+2.000]   [+2.000]   [+2.000]
+[+2.000]   [+1.414]   [+0.000]   [-1.414]   [-2.000]
+[+0.000]   [+1.414]   [+2.000]   [+1.414]   [+0.000]
+[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]
+
+</pre></div></div>
+</div>
+<p>If the parameters have dimension higher than 1, the program will store that information in order to make prints and plots. In that case, the <em>print</em> function separates the four components of the Stokes vectors:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}S=\left[\begin{array}{c}
+S_0\\
+S_1\\
+S_2\\
+S_3\\
+\end{array}\right]\end{split}\]</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="n">I</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 S0 =
+[[0.06238773 0.57797563 0.6247661 ]
+ [0.48184591 0.09498877 0.59185975]
+ [0.12173544 0.08507394 0.3738014 ]]
+Source 1 S1 =
+[[0.03119387 0.28898781 0.31238305]
+ [0.24092296 0.04749438 0.29592987]
+ [0.06086772 0.04253697 0.1869007 ]]
+Source 1 S2 =
+[[0.05402936 0.50054158 0.54106332]
+ [0.4172908  0.08226268 0.51256558]
+ [0.10542598 0.07367619 0.32372151]]
+Source 1 S3 =
+[[0. 0. 0.]
+ [0. 0. 0.]
+ [0. 0. 0.]]
+
+</pre></div></div>
+</div>
+<section id="Features-of-creation-methods">
+<h3><span class="section-number">3.2.1. </span>Features of creation methods<a class="headerlink" href="#Features-of-creation-methods" title="Permalink to this headline"></a></h3>
+<p>Stokes formalism does not take into account the global phase of the light states. However, <em>Stokes</em> objects store it in the <em>global_phase</em> field. Use <em>None</em> if the global phase is unknown.</p>
+<p>Most creation methods accept a <em>global_phase</em> argument that can be used to introduce it.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">global_phase</span><span class="o">=</span><span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">global_phase</span> <span class="o">/</span> <span class="n">degrees</span><span class="p">)</span>
+
+<span class="n">S</span><span class="o">.</span><span class="n">remove_global_phase</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">global_phase</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[90.]
+0
+</pre></div></div>
+</div>
+<p>Many creation methods accept an <em>amplitude</em> or an <em>intensity</em> parameter (<span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> for <em>elliptical_light</em>) in order to set the electric field amplitude (the norm of the electric field vector) or the intensity. If both of them are given together to the method, it will use the <em>amplitude</em>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">intensity</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 2&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">intensity</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 3&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">intensity</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+25.000]
+[+0.000]
+[+25.000]
+[+0.000]
+
+The intensity of Source 1 is (a.u.):
+25.0
+
+Source 2 =
+[+2.000]
+[+0.000]
+[+2.000]
+[+0.000]
+
+The intensity of Source 2 is (a.u.):
+2.0
+
+Source 3 =
+[+25.000]
+[+0.000]
+[+25.000]
+[+0.000]
+
+The intensity of Source 3 is (a.u.):
+25.0
+
+</pre></div></div>
+</div>
+<p>Also, most creation methods accept two parameters: <em>degree_pol</em> and <em>degree_depol</em>, which represent the degrees of polarization and depolarization respectively. This allows creating partially polarized light states using the same methods.</p>
+<p>Both degrees are complementary, so if both of them are given to the method, only <em>degree_depol</em> is used.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">degree_pol</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 2&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">degree_depol</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 3&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">degree_pol</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">degree_depol</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+5.000]
+[+0.000]
+[+4.000]
+[+0.000]
+
+Source 2 =
+[+5.000]
+[+0.000]
+[+3.000]
+[+0.000]
+
+Source 3 =
+[+5.000]
+[+0.000]
+[+3.000]
+[+0.000]
+
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Basic-operations">
+<h2><span class="section-number">3.3. </span>Basic operations<a class="headerlink" href="#Basic-operations" title="Permalink to this headline"></a></h2>
+<p>Some physical phenomena that affects polarized light are described by simple operations performed to their Stokes vectors.</p>
+<section id="Addition-of-two-Stokes-vectors">
+<h3><span class="section-number">3.3.1. </span>Addition of two Stokes vectors<a class="headerlink" href="#Addition-of-two-Stokes-vectors" title="Permalink to this headline"></a></h3>
+<p>The interference of two light waves can be represented by the sum of their Stokes vectors. However, the global phase is important when two light states interfere, i.e., two vectors are added together. If both global phases are known (coherent sum), the polarized part of the Stokes vectors are transformed into Jones objects and added together. The result is tranformed back to a Stokes vector and the unpolarized parts are added.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">global_phase</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 2&quot;</span><span class="p">)</span>
+<span class="n">S2</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">global_phase</span><span class="o">=</span><span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+<span class="n">S3</span> <span class="o">=</span> <span class="n">S1</span> <span class="o">+</span> <span class="n">S2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+
+Source 2 =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+
+Source 1 + Source 2 =
+[+2.000]
+[+2.000]
+[+0.000]
+[+0.000]
+
+</pre></div></div>
+</div>
+<p>If one or both phases are unknown (they have a <em>None</em> value), the Stokes vectors are added directly (incoherent sum).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">global_phase</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 2&quot;</span><span class="p">)</span>
+<span class="n">S2</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">global_phase</span><span class="o">=</span><span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+<span class="n">S3</span> <span class="o">=</span> <span class="n">S1</span> <span class="o">+</span> <span class="n">S2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+
+Source 2 =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+
+Source 1 + Source 2 =
+[+2.000]
+[+2.000]
+[+0.000]
+[+0.000]
+
+</pre></div></div>
+</div>
+</section>
+<section id="Multiply-by-a-constant">
+<h3><span class="section-number">3.3.2. </span>Multiply by a constant<a class="headerlink" href="#Multiply-by-a-constant" title="Permalink to this headline"></a></h3>
+<p>The absorption and gain experienced by a light wave is described by multiplying its Jones vector by a real positive number <span class="math notranslate nohighlight">\(c\)</span>. The light wave will experience absorption if <span class="math notranslate nohighlight">\(c&lt;0\)</span> and gain if <span class="math notranslate nohighlight">\(c&gt;0\)</span>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">amplitude</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">S1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span>  <span class="n">S1</span><span class="o">*</span><span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span>  <span class="n">S1</span><span class="o">/</span><span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+0.250]
+[+0.250]
+[+0.000]
+[+0.000]
+
+2 * Source 1 =
+[+0.500]
+[+0.500]
+[+0.000]
+[+0.000]
+
+3 * Source 1 =
+[+0.750]
+[+0.750]
+[+0.000]
+[+0.000]
+
+Source 1 / 3 =
+[+0.083]
+[+0.083]
+[+0.000]
+[+0.000]
+
+</pre></div></div>
+</div>
+<p>If the constant is complex, the constant phase will be added to the global phase of the light, while its absolute value will increase or decrease the light intensity.</p>
+<p>Take into account that real negative values are a special case of complex numbers whose phase is 180º.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">intensity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">S1</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">global_phase</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="n">j</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="n">S1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">S2</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">global_phase</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">-</span><span class="mf">0.5</span><span class="n">j</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="n">S1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">S2</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">global_phase</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+
+The global phase of Source 1 is (deg):
+0.0
+
+1j * Source 1 =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+
+The global phase of 1j * Source 1 is (deg):
+90.0
+
+(0.5-0.5j) * Source 1 =
+[+0.707]
+[+0.707]
+[+0.000]
+[+0.000]
+
+The global phase of (0.5-0.5j) * Source 1 is (deg):
+-45.0
+
+</pre></div></div>
+</div>
+</section>
+<section id="Equality">
+<h3><span class="section-number">3.3.3. </span>Equality<a class="headerlink" href="#Equality" title="Permalink to this headline"></a></h3>
+<p>It is possible to compare two <em>Stokes</em> objects and tell if they are the same. It just compares the Stokes vectors and the global phase, not the rest of object fields.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 2&quot;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">S2</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="n">angles</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Comparison: &#39;</span><span class="p">,</span> <span class="n">S1</span><span class="o">==</span><span class="n">S2</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">global_phase</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 2&quot;</span><span class="p">)</span>
+<span class="n">S2</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">global_phase</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Comparison: &#39;</span><span class="p">,</span> <span class="n">S1</span><span class="o">==</span><span class="n">S2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+
+Source 2 =
+[+1.000]   [+1.000]   [+1.000]   [+1.000]   [+1.000]
+[+1.000]   [+0.707]   [+0.000]   [-0.707]   [-1.000]
+[+0.000]   [+0.707]   [+1.000]   [+0.707]   [+0.000]
+[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]
+
+Source 1 - Source 2 =
+[+0.000]   [+0.152]   [+0.586]   [+1.235]   [+2.000]
+[+0.000]   [-0.141]   [-0.414]   [-0.472]   [-0.000]
+[+0.000]   [-0.058]   [-0.414]   [-1.141]   [-2.000]
+[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]
+ [0. 0. 0. 0. 0.]
+Comparison:  [ True False False False False]
+
+
+Source 1 =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+
+Source 2 =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+
+Source 1 - Source 2 =
+[+0.000]
+[+0.000]
+[+0.000]
+[+0.000]
+ [0.]
+Comparison:  [False]
+</pre></div></div>
+</div>
+</section>
+<section id="Operations-and-multidimensionality">
+<h3><span class="section-number">3.3.4. </span>Operations and multidimensionality<a class="headerlink" href="#Operations-and-multidimensionality" title="Permalink to this headline"></a></h3>
+<p>The basic operations of <em>Stokes</em> objects are subject to the same casting rules as numpy arrays. This means that they can be easily used even if one or both elements of the operation have more than one element.</p>
+<p>Here are some examples:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sum</span>
+<span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 2&quot;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">S2</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="n">angles</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">global_phase</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+
+<span class="n">S3</span> <span class="o">=</span> <span class="n">S1</span> <span class="o">+</span> <span class="n">S2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+
+Source 2 =
+[+1.000]   [+1.000]   [+1.000]   [+1.000]   [+1.000]
+[+1.000]   [+0.707]   [+0.000]   [-0.707]   [-1.000]
+[+0.000]   [+0.707]   [+1.000]   [+0.707]   [+0.000]
+[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]
+
+Source 1 + Source 2 =
+[+3.414]   [+3.307]   [+3.000]   [+2.541]   [+2.000]
+[+3.414]   [+3.014]   [+2.000]   [+0.834]   [+0.000]
+[+0.000]   [+1.248]   [+2.000]   [+2.014]   [+1.414]
+[+0.000]   [+0.541]   [+1.000]   [+1.307]   [+1.414]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multply by a constant</span>
+<span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="n">S1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+1.000]
+[+0.500]
+[+0.866]
+[+0.000]
+
+Source 1 =
+[+0.100]   [+0.650]   [+1.200]   [+1.750]   [+2.300]
+[+0.050]   [+0.325]   [+0.600]   [+0.875]   [+1.150]
+[+0.087]   [+0.563]   [+1.039]   [+1.516]   [+1.992]
+[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]
+
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Stokes-vectors-manipulation">
+<h2><span class="section-number">3.4. </span>Stokes vectors manipulation<a class="headerlink" href="#Stokes-vectors-manipulation" title="Permalink to this headline"></a></h2>
+<p>There are several operations that can be applied to a Stokes vector. Some of them are common to all py_pol objects and are inherited from their parent <em>Py_pol</em> class:</p>
+<ul class="simple">
+<li><p><strong>clear</strong>: Removes data and name form Jones vector.</p></li>
+<li><p><strong>copy</strong>: Creates a copy of the Jones_vector object.</p></li>
+<li><p><strong>stretch</strong>: Stretches a Jones vector of size 1.</p></li>
+<li><p><strong>shape_like</strong>: Takes the shape of another object to use as its own.</p></li>
+<li><p><strong>reshape</strong>: Changes the shape of the object.</p></li>
+<li><p><strong>flatten</strong>: Transforms N-D objects into 1-D objects (0-D if only 1 element).</p></li>
+<li><p><strong>flip</strong>: Flips the object along some dimensions.</p></li>
+<li><p><strong>get_list</strong>: Creates a list with single elements.</p></li>
+<li><p><strong>from_list</strong>: Creates the object from a list of single elements.</p></li>
+<li><p><strong>concatenate</strong>: Canocatenates several objects into a single one.</p></li>
+<li><p><strong>draw</strong>: Draws the components of the object.</p></li>
+<li><p><strong>clear</strong>: Clears the information of the object.</p></li>
+</ul>
+<p>The rest of the manipulation methods are:</p>
+<ul class="simple">
+<li><p><strong>simplify</strong>: Simplifies the Stokes vectors in several ways.</p></li>
+<li><p><strong>rotate</strong>: Rotates the Stokes vectors.</p></li>
+<li><p><strong>sum</strong>: Calculates the summatory of the Stokes vectors in the object.</p></li>
+<li><p><strong>reciprocal</strong>: Calculates the Stokes vectors that propagates backwards.</p></li>
+<li><p><strong>orthogonal</strong>: Calculates the orthogonal Stokes vectors.</p></li>
+<li><p><strong>normalize</strong>: Normalize the electric field to be normalized in electric field amplitude or intensity.</p></li>
+<li><p><strong>rotate_to_azimuth</strong>: Rotates the Stokes vectors to have a certain azimuth.</p></li>
+<li><p><strong>remove_global_phase</strong>: Calculates the global phase of the electric field (respect to the X component) and removes it.</p></li>
+<li><p><strong>add_global_phase</strong>: Adds a global phase to the Stokes vectors.</p></li>
+<li><p><strong>set_global_phase</strong>: Sets the global phase of the Stokes vectors.</p></li>
+<li><p><strong>set_depolarization</strong>: Sets the degree of depolarization.</p></li>
+<li><p><strong>add_depolarization</strong>: Increases the degree of depolarization.</p></li>
+</ul>
+<p>For a more detailed description of each method, refer to the individual documentation of each one.</p>
+<p>Example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Source 1&#39;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+
+<span class="n">S1</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+
+Source 1 @ 45.00 deg =
+[+1.000]
+[+0.000]
+[+1.000]
+[+0.000]
+
+</pre></div></div>
+</div>
+<p>Most manipulation methods have the <em>keep</em> argument that specifies if the originial object must be preserved or transformed. If <em>keep</em> is <em>True</em> (default is <em>False</em>), a new object is created:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Source 1&#39;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span> <span class="n">S1</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">S2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Source 2&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span> <span class="n">S1</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">S2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Source 2&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+ Source 2 =
+[+1.000]
+[+0.000]
+[+1.000]
+[+0.000]
+
+Source 2 =
+[+1.000]
+[+0.000]
+[+1.000]
+[+0.000]
+ Source 2 =
+[+1.000]
+[+0.000]
+[+1.000]
+[+0.000]
+
+</pre></div></div>
+</div>
+<p><em>Stokes</em> objects allow taking elements and changing them through indices like a <em>numpy.ndarray</em>.</p>
+<p>Examples:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span> <span class="n">S1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Original S0 =
+[[0.73827998 0.3309537  0.42923983 0.20266855 0.97945782]
+ [0.33310064 0.41272463 0.63421152 0.39573911 0.54567378]
+ [0.04611144 0.77465159 0.03830944 0.74233396 0.21166797]]
+Original S1 =
+[[0.80725697 0.75942444 0.82534152 0.15295515 0.3583469 ]
+ [0.90605304 0.94043943 0.41896632 0.0647273  0.16058601]
+ [0.32477308 0.65895505 0.23844614 0.64100175 0.4681246 ]]
+Original S2 =
+[[0.82565326 0.46838908 0.07149297 0.51760866 0.8085559 ]
+ [0.24613237 0.7992647  0.96896721 0.43505374 0.89333559]
+ [0.79100309 0.43089529 0.08399607 0.987945   0.02170331]]
+Original S3 =
+[[0.02398912 0.69643331 0.04265789 0.68903845 0.32638138]
+ [0.26542458 0.78317913 0.85479037 0.3183737  0.40564564]
+ [0.07044742 0.27915799 0.50581986 0.21845827 0.49659919]]
+
+Original_picked =
+[+0.738]   [+0.331]   [+0.429]
+[+0.807]   [+0.759]   [+0.825]
+[+0.826]   [+0.468]   [+0.071]
+[+0.024]   [+0.696]   [+0.043]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S3</span><span class="o">.</span><span class="n">linear_light</span><span class="p">()</span>
+<span class="n">S4</span> <span class="o">=</span> <span class="n">S1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">S4</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Cambiado&#39;</span>
+<span class="n">S4</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">S3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Cambiado S0 =
+[[1.         1.         0.42923983 0.20266855 0.97945782]
+ [1.         1.         0.63421152 0.39573911 0.54567378]
+ [1.         1.         0.03830944 0.74233396 0.21166797]]
+Cambiado S1 =
+[[1.         1.         0.82534152 0.15295515 0.3583469 ]
+ [1.         1.         0.41896632 0.0647273  0.16058601]
+ [1.         1.         0.23844614 0.64100175 0.4681246 ]]
+Cambiado S2 =
+[[0.         0.         0.07149297 0.51760866 0.8085559 ]
+ [0.         0.         0.96896721 0.43505374 0.89333559]
+ [0.         0.         0.08399607 0.987945   0.02170331]]
+Cambiado S3 =
+[[0.         0.         0.04265789 0.68903845 0.32638138]
+ [0.         0.         0.85479037 0.3183737  0.40564564]
+ [0.         0.         0.50581986 0.21845827 0.49659919]]
+
+</pre></div></div>
+</div>
+<section id="Picking-and-setting">
+<h3><span class="section-number">3.4.1. </span>Picking and setting<a class="headerlink" href="#Picking-and-setting" title="Permalink to this headline"></a></h3>
+<p><em>Py_pol</em> objects allow taking elements and changing them through indices like a <em>numpy.ndarray</em>.</p>
+<p>Examples:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span> <span class="n">S1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Original =
+[+0.561]   [+0.450]   [+0.778]   [+0.601]   [+0.479]
+[+0.695]   [+0.113]   [+0.805]   [+0.679]   [+0.663]
+[+0.254]   [+0.415]   [+0.944]   [+0.003]   [+0.119]
+[+0.217]   [+0.678]   [+0.093]   [+0.410]   [+0.767]
+
+Original_picked =
+[+0.450]   [+0.778]
+[+0.113]   [+0.805]
+[+0.415]   [+0.944]
+[+0.678]   [+0.093]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span> <span class="n">S1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Original S0 =
+[[1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]]
+Original S1 =
+[[ 1.00000000e+00  9.65925826e-01  8.66025404e-01  7.07106781e-01
+   5.00000000e-01]
+ [ 2.58819045e-01  6.12323400e-17 -2.58819045e-01 -5.00000000e-01
+  -7.07106781e-01]
+ [-8.66025404e-01 -9.65925826e-01 -1.00000000e+00 -9.65925826e-01
+  -8.66025404e-01]
+ [-7.07106781e-01 -5.00000000e-01 -2.58819045e-01 -1.83697020e-16
+   2.58819045e-01]
+ [ 5.00000000e-01  7.07106781e-01  8.66025404e-01  9.65925826e-01
+   1.00000000e+00]]
+Original S2 =
+[[ 0.00000000e+00  2.58819045e-01  5.00000000e-01  7.07106781e-01
+   8.66025404e-01]
+ [ 9.65925826e-01  1.00000000e+00  9.65925826e-01  8.66025404e-01
+   7.07106781e-01]
+ [ 5.00000000e-01  2.58819045e-01  1.22464680e-16 -2.58819045e-01
+  -5.00000000e-01]
+ [-7.07106781e-01 -8.66025404e-01 -9.65925826e-01 -1.00000000e+00
+  -9.65925826e-01]
+ [-8.66025404e-01 -7.07106781e-01 -5.00000000e-01 -2.58819045e-01
+  -2.44929360e-16]]
+Original S3 =
+[[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+Original_picked S0 =
+[[1. 1.]
+ [1. 1.]]
+Original_picked S1 =
+[[-0.25881905 -0.5       ]
+ [-1.         -0.96592583]]
+Original_picked S2 =
+[[ 9.65925826e-01  8.66025404e-01]
+ [ 1.22464680e-16 -2.58819045e-01]]
+Original_picked S3 =
+[[0. 0.]
+ [0. 0.]]
+
+</pre></div></div>
+</div>
+</section>
+<section id="Iterating">
+<h3><span class="section-number">3.4.2. </span>Iterating<a class="headerlink" href="#Iterating" title="Permalink to this headline"></a></h3>
+<p><em>Py_pol</em> objects are iterable. When introduced in a for loop, a new object picking in the first dimension is returned.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">Stotal</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">()</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">S</span> <span class="ow">in</span> <span class="n">Stotal</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+S_picked =
+[+1.000]
+[+0.940]
+[+0.000]
+[+0.342]
+
+S_picked =
+[+1.000]
+[+0.000]
+[+0.940]
+[+0.342]
+
+S_picked =
+[+1.000]
+[-0.940]
+[+0.000]
+[+0.342]
+
+S_picked =
+[+1.000]
+[-0.000]
+[-0.940]
+[+0.342]
+
+S_picked =
+[+1.000]
+[+0.940]
+[+0.000]
+[+0.342]
+
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Parameters-of-Stokes-vector">
+<h2><span class="section-number">3.5. </span>Parameters of Stokes vector<a class="headerlink" href="#Parameters-of-Stokes-vector" title="Permalink to this headline"></a></h2>
+<p>Several parameters can be measured from a Stokes vector. They are implemented in the independent class Parameters_Stokes_vector, which is stored in the parameters field of Stokes class.</p>
+<ul class="simple">
+<li><p><strong>components</strong>: Calculates the electric field components of the Stokes vectors.</p></li>
+<li><p><strong>amplitudes</strong>: Calculates the electric field amplitudes of the Stokes vectors.</p></li>
+<li><p><strong>intensity</strong>: Calculates the intensity of the Stokes vectors.</p></li>
+<li><p><strong>irradiance</strong>: Calculates the irradiance of the Stokes vectors.</p></li>
+<li><p><strong>alpha</strong>: Calculates the ratio between electric field amplitudes (<span class="math notranslate nohighlight">\(E_x\)</span>/<span class="math notranslate nohighlight">\(E_y\)</span>).</p></li>
+<li><p><strong>delay / delta</strong>: Calculates the delay (phase shift) between Ex and Ey components of the electric field.</p></li>
+<li><p><strong>charac_angles</strong>: Calculates both alpha and delay, the characteristic angles of the Stokes vectors.</p></li>
+<li><p><strong>azimuth</strong>: Calculates azimuth, that is, the orientation angle of the major axis.</p></li>
+<li><p><strong>ellipticity_angle</strong>: Calculates the ellipticity angle.</p></li>
+<li><p><strong>azimuth_ellipticity</strong>: Calculates both azimuth and ellipticity angles.</p></li>
+<li><p><strong>ellipse_axes</strong>: Calculates the length of major and minor axis (a,b).</p></li>
+<li><p><strong>ellipticity_param</strong>: Calculates the ellipticity parameter, b/a.</p></li>
+<li><p><strong>eccentricity</strong>: Calculates the eccentricity, the complementary of the ellipticity parameter.</p></li>
+<li><p><strong>global_phase</strong>: Calculates the global phase of the Stokes vectors (respect to the X component of the electric field).</p></li>
+<li><p><strong>degree_polarization</strong>: Calculates the degree of polarization of the Stokes vectors.</p></li>
+<li><p><strong>degree_depolarization</strong>: Calculates the degree of depolarization of the Stokes vectors.</p></li>
+<li><p><strong>degree_linear_polarization</strong>: Calculates the degree of linear polarization of the Stokes vectors.</p></li>
+<li><p><strong>degree_circular_polarization</strong>: Calculates the degree of circular polarization of the Stokes vectors.</p></li>
+<li><p><strong>norm</strong>: Calculates the norm of the Stokes vectors.</p></li>
+<li><p><strong>polarized_unpolarized</strong>: Divides the Stokes vector in Sp+Su, where Sp is fully-polarized and Su fully-unpolarized.</p></li>
+<li><p><strong>get_all</strong>: Returns a dictionary with all the parameters of Stokes vectors.</p></li>
+</ul>
+<p>For a more detailed description of each method, refer to the individual documentation of each one.</p>
+<p>Example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="n">I0</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">intensity</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">I0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1.0
+</pre></div></div>
+</div>
+<p>When several Stokes vectors are stored in the object, setting <em>verbose</em> argument to <em>True</em> makes the method print the values in screen. Also, 1D or 2D figures can be shown if the <em>draw</em> argument is set to <em>True</em>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">az</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">179.99</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">az</span><span class="p">)</span>
+<span class="n">az</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">azimuth</span><span class="p">(</span><span class="n">draw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The azimuth of Source 1 is (deg):
+[  0.          16.36272727  32.72545455  49.08818182  65.45090909
+  81.81363636  98.17636364 114.53909091 130.90181818 147.26454545
+ 163.62727273 179.99      ]
+The mean value is 89.995 +- 56.484994071904
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Stokes_46_1.png" src="../../_images/source_tutorial_Stokes_46_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">az</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">179.99</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">el</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">AZ</span><span class="p">,</span> <span class="n">EL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">az</span><span class="p">,</span> <span class="n">el</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">AZ</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="n">EL</span><span class="p">)</span>
+<span class="n">AZ</span><span class="p">,</span> <span class="n">EL</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">azimuth_ellipticity</span><span class="p">(</span><span class="n">draw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The azimuth of Source 1 is (deg):
+The mean value is 88.58882812499999 +- 53.14074687799344
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Stokes_47_1.png" src="../../_images/source_tutorial_Stokes_47_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+The ellipticity angle of Source 1 is (deg):
+The mean value is 1.7763568394002505e-15 +- 26.184535918359188
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Stokes_47_3.png" src="../../_images/source_tutorial_Stokes_47_3.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<p>There is a method in <em>Parameters_Stokes</em> class, <em>get_all</em> that computes all the parameters available and stores in a dictionary <em>.dict_params()</em>. Using the <em>print</em> function upon the <em>Parameters_Stokes</em> class invokes the method <em>get_all</em>.</p>
+<p>Example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span> <span class="n">general_charac_angles</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">25</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span>  <span class="n">delay</span><span class="o">=</span><span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span>  <span class="n">intensity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>    <span class="n">degree_pol</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+1.000]
+[+0.482]
+[+0.000]
+[+0.575]
+
+
+The intensity of Source 1 is (a.u.):
+1.0
+Low dimensionality, figure not available.
+
+The elctric field amplitudes of Source 1 are (V/m):
+  Ex (V/m)
+0.7848855672213959
+  Ey (V/m)
+0.36599815077066683
+  Eu (V/m)
+0.4999999999999999
+Low dimensionality, figure not available.
+
+The global phase of Source 1 is (deg):
+0.0
+Low dimensionality, figure not available.
+
+The degree of depolarization of Source 1 is:
+0.6614378277661475
+Low dimensionality, figure not available.
+
+The degree of polarization of Source 1 is:
+0.7500000000000001
+Low dimensionality, figure not available.
+
+The degree of linear polarization of Source 1 is:
+0.48209070726490455
+Low dimensionality, figure not available.
+
+The degree of circular polarization of Source 1 is:
+0.5745333323392335
+Low dimensionality, figure not available.
+
+The alpha of Source 1 is (deg):
+25.000000000000004
+Low dimensionality, figure not available.
+
+The delay of Source 1 is (deg):
+90.0
+The mean value is 90.0 +- 0.0
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Stokes_49_1.png" src="../../_images/source_tutorial_Stokes_49_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+The ellipticity parameter of Source 1 is:
+0.4663076581549985
+Low dimensionality, figure not available.
+
+The ellipticity angle of Source 1 is (deg):
+24.999999999999993
+Low dimensionality, figure not available.
+
+The azimuth of Source 1 is (deg):
+2.090547128679534e-15
+The mean value is 2.090547128679534e-15 +- 0.0
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Stokes_49_3.png" src="../../_images/source_tutorial_Stokes_49_3.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+The eccentricity of Source 1 is:
+0.8846226132911147
+Low dimensionality, figure not available.
+
+Polarized Source 1 =
+[+0.750]
+[+0.482]
+[+0.000]
+[+0.575]
+ Unpolarized Source 1 =
+[+0.250]
+[+0.000]
+[+0.000]
+[+0.000]
+
+The norm of Source 1 is (a.u.):
+[1.25]
+Low dimensionality, figure not available.
+
+
+</pre></div></div>
+</div>
+</section>
+<section id="Checks-of-Stokes-vectors">
+<h2><span class="section-number">3.6. </span>Checks of Stokes vectors<a class="headerlink" href="#Checks-of-Stokes-vectors" title="Permalink to this headline"></a></h2>
+<p>There are several checks that can be performed upon a Stokes vector. They are implemented in the independent class <em>Checks_Stokes</em>, which is stored in the <em>checks</em> field of <em>Stokes</em> class.</p>
+<ul class="simple">
+<li><p><strong>is_physical</strong>: Checks if the Stokes vectors are physically realizable.</p></li>
+<li><p><strong>is_linear</strong>: Checks if the Stokes vectors are lienarly polarized.</p></li>
+<li><p><strong>is_circular</strong>: Checks if the Stokes vectors are circularly polarized.</p></li>
+<li><p><strong>is_right_handed</strong>: Checks if the Stokes vectors rotation direction are right handed.</p></li>
+<li><p><strong>is_left_handed</strong>: Checks if the Stokes vectors rotation direction are left handed.</p></li>
+<li><p><strong>is_polarized</strong>: Checks if the Stokes vectors are at least partially polarized.</p></li>
+<li><p><strong>is_totally_polarized</strong>: Checks if the Stokes vectors are totally polarized.</p></li>
+<li><p><strong>is_depolarized</strong>: Checks if the Stokes vectors are at least partially depolarized.</p></li>
+<li><p><strong>is_totally_depolarized</strong>: Checks if the Stokes vectors are totally depolarized.</p></li>
+<li><p><strong>get_all</strong>: Returns a dictionary with all the checks of Stokes vectors.</p></li>
+</ul>
+<p>For a more detailed description of each method, refer to the individual documentation of each one.</p>
+<p>Example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="n">cond</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_linear</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cond</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1.0
+</pre></div></div>
+</div>
+<p>1D and 2D plot draws are also implemented for this class:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">Alpha</span><span class="p">,</span> <span class="n">Delay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">delay</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">general_charac_angles</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">Alpha</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">Delay</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_right_handed</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">draw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 is right handed:
+[[False False False ... False False False]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ ...
+ [False False False ... False False False]
+ [False False False ... False False False]
+ [False False False ... False False False]]
+The mean value is 0.4921875 +- 0.4999389611180049
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Stokes_53_1.png" src="../../_images/source_tutorial_Stokes_53_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+</section>
+<section id="Analysis-of-Stokes-vectors">
+<h2><span class="section-number">3.7. </span>Analysis of Stokes vectors<a class="headerlink" href="#Analysis-of-Stokes-vectors" title="Permalink to this headline"></a></h2>
+<p>There there is one analysis that can be performed upon a Stokes vector. It is implemented in the independent class <em>Analysis_Stokes</em>, which is stored in the <em>analysis</em> field of <em>Stokes</em> class.</p>
+<ul class="simple">
+<li><p><strong>filter_physical_conditions</strong>: Forces the Stokes vectors to be physically realizable.</p></li>
+<li><p><strong>density</strong>: Calculates the density of states around the Poincaré sphere.</p></li>
+<li><p><strong>existence</strong>: Checks the existence of states around the Poincaré sphere.</p></li>
+</ul>
+<p>For a more detailed description, refer to its documentation.</p>
+<p>Example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Source 1&quot;</span><span class="p">)</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span> <span class="n">S1</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">filter_physical_conditions</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">S2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Corrected source&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Source 1 =
+[+0.682]   [+0.464]   [+0.949]   [+0.570]   [+0.642]   [+0.656]
+[-0.982]   [-0.017]   [-0.486]   [-0.566]   [+0.171]   [+0.967]
+[-0.155]   [-0.611]   [+0.300]   [+0.105]   [+0.824]   [+0.075]
+[-0.665]   [-0.064]   [-0.691]   [-0.162]   [+0.257]   [-0.194]
+
+Corrected source =
+[+0.682]   [+0.464]   [+0.949]   [+0.570]   [+0.642]   [+0.656]
+[-0.560]   [-0.013]   [-0.486]   [-0.540]   [+0.125]   [+0.642]
+[-0.088]   [-0.461]   [+0.300]   [+0.100]   [+0.601]   [+0.050]
+[-0.379]   [-0.048]   [-0.691]   [-0.154]   [+0.187]   [-0.129]
+
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Jones_matrix.html" class="btn btn-neutral float-left" title="2. Jones_matrix class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Mueller.html" class="btn btn-neutral float-right" title="4. Mueller class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Jesus del Hoyo Muñoz / Luis Miguel Sanchez Brea.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

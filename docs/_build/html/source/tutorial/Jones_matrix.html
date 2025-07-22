@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. Jones_matrix class &mdash; Python polarization 1.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. Stokes class" href="Stokes.html" />
+    <link rel="prev" title="1. Jones_vector class" href="Jones_vector.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Python polarization
+          </a>
+              <div class="version">
+                1.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">1. Python polarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">3. Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Jones_vector.html">1. Jones_vector class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. Jones_matrix class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Creating-an-instance">2.1. Creating an instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Jones_matrix-class-fields">2.2. Jones_matrix class fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Generating-of-optical-elements">2.3. Generating of optical elements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Features-of-creation-methods">2.3.1. Features of creation methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Basic-operations">2.4. Basic operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Multiplication-of-a-Jones-matrix-by-a-Jones-vector">2.4.1. Multiplication of a Jones matrix by a Jones vector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Multiplication-of-2-Jones-matrices">2.4.2. Multiplication of 2 Jones matrices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Multiplication-by-a-constant">2.4.3. Multiplication by a constant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Addition-of-two-Jones-matrices">2.4.4. Addition of two Jones matrices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Equality">2.4.5. Equality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Operations-and-multidimensionality">2.4.6. Operations and multidimensionality</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Jones-matrix-manipulation">2.5. Jones matrix manipulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Picking-and-setting">2.5.1. Picking and setting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Iterating">2.5.2. Iterating</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Parameters-of-Jones_matrix">2.6. Parameters of Jones_matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Checks-of-Jones_matrix">2.7. Checks of Jones_matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Analysis-of-Jones_matrix">2.8. Analysis of Jones_matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Stokes.html">3. Stokes class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mueller.html">4. Mueller class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Drawing_docs.html">5. Draw</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">4. py_pol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">5. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">6. History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">7. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python polarization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../tutorials.html">Tutorials</a> &raquo;</li>
+      <li><span class="section-number">2. </span>Jones_matrix class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/tutorial/Jones_matrix.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Jones_matrix-class">
+<h1><span class="section-number">2. </span>Jones_matrix class<a class="headerlink" href="#Jones_matrix-class" title="Permalink to this headline"></a></h1>
+<p>Jones_matrix is a class that manages Jones matrices. It allows the user to create and manipulate them.</p>
+<section id="Creating-an-instance">
+<h2><span class="section-number">2.1. </span>Creating an instance<a class="headerlink" href="#Creating-an-instance" title="Permalink to this headline"></a></h2>
+<p>An instance must be created before starting to operate with the Jones matrix. The initialization accepts one argument: the name of the vector. This name will be used for printing:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">py_pol.jones_matrix</span> <span class="kn">import</span> <span class="n">Jones_matrix</span><span class="p">,</span> <span class="n">create_Jones_matrices</span>
+<span class="kn">from</span> <span class="nn">py_pol.mueller</span> <span class="kn">import</span> <span class="n">Mueller</span>
+<span class="kn">from</span> <span class="nn">py_pol.utils</span> <span class="kn">import</span> <span class="n">degrees</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;empty_polarizer&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+empty_polarizer is empty
+
+</pre></div></div>
+</div>
+<p>Several Jones_matrix objects can be created at the same time using the function <em>create_Jones_matrices</em>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J1</span><span class="p">,</span> <span class="n">J2</span> <span class="o">=</span> <span class="n">create_Jones_matrices</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Element 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Element 2&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">,</span> <span class="n">J2</span><span class="p">)</span>
+
+<span class="n">list_of_J</span> <span class="o">=</span> <span class="n">create_Jones_matrices</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list_of_J</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Element 1 is empty
+ Element 2 is empty
+
+[J is empty
+, J is empty
+, J is empty
+]
+</pre></div></div>
+</div>
+</section>
+<section id="Jones_matrix-class-fields">
+<h2><span class="section-number">2.2. </span>Jones_matrix class fields<a class="headerlink" href="#Jones_matrix-class-fields" title="Permalink to this headline"></a></h2>
+<p>Jones_matrix class objects have some fields where some methods and information is stored:</p>
+<ul class="simple">
+<li><p><strong>M</strong>: 2x2xN array containing all the Jones matrices.</p></li>
+<li><p><strong>name</strong>: Name of the object for print purposes.</p></li>
+<li><p><strong>shape</strong>: Shape desired for the outputs.</p></li>
+<li><p><strong>size</strong>: Number of stored Jones matrices.</p></li>
+<li><p><strong>ndim</strong>: Number of dimensions for representation purposes.</p></li>
+<li><p><strong>no_rotation</strong>: If True, rotation method do not act upon the object. Useful for objects that shouldn’t be rotated as mirrors.</p></li>
+<li><p>**_type**: Type of the object (‘Jones_matrix’). This is used for determining the object class as using isinstance may throw unexpected results in .ipynb files.</p></li>
+<li><p><strong>parameters</strong>: Object of class <em>Parameters_Jones_matrix</em>.</p></li>
+<li><p><strong>checks</strong>: Object of class <em>Checks_Jones_matrix</em>.</p></li>
+<li><p><strong>analysis</strong>: Object of class <em>Analysis_Jones_matrix</em>.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Linear diattenuator&quot;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_linear</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="n">angles</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Array: &#39;</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name: &#39;</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape: &#39;</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Size: &#39;</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Size: &#39;</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type: &#39;</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="n">_type</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Parameters (global phase): </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">global_phase</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Checks (element is homogeneous): </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_homogeneous</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Analysis (as diattenuator): </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">diattenuator</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Array:  [[[1.00000000e+00+0.j 8.68198052e-01+0.j 5.50000000e-01+0.j
+   2.31801948e-01+0.j 1.00000000e-01+0.j]
+  [0.00000000e+00+0.j 3.18198052e-01+0.j 4.50000000e-01+0.j
+   3.18198052e-01+0.j 5.51091060e-17+0.j]]
+
+ [[0.00000000e+00+0.j 3.18198052e-01+0.j 4.50000000e-01+0.j
+   3.18198052e-01+0.j 5.51091060e-17+0.j]
+  [1.00000000e-01+0.j 2.31801948e-01+0.j 5.50000000e-01+0.j
+   8.68198052e-01+0.j 1.00000000e+00+0.j]]]
+Name:  Linear diattenuator
+Shape:  [5]
+Size:  5
+Size:  1
+Type:  Jones_matrix
+
+Parameters (global phase):
+ [0. 0. 0. 0. 0.]
+
+Checks (element is homogeneous):
+ [ True  True  True  True  True]
+
+Analysis (as diattenuator):
+ ([array([1., 1., 1., 1., 1.]), array([0.01, 0.01, 0.01, 0.01, 0.01]), array([1., 1., 1., 1., 1.]), array([0.1, 0.1, 0.1, 0.1, 0.1])], [array([0.        , 0.39269908, 0.78539816, 1.17809725, 1.57079633]), array([0., 0., 0., 0., 0.]), array([0.        , 0.39269908, 0.78539816, 1.17809725, 1.57079633]), array([0., 0., 0., 0., 0.])])
+
+</pre></div></div>
+</div>
+<p>That is, the output beam is linearly polarized in the direction of the linear polarized axis, and some light is absorbed by the polarized.</p>
+</section>
+<section id="Generating-of-optical-elements">
+<h2><span class="section-number">2.3. </span>Generating of optical elements<a class="headerlink" href="#Generating-of-optical-elements" title="Permalink to this headline"></a></h2>
+<p>As shown in the previous example, the Jones matrix is initialized with all elements equal to zero. There are many methods that can be used to generate a more desirable vector:</p>
+<ul class="simple">
+<li><p><strong>from_components</strong>: Creates a Jones_matrix object directly from the 4 elements (m00, m01, m10, m11).</p></li>
+<li><p><strong>from_matrix</strong>: Creates a Jones_matrix object directly from a 2x2 numpy arrays.</p></li>
+<li><p><strong>from_list</strong>: Creates a Jones_matrix object directly from a list of 2x2 numpy arrays.</p></li>
+<li><p><strong>from_Mueller</strong>: Takes a non-depolarizing Mueller Matrix and converts into Jones matrix.</p></li>
+<li><p><strong>vacuum</strong>: Creates the matrix for vacuum.</p></li>
+<li><p><strong>mirror</strong>: Creates the matrix for a mirror. NOTE: Don’t rotate this matrix.</p></li>
+<li><p><strong>filter_amplifier</strong>: Creates the matrix for a neutral filter or amplifier element</p></li>
+<li><p><strong>diattenuator_perfect</strong>: Creates a perfect linear diattenuator.</p></li>
+<li><p><strong>diattenuator_linear</strong>: Creates a real polarizer with perpendicular axes.</p></li>
+<li><p><strong>diattenuator_retarder_linear</strong>: Creates a linear diattenuator retarder with the same axes for diattenuation and retardance.</p></li>
+<li><p><strong>diattenuator_charac_angles</strong>: Creates the most general homogeneous diattenuator with orthogonal eigenstates from the characteristic angles of the main eigenstate.</p></li>
+<li><p><strong>diattenuator_azimuth_ellipticity</strong>: Creates the general homogeneous diattenuator with orthogonal eigenstates from the characteristic angles of the main eigenstate.</p></li>
+<li><p><strong>quarter_waveplate</strong>: Creates a quarter-waveplate.</p></li>
+<li><p><strong>half_waveplate</strong>: Creates a half-waveplate.</p></li>
+<li><p><strong>retarder_linear</strong>: Creates a retarder using delay.</p></li>
+<li><p><strong>retarder_material</strong>: Creates a retarder using physical properties of a anisotropic material.</p></li>
+<li><p><strong>retarder_charac_angles</strong>: Creates the most general homogenous retarder with orthogonal eigenstates from the characteristic angles of the main eigenstate.</p></li>
+<li><p><strong>retarder_azimuth_ellipticity</strong>: Creates the general homogeneous retarder with orthogonal eigenstates from the characteristic angles of the main eigenstate.</p></li>
+</ul>
+<p>For a more detailed description of each method, refer to the individual documentation of each one.</p>
+<p>Example: Linear polarizer.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer @ 10.00 deg =
+[+0.970 +0.171]
+[+0.171 +0.030]
+
+</pre></div></div>
+</div>
+<p>The previous example only stores one Jones matrix. It is possible to store many Jones matrices in the same object. This is useful specially when the same operation is performed upon all of them, as rotation. In this way, it is not required to use for loops, reducing significantly the computation time.</p>
+<p>There are many ways of creating several Jones matrices in the same object. The first way is creating an object with several identical vectors. This is performed using the <em>length</em> argument of most of creation methods:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer =
+[+0.750 +0.433]   [+0.750 +0.433]   [+0.750 +0.433]
+[+0.433 +0.250]   [+0.433 +0.250]   [+0.433 +0.250]
+
+</pre></div></div>
+</div>
+<p>A second way of creating several Jones matrices at the same time is using an array as one of the parameters. Take into account that, if you use this option, all parameters must have the same number of elements or just one element. Otherwise, the program will throw an exception.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="n">angles</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer =
+[+1.000 +0.000]   [+0.854 +0.354]   [+0.500 +0.500]   [+0.146 +0.354]   [+0.000 +0.000]
+[+0.000 +0.000]   [+0.354 +0.146]   [+0.500 +0.500]   [+0.354 +0.854]   [+0.000 +1.000]
+
+</pre></div></div>
+</div>
+<p>If the parameters have dimension higher than 1, the program will store that information in order to make prints and plots. In that case, the <em>print</em> function separates the four components Jones matrices:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}J=\left[\begin{array}{cc}
+J_{00} &amp; J_{01}\\
+J_{10} &amp; J_{11}
+\end{array}\right]\end{split}\]</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="n">angles</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer J00 =
+[[0.9146759 +0.j 0.01129533+0.j 0.76815199+0.j]
+ [0.87160191+0.j 0.79111437+0.j 0.80802083+0.j]
+ [0.02389002+0.j 0.99708157+0.j 0.8412461 +0.j]]
+Polarizer J01 =
+[[ 0.27936337+0.j -0.10567755+0.j  0.42201245+0.j]
+ [ 0.33453254+0.j -0.40651251+0.j  0.39385679+0.j]
+ [ 0.15270654+0.j  0.05394358+0.j  0.36544643+0.j]]
+Polarizer J10 =
+[[ 0.27936337+0.j -0.10567755+0.j  0.42201245+0.j]
+ [ 0.33453254+0.j -0.40651251+0.j  0.39385679+0.j]
+ [ 0.15270654+0.j  0.05394358+0.j  0.36544643+0.j]]
+Polarizer J11 =
+[[0.0853241 +0.j 0.98870467+0.j 0.23184801+0.j]
+ [0.12839809+0.j 0.20888563+0.j 0.19197917+0.j]
+ [0.97610998+0.j 0.00291843+0.j 0.1587539 +0.j]]
+
+</pre></div></div>
+</div>
+<p>It is possible to transform <em>Mueller</em> objects into <em>Jones_matrix</em> objects. Any depolarization properties are removed in the process.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">()</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">()</span><span class="o">.</span><span class="n">from_Mueller</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+J =
+[+1.000 +0.000]
+[+0.000 +0.000]
+
+</pre></div></div>
+</div>
+<section id="Features-of-creation-methods">
+<h3><span class="section-number">2.3.1. </span>Features of creation methods<a class="headerlink" href="#Features-of-creation-methods" title="Permalink to this headline"></a></h3>
+<p><em>py_pol</em> model sets the origin of phase in <span class="math notranslate nohighlight">\(J_{00}\)</span>. It means that the parameter <em>global_phase</em> of most creation methods and the methods <em>remove_global_phase</em> and <em>set_global_phase</em> (see below) will take it as the reference.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">global_phase</span> <span class="o">=</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+
+<span class="n">J</span><span class="o">.</span><span class="n">remove_global_phase</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer @ 45.00 deg =
+[+0.000 +0.000]
+[+0.000 +0.000]
+
+Polarizer @ 45.00 deg =
+[+0.500 +0.500]
+[+0.500 +0.500]
+
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Basic-operations">
+<h2><span class="section-number">2.4. </span>Basic operations<a class="headerlink" href="#Basic-operations" title="Permalink to this headline"></a></h2>
+<p>Some physical phenomena that affects polarization optical elements is described by simple operations performed to their Jones matrices.</p>
+<section id="Multiplication-of-a-Jones-matrix-by-a-Jones-vector">
+<h3><span class="section-number">2.4.1. </span>Multiplication of a Jones matrix by a Jones vector<a class="headerlink" href="#Multiplication-of-a-Jones-matrix-by-a-Jones-vector" title="Permalink to this headline"></a></h3>
+<p>When a light beam <span class="math notranslate nohighlight">\(E_1\)</span> goes through a polarization optical element <span class="math notranslate nohighlight">\(J_1\)</span>, the polarization state of the output beam can be determined as: <span class="math notranslate nohighlight">\(E_2 = J_1 * E_1\)</span>. This can be implemented in <em>py_pol</em> as:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">py_pol.jones_vector</span> <span class="kn">import</span> <span class="n">Jones_vector</span>
+<span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;J1&quot;</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+
+<span class="n">E1</span> <span class="o">=</span> <span class="n">Jones_vector</span><span class="p">(</span><span class="s2">&quot;E1&quot;</span><span class="p">)</span>
+<span class="n">E1</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">E1</span><span class="p">)</span>
+
+<span class="n">E2</span> <span class="o">=</span> <span class="n">J1</span> <span class="o">*</span> <span class="n">E1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">E2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+J1 =
+[+1.000 +0.000]
+[+0.000 +0.000]
+
+E1 =
+[+0.707]
+[+0.707]
+
+J1 * E1 =
+[+0.707]
+[+0.000]
+
+</pre></div></div>
+</div>
+</section>
+<section id="Multiplication-of-2-Jones-matrices">
+<h3><span class="section-number">2.4.2. </span>Multiplication of 2 Jones matrices<a class="headerlink" href="#Multiplication-of-2-Jones-matrices" title="Permalink to this headline"></a></h3>
+<p>When two polarizing elementsare placed one after the other in the light path, first <span class="math notranslate nohighlight">\(J_1\)</span> and then <span class="math notranslate nohighlight">\(J_2\)</span>, the system composed of both elements can be described by a single Jones matrix <span class="math notranslate nohighlight">\(J_3\)</span>, which is calculated as <span class="math notranslate nohighlight">\(J_3 = J_2 * J_1\)</span>.</p>
+<p>Example: Matrix representing a perfect linear polarized and a <span class="math notranslate nohighlight">\(\lambda/4\)</span> retarder.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+
+<span class="n">J2</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Retarder&quot;</span><span class="p">)</span>
+<span class="n">J2</span><span class="o">.</span><span class="n">quarter_waveplate</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+
+<span class="n">J3</span> <span class="o">=</span> <span class="n">J2</span> <span class="o">*</span> <span class="n">J1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer =
+[+1.000 +0.000]
+[+0.000 +0.000]
+
+Retarder @ 45.00 deg =
+[+0.500 +0.500]
+[+0.500 +0.500]
+
+Retarder @ 45.00 deg * Polarizer =
+[+0.500 +0.000]
+[+0.500 +0.000]
+
+</pre></div></div>
+</div>
+</section>
+<section id="Multiplication-by-a-constant">
+<h3><span class="section-number">2.4.3. </span>Multiplication by a constant<a class="headerlink" href="#Multiplication-by-a-constant" title="Permalink to this headline"></a></h3>
+<p>The absorption and gain experienced by a light wave that goes through a polarization optical element can be increased or decreased by multiplying its Jones matrix by a real number.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+
+<span class="n">J2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">J1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+
+<span class="n">J2</span> <span class="o">=</span> <span class="n">J1</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer @ 30.00 deg =
+[+0.750 +0.433]
+[+0.433 +0.250]
+
+Polarizer @ 30.00 deg * 2 =
+[+1.500 +0.866]
+[+0.866 +0.500]
+
+Polarizer @ 30.00 deg / 2 =
+[+0.375 +0.217]
+[+0.217 +0.125]
+
+</pre></div></div>
+</div>
+<p>The global phase change experienced by the light wave can also be changed by multiplying the Jones matrix of the element by a complex number.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="n">j</span>
+<span class="n">J2</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="n">J1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer @ 30.00 deg =
+[+0.750 +0.433]
+[+0.433 +0.250]
+
+Polarizer @ 30.00 deg * 1j =
+[+0.000 +0.000]
+[+0.000 +0.000]
+
+</pre></div></div>
+</div>
+</section>
+<section id="Addition-of-two-Jones-matrices">
+<h3><span class="section-number">2.4.4. </span>Addition of two Jones matrices<a class="headerlink" href="#Addition-of-two-Jones-matrices" title="Permalink to this headline"></a></h3>
+<p>The physical meaning of this operation is a little bit more complex. Imagine a light wave <span class="math notranslate nohighlight">\(E_0\)</span> which goes through two spatially separated polarization optical elements <span class="math notranslate nohighlight">\(J_1\)</span> and <span class="math notranslate nohighlight">\(J_2\)</span>. If the light waves are then coherently added, the behavior of the two elements can be described by a single Jones matrix <span class="math notranslate nohighlight">\(J_3 = J_1 + J_2\)</span>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+<span class="n">J2</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Retarder&quot;</span><span class="p">)</span>
+<span class="n">J2</span><span class="o">.</span><span class="n">quarter_waveplate</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+
+<span class="n">J3</span> <span class="o">=</span> <span class="n">J2</span> <span class="o">+</span> <span class="n">J1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer =
+[+1.000 +0.000]
+[+0.000 +0.000]
+
+Retarder @ 45.00 deg =
+[+0.500 +0.500]
+[+0.500 +0.500]
+
+Retarder @ 45.00 deg + Polarizer =
+[+1.500 +0.500]
+[+0.500 +0.500]
+
+</pre></div></div>
+</div>
+</section>
+<section id="Equality">
+<h3><span class="section-number">2.4.5. </span>Equality<a class="headerlink" href="#Equality" title="Permalink to this headline"></a></h3>
+<p>It is possible to compare two <em>Jones_matrix</em> objects and tell if they are the same. It just compares the matrix components, not the rest of object fields.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Retarder 1&quot;</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">quarter_waveplate</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+<span class="n">J2</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Retarder 2&quot;</span><span class="p">)</span>
+<span class="n">J2</span><span class="o">.</span><span class="n">quarter_waveplate</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mf">0.01</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Comparison: &#39;</span><span class="p">,</span> <span class="n">E1</span><span class="o">==</span><span class="n">E2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Retarder 1 =
+[+1.000 +0.000]
+[+0.000 +0.000]
+
+Retarder 2 @ 0.01 deg =
+[+1.000 +0.000]
+[+0.000 +0.000]
+
+Comparison:  False
+</pre></div></div>
+</div>
+</section>
+<section id="Operations-and-multidimensionality">
+<h3><span class="section-number">2.4.6. </span>Operations and multidimensionality<a class="headerlink" href="#Operations-and-multidimensionality" title="Permalink to this headline"></a></h3>
+<p>The basic operations of <em>Jones_matrix</em> objects are subject to the same casting rules as numpy arrays. This means that they can be easily used even if one or both elements of the operation have more than one element.</p>
+<p>Here are some examples:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiplication of two Jones matrices</span>
+<span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+<span class="n">J2</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Retarder&quot;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">J2</span><span class="o">.</span><span class="n">quarter_waveplate</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">angles</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+
+<span class="n">J3</span> <span class="o">=</span> <span class="n">J2</span> <span class="o">*</span> <span class="n">J1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer =
+[+1.000 +0.000]
+[+0.000 +0.000]
+
+Retarder =
+[+1.000 +0.000]   [+0.750 +0.433]   [+0.250 +0.433]   [+0.000 +0.000]
+[+0.000 +0.000]   [+0.433 +0.250]   [+0.433 +0.750]   [+0.000 +1.000]
+
+Retarder * Polarizer =
+[+1.000 +0.000]   [+0.750 +0.000]   [+0.250 +0.000]   [+0.000 +0.000]
+[+0.000 +0.000]   [+0.433 +0.000]   [+0.433 +0.000]   [+0.000 +0.000]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="n">j</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">J2</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="n">J1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer @ 30.00 deg =
+[+0.750 +0.433]
+[+0.433 +0.250]
+
+J =
+[+0.189 +0.109]   [+0.658 +0.380]   [+0.634 +0.366]   [+0.102 +0.059]
+[+0.109 +0.063]   [+0.380 +0.219]   [+0.366 +0.211]   [+0.059 +0.034]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">angles</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+<span class="n">J2</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Retarder&quot;</span><span class="p">)</span>
+<span class="n">J2</span><span class="o">.</span><span class="n">quarter_waveplate</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="o">+</span><span class="n">angles</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+
+<span class="n">J3</span> <span class="o">=</span> <span class="n">J2</span> <span class="o">+</span> <span class="n">J1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer =
+[+1.000 +0.000]   [+0.750 +0.433]   [+0.250 +0.433]   [+0.000 +0.000]
+[+0.000 +0.000]   [+0.433 +0.250]   [+0.433 +0.750]   [+0.000 +1.000]
+
+Retarder =
+[+0.000 +0.000]   [+0.250 -0.433]   [+0.750 -0.433]   [+1.000 -0.000]
+[+0.000 +1.000]   [-0.433 +0.750]   [-0.433 +0.250]   [-0.000 +0.000]
+
+Retarder + Polarizer =
+[+1.000 +0.000]   [+1.000 +0.000]   [+1.000 -0.000]   [+1.000 -0.000]
+[+0.000 +1.000]   [+0.000 +1.000]   [-0.000 +1.000]   [-0.000 +1.000]
+
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Jones-matrix-manipulation">
+<h2><span class="section-number">2.5. </span>Jones matrix manipulation<a class="headerlink" href="#Jones-matrix-manipulation" title="Permalink to this headline"></a></h2>
+<p>There are several operations that can be applied to a Jones matrix. Some of them are common to all py_pol objects and are inherited from their parent <em>Py_pol</em> class:</p>
+<ul class="simple">
+<li><p><strong>clear</strong>: Removes data and name form Jones vector.</p></li>
+<li><p><strong>copy</strong>: Creates a copy of the Jones_vector object.</p></li>
+<li><p><strong>stretch</strong>: Stretches a Jones vector of size 1.</p></li>
+<li><p><strong>shape_like</strong>: Takes the shape of another object to use as its own.</p></li>
+<li><p><strong>reshape</strong>: Changes the shape of the object.</p></li>
+<li><p><strong>flatten</strong>: Transforms N-D objects into 1-D objects (0-D if only 1 element).</p></li>
+<li><p><strong>flip</strong>: Flips the object along some dimensions.</p></li>
+<li><p><strong>get_list</strong>: Creates a list with single elements.</p></li>
+<li><p><strong>from_list</strong>: Creates the object from a list of single elements.</p></li>
+<li><p><strong>concatenate</strong>: Canocatenates several objects into a single one.</p></li>
+<li><p><strong>draw</strong>: Draws the components of the object.</p></li>
+<li><p><strong>clear</strong>: Clears the information of the object.</p></li>
+</ul>
+<p>The rest of the manipulation methods are:</p>
+<ul class="simple">
+<li><p><strong>rotate</strong>: Rotates the Jones matrix.</p></li>
+<li><p><strong>sum</strong>: Calculates the summatory of the Jones matrices in the object.</p></li>
+<li><p><strong>prod</strong>: Calculates the product of the Jones matrices in the object.</p></li>
+<li><p><strong>remove_global_phase</strong>: Removes the phase introduced by the optical element (respect to J00).</p></li>
+<li><p><strong>add_global_phase</strong>: Increases the phase introduced by the optical element.</p></li>
+<li><p><strong>set_global_phase</strong>: Sets the phase introduced by the optical element.</p></li>
+<li><p><strong>reciprocal</strong>: The optical element is fliped so the light transverses it in the opposite direction.</p></li>
+<li><p><strong>transpose</strong>: Transposes the Jones matrix of the element.</p></li>
+<li><p><strong>hermitan</strong>: Calculates the hermitan matrix of the Jones matrix.</p></li>
+<li><p><strong>inverse</strong>: Calculates the inverse matrix of the Jones matrix.</p></li>
+</ul>
+<p>All the methods return a <em>Jones_matrix</em> object. For a more detailed description of each method, refer to the individual documentation of each one.</p>
+<p>Example: inverse.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">diattenuator_linear</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">Inv</span> <span class="o">=</span> <span class="n">J1</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Inv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer =
+[+1.000 +0.000]
+[+0.000 +0.200]
+
+
+Inverse of Polarizer =
+[+1.000 +0.000]
+[+0.000 +5.000]
+
+</pre></div></div>
+</div>
+<p>All manipulation methods have the <em>keep</em> argument that specifies if the originial object must be preserved or transformed. If <em>keep</em> is True (default is False), a new object is created:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">diattenuator_linear</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">J2</span> <span class="o">=</span> <span class="n">J1</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">J2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;J2&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">,</span> <span class="n">J2</span><span class="p">)</span>
+
+<span class="n">J2</span> <span class="o">=</span> <span class="n">J1</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">J2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;J2&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">,</span> <span class="n">J2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer =
+[+1.000 +0.000]
+[+0.000 +0.200]
+ J2 =
+[+0.600 +0.400]
+[+0.400 +0.600]
+
+J2 =
+[+0.600 +0.400]
+[+0.400 +0.600]
+ J2 =
+[+0.600 +0.400]
+[+0.400 +0.600]
+
+</pre></div></div>
+</div>
+<p><em>Jones_matrix</em> objects allow taking elements and changing them through indices like a <em>numpy.ndarray</em>.</p>
+<p>Examples:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+
+<span class="n">J2</span> <span class="o">=</span> <span class="n">J</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Original J00 =
+[[0.2427003 +0.j 0.83680528+0.j 0.49415743+0.j 0.3494361 +0.j
+  0.51691834+0.j]
+ [0.74940353+0.j 0.15056623+0.j 0.88741593+0.j 0.17529797+0.j
+  0.45592376+0.j]
+ [0.34251418+0.j 0.83540615+0.j 0.94662159+0.j 0.45095752+0.j
+  0.61134041+0.j]]
+Original J01 =
+[[0.18120135+0.j 0.47057596+0.j 0.34842914+0.j 0.74597368+0.j
+  0.4727434 +0.j]
+ [0.74792405+0.j 0.0327115 +0.j 0.14106218+0.j 0.82525365+0.j
+  0.62216015+0.j]
+ [0.13612136+0.j 0.92291119+0.j 0.41760627+0.j 0.6381236 +0.j
+  0.13419595+0.j]]
+Original J10 =
+[[0.69347798+0.j 0.13973507+0.j 0.83948509+0.j 0.92395274+0.j
+  0.48242732+0.j]
+ [0.63991581+0.j 0.91578376+0.j 0.08508936+0.j 0.85635078+0.j
+  0.38343872+0.j]
+ [0.5457108 +0.j 0.66463643+0.j 0.53205792+0.j 0.8104139 +0.j
+  0.02617972+0.j]]
+Original J11 =
+[[0.93627798+0.j 0.1214582 +0.j 0.90444555+0.j 0.54911483+0.j
+  0.4650621 +0.j]
+ [0.85463828+0.j 0.23123486+0.j 0.09972302+0.j 0.62925417+0.j
+  0.04923351+0.j]
+ [0.96474192+0.j 0.24052581+0.j 0.52204289+0.j 0.46353065+0.j
+  0.96966382+0.j]]
+
+Original_picked =
+[+0.243 +0.181]   [+0.837 +0.471]   [+0.494 +0.348]
+[+0.693 +0.936]   [+0.140 +0.121]   [+0.839 +0.904]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Polarizer&quot;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">diattenuator_perfect</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">angles</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+
+<span class="n">J2</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Retarder&quot;</span><span class="p">)</span>
+<span class="n">J2</span><span class="o">.</span><span class="n">quarter_waveplate</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+
+<span class="n">J1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">J2</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Modified&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Polarizer =
+[+1.000 +0.000]   [+0.750 +0.433]   [+0.250 +0.433]   [+0.000 +0.000]
+[+0.000 +0.000]   [+0.433 +0.250]   [+0.433 +0.750]   [+0.000 +1.000]
+
+Retarder =
+[+1.000 +0.000]
+[+0.000 +0.000]
+
+Modified =
+[+1.000 +0.000]   [+0.750 +0.433]   [+1.000 +0.000]   [+0.000 +0.000]
+[+0.000 +0.000]   [+0.433 +0.250]   [+0.000 +0.000]   [+0.000 +1.000]
+
+</pre></div></div>
+</div>
+<section id="Picking-and-setting">
+<h3><span class="section-number">2.5.1. </span>Picking and setting<a class="headerlink" href="#Picking-and-setting" title="Permalink to this headline"></a></h3>
+<p><em>Py_pol</em> objects allow taking elements and changing them through indices like a <em>numpy.ndarray</em>.</p>
+<p>Examples:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+
+<span class="n">J2</span> <span class="o">=</span> <span class="n">J1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Original =
+[+0.088 +0.435]   [+0.992 +0.159]   [+0.236 +0.388]   [+0.616 +0.618]   [+0.663 +0.845]
+[+0.967 +0.084]   [+0.079 +0.858]   [+0.830 +0.514]   [+0.409 +0.592]   [+0.863 +0.086]
+
+Original_picked =
+[+0.992 +0.159]   [+0.236 +0.388]
+[+0.079 +0.858]   [+0.830 +0.514]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">J1</span><span class="o">.</span><span class="n">diattenuator_linear</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J1</span><span class="p">)</span>
+
+<span class="n">J2</span> <span class="o">=</span> <span class="n">J1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Original J00 =
+[[1.         0.95677273 0.8345653  0.6545085 ]
+ [0.44773577 0.25       0.0954915  0.0109262 ]
+ [0.0109262  0.0954915  0.25       0.44773577]
+ [0.6545085  0.8345653  0.95677273 1.        ]]
+Original J01 =
+[[ 0.00000000e+00  2.03368322e-01  3.71572413e-01  4.75528258e-01]
+ [ 4.97260948e-01  4.33012702e-01  2.93892626e-01  1.03955845e-01]
+ [-1.03955845e-01 -2.93892626e-01 -4.33012702e-01 -4.97260948e-01]
+ [-4.75528258e-01 -3.71572413e-01 -2.03368322e-01 -1.22464680e-16]]
+Original J10 =
+[[ 0.00000000e+00  2.03368322e-01  3.71572413e-01  4.75528258e-01]
+ [ 4.97260948e-01  4.33012702e-01  2.93892626e-01  1.03955845e-01]
+ [-1.03955845e-01 -2.93892626e-01 -4.33012702e-01 -4.97260948e-01]
+ [-4.75528258e-01 -3.71572413e-01 -2.03368322e-01 -1.22464680e-16]]
+Original J11 =
+[[0.00000000e+00 4.32272712e-02 1.65434697e-01 3.45491503e-01]
+ [5.52264232e-01 7.50000000e-01 9.04508497e-01 9.89073800e-01]
+ [9.89073800e-01 9.04508497e-01 7.50000000e-01 5.52264232e-01]
+ [3.45491503e-01 1.65434697e-01 4.32272712e-02 1.49975978e-32]]
+
+Original_picked J00 =
+[[0.0954915  0.0109262 ]
+ [0.25       0.44773577]]
+Original_picked J01 =
+[[ 0.29389263  0.10395585]
+ [-0.4330127  -0.49726095]]
+Original_picked J10 =
+[[ 0.29389263  0.10395585]
+ [-0.4330127  -0.49726095]]
+Original_picked J11 =
+[[0.9045085  0.9890738 ]
+ [0.75       0.55226423]]
+
+</pre></div></div>
+</div>
+</section>
+<section id="Iterating">
+<h3><span class="section-number">2.5.2. </span>Iterating<a class="headerlink" href="#Iterating" title="Permalink to this headline"></a></h3>
+<p><em>Py_pol</em> objects are iterable. When introduced in a for loop, a new object picking in the first dimension is returned.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">Jtotal</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">()</span><span class="o">.</span><span class="n">diattenuator_linear</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">angles</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">J</span> <span class="ow">in</span> <span class="n">Jtotal</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+J_picked =
+[+1.000 +0.000]
+[+0.000 +0.000]
+
+J_picked =
+[+0.500 +0.500]
+[+0.500 +0.500]
+
+J_picked =
+[+0.000 +0.000]
+[+0.000 +1.000]
+
+J_picked =
+[+0.500 -0.500]
+[-0.500 +0.500]
+
+J_picked =
+[+1.000 -0.000]
+[-0.000 +0.000]
+
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Parameters-of-Jones_matrix">
+<h2><span class="section-number">2.6. </span>Parameters of Jones_matrix<a class="headerlink" href="#Parameters-of-Jones_matrix" title="Permalink to this headline"></a></h2>
+<p>Several parameters can be measured from a Jones matrix. They are implemented in the independent class <em>Parameters_Jones_Matrix</em>, which is stored in the <em>parameters</em> field of <em>Jones_matrix</em> class.</p>
+<ul class="simple">
+<li><p><strong>matrix</strong>: Gets a numpy array with all the matrices.</p></li>
+<li><p><strong>components</strong>: Extracts the four components of the Jones matrix.</p></li>
+<li><p><strong>inhomogeneity</strong>: Calculates the inhomogeneity parameter.</p></li>
+<li><p><strong>diattenuation / polarizance</strong>: Calculates the diattenuation of the matrix.</p></li>
+<li><p><strong>retardance</strong>: Calculates the retardance (or delay) introduced between the fast and slow axes.</p></li>
+<li><p><strong>global_phase</strong>: Calculates the phase introduced by the optical element (respect to J00).</p></li>
+<li><p><strong>transmissions</strong>: Calculates the maximum and minimum field and/or intensity transmissions.</p></li>
+<li><p><strong>mean_transmission</strong>: Calculates the mean intensity transmission.</p></li>
+<li><p><strong>eig</strong>: Calculates the eigenvalues and eigenstates (eigenvectors) of the Jones matrices.</p></li>
+<li><p><strong>eigenvalues</strong>: Calculates the eigenvalues and of the Jones matrices.</p></li>
+<li><p><strong>eigenstates</strong>: Calculates the eigenstates (eigenvectors) of the Jones matrices.</p></li>
+<li><p><strong>det</strong>: Calculates the determinant and of the Jones matrices.</p></li>
+<li><p><strong>trace</strong>: Calculates the trace of the Jones matrices.</p></li>
+<li><p><strong>norm</strong>: Calculates the norm of the Jones matrices.</p></li>
+<li><p><strong>get_all</strong>: Returns a dictionary with all the parameters of the object.</p></li>
+</ul>
+<p>For a more detailed description of each method, refer to the individual documentation of each one.</p>
+<p>Example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Diattenuator retarder&quot;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_retarder_linear</span><span class="p">(</span><span class="n">R</span><span class="o">=</span><span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">p1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">retardance</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Retardance = </span><span class="si">{:2.1f}</span><span class="s2">º&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="n">degrees</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Retardance = 90.0º
+</pre></div></div>
+</div>
+<p>When several Jones matrices are stored in the object, setting <em>verbose</em> argument to <em>True</em> makes the method print the values in screen. Also, 1D or 2D figures can be shown if the <em>draw</em> argument is set to <em>True</em>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>..
+</pre></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Diattenuator retarder&quot;</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_retarder_linear</span><span class="p">(</span><span class="n">R</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">p1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">retardance</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">draw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The retardance of Diattenuator retarder is (deg.):
+[  0.  15.  30.  45.  60.  75.  90. 105. 120. 135. 150. 165. 180.]
+The mean value is 90.0 +- 56.12486080160913
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Jones_matrix_51_1.png" src="../../_images/source_tutorial_Jones_matrix_51_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Diattenuator&quot;</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="n">P1</span><span class="p">,</span> <span class="n">P2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_linear</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="n">P1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="n">P2</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="n">P1</span><span class="p">,</span> <span class="n">P2</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">transmissions</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;field&#39;</span><span class="p">,</span> <span class="n">draw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The field transmissions of Diattenuator are:
+The mean value of param Maximum (int.) is 0.7500000000003215 +- 0.14546964399033177
+The mean value of param Minimum (int.) is 0.24999999999967848 +- 0.14546964399033177
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Jones_matrix_52_1.png" src="../../_images/source_tutorial_Jones_matrix_52_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<p>There is a function in <em>Parameters_Jones_Matrix</em> class, <strong>.get_all()</strong> that computes all the parameters available and stores in a dictionary <strong>.dict_params()</strong>. This function is called when using print upon the <em>Parameters_Jones_Matrix</em> class.</p>
+<p>Example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Diattenuator retarder&quot;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_retarder_linear</span><span class="p">(</span><span class="n">R</span><span class="o">=</span><span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">p1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Diattenuator retarder @ 30.00 deg =
+[+0.750 +0.433]
+[+0.433 +0.250]
+
+
+The matrix components of Diattenuator retarder @ 30.00 deg are:
+  J00
+(0.7500000000000001+0.12499999999999997j)
+  J01
+(0.4330127018922193-0.21650635094610965j)
+  J10
+(0.4330127018922193-0.21650635094610965j)
+  J11
+(0.24999999999999997+0.37500000000000006j)
+Low dimensionality, figure not available.
+
+The diattenuation of Diattenuator retarder @ 30.00 deg is:
+[0.6]
+Low dimensionality, figure not available.
+
+The retardance of Diattenuator retarder @ 30.00 deg is (deg.):
+90.00000000000001
+Low dimensionality, figure not available.
+
+The global phase of Diattenuator retarder @ 30.00 deg is (deg.):
+9.462322208025613
+Low dimensionality, figure not available.
+
+The inhomogeneity parameter of Diattenuator retarder @ 30.00 deg is:
+8.881784197001253e-17
+Low dimensionality, figure not available.
+
+The intensity transmissions of Diattenuator retarder @ 30.00 deg are:
+  Maximum (int.)
+1.0000000000000002
+  Minimum (int.)
+0.24999999999999994
+Low dimensionality, figure not available.
+
+The field transmissions of Diattenuator retarder @ 30.00 deg are:
+  Maximum (int.)
+1.0
+  Minimum (int.)
+0.49999999999999994
+Low dimensionality, figure not available.
+
+The mean transmission of Diattenuator retarder @ 30.00 deg is:
+0.3750000000000001
+Low dimensionality, figure not available.
+
+The determinant of Diattenuator retarder @ 30.00 deg is:
+(2.775557561562892e-17+0.5j)
+Low dimensionality, figure not available.
+
+The trace of Diattenuator retarder @ 30.00 deg is:
+(1+0.5j)
+Low dimensionality, figure not available.
+
+The norm of Diattenuator retarder @ 30.00 deg is:
+1.118033988749895
+Low dimensionality, figure not available.
+
+The eigenvalues of Diattenuator retarder @ 30.00 deg are:
+  v1
+[1.-5.55111512e-17j]
+  v2
+[-5.55111512e-17+0.5j]
+Low dimensionality, figure not available.
+
+The eigenvectors of Diattenuator retarder @ 30.00 deg are:
+  e1x
+[0.8660254+0.j]
+  e1y
+[0.5+0.j]
+  e2x
+[-0.5+5.55111512e-17j]
+  e2y
+[0.8660254+0.j]
+Low dimensionality, figure not available.
+
+
+</pre></div></div>
+</div>
+</section>
+<section id="Checks-of-Jones_matrix">
+<h2><span class="section-number">2.7. </span>Checks of Jones_matrix<a class="headerlink" href="#Checks-of-Jones_matrix" title="Permalink to this headline"></a></h2>
+<p>There are several checks that can be performed upon a Jones vector. They are implemented in the independent class <em>Checks_Jones_matrix</em>, which is stored in the <em>checks</em> field of <em>Jones_matrix</em> class.</p>
+<ul class="simple">
+<li><p><strong>is_phisycall</strong>: Check if the Jones matrices correspond to physically realizable optical elements.</p></li>
+<li><p><strong>is_homogeneous</strong>: Determines if the matrices correspond to homogeneous optical elements.</p></li>
+<li><p><strong>is_retarder</strong>: Checks if the Jones matrices correspond to homogeneous retarders.</p></li>
+<li><p><strong>is_diattenuator / is_polarizer</strong>: Checks if the Jones matrices correspond to homogeneous diattenuators.</p></li>
+<li><p><strong>is_symmetric</strong>: Checks if the Jones matrices are symmetric.</p></li>
+<li><p><strong>is_conjugate_symmetric</strong>: Checks if the Jones matrices are conjugate symmetric.</p></li>
+<li><p><strong>is_eigenstate</strong>: Checks if a given light state is an eigenstate of the objct.</p></li>
+<li><p><strong>get_all</strong>: Returns a dictionary with all the checks of the object.</p></li>
+</ul>
+<p>For a more detailed description of each method, refer to the individual documentation of each one.</p>
+<p>Example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Diattenuator retarder&quot;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_retarder_linear</span><span class="p">(</span><span class="n">R</span><span class="o">=</span><span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">p1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="n">cond</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_retarder</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Diattenuator retarder @ 30.00 deg is an homogeneous retarder:
+False
+
+</pre></div></div>
+</div>
+<p>As with the <em>Parameters_Jones_matrix</em> class, 1D and 2D plot draws are also implemented for this class. Also, the <em>print</em> function calls to <em>get_all</em>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">*</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">R</span><span class="p">[</span><span class="n">R</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="o">*</span><span class="n">degrees</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># In some cases, the diattenuator retarder is reduced to a pure diattenuator</span>
+
+<span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Diattenuator retarder&quot;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_retarder_linear</span><span class="p">(</span><span class="n">R</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">p1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="n">cond</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_diattenuator</span><span class="p">(</span><span class="n">draw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Diattenuator retarder is an homogeneous diattenuator:
+The mean value is 0.1 +- 0.30000000000000004
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Jones_matrix_58_1.png" src="../../_images/source_tutorial_Jones_matrix_58_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+</section>
+<section id="Analysis-of-Jones_matrix">
+<h2><span class="section-number">2.8. </span>Analysis of Jones_matrix<a class="headerlink" href="#Analysis-of-Jones_matrix" title="Permalink to this headline"></a></h2>
+<p>There are several analysis that can be performed upon a Jones vector. They are implemented in the independent class <em>Analysis_Jones_matrix</em>, which is stored in the <em>analysis</em> field of <em>Jones_matrix</em> class.</p>
+<ul class="simple">
+<li><p><strong>decompose_pure</strong>: Decomposes the Jones matrices in two: an homogeneous retarder and diattenuator.</p></li>
+<li><p><strong>diattenuator / polarizer</strong>: Analyzes the Jones matrices as if they were diattenuators.</p></li>
+<li><p><strong>retarder</strong>: Analyzes the Jones matrices as if they were retarders.</p></li>
+<li><p><strong>get_all</strong>: Returns a dictionary with all the analysis information of the object.</p></li>
+</ul>
+<p>Note: Some methods are still to be finished.</p>
+<p>For a more detailed description of each method, refer to the individual documentation of each one.</p>
+<p>Example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a random diattenuator</span>
+<span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">alpha</span><span class="p">,</span> <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">delta</span><span class="o">*</span><span class="mi">4</span>
+<span class="n">Jd</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Diattenuator&quot;</span><span class="p">)</span>
+<span class="n">Jd</span><span class="o">.</span><span class="n">diattenuator_charac_angles</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="n">p2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Jd</span><span class="p">)</span>
+<span class="c1"># Create a random retarder</span>
+<span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span>
+<span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">delta</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">Jr</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;Retarder&quot;</span><span class="p">)</span>
+<span class="n">Jr</span><span class="o">.</span><span class="n">retarder_charac_angles</span><span class="p">(</span><span class="n">R</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Jr</span><span class="p">)</span>
+
+<span class="c1"># Multiply them and try to decompose</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">Jr</span> <span class="o">*</span> <span class="n">Jd</span>
+<span class="n">J</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Product&#39;</span>
+<span class="n">Jr2</span><span class="p">,</span> <span class="n">Jd2</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">decompose_pure</span><span class="p">(</span><span class="n">decomposition</span><span class="o">=</span><span class="s1">&#39;RD&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Jd2</span><span class="p">,</span> <span class="n">Jr2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Diattenuator =
+[+0.436 +0.022]
+[+0.022 +0.437]
+
+Retarder =
+[+0.898 -0.439]
+[+0.303 +0.662]
+
+Product Diattenuator =
+[+0.436 +0.022]
+[+0.022 +0.437]
+ Product Retarder =
+[+0.898 -0.439]
+[+0.303 +0.662]
+
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Jones_vector.html" class="btn btn-neutral float-left" title="1. Jones_vector class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Stokes.html" class="btn btn-neutral float-right" title="3. Stokes class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Jesus del Hoyo Muñoz / Luis Miguel Sanchez Brea.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

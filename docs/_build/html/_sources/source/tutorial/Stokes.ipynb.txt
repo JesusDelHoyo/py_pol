@@ -1,0 +1,1710 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Stokes class\n",
+    "\n",
+    "Stokes is a class that manages Stokes vectors. It allows the user to create and manipulate them. The difference between Stokes and Jones formalisms is that Stokes vectors can handle partially polarized light, while Jones vectors can track the global phase of the electric field. However, Stokes objects store the global phase (if any) and use it when it is relevant.\n",
+    "\n",
+    "## Creating an instance\n",
+    "\n",
+    "An instance must be created before starting to operate with the Stokes vector. The initialization accepts one argument: the name of the vector. This name will be used for printing:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 is empty\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "from py_pol.stokes import Stokes, create_Stokes, degrees\n",
+    "import numpy as np\n",
+    "\n",
+    "\n",
+    "S1 = Stokes(\"Source 1\")\n",
+    "print(S1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Several Stokes objects can be created at the same time using the function *create_Stokes*."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 2 is empty\n",
+      " Source 3 is empty\n",
+      "\n",
+      "[S is empty\n",
+      ", S is empty\n",
+      ", S is empty\n",
+      "]\n"
+     ]
+    }
+   ],
+   "source": [
+    "S2, S3 = create_Stokes(name=('Source 2', 'Source 3'))\n",
+    "print(S2, S3)\n",
+    "\n",
+    "list_of_S = create_Stokes(N=3)\n",
+    "print(list_of_S)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Generating polarization states\n",
+    "\n",
+    "As shown in the previous example, the Stokes matrix is initialized with all elements equal to zero. There are many methods that can be used to generate a more desirable vector:\n",
+    "\n",
+    "* **from_components**: Creates Stokes vectors directly from the 4 elements $S_0$, $S_1$, $S_2$, $S_3$.\n",
+    "* **from_matrix**: Creates Stokes vectors from an external 4 x shape numpy array.\n",
+    "* **from_list**: Creates a Jones_vector object directly from a list of 4 or 4x1 numpy arrays.\n",
+    "* **from_Jones**: Creates Stokes vectors from a Jones_vector object.\n",
+    "* **linear_light**: Creates Stokes vectors for pure linear polarizer light.\n",
+    "* **circular_light**: Creates Stokes vectors for pure circular polarizer light.\n",
+    "* **elliptical_light** Creates Stokes vectors for polarizer elliptical light.\n",
+    "* **general_charac_angles** Creates Stokes vectors given by their characteristic angles.\n",
+    "* **general_azimuth_ellipticity** Creates Stokes vectors given by their azimuth and ellipticity.\n",
+    "\n",
+    "\n",
+    "For a more detailed description of each method, refer to the individual documentation of each one.\n",
+    "\n",
+    "Example: Light linearly polarized."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Linear polarization = \n",
+      "[+1.000]   \n",
+      "[+0.500]   \n",
+      "[+0.866]   \n",
+      "[+0.000]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S1 = Stokes(\"Linear polarization\")\n",
+    "S1.linear_light(azimuth=30*degrees)\n",
+    "print(S1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The previous example only stores one Stokes vector. However, it is possible to store many Stokes vectors in the same object. This is useful specially when the same operation is performed upon all of them, as rotation. In this way, it is not required to use for loops, reducing significantly the computation time.\n",
+    "\n",
+    "There are many ways of creating several Stokes vectors in the same object. The first way is creating an object with several identical vectors. This is performed using the *length* argument present in most creation methods:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+2.000]   [+2.000]   [+2.000]   [+2.000]   [+2.000]   \n",
+      "[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]   \n",
+      "[+2.000]   [+2.000]   [+2.000]   [+2.000]   [+2.000]   \n",
+      "[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S = Stokes(\"Source 1\")\n",
+    "S.linear_light(azimuth = 45*degrees, intensity=2, length = 5)\n",
+    "print(S)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A second way of creating several vectors at the same time is using an array as one (or more) of the parameters of the creation methods. Take into account that, if you use this option, all parameters must have the same number of elements or just one element. Otherwise, the program will throw an exception."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+2.000]   [+2.000]   [+2.000]   [+2.000]   [+2.000]   \n",
+      "[+2.000]   [+1.414]   [+0.000]   [-1.414]   [-2.000]   \n",
+      "[+0.000]   [+1.414]   [+2.000]   [+1.414]   [+0.000]   \n",
+      "[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S = Stokes(\"Source 1\")\n",
+    "angles = np.linspace(0, 90*degrees, 5)\n",
+    "S.linear_light(azimuth = angles, intensity=2)\n",
+    "print(S)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If the parameters have dimension higher than 1, the program will store that information in order to make prints and plots. In that case, the *print* function separates the four components of the Stokes vectors:\n",
+    "\n",
+    "$$S=\\left[\\begin{array}{c}\n",
+    "S_0\\\\\n",
+    "S_1\\\\\n",
+    "S_2\\\\\n",
+    "S_3\\\\\n",
+    "\\end{array}\\right]$$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 S0 = \n",
+      "[[0.06238773 0.57797563 0.6247661 ]\n",
+      " [0.48184591 0.09498877 0.59185975]\n",
+      " [0.12173544 0.08507394 0.3738014 ]]\n",
+      "Source 1 S1 = \n",
+      "[[0.03119387 0.28898781 0.31238305]\n",
+      " [0.24092296 0.04749438 0.29592987]\n",
+      " [0.06086772 0.04253697 0.1869007 ]]\n",
+      "Source 1 S2 = \n",
+      "[[0.05402936 0.50054158 0.54106332]\n",
+      " [0.4172908  0.08226268 0.51256558]\n",
+      " [0.10542598 0.07367619 0.32372151]]\n",
+      "Source 1 S3 = \n",
+      "[[0. 0. 0.]\n",
+      " [0. 0. 0.]\n",
+      " [0. 0. 0.]]\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S = Stokes(\"Source 1\")\n",
+    "I = np.random.rand(3,3)\n",
+    "S.linear_light(azimuth = 30*degrees, intensity=I)\n",
+    "print(S)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Features of creation methods\n",
+    "\n",
+    "Stokes formalism does not take into account the global phase of the light states. However, *Stokes* objects store it in the *global_phase* field. Use *None* if the global phase is unknown.\n",
+    "\n",
+    "Most creation methods accept a *global_phase* argument that can be used to introduce it."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[90.]\n",
+      "0\n"
+     ]
+    }
+   ],
+   "source": [
+    "S = Stokes(\"Source 1\")\n",
+    "S.linear_light(azimuth = 45*degrees, global_phase=90*degrees)\n",
+    "print(S.global_phase / degrees)\n",
+    "\n",
+    "S.remove_global_phase()\n",
+    "print(S.global_phase)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Many creation methods accept an *amplitude* or an *intensity* parameter ($a$ and $b$ for *elliptical_light*) in order to set the electric field amplitude (the norm of the electric field vector) or the intensity. If both of them are given together to the method, it will use the *amplitude*:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+25.000]   \n",
+      "[+0.000]   \n",
+      "[+25.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "The intensity of Source 1 is (a.u.):\n",
+      "25.0\n",
+      "\n",
+      "Source 2 = \n",
+      "[+2.000]   \n",
+      "[+0.000]   \n",
+      "[+2.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "The intensity of Source 2 is (a.u.):\n",
+      "2.0\n",
+      "\n",
+      "Source 3 = \n",
+      "[+25.000]   \n",
+      "[+0.000]   \n",
+      "[+25.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "The intensity of Source 3 is (a.u.):\n",
+      "25.0\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S = Stokes(\"Source 1\")\n",
+    "S.linear_light(azimuth = 45*degrees, amplitude=5)\n",
+    "print(S)\n",
+    "_ = S.parameters.intensity(verbose=True)\n",
+    "\n",
+    "S = Stokes(\"Source 2\")\n",
+    "S.linear_light(azimuth = 45*degrees, intensity=2)\n",
+    "print(S)\n",
+    "_ = S.parameters.intensity(verbose=True)\n",
+    "\n",
+    "S = Stokes(\"Source 3\")\n",
+    "S.linear_light(azimuth = 45*degrees, intensity=2, amplitude=5)\n",
+    "print(S)\n",
+    "_ = S.parameters.intensity(verbose=True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Also, most creation methods accept two parameters: *degree_pol* and *degree_depol*, which represent the degrees of polarization and depolarization respectively. This allows creating partially polarized light states using the same methods.\n",
+    "\n",
+    "Both degrees are complementary, so if both of them are given to the method, only *degree_depol* is used."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+5.000]   \n",
+      "[+0.000]   \n",
+      "[+4.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 2 = \n",
+      "[+5.000]   \n",
+      "[+0.000]   \n",
+      "[+3.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 3 = \n",
+      "[+5.000]   \n",
+      "[+0.000]   \n",
+      "[+3.000]   \n",
+      "[+0.000]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S = Stokes(\"Source 1\")\n",
+    "S.linear_light(azimuth = 45*degrees, intensity=5, degree_pol=0.8)\n",
+    "print(S)\n",
+    "\n",
+    "S = Stokes(\"Source 2\")\n",
+    "S.linear_light(azimuth = 45*degrees, intensity=5, degree_depol=0.8)\n",
+    "print(S)\n",
+    "\n",
+    "S = Stokes(\"Source 3\")\n",
+    "S.linear_light(azimuth = 45*degrees, intensity=5, degree_pol=0.8, degree_depol=0.8)\n",
+    "print(S)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Basic operations\n",
+    "\n",
+    "Some physical phenomena that affects polarized light are described by simple operations performed to their Stokes vectors.\n",
+    "\n",
+    "### Addition of two Stokes vectors\n",
+    "\n",
+    "The interference of two light waves can be represented by the sum of their Stokes vectors. However, the global phase is important when two light states interfere, i.e., two vectors are added together. If both global phases are known (coherent sum), the polarized part of the Stokes vectors are transformed into Jones objects and added together. The result is tranformed back to a Stokes vector and the unpolarized parts are added."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+1.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 2 = \n",
+      "[+1.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 1 + Source 2 = \n",
+      "[+2.000]   \n",
+      "[+2.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S1 = Stokes(\"Source 1\")\n",
+    "S1.linear_light(azimuth = 0*degrees, amplitude=1, global_phase=0)\n",
+    "print(S1)\n",
+    "S2 = Stokes(\"Source 2\")\n",
+    "S2.linear_light(azimuth = 0*degrees, amplitude=1, global_phase=90*degrees)\n",
+    "print(S2)\n",
+    "S3 = S1 + S2\n",
+    "print(S3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If one or both phases are unknown (they have a *None* value), the Stokes vectors are added directly (incoherent sum)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+1.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 2 = \n",
+      "[+1.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 1 + Source 2 = \n",
+      "[+2.000]   \n",
+      "[+2.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S1 = Stokes(\"Source 1\")\n",
+    "S1.linear_light(azimuth = 0*degrees, amplitude=1, global_phase=None)\n",
+    "print(S1)\n",
+    "S2 = Stokes(\"Source 2\")\n",
+    "S2.linear_light(azimuth = 0*degrees, amplitude=1, global_phase=90*degrees)\n",
+    "print(S2)\n",
+    "S3 = S1 + S2\n",
+    "print(S3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Multiply by a constant\n",
+    "\n",
+    "The absorption and gain experienced by a light wave is described by multiplying its Jones vector by a real positive number $c$. The light wave will experience absorption if $c<0$ and gain if $c>0$:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+0.250]   \n",
+      "[+0.250]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "2 * Source 1 = \n",
+      "[+0.500]   \n",
+      "[+0.500]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "3 * Source 1 = \n",
+      "[+0.750]   \n",
+      "[+0.750]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 1 / 3 = \n",
+      "[+0.083]   \n",
+      "[+0.083]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S1 = Stokes(\"Source 1\")\n",
+    "S1.linear_light(azimuth = 0*degrees, amplitude = 0.5)\n",
+    "print(S1)\n",
+    "\n",
+    "S2 = 2 * S1\n",
+    "print(S2)\n",
+    "\n",
+    "S2 =  S1*3\n",
+    "print(S2)\n",
+    "\n",
+    "S2 =  S1/3\n",
+    "print(S2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If the constant is complex, the constant phase will be added to the global phase of the light, while its absolute value will increase or decrease the light intensity. \n",
+    "\n",
+    "Take into account that real negative values are a special case of complex numbers whose phase is 180º."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+1.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "The global phase of Source 1 is (deg):\n",
+      "0.0\n",
+      "\n",
+      "1j * Source 1 = \n",
+      "[+1.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "The global phase of 1j * Source 1 is (deg):\n",
+      "90.0\n",
+      "\n",
+      "(0.5-0.5j) * Source 1 = \n",
+      "[+0.707]   \n",
+      "[+0.707]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "The global phase of (0.5-0.5j) * Source 1 is (deg):\n",
+      "-45.0\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S1 = Stokes(\"Source 1\")\n",
+    "S1.linear_light(azimuth = 0*degrees, intensity = 1)\n",
+    "print(S1)\n",
+    "_ = S1.parameters.global_phase(verbose=True)\n",
+    "\n",
+    "c = 1j\n",
+    "S2 = c * S1\n",
+    "print(S2)\n",
+    "_ = S2.parameters.global_phase(verbose=True)\n",
+    "\n",
+    "c = 0.5-0.5j\n",
+    "S2 = c * S1\n",
+    "print(S2)\n",
+    "_ = S2.parameters.global_phase(verbose=True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Equality\n",
+    "\n",
+    "It is possible to compare two *Stokes* objects and tell if they are the same. It just compares the Stokes vectors and the global phase, not the rest of object fields."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+1.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 2 = \n",
+      "[+1.000]   [+1.000]   [+1.000]   [+1.000]   [+1.000]   \n",
+      "[+1.000]   [+0.707]   [+0.000]   [-0.707]   [-1.000]   \n",
+      "[+0.000]   [+0.707]   [+1.000]   [+0.707]   [+0.000]   \n",
+      "[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]   \n",
+      "\n",
+      "Source 1 - Source 2 = \n",
+      "[+0.000]   [+0.152]   [+0.586]   [+1.235]   [+2.000]   \n",
+      "[+0.000]   [-0.141]   [-0.414]   [-0.472]   [-0.000]   \n",
+      "[+0.000]   [-0.058]   [-0.414]   [-1.141]   [-2.000]   \n",
+      "[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]   \n",
+      " [0. 0. 0. 0. 0.]\n",
+      "Comparison:  [ True False False False False] \n",
+      "\n",
+      "\n",
+      "Source 1 = \n",
+      "[+1.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 2 = \n",
+      "[+1.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 1 - Source 2 = \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      " [0.]\n",
+      "Comparison:  [False]\n"
+     ]
+    }
+   ],
+   "source": [
+    "S1 = Stokes(\"Source 1\")\n",
+    "S1.linear_light(azimuth = 0*degrees)\n",
+    "print(S1)\n",
+    "S2 = Stokes(\"Source 2\")\n",
+    "angles = np.linspace(0, 90*degrees, 5)\n",
+    "S2.linear_light(azimuth = angles)\n",
+    "print(S2)\n",
+    "print('Comparison: ', S1==S2, '\\n\\n')\n",
+    "\n",
+    "S1 = Stokes(\"Source 1\")\n",
+    "S1.linear_light(azimuth = 0*degrees, global_phase=0)\n",
+    "print(S1)\n",
+    "S2 = Stokes(\"Source 2\")\n",
+    "S2.linear_light(azimuth = 0*degrees, global_phase=0.01)\n",
+    "print(S2)\n",
+    "print('Comparison: ', S1==S2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Operations and multidimensionality\n",
+    "\n",
+    "The basic operations of *Stokes* objects are subject to the same casting rules as numpy arrays. This means that they can be easily used even if one or both elements of the operation have more than one element.\n",
+    "\n",
+    "Here are some examples:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+1.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 2 = \n",
+      "[+1.000]   [+1.000]   [+1.000]   [+1.000]   [+1.000]   \n",
+      "[+1.000]   [+0.707]   [+0.000]   [-0.707]   [-1.000]   \n",
+      "[+0.000]   [+0.707]   [+1.000]   [+0.707]   [+0.000]   \n",
+      "[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]   \n",
+      "\n",
+      "Source 1 + Source 2 = \n",
+      "[+3.414]   [+3.307]   [+3.000]   [+2.541]   [+2.000]   \n",
+      "[+3.414]   [+3.014]   [+2.000]   [+0.834]   [+0.000]   \n",
+      "[+0.000]   [+1.248]   [+2.000]   [+2.014]   [+1.414]   \n",
+      "[+0.000]   [+0.541]   [+1.000]   [+1.307]   [+1.414]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Sum\n",
+    "S1 = Stokes(\"Source 1\")\n",
+    "S1.linear_light(azimuth = 0*degrees, amplitude=1)\n",
+    "print(S1)\n",
+    "S2 = Stokes(\"Source 2\")\n",
+    "angles = np.linspace(0, 90*degrees, 5)\n",
+    "S2.linear_light(azimuth = angles, amplitude=1, global_phase = 45*degrees)\n",
+    "print(S2)\n",
+    "\n",
+    "S3 = S1 + S2\n",
+    "print(S3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+1.000]   \n",
+      "[+0.500]   \n",
+      "[+0.866]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 1 = \n",
+      "[+0.100]   [+0.650]   [+1.200]   [+1.750]   [+2.300]   \n",
+      "[+0.050]   [+0.325]   [+0.600]   [+0.875]   [+1.150]   \n",
+      "[+0.087]   [+0.563]   [+1.039]   [+1.516]   [+1.992]   \n",
+      "[+0.000]   [+0.000]   [+0.000]   [+0.000]   [+0.000]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Multply by a constant\n",
+    "S1 = Stokes(\"Source 1\")\n",
+    "S1.linear_light(azimuth = 30*degrees, amplitude = 1)\n",
+    "print(S1)\n",
+    "\n",
+    "c = np.linspace(0.1, 2.3, 5)\n",
+    "S2 = c * S1\n",
+    "print(S2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Stokes vectors manipulation\n",
+    "\n",
+    "There are several operations that can be applied to a Stokes vector. Some of them are common to all py_pol objects and are inherited from their parent *Py_pol* class:\n",
+    "\n",
+    "* **clear**:  Removes data and name form Jones vector.\n",
+    "* **copy**:  Creates a copy of the Jones_vector object.\n",
+    "* **stretch**:  Stretches a Jones vector of size 1.\n",
+    "* **shape_like**:  Takes the shape of another object to use as its own.\n",
+    "* **reshape**: Changes the shape of the object.\n",
+    "* **flatten**:  Transforms N-D objects into 1-D objects (0-D if only 1 element).\n",
+    "* **flip**: Flips the object along some dimensions.\n",
+    "* **get_list**: Creates a list with single elements.\n",
+    "* **from_list**: Creates the object from a list of single elements.\n",
+    "* **concatenate**: Canocatenates several objects into a single one.\n",
+    "* **draw**: Draws the components of the object.\n",
+    "* **clear**: Clears the information of the object.\n",
+    "\n",
+    "The rest of the manipulation methods are:\n",
+    "\n",
+    "* **simplify**:  Simplifies the Stokes vectors in several ways.\n",
+    "* **rotate**: Rotates the Stokes vectors.\n",
+    "* **sum**: Calculates the summatory of the Stokes vectors in the object.\n",
+    "* **reciprocal**: Calculates the Stokes vectors that propagates backwards.\n",
+    "* **orthogonal**: Calculates the orthogonal Stokes vectors.\n",
+    "* **normalize**: Normalize the electric field to be normalized in electric field amplitude or intensity.\n",
+    "* **rotate_to_azimuth**: Rotates the Stokes vectors to have a certain azimuth.\n",
+    "* **remove_global_phase**: Calculates the global phase of the electric field (respect to the X component) and removes it.\n",
+    "* **add_global_phase**: Adds a global phase to the Stokes vectors.\n",
+    "* **set_global_phase**: Sets the global phase of the Stokes vectors.\n",
+    "* **set_depolarization**: Sets the degree of depolarization.\n",
+    "* **add_depolarization**: Increases the degree of depolarization.\n",
+    "\n",
+    "For a more detailed description of each method, refer to the individual documentation of each one.\n",
+    "\n",
+    "Example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+1.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 1 @ 45.00 deg = \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S1 = Stokes('Source 1')\n",
+    "S1.linear_light(azimuth=0*degrees)\n",
+    "print(S1)\n",
+    "\n",
+    "S1.rotate(angle=45*degrees)\n",
+    "print(S1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Most manipulation methods have the *keep* argument that specifies if the originial object must be preserved or transformed. If *keep* is *True* (default is *False*), a new object is created:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+1.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      " Source 2 = \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "Source 2 = \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      " Source 2 = \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S1 = Stokes('Source 1')\n",
+    "S1.linear_light(azimuth=0*degrees)\n",
+    "\n",
+    "S2 = S1.rotate(angle=45*degrees, keep=True)\n",
+    "S2.name = 'Source 2'\n",
+    "print(S1, S2)\n",
+    "\n",
+    "S2 = S1.rotate(angle=45*degrees, keep=False)\n",
+    "S2.name = 'Source 2'\n",
+    "print(S1, S2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "*Stokes* objects allow taking elements and changing them through indices like a *numpy.ndarray*.\n",
+    "\n",
+    "Examples:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Original S0 = \n",
+      "[[0.73827998 0.3309537  0.42923983 0.20266855 0.97945782]\n",
+      " [0.33310064 0.41272463 0.63421152 0.39573911 0.54567378]\n",
+      " [0.04611144 0.77465159 0.03830944 0.74233396 0.21166797]]\n",
+      "Original S1 = \n",
+      "[[0.80725697 0.75942444 0.82534152 0.15295515 0.3583469 ]\n",
+      " [0.90605304 0.94043943 0.41896632 0.0647273  0.16058601]\n",
+      " [0.32477308 0.65895505 0.23844614 0.64100175 0.4681246 ]]\n",
+      "Original S2 = \n",
+      "[[0.82565326 0.46838908 0.07149297 0.51760866 0.8085559 ]\n",
+      " [0.24613237 0.7992647  0.96896721 0.43505374 0.89333559]\n",
+      " [0.79100309 0.43089529 0.08399607 0.987945   0.02170331]]\n",
+      "Original S3 = \n",
+      "[[0.02398912 0.69643331 0.04265789 0.68903845 0.32638138]\n",
+      " [0.26542458 0.78317913 0.85479037 0.3183737  0.40564564]\n",
+      " [0.07044742 0.27915799 0.50581986 0.21845827 0.49659919]]\n",
+      "\n",
+      "Original_picked = \n",
+      "[+0.738]   [+0.331]   [+0.429]   \n",
+      "[+0.807]   [+0.759]   [+0.825]   \n",
+      "[+0.826]   [+0.468]   [+0.071]   \n",
+      "[+0.024]   [+0.696]   [+0.043]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "M = np.random.rand(4, 3, 5)\n",
+    "S1 = Stokes('Original')\n",
+    "S1.from_matrix(M)\n",
+    "print(S1)\n",
+    "\n",
+    "S2 = S1[0:3]\n",
+    "print(S2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Cambiado S0 = \n",
+      "[[1.         1.         0.42923983 0.20266855 0.97945782]\n",
+      " [1.         1.         0.63421152 0.39573911 0.54567378]\n",
+      " [1.         1.         0.03830944 0.74233396 0.21166797]]\n",
+      "Cambiado S1 = \n",
+      "[[1.         1.         0.82534152 0.15295515 0.3583469 ]\n",
+      " [1.         1.         0.41896632 0.0647273  0.16058601]\n",
+      " [1.         1.         0.23844614 0.64100175 0.4681246 ]]\n",
+      "Cambiado S2 = \n",
+      "[[0.         0.         0.07149297 0.51760866 0.8085559 ]\n",
+      " [0.         0.         0.96896721 0.43505374 0.89333559]\n",
+      " [0.         0.         0.08399607 0.987945   0.02170331]]\n",
+      "Cambiado S3 = \n",
+      "[[0.         0.         0.04265789 0.68903845 0.32638138]\n",
+      " [0.         0.         0.85479037 0.3183737  0.40564564]\n",
+      " [0.         0.         0.50581986 0.21845827 0.49659919]]\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S3.linear_light()\n",
+    "S4 = S1.copy()\n",
+    "S4.name = 'Cambiado'\n",
+    "S4[0:3,0:2] = S3\n",
+    "print(S4)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Picking and setting\n",
+    "\n",
+    "*Py_pol* objects allow taking elements and changing them through indices like a *numpy.ndarray*.\n",
+    "\n",
+    "Examples:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Original = \n",
+      "[+0.561]   [+0.450]   [+0.778]   [+0.601]   [+0.479]   \n",
+      "[+0.695]   [+0.113]   [+0.805]   [+0.679]   [+0.663]   \n",
+      "[+0.254]   [+0.415]   [+0.944]   [+0.003]   [+0.119]   \n",
+      "[+0.217]   [+0.678]   [+0.093]   [+0.410]   [+0.767]   \n",
+      "\n",
+      "Original_picked = \n",
+      "[+0.450]   [+0.778]   \n",
+      "[+0.113]   [+0.805]   \n",
+      "[+0.415]   [+0.944]   \n",
+      "[+0.678]   [+0.093]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "M = np.random.rand(4, 5)\n",
+    "S1 = Stokes('Original')\n",
+    "S1.from_matrix(M)\n",
+    "print(S1)\n",
+    "\n",
+    "S2 = S1[1:3]\n",
+    "print(S2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Original S0 = \n",
+      "[[1. 1. 1. 1. 1.]\n",
+      " [1. 1. 1. 1. 1.]\n",
+      " [1. 1. 1. 1. 1.]\n",
+      " [1. 1. 1. 1. 1.]\n",
+      " [1. 1. 1. 1. 1.]]\n",
+      "Original S1 = \n",
+      "[[ 1.00000000e+00  9.65925826e-01  8.66025404e-01  7.07106781e-01\n",
+      "   5.00000000e-01]\n",
+      " [ 2.58819045e-01  6.12323400e-17 -2.58819045e-01 -5.00000000e-01\n",
+      "  -7.07106781e-01]\n",
+      " [-8.66025404e-01 -9.65925826e-01 -1.00000000e+00 -9.65925826e-01\n",
+      "  -8.66025404e-01]\n",
+      " [-7.07106781e-01 -5.00000000e-01 -2.58819045e-01 -1.83697020e-16\n",
+      "   2.58819045e-01]\n",
+      " [ 5.00000000e-01  7.07106781e-01  8.66025404e-01  9.65925826e-01\n",
+      "   1.00000000e+00]]\n",
+      "Original S2 = \n",
+      "[[ 0.00000000e+00  2.58819045e-01  5.00000000e-01  7.07106781e-01\n",
+      "   8.66025404e-01]\n",
+      " [ 9.65925826e-01  1.00000000e+00  9.65925826e-01  8.66025404e-01\n",
+      "   7.07106781e-01]\n",
+      " [ 5.00000000e-01  2.58819045e-01  1.22464680e-16 -2.58819045e-01\n",
+      "  -5.00000000e-01]\n",
+      " [-7.07106781e-01 -8.66025404e-01 -9.65925826e-01 -1.00000000e+00\n",
+      "  -9.65925826e-01]\n",
+      " [-8.66025404e-01 -7.07106781e-01 -5.00000000e-01 -2.58819045e-01\n",
+      "  -2.44929360e-16]]\n",
+      "Original S3 = \n",
+      "[[0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0.]]\n",
+      "\n",
+      "Original_picked S0 = \n",
+      "[[1. 1.]\n",
+      " [1. 1.]]\n",
+      "Original_picked S1 = \n",
+      "[[-0.25881905 -0.5       ]\n",
+      " [-1.         -0.96592583]]\n",
+      "Original_picked S2 = \n",
+      "[[ 9.65925826e-01  8.66025404e-01]\n",
+      " [ 1.22464680e-16 -2.58819045e-01]]\n",
+      "Original_picked S3 = \n",
+      "[[0. 0.]\n",
+      " [0. 0.]]\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S1 = Stokes('Original')\n",
+    "angles = np.linspace(0,180*degrees, 25)\n",
+    "S1.linear_light(azimuth=angles, shape=[5,5])\n",
+    "print(S1)\n",
+    "\n",
+    "S2 = S1[1:3,2:4]\n",
+    "print(S2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Iterating\n",
+    "\n",
+    "*Py_pol* objects are iterable. When introduced in a for loop, a new object picking in the first dimension is returned."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "S_picked = \n",
+      "[+1.000]   \n",
+      "[+0.940]   \n",
+      "[+0.000]   \n",
+      "[+0.342]   \n",
+      "\n",
+      "S_picked = \n",
+      "[+1.000]   \n",
+      "[+0.000]   \n",
+      "[+0.940]   \n",
+      "[+0.342]   \n",
+      "\n",
+      "S_picked = \n",
+      "[+1.000]   \n",
+      "[-0.940]   \n",
+      "[+0.000]   \n",
+      "[+0.342]   \n",
+      "\n",
+      "S_picked = \n",
+      "[+1.000]   \n",
+      "[-0.000]   \n",
+      "[-0.940]   \n",
+      "[+0.342]   \n",
+      "\n",
+      "S_picked = \n",
+      "[+1.000]   \n",
+      "[+0.940]   \n",
+      "[+0.000]   \n",
+      "[+0.342]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "angles = np.linspace(0, 180*degrees, 5)\n",
+    "Stotal = Stokes().general_azimuth_ellipticity(azimuth=angles, ellipticity=10*degrees)\n",
+    "for S in Stotal:\n",
+    "    print(S)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Parameters of Stokes vector\n",
+    "\n",
+    "Several parameters can be measured from a Stokes vector. They are implemented in the independent class Parameters_Stokes_vector, which is stored in the parameters field of Stokes class.\n",
+    "\n",
+    "* **components**: Calculates the electric field components of the Stokes vectors.\n",
+    "* **amplitudes**: Calculates the electric field amplitudes of the Stokes vectors.\n",
+    "* **intensity**: Calculates the intensity of the Stokes vectors.\n",
+    "* **irradiance**: Calculates the irradiance of the Stokes vectors.\n",
+    "* **alpha**: Calculates the ratio between electric field amplitudes ($E_x$/$E_y$).\n",
+    "* **delay / delta**: Calculates the delay (phase shift) between Ex and Ey components of the electric field.\n",
+    "* **charac_angles**: Calculates both alpha and delay, the characteristic angles of the Stokes vectors.\n",
+    "* **azimuth**: Calculates azimuth, that is, the orientation angle of the major axis.\n",
+    "* **ellipticity_angle**: Calculates the ellipticity angle.\n",
+    "* **azimuth_ellipticity**: Calculates both azimuth and ellipticity angles.\n",
+    "* **ellipse_axes**: Calculates the length of major and minor axis (a,b).\n",
+    "* **ellipticity_param**: Calculates the ellipticity parameter, b/a.\n",
+    "* **eccentricity**: Calculates the eccentricity, the complementary of the ellipticity parameter.\n",
+    "* **global_phase**: Calculates the global phase of the Stokes vectors (respect to the X component of the electric field).\n",
+    "* **degree_polarization**: Calculates the degree of polarization of the Stokes vectors.\n",
+    "* **degree_depolarization**: Calculates the degree of depolarization of the Stokes vectors.\n",
+    "* **degree_linear_polarization**: Calculates the degree of linear polarization of the Stokes vectors.\n",
+    "* **degree_circular_polarization**: Calculates the degree of circular polarization of the Stokes vectors.\n",
+    "* **norm**: Calculates the norm of the Stokes vectors.\n",
+    "* **polarized_unpolarized**: Divides the Stokes vector in Sp+Su, where Sp is fully-polarized and Su fully-unpolarized.\n",
+    "\n",
+    "\n",
+    "* **get_all**: Returns a dictionary with all the parameters of Stokes vectors.\n",
+    "\n",
+    "For a more detailed description of each method, refer to the individual documentation of each one.\n",
+    "\n",
+    "Example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "S = Stokes(\"Source 1\")\n",
+    "S.linear_light(azimuth = 45*degrees)\n",
+    "I0 = S.parameters.intensity()\n",
+    "print(I0)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "When several Stokes vectors are stored in the object, setting *verbose* argument to *True* makes the method print the values in screen. Also, 1D or 2D figures can be shown if the *draw* argument is set to *True*:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The azimuth of Source 1 is (deg):\n",
+      "[  0.          16.36272727  32.72545455  49.08818182  65.45090909\n",
+      "  81.81363636  98.17636364 114.53909091 130.90181818 147.26454545\n",
+      " 163.62727273 179.99      ]\n",
+      "The mean value is 89.995 +- 56.484994071904\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 360x360 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "az = np.linspace(0, 179.99*degrees, 12)\n",
+    "S = Stokes(\"Source 1\")\n",
+    "S.general_azimuth_ellipticity(azimuth=az)\n",
+    "az = S.parameters.azimuth(draw=True, verbose=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The azimuth of Source 1 is (deg):\n",
+      "The mean value is 88.58882812499999 +- 53.14074687799344\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 360x360 with 2 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "The ellipticity angle of Source 1 is (deg):\n",
+      "The mean value is 1.7763568394002505e-15 +- 26.184535918359188\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 360x360 with 2 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "az = np.linspace(0, 179.99*degrees, 128)\n",
+    "el = np.linspace(-45*degrees, 45*degrees, 128)\n",
+    "AZ, EL = np.meshgrid(az, el)\n",
+    "\n",
+    "S = Stokes(\"Source 1\")\n",
+    "S.general_azimuth_ellipticity(azimuth=AZ, ellipticity=EL)\n",
+    "AZ, EL = S.parameters.azimuth_ellipticity(draw=True, use_nan=False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There is a method in *Parameters_Stokes* class, *get_all* that computes all the parameters available and stores in a dictionary *.dict_params()*. Using the *print* function upon the *Parameters_Stokes* class invokes the method *get_all*.\n",
+    "\n",
+    "Example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+1.000]   \n",
+      "[+0.482]   \n",
+      "[+0.000]   \n",
+      "[+0.575]   \n",
+      " \n",
+      "\n",
+      "The intensity of Source 1 is (a.u.):\n",
+      "1.0\n",
+      "Low dimensionality, figure not available.\n",
+      "\n",
+      "The elctric field amplitudes of Source 1 are (V/m):\n",
+      "  Ex (V/m)\n",
+      "0.7848855672213959\n",
+      "  Ey (V/m)\n",
+      "0.36599815077066683\n",
+      "  Eu (V/m)\n",
+      "0.4999999999999999\n",
+      "Low dimensionality, figure not available.\n",
+      "\n",
+      "The global phase of Source 1 is (deg):\n",
+      "0.0\n",
+      "Low dimensionality, figure not available.\n",
+      "\n",
+      "The degree of depolarization of Source 1 is:\n",
+      "0.6614378277661475\n",
+      "Low dimensionality, figure not available.\n",
+      "\n",
+      "The degree of polarization of Source 1 is:\n",
+      "0.7500000000000001\n",
+      "Low dimensionality, figure not available.\n",
+      "\n",
+      "The degree of linear polarization of Source 1 is:\n",
+      "0.48209070726490455\n",
+      "Low dimensionality, figure not available.\n",
+      "\n",
+      "The degree of circular polarization of Source 1 is:\n",
+      "0.5745333323392335\n",
+      "Low dimensionality, figure not available.\n",
+      "\n",
+      "The alpha of Source 1 is (deg):\n",
+      "25.000000000000004\n",
+      "Low dimensionality, figure not available.\n",
+      "\n",
+      "The delay of Source 1 is (deg):\n",
+      "90.0\n",
+      "The mean value is 90.0 +- 0.0\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 360x360 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "The ellipticity parameter of Source 1 is:\n",
+      "0.4663076581549985\n",
+      "Low dimensionality, figure not available.\n",
+      "\n",
+      "The ellipticity angle of Source 1 is (deg):\n",
+      "24.999999999999993\n",
+      "Low dimensionality, figure not available.\n",
+      "\n",
+      "The azimuth of Source 1 is (deg):\n",
+      "2.090547128679534e-15\n",
+      "The mean value is 2.090547128679534e-15 +- 0.0\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 360x360 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "The eccentricity of Source 1 is:\n",
+      "0.8846226132911147\n",
+      "Low dimensionality, figure not available.\n",
+      "\n",
+      "Polarized Source 1 = \n",
+      "[+0.750]   \n",
+      "[+0.482]   \n",
+      "[+0.000]   \n",
+      "[+0.575]   \n",
+      " Unpolarized Source 1 = \n",
+      "[+0.250]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "[+0.000]   \n",
+      "\n",
+      "The norm of Source 1 is (a.u.):\n",
+      "[1.25]\n",
+      "Low dimensionality, figure not available.\n",
+      "\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S1 = Stokes(\"Source 1\")\n",
+    "S1. general_charac_angles(alpha=25*degrees,  delay=90*degrees,  intensity=1,    degree_pol=0.75)\n",
+    "print(S1,'\\n')\n",
+    "      \n",
+    "print(S1.parameters)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Checks of Stokes vectors\n",
+    "\n",
+    "There are several checks that can be performed upon a Stokes vector. They are implemented in the independent class *Checks_Stokes*, which is stored in the *checks* field of *Stokes* class.\n",
+    "\n",
+    "* **is_physical**: Checks if the Stokes vectors are physically realizable.\n",
+    "* **is_linear**: Checks if the Stokes vectors are lienarly polarized.\n",
+    "* **is_circular**: Checks if the Stokes vectors are circularly polarized.\n",
+    "* **is_right_handed**: Checks if the Stokes vectors rotation direction are right handed.\n",
+    "* **is_left_handed**: Checks if the Stokes vectors rotation direction are left handed.\n",
+    "* **is_polarized**: Checks if the Stokes vectors are at least partially polarized.\n",
+    "* **is_totally_polarized**: Checks if the Stokes vectors are totally polarized.\n",
+    "* **is_depolarized**: Checks if the Stokes vectors are at least partially depolarized.\n",
+    "* **is_totally_depolarized**: Checks if the Stokes vectors are totally depolarized.\n",
+    "\n",
+    "\n",
+    "* **get_all**: Returns a dictionary with all the checks of Stokes vectors.\n",
+    "\n",
+    "For a more detailed description of each method, refer to the individual documentation of each one.\n",
+    "\n",
+    "Example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "S = Stokes(\"Source 1\")\n",
+    "S.linear_light(azimuth = 45*degrees)\n",
+    "cond = S.checks.is_linear()\n",
+    "print(cond)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "1D and 2D plot draws are also implemented for this class:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 is right handed:\n",
+      "[[False False False ... False False False]\n",
+      " [ True  True  True ...  True  True  True]\n",
+      " [ True  True  True ...  True  True  True]\n",
+      " ...\n",
+      " [False False False ... False False False]\n",
+      " [False False False ... False False False]\n",
+      " [False False False ... False False False]]\n",
+      "The mean value is 0.4921875 +- 0.4999389611180049\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 360x360 with 2 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "alpha = np.linspace(30*degrees, 30*degrees, 128)\n",
+    "delay = np.linspace(0, 360*degrees, 128)\n",
+    "Alpha, Delay = np.meshgrid(alpha, delay)\n",
+    "\n",
+    "S = Stokes(\"Source 1\")\n",
+    "S.general_charac_angles(alpha=Alpha, delay=Delay)\n",
+    "_ = S.checks.is_right_handed(verbose=True, draw=True, use_nan=False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Analysis of Stokes vectors\n",
+    "\n",
+    "There there is one analysis that can be performed upon a Stokes vector. It is implemented in the independent class *Analysis_Stokes*, which is stored in the *analysis* field of *Stokes* class.\n",
+    "\n",
+    "* **filter_physical_conditions**: Forces the Stokes vectors to be physically realizable.\n",
+    "* **density**: Calculates the density of states around the Poincaré sphere.\n",
+    "* **existence**: Checks the existence of states around the Poincaré sphere.\n",
+    "\n",
+    "For a more detailed description, refer to its documentation.\n",
+    "\n",
+    "Example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source 1 = \n",
+      "[+0.682]   [+0.464]   [+0.949]   [+0.570]   [+0.642]   [+0.656]   \n",
+      "[-0.982]   [-0.017]   [-0.486]   [-0.566]   [+0.171]   [+0.967]   \n",
+      "[-0.155]   [-0.611]   [+0.300]   [+0.105]   [+0.824]   [+0.075]   \n",
+      "[-0.665]   [-0.064]   [-0.691]   [-0.162]   [+0.257]   [-0.194]   \n",
+      "\n",
+      "Corrected source = \n",
+      "[+0.682]   [+0.464]   [+0.949]   [+0.570]   [+0.642]   [+0.656]   \n",
+      "[-0.560]   [-0.013]   [-0.486]   [-0.540]   [+0.125]   [+0.642]   \n",
+      "[-0.088]   [-0.461]   [+0.300]   [+0.100]   [+0.601]   [+0.050]   \n",
+      "[-0.379]   [-0.048]   [-0.691]   [-0.154]   [+0.187]   [-0.129]   \n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "S1 = Stokes(\"Source 1\")\n",
+    "M = np.random.rand(4,6) * 2 - 1\n",
+    "S1.from_matrix(M)\n",
+    "print(S1)\n",
+    "\n",
+    "S2 = S1.analysis.filter_physical_conditions(keep=True)\n",
+    "S2.name = 'Corrected source'\n",
+    "print(S2)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.12"
+  },
+  "toc": {
+   "base_numbering": 1,
+   "nav_menu": {},
+   "number_sections": true,
+   "sideBar": true,
+   "skip_h1_title": false,
+   "title_cell": "Table of Contents",
+   "title_sidebar": "Contents",
+   "toc_cell": false,
+   "toc_position": {},
+   "toc_section_display": true,
+   "toc_window_display": false
+  },
+  "varInspector": {
+   "cols": {
+    "lenName": 16,
+    "lenType": 16,
+    "lenVar": 40
+   },
+   "kernels_config": {
+    "python": {
+     "delete_cmd_postfix": "",
+     "delete_cmd_prefix": "del ",
+     "library": "var_list.py",
+     "varRefreshCmd": "print(var_dic_list())"
+    },
+    "r": {
+     "delete_cmd_postfix": ") ",
+     "delete_cmd_prefix": "rm(",
+     "library": "var_list.r",
+     "varRefreshCmd": "cat(var_dic_list()) "
+    }
+   },
+   "types_to_exclude": [
+    "module",
+    "function",
+    "builtin_function_or_method",
+    "instance",
+    "_Feature"
+   ],
+   "window_display": false
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

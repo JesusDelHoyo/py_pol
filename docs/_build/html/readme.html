@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Python polarization &mdash; Python polarization 1.1.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Installation" href="installation.html" />
+    <link rel="prev" title="Welcome to Python polarization&#39;s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python polarization
+          </a>
+              <div class="version">
+                1.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Python polarization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#features">1.1. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">1.2. Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#jones-formalism">1.2.1. Jones formalism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stokes-mueller-formalism">1.2.2. Stokes-Mueller formalism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drawings">1.2.3. Drawings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#conventions">1.3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authors">1.4. Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#citing">1.5. Citing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">1.6. References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acknowlegments">1.7. Acknowlegments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#credits">1.8. Credits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">4. py_pol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">5. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">6. History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">7. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python polarization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">1. </span>Python polarization</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/readme.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="python-polarization">
+<h1><span class="section-number">1. </span>Python polarization<a class="headerlink" href="#python-polarization" title="Permalink to this headline"></a></h1>
+<a class="reference external image-reference" href="https://pypi.org/project/py-pol/"><img alt="https://img.shields.io/pypi/v/py_pol.svg" src="https://img.shields.io/pypi/v/py_pol.svg" /></a>
+<a class="reference external image-reference" href="https://bitbucket.org/optbrea/py_pol/src/master/"><img alt="https://img.shields.io/travis/optbrea/py_pol.svg" src="https://img.shields.io/travis/optbrea/py_pol.svg" /></a>
+<a class="reference external image-reference" href="https://py-pol.readthedocs.io/en/master/"><img alt="Documentation Status" src="https://readthedocs.org/projects/py-pol/badge/?version=latest" /></a>
+<ul class="simple">
+<li><p>Free software: MIT license</p></li>
+<li><p>Documentation: <a class="reference external" href="https://py-pol.readthedocs.io/en/master/">https://py-pol.readthedocs.io/en/master/</a></p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/logo.png"><img alt="_images/logo.png" class="align-right" src="_images/logo.png" style="width: 75px;" /></a>
+<section id="features">
+<h2><span class="section-number">1.1. </span>Features<a class="headerlink" href="#features" title="Permalink to this headline"></a></h2>
+<p>Py-pol is a Python library for Jones and Stokes-Mueller polarization optics. It has 4 main modules:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>jones_vector - Light polarization states in Jones formalism (2x1 vectors).</p></li>
+<li><p>jones_matrix - Optical elements polarization properties in Jones formalism (2x2 matrices).</p></li>
+<li><p>stokes - Light polarization states in Mueller-Stokes formalism (4x1 vectors).</p></li>
+<li><p>mueller - Optical elements polarization properties in Mueller-Stokes formalism (4x4 matrices).</p></li>
+</ul>
+</div></blockquote>
+<p>Each one has its own class, with multiple methods for generation, operation and parameters extraction.</p>
+</section>
+<section id="examples">
+<h2><span class="section-number">1.2. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<section id="jones-formalism">
+<h3><span class="section-number">1.2.1. </span>Jones formalism<a class="headerlink" href="#jones-formalism" title="Permalink to this headline"></a></h3>
+<p>Generating Jones vectors and Matrices</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">py_pol.jones_vector</span> <span class="kn">import</span> <span class="n">Jones_vector</span>
+<span class="kn">from</span> <span class="nn">py_pol.jones_matrix</span> <span class="kn">import</span> <span class="n">Jones_matrix</span>
+<span class="kn">from</span> <span class="nn">py_pol.utils</span> <span class="kn">import</span> <span class="n">degrees</span>
+
+<span class="n">j0</span> <span class="o">=</span> <span class="n">Jones_vector</span><span class="p">(</span><span class="s2">&quot;j0&quot;</span><span class="p">)</span>
+<span class="n">j0</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+
+<span class="n">m0</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;m0&quot;</span><span class="p">)</span>
+<span class="n">m0</span><span class="o">.</span><span class="n">diattenuator_linear</span><span class="p">(</span> <span class="n">p1</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+
+<span class="n">m1</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s2">&quot;m1&quot;</span><span class="p">)</span>
+<span class="n">m1</span><span class="o">.</span><span class="n">quarter_waveplate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">0</span> <span class="o">*</span> <span class="n">degrees</span><span class="p">)</span>
+
+<span class="n">j1</span><span class="o">=</span><span class="n">m1</span><span class="o">*</span><span class="n">m0</span><span class="o">*</span><span class="n">j0</span>
+</pre></div>
+</div>
+<p>Extracting information form Jones Vector.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">j0</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">j0</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">j0</span> <span class="o">=</span> <span class="p">[</span><span class="o">+</span><span class="mf">0.707</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.707</span><span class="p">]</span><span class="s1">&#39;</span>
+
+<span class="n">parameters</span> <span class="n">of</span> <span class="n">j0</span><span class="p">:</span>
+    <span class="n">intensity</span>        <span class="p">:</span> <span class="mf">1.000</span> <span class="n">arb</span><span class="o">.</span><span class="n">u</span>
+    <span class="n">alpha</span>            <span class="p">:</span> <span class="mf">45.000</span> <span class="n">deg</span>
+    <span class="n">delay</span>            <span class="p">:</span> <span class="mf">0.000</span> <span class="n">deg</span>
+    <span class="n">azimuth</span>          <span class="p">:</span> <span class="mf">45.000</span> <span class="n">deg</span>
+    <span class="n">ellipticity</span> <span class="n">angle</span><span class="p">:</span> <span class="mf">0.000</span> <span class="n">deg</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span>             <span class="p">:</span> <span class="mf">1.000</span>  <span class="mf">0.000</span>
+    <span class="n">phase</span>            <span class="p">:</span> <span class="mf">0.000</span> <span class="n">deg</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">j1</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">j1</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">*</span> <span class="n">m0</span> <span class="o">@</span><span class="mf">45.00</span> <span class="n">deg</span> <span class="o">*</span> <span class="n">j0</span> <span class="o">=</span> <span class="p">[</span><span class="o">+</span><span class="mf">0.530</span><span class="o">+</span><span class="mf">0.000</span><span class="n">j</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="o">+</span><span class="mf">0.530</span><span class="n">j</span><span class="p">]</span><span class="s1">&#39;</span>
+
+<span class="n">parameters</span> <span class="n">of</span> <span class="n">m1</span> <span class="o">*</span> <span class="n">m0</span> <span class="o">@</span><span class="mf">45.00</span> <span class="n">deg</span> <span class="o">*</span> <span class="n">j0</span><span class="p">:</span>
+    <span class="n">intensity</span>        <span class="p">:</span> <span class="mf">0.562</span> <span class="n">arb</span><span class="o">.</span><span class="n">u</span>
+    <span class="n">alpha</span>            <span class="p">:</span> <span class="mf">45.000</span> <span class="n">deg</span>
+    <span class="n">delay</span>            <span class="p">:</span> <span class="mf">90.000</span> <span class="n">deg</span>
+    <span class="n">azimuth</span>          <span class="p">:</span> <span class="mf">8.618</span> <span class="n">deg</span>
+    <span class="n">ellipticity</span> <span class="n">angle</span><span class="p">:</span> <span class="o">-</span><span class="mf">45.000</span> <span class="n">deg</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span>             <span class="p">:</span> <span class="mf">0.530</span>  <span class="mf">0.530</span>
+    <span class="n">phase</span>            <span class="p">:</span> <span class="mf">0.000</span> <span class="n">deg</span>
+</pre></div>
+</div>
+<p>Extracting information form Jones Matrices.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">m0</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m0</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m0</span> <span class="o">@</span><span class="mf">45.00</span> <span class="n">deg</span> <span class="o">=</span>
+      <span class="p">[</span><span class="o">+</span><span class="mf">0.500</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.250</span><span class="p">]</span>
+      <span class="p">[</span><span class="o">+</span><span class="mf">0.250</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.500</span><span class="p">]</span>
+
+<span class="n">parameters</span> <span class="n">of</span> <span class="n">m0</span> <span class="o">@</span><span class="mf">45.00</span> <span class="n">deg</span><span class="p">:</span>
+    <span class="n">is_homogeneous</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="n">delay</span><span class="p">:</span>          <span class="mf">0.000</span> <span class="n">deg</span>
+    <span class="n">diattenuation</span><span class="p">:</span>  <span class="mf">0.800</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">=</span>
+      <span class="p">[</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">,</span> <span class="o">+</span><span class="mi">0</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">]</span>
+      <span class="p">[</span><span class="o">+</span><span class="mi">0</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">,</span> <span class="o">+</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">]</span>
+
+<span class="n">parameters</span> <span class="n">of</span> <span class="n">m1</span><span class="p">:</span>
+    <span class="n">is_homogeneous</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="n">delay</span><span class="p">:</span>          <span class="mf">90.000</span> <span class="n">deg</span>
+    <span class="n">diattenuation</span><span class="p">:</span>  <span class="mf">0.000</span>
+</pre></div>
+</div>
+</section>
+<section id="stokes-mueller-formalism">
+<h3><span class="section-number">1.2.2. </span>Stokes-Mueller formalism<a class="headerlink" href="#stokes-mueller-formalism" title="Permalink to this headline"></a></h3>
+<p>Generating Stokes vectors and Mueller matrices.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">py_pol.stokes</span> <span class="kn">import</span> <span class="n">Stokes</span>
+<span class="kn">from</span> <span class="nn">py_pol.mueller</span> <span class="kn">import</span> <span class="n">Mueller</span>
+<span class="kn">from</span> <span class="nn">py_pol.utils</span> <span class="kn">import</span> <span class="n">degrees</span>
+
+<span class="n">j0</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;j0&quot;</span><span class="p">)</span>
+<span class="n">j0</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+
+<span class="n">m1</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s2">&quot;m1&quot;</span><span class="p">)</span>
+<span class="n">m1</span><span class="o">.</span><span class="n">diattenuator_linear</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+
+<span class="n">j1</span><span class="o">=</span><span class="n">m1</span><span class="o">*</span><span class="n">j0</span>
+</pre></div>
+</div>
+<p>Extracting information from Stokes vectors.</p>
+<p>Determining the intensity of a Stokes vector:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">i1</span><span class="o">=</span><span class="n">j0</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">intensity</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;intensity = </span><span class="si">{:4.3f}</span><span class="s2"> arb. u.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i1</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intensity</span> <span class="o">=</span> <span class="mf">1.000</span> <span class="n">arb</span><span class="o">.</span> <span class="n">u</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Determining all the parameters of a Stokes vector:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">j0</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">j0</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">j0</span> <span class="o">=</span> <span class="p">[</span> <span class="o">+</span><span class="mi">1</span><span class="p">;</span>  <span class="o">+</span><span class="mi">0</span><span class="p">;</span>  <span class="o">+</span><span class="mi">1</span><span class="p">;</span>  <span class="o">+</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="n">parameters</span> <span class="n">of</span> <span class="n">j0</span><span class="p">:</span>
+    <span class="n">intensity</span>             <span class="p">:</span> <span class="mf">1.000</span> <span class="n">arb</span><span class="o">.</span> <span class="n">u</span><span class="o">.</span>
+    <span class="n">amplitudes</span>            <span class="p">:</span> <span class="n">E0x</span> <span class="mf">0.707</span><span class="p">,</span> <span class="n">E0y</span> <span class="mf">0.707</span><span class="p">,</span> <span class="n">E0_unpol</span> <span class="mf">0.000</span>
+    <span class="n">degree</span> <span class="n">polarization</span>   <span class="p">:</span> <span class="mf">1.000</span>
+    <span class="n">degree</span> <span class="n">linear</span> <span class="n">pol</span><span class="o">.</span>    <span class="p">:</span> <span class="mf">1.000</span>
+    <span class="n">degree</span>   <span class="n">circular</span> <span class="n">pol</span><span class="o">.</span><span class="p">:</span> <span class="mf">0.000</span>
+    <span class="n">alpha</span>                 <span class="p">:</span> <span class="mf">45.000</span> <span class="n">deg</span>
+    <span class="n">delay</span>                 <span class="p">:</span> <span class="mf">0.000</span> <span class="n">deg</span>
+    <span class="n">azimuth</span>               <span class="p">:</span> <span class="mf">45.000</span> <span class="n">deg</span>
+    <span class="n">ellipticity</span>  <span class="n">angle</span>    <span class="p">:</span> <span class="mf">0.000</span> <span class="n">deg</span>
+    <span class="n">ellipticity</span>  <span class="n">param</span>    <span class="p">:</span> <span class="mf">0.000</span>
+    <span class="n">eccentricity</span>          <span class="p">:</span> <span class="mf">1.000</span>
+    <span class="n">polarized</span> <span class="n">vector</span>      <span class="p">:</span> <span class="p">[</span><span class="o">+</span><span class="mf">1.000</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">;</span> <span class="o">+</span><span class="mf">1.000</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">]</span><span class="s1">&#39;</span>
+    <span class="n">unpolarized</span> <span class="n">vector</span>    <span class="p">:</span> <span class="p">[</span><span class="o">+</span><span class="mf">0.000</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">]</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">j1</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">j1</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">*</span> <span class="n">j0</span> <span class="o">=</span> <span class="p">[</span><span class="o">+</span><span class="mf">0.500</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.500</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">]</span>
+
+<span class="n">parameters</span> <span class="n">of</span> <span class="n">m1</span> <span class="o">*</span> <span class="n">j0</span><span class="p">:</span>
+    <span class="n">intensity</span>             <span class="p">:</span> <span class="mf">0.500</span> <span class="n">arb</span><span class="o">.</span> <span class="n">u</span><span class="o">.</span>
+    <span class="n">amplitudes</span>            <span class="p">:</span> <span class="n">E0x</span> <span class="mf">0.707</span><span class="p">,</span> <span class="n">E0y</span> <span class="mf">0.000</span><span class="p">,</span> <span class="n">E0_unpol</span> <span class="mf">0.000</span>
+    <span class="n">degree</span> <span class="n">polarization</span>   <span class="p">:</span> <span class="mf">1.000</span>
+    <span class="n">degree</span> <span class="n">linear</span> <span class="n">pol</span><span class="o">.</span>    <span class="p">:</span> <span class="mf">1.000</span>
+    <span class="n">degree</span>   <span class="n">circular</span> <span class="n">pol</span><span class="o">.</span><span class="p">:</span> <span class="mf">0.000</span>
+    <span class="n">alpha</span>                 <span class="p">:</span> <span class="mf">0.000</span> <span class="n">deg</span>
+    <span class="n">delay</span>                 <span class="p">:</span> <span class="mf">0.000</span> <span class="n">deg</span>
+    <span class="n">azimuth</span>               <span class="p">:</span> <span class="mf">0.000</span> <span class="n">deg</span>
+    <span class="n">ellipticity</span>  <span class="n">angle</span>    <span class="p">:</span> <span class="mf">0.000</span> <span class="n">deg</span>
+    <span class="n">ellipticity</span>  <span class="n">param</span>    <span class="p">:</span> <span class="mf">0.000</span>
+    <span class="n">eccentricity</span>          <span class="p">:</span> <span class="mf">1.000</span>
+    <span class="n">polarized</span> <span class="n">vector</span>      <span class="p">:</span> <span class="p">[</span><span class="o">+</span><span class="mf">0.500</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.500</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">]</span><span class="s1">&#39;</span>
+    <span class="n">unpolarized</span> <span class="n">vector</span>    <span class="p">:</span> <span class="p">[</span><span class="o">+</span><span class="mf">0.000</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">;</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">]</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>Extracting information from Mueller matrices.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m2</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s2">&quot;m2&quot;</span><span class="p">)</span>
+<span class="n">m2</span><span class="o">.</span><span class="n">diattenuator_retarder_linear</span><span class="p">(</span><span class="n">D</span><span class="o">=</span><span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">p1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="n">m2</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">retardance</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;delay = </span><span class="si">{:2.1f}</span><span class="s2">º&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">delay</span><span class="o">/</span><span class="n">degrees</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">delay</span> <span class="o">=</span> <span class="mf">90.0</span><span class="n">º</span>
+</pre></div>
+</div>
+<p>There is a function in Parameters_Jones_Vector class, .get_all() that will compute all the parameters available and stores in a dictionary .dict_params(). Info about dict parameters can be revised using the print function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">m2</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m2</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="n">m2</span> <span class="o">=</span>
+    <span class="p">[</span><span class="o">+</span><span class="mf">0.6250</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.3750</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.0000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.0000</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">+</span><span class="mf">0.3750</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.6250</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.0000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.0000</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">+</span><span class="mf">0.0000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.0000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.0000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.5000</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">+</span><span class="mf">0.0000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.0000</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.0000</span><span class="p">]</span>
+
+<span class="n">Parameters</span> <span class="n">of</span> <span class="n">m2</span><span class="p">:</span>
+    <span class="n">Transmissions</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">Mean</span>                  <span class="p">:</span> <span class="mf">62.5</span> <span class="o">%.</span>
+        <span class="o">-</span> <span class="n">Maximum</span>               <span class="p">:</span> <span class="mf">100.0</span> <span class="o">%.</span>
+        <span class="o">-</span> <span class="n">Minimum</span>               <span class="p">:</span> <span class="mf">25.0</span> <span class="o">%.</span>
+    <span class="n">Diattenuation</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">Total</span>                 <span class="p">:</span> <span class="mf">0.600</span><span class="o">.</span>
+        <span class="o">-</span> <span class="n">Linear</span>                <span class="p">:</span> <span class="mf">0.600</span><span class="o">.</span>
+        <span class="o">-</span> <span class="n">Circular</span>              <span class="p">:</span> <span class="mf">0.000</span><span class="o">.</span>
+    <span class="n">Polarizance</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">Total</span>                 <span class="p">:</span> <span class="mf">0.600</span><span class="o">.</span>
+        <span class="o">-</span> <span class="n">Linear</span>                <span class="p">:</span> <span class="mf">0.600</span><span class="o">.</span>
+        <span class="o">-</span> <span class="n">Circular</span>              <span class="p">:</span> <span class="mf">0.000</span><span class="o">.</span>
+    <span class="n">Spheric</span> <span class="n">purity</span>              <span class="p">:</span> <span class="mf">0.872</span><span class="o">.</span>
+    <span class="n">Retardance</span>                  <span class="p">:</span> <span class="mf">1.571</span><span class="o">.</span>
+    <span class="n">Polarimetric</span> <span class="n">purity</span>         <span class="p">:</span> <span class="mf">1.000</span><span class="o">.</span>
+    <span class="n">Depolarization</span> <span class="n">degree</span>       <span class="p">:</span> <span class="mf">0.000</span><span class="o">.</span>
+    <span class="n">Depolarization</span> <span class="n">factors</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">Euclidean</span> <span class="n">distance</span>    <span class="p">:</span> <span class="mf">1.732</span><span class="o">.</span>
+        <span class="o">-</span> <span class="n">Depolarization</span> <span class="n">factor</span> <span class="p">:</span> <span class="mf">0.000</span><span class="o">.</span>
+    <span class="n">Polarimetric</span> <span class="n">purity</span> <span class="n">indices</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">P1</span>                    <span class="p">:</span> <span class="mf">1.000</span><span class="o">.</span>
+        <span class="o">-</span> <span class="n">P2</span>                    <span class="p">:</span> <span class="mf">1.000</span><span class="o">.</span>
+        <span class="o">-</span> <span class="n">P3</span>                    <span class="p">:</span> <span class="mf">1.000</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>There are many types of Mueller matrices. The Check_Mueller calss implements all the checks that can be performed in order to clasify a Mueller matrix. They are stored in the checks field of Mueller class.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s2">&quot;m1&quot;</span><span class="p">)</span>
+<span class="n">m1</span><span class="o">.</span><span class="n">diattenuator_linear</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">c1</span> <span class="o">=</span> <span class="n">m1</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_physical</span><span class="p">()</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">m1</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_homogeneous</span><span class="p">()</span>
+<span class="n">c3</span> <span class="o">=</span> <span class="n">m1</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_retarder</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The linear diattenuator is physical: </span><span class="si">{}</span><span class="s1">; hogeneous: </span><span class="si">{}</span><span class="s1">; and a retarder: </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">=</span>
+  <span class="p">[</span><span class="o">+</span><span class="mf">0.520</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.480</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">]</span>
+  <span class="p">[</span><span class="o">+</span><span class="mf">0.480</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.520</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">]</span>
+  <span class="p">[</span><span class="o">+</span><span class="mf">0.000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.200</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">]</span>
+  <span class="p">[</span><span class="o">+</span><span class="mf">0.000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.000</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.200</span><span class="p">]</span>
+
+
+<span class="n">The</span> <span class="n">linear</span> <span class="n">diattenuator</span> <span class="ow">is</span> <span class="n">physical</span><span class="p">:</span> <span class="kc">True</span><span class="p">;</span> <span class="n">hogeneous</span><span class="p">:</span> <span class="kc">True</span><span class="p">;</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">retarder</span><span class="p">:</span> <span class="kc">False</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="drawings">
+<h3><span class="section-number">1.2.3. </span>Drawings<a class="headerlink" href="#drawings" title="Permalink to this headline"></a></h3>
+<p>The modules also allows to obtain graphical representation of polarization.</p>
+<p>Drawing polarization ellipse for Jones vectors.</p>
+<a class="reference internal image-reference" href="_images/ellipse_Jones_1.png"><img alt="_images/ellipse_Jones_1.png" src="_images/ellipse_Jones_1.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="_images/ellipse_Jones_3.png"><img alt="_images/ellipse_Jones_3.png" src="_images/ellipse_Jones_3.png" style="width: 600px;" /></a>
+<p>Drawing polarization ellipse for Stokes vectors with random distribution due to unpolarized part of light.</p>
+<a class="reference internal image-reference" href="_images/ellipse_Stokes_1.png"><img alt="_images/ellipse_Stokes_1.png" src="_images/ellipse_Stokes_1.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="_images/ellipse_Stokes_2.png"><img alt="_images/ellipse_Stokes_2.png" src="_images/ellipse_Stokes_2.png" style="width: 600px;" /></a>
+<p>Drawing Stokes vectors in Poincare sphere.</p>
+<a class="reference internal image-reference" href="_images/poincare2.png"><img alt="_images/poincare2.png" src="_images/poincare2.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="_images/poincare3.png"><img alt="_images/poincare3.png" src="_images/poincare3.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="_images/poincare4.png"><img alt="_images/poincare4.png" src="_images/poincare4.png" style="width: 600px;" /></a>
+</section>
+</section>
+<section id="conventions">
+<h2><span class="section-number">1.3. </span>Conventions<a class="headerlink" href="#conventions" title="Permalink to this headline"></a></h2>
+<p>In this module we assume the light is propagated along the z direction. Then, the electric field is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\overrightarrow{E}(x,y,z)=\left[\begin{array}{c}
+E_{x}(x,y)\\
+E_{y}(x,y)\\
+0
+\end{array}\right]e^{i(kz-\omega t)},\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(E_x\)</span> and <span class="math notranslate nohighlight">\(E_y\)</span> are the two components of the Jones vector. Also, we define the x component as the origin of global phase, so it is 0 when <span class="math notranslate nohighlight">\(E_x\)</span> is real and positive. In the extraordinary case when <span class="math notranslate nohighlight">\(E_x = 0\)</span>, the globalphase is extracted from the y component. Then, the most general unitary Jones vector can be described as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E=E_{0}e^{i\Phi}\left[\begin{array}{c}
+\cos(\alpha)\\
+\sin(\alpha)e^{i\delta}
+\end{array}\right]\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(E_0\)</span> is the electric field amplitude, <span class="math notranslate nohighlight">\(\Phi\)</span> is the global phase, and <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\delta\)</span> are the characteristic angles of the light state.</p>
+<p>This phase convention also affects the description of retarders. For example, a linear retarder with an azimuth of 0º for its fast eigenstate will have the following Jones matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}J_{R}=\left[\begin{array}{cc}
+1 &amp; 0\\
+0 &amp; e^{-i\Delta}
+\end{array}\right],\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta\)</span> is the retarder retardance.</p>
+</section>
+<section id="authors">
+<h2><span class="section-number">1.4. </span>Authors<a class="headerlink" href="#authors" title="Permalink to this headline"></a></h2>
+<a class="reference internal image-reference" href="_images/logoUCM.png"><img alt="_images/logoUCM.png" class="align-right" src="_images/logoUCM.png" style="width: 125px;" /></a>
+<ul>
+<li><p>Jesus del Hoyo &lt;<a class="reference external" href="mailto:jhoyo&#37;&#52;&#48;ucm&#46;es">jhoyo<span>&#64;</span>ucm<span>&#46;</span>es</a>&gt;</p></li>
+<li><p>Luis Miguel Sanchez Brea &lt;<a class="reference external" href="mailto:optbrea&#37;&#52;&#48;ucm&#46;es">optbrea<span>&#64;</span>ucm<span>&#46;</span>es</a>&gt;</p>
+<blockquote>
+<div><p><strong>Universidad Complutense de Madrid</strong>,
+Faculty of Physical Sciences,
+Department of Optics
+Plaza de las ciencias 1,
+ES-28040 Madrid (Spain)</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="citing">
+<h2><span class="section-number">1.5. </span>Citing<a class="headerlink" href="#citing" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Hoyo, L. M. Sanchez-Brea, A. Soria-Garcia, &quot;Open source library for polarimetric calculations “py_pol”&quot;, Proc. SPIE 11875, Computational Optics 2021, 1187506 (14 September 2021); doi: 10.1117/12.2597163, <a class="reference external" href="https://spie.org/Publications/Proceedings/Paper/10.1117/12.2597163?SSO=1">https://spie.org/Publications/Proceedings/Paper/10.1117/12.2597163?SSO=1</a>.</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="10">
+<li><p>del Hoyo, L.M. Sanchez Brea, &quot;py-pol, Python module for polarization optics&quot;, <a class="reference external" href="https://pypi.org/project/py-pol/">https://pypi.org/project/py-pol/</a> (2019)</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="references">
+<h2><span class="section-number">1.6. </span>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><ol class="upperalpha simple" start="4">
+<li><p>Goldstein &quot;Polarized light&quot; 2nd edition, Marcel Dekker (1993).</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="10">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Gil, R. Ossikovsky &quot;Polarized light and the Mueller Matrix approach&quot;, CRC Press (2016).</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="3">
+<li><p>Brosseau &quot;Fundamentals of Polarized Light&quot; Wiley (1998).</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="18">
+<li><p>Martinez-Herrero, P. M. Mejias, G. Piquero &quot;Characterization of partially polarized light fields&quot; Springer series in Optical sciences (2009).</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="10">
+<li><ol class="upperalpha simple" start="13">
+<li><p>Bennet &quot;Handbook of Optics 1&quot; Chapter 5 'Polarization'.</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="18">
+<li><ol class="upperalpha simple">
+<li><p>Chipman &quot;Handbook of Optics 2&quot; Chapter 2 'Polarimetry'.</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="19">
+<li><ol class="upperalpha simple" start="25">
+<li><p>Lu and RA Chipman, &quot;Homogeneous and inhomogeneous Jones matrices&quot;,  J. Opt. Soc. Am. A 11(2) 766 (1994).</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="acknowlegments">
+<h2><span class="section-number">1.7. </span>Acknowlegments<a class="headerlink" href="#acknowlegments" title="Permalink to this headline"></a></h2>
+<p>This software was initially developed for the project Retos-Colaboración 2016 &quot;Ecograb&quot; (RTC-2016-5277-5) and &quot;Teluro-AEI&quot; (RTC2019-007113-3) of Ministerio de Economía y Competitivdad (Spain) and the European funds for regional development (EU), led by Luis Miguel Sanchez-Brea.</p>
+</section>
+<section id="credits">
+<h2><span class="section-number">1.8. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline"></a></h2>
+<p>This package was created with <a class="reference external" href="https://github.com/audreyr/cookiecutter">Cookiecutter</a> and the <a class="reference external" href="https://github.com/audreyr/cookiecutter-pypackage">audreyr/cookiecutter-pypackage</a> project template.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Python polarization&#39;s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="2. Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Jesus del Hoyo Muñoz / Luis Miguel Sanchez Brea.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

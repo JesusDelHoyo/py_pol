@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>py_pol.drawings &mdash; Python polarization 1.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Python polarization
+          </a>
+              <div class="version">
+                1.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">1. Python polarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">4. py_pol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">5. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">6. History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">7. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python polarization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>py_pol.drawings</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for py_pol.drawings</h1><div class="highlight"><pre>
+<span></span><span class="c1"># !/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="c1"># ------------------------------------</span>
+<span class="c1"># Authors:    Jesus del Hoyo and Luis Miguel Sanchez Brea</span>
+<span class="c1"># Date:       2019/02/03 (version 1.0)</span>
+<span class="c1"># License:    GPL</span>
+<span class="c1"># ------------------------------------</span>
+<span class="sd">&quot;&quot;&quot; functions for drawing &quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="kn">import</span> <span class="n">make_axes_locatable</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">asarray</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">linspace</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">meshgrid</span><span class="p">,</span>
+                   <span class="n">ndarray</span><span class="p">,</span> <span class="n">ones</span><span class="p">,</span> <span class="n">outer</span><span class="p">,</span> <span class="n">real</span><span class="p">,</span> <span class="n">remainder</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span>
+                   <span class="n">zeros_like</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">fftconvolve</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="kn">from</span> <span class="nn">plotly.subplots</span> <span class="kn">import</span> <span class="n">make_subplots</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">np</span><span class="p">,</span> <span class="n">degrees</span><span class="p">,</span> <span class="n">eps</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">nearest2</span><span class="p">,</span> <span class="n">obj_2_xyz</span><span class="p">,</span> <span class="n">azel_2_xyz</span>
+
+<span class="c1"># print(matplotlib.__version__)</span>
+
+<span class="n">Axes3D</span> <span class="o">=</span> <span class="n">Axes3D</span>  <span class="c1"># pycharm auto import</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">TABLEAU_COLORS</span>
+<span class="n">name_colors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+<span class="c1"># linestyles = [(&#39;dashdot&#39;, &#39;dashdot&#39;),</span>
+<span class="c1">#               (&#39;loosely dashdotted&#39;, (0, (3, 10, 1, 10))),</span>
+<span class="c1">#               (&#39;dashdotted&#39;, (0, (3, 5, 1, 5))),</span>
+<span class="c1">#               (&#39;densely dashdotted&#39;, (0, (3, 1, 1, 1))),</span>
+<span class="c1">#               (&#39;dashdotdotted&#39;, (0, (3, 5, 1, 5, 1, 5))),</span>
+<span class="c1">#               (&#39;loosely dashdotdotted&#39;, (0, (3, 10, 1, 10, 1, 10))),</span>
+<span class="c1">#               (&#39;densely dashdotdotted&#39;, (0, (3, 1, 1, 1, 1, 1)))]</span>
+<span class="n">linestyles</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="s1">&#39;dashdot&#39;</span><span class="p">,</span> <span class="s1">&#39;loosely dotted&#39;</span><span class="p">,</span> <span class="s1">&#39;loosely dashed&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;loosely dashdot&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># Use only when creating docs</span>
+<span class="c1"># import plotly.io as pio</span>
+<span class="c1"># pio.renderers.default = &quot;jupyterlab&quot;</span>
+<span class="c1"># print(pio.renderers)</span>
+
+
+<div class="viewcode-block" id="draw_ellipse"><a class="viewcode-back" href="../../source/py_pol/drawings.html#py_pol.drawings.draw_ellipse">[docs]</a><span class="k">def</span> <span class="nf">draw_ellipse</span><span class="p">(</span><span class="n">E</span><span class="p">,</span>
+                 <span class="n">N_angles</span><span class="o">=</span><span class="mi">91</span><span class="p">,</span>
+                 <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                 <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+                 <span class="n">limit</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                 <span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">depol_central</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">depol_contour</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">depol_prob</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">subplots</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">N_prob</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+                 <span class="n">contour_levels</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hot&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Draws polarization ellipse of Jones vector.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        E (Jones_vector or Stokes): Light object.</span>
+<span class="sd">        N_angles (int): Number of angles to plot the ellipses. Default: 91.</span>
+<span class="sd">        filename (str): name of filename to save the figure.</span>
+<span class="sd">        figsize (tuple): A tuple of length 2 containing the figure size. Default: (8,8).</span>
+<span class="sd">        limit (float): limit for drawing. If empty, it is obtained from amplitudes.</span>
+<span class="sd">        draw_arrow (bool): If True, draws an arrow containing the turning sense of the polarization. Does not work with linear polarization vectors. Default: True.</span>
+<span class="sd">        depol_central (bool): If True, draws a central circle containing the unpolarized field amplitude. Default: False.</span>
+<span class="sd">        depol_contour (bool): If True, draws a line enveloping the polarization ellipse in order to plot the depolarization. Default: False.</span>
+<span class="sd">        depol_prob (bool): If True, plots the probability distribution of the electric field. Default: False.</span>
+<span class="sd">        subplots (string, tuple or None): If AS_SHAPE, divides the figure in several subplots as the shape of the py_pol object. If INDIVIDUAL, each vector is represented in its own subaxis, trying to use a square grid. If tuple, divides the figure in that same number of subplots. If None, all ellipses are plot in the same axes. Default: None.</span>
+<span class="sd">        N_prob (int): Number of points in each dimension for probability distributions. Default: 256.</span>
+<span class="sd">        contour_levels (float, np.ndarray, tuple or list): Contains the contour levels (normalized to 1). Default: 0.9.</span>
+<span class="sd">        cmap (str or color object): Default colormap for probability distributions. Default: hot.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        fig (handle): handle to figure.</span>
+<span class="sd">        ax (list of handles): handles to axes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Calculate the electric field amplitudes and the delays</span>
+    <span class="k">if</span> <span class="n">E</span><span class="o">.</span><span class="n">_type</span> <span class="o">==</span> <span class="s1">&#39;Jones_vector&#39;</span><span class="p">:</span>
+        <span class="n">E0x</span><span class="p">,</span> <span class="n">E0y</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">amplitudes</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">E0u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">E0x</span><span class="p">,</span> <span class="n">E0y</span><span class="p">,</span> <span class="n">E0u</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">amplitudes</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">give_unpol</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">delay</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">phase</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">global_phase</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">phase</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">E0x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">phase</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">phase</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">phase</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Create the angle variables</span>
+    <span class="n">angles</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">degrees</span><span class="p">,</span> <span class="n">N_angles</span><span class="p">)</span>
+    <span class="n">Angles</span><span class="p">,</span> <span class="n">E0X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">E0x</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">E0Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">E0y</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">Delay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">delay</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">Phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">phase</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">E</span><span class="o">.</span><span class="n">_type</span> <span class="o">==</span> <span class="s1">&#39;Jones_vector&#39;</span><span class="p">:</span>
+        <span class="n">is_linear</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_linear</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">out_number</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">is_linear</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_linear</span><span class="p">(</span>
+            <span class="n">shape</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">out_number</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># Create the electric field distributions</span>
+    <span class="n">Ex</span> <span class="o">=</span> <span class="n">E0X</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Angles</span> <span class="o">+</span> <span class="n">Phase</span><span class="p">)</span>
+    <span class="n">Ey</span> <span class="o">=</span> <span class="n">E0Y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Angles</span> <span class="o">+</span> <span class="n">Phase</span> <span class="o">+</span> <span class="n">Delay</span><span class="p">)</span>
+    <span class="c1"># Calculate the depolarization central distribution</span>
+    <span class="k">if</span> <span class="n">E</span><span class="o">.</span><span class="n">_type</span> <span class="o">==</span> <span class="s1">&#39;Stokes&#39;</span> <span class="ow">and</span> <span class="n">depol_central</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">E0U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">E0u</span><span class="p">)</span>
+        <span class="n">Exu</span> <span class="o">=</span> <span class="n">E0U</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Angles</span><span class="p">)</span>
+        <span class="n">Eyu</span> <span class="o">=</span> <span class="n">E0U</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Angles</span><span class="p">)</span>
+    <span class="c1"># Safety arrays</span>
+    <span class="k">if</span> <span class="n">E</span><span class="o">.</span><span class="n">_type</span> <span class="o">==</span> <span class="s1">&#39;Stokes&#39;</span><span class="p">:</span>
+        <span class="n">is_pol</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_polarized</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">out_number</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">is_depol</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_depolarized</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">out_number</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">is_pol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">is_pol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">E0x</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="c1"># Set automatic limits</span>
+    <span class="k">if</span> <span class="n">limit</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">[],</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">depol_contour</span> <span class="ow">or</span> <span class="n">depol_prob</span><span class="p">:</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">E0x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">E0u</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+                              <span class="n">E0y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">E0u</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">E0x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">E0y</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">E0u</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.2</span>
+
+    <span class="c1"># Prepare the figure and the subplots</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">depol_prob</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">subplots</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">tuple</span> <span class="ow">and</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">subplots</span><span class="p">)):</span>
+            <span class="k">pass</span>  <span class="c1"># Only case subplots is not overwritten</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">subplots</span> <span class="o">=</span> <span class="s1">&#39;individual&#39;</span>
+    <span class="k">if</span> <span class="n">subplots</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Just one subplot</span>
+        <span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span><span class="p">,</span> <span class="n">Nsubplots</span><span class="p">,</span> <span class="n">Ncurves</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">subplots</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">tuple</span><span class="p">:</span>
+        <span class="c1"># Set number of subplots</span>
+        <span class="n">Nsubplots</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">subplots</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span> <span class="o">%</span> <span class="n">Nsubplots</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s1">&#39;Shape </span><span class="si">{}</span><span class="s1"> is not valid for the object </span><span class="si">{}</span><span class="s1"> of </span><span class="si">{}</span><span class="s1"> elements&#39;</span><span class="o">.</span>
+                <span class="nb">format</span><span class="p">(</span><span class="n">subplots</span><span class="p">,</span> <span class="n">E</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+        <span class="n">Ncurves</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="n">Nsubplots</span>
+        <span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span> <span class="o">=</span> <span class="n">subplots</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">indS</span><span class="p">,</span> <span class="n">indE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">subplots</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;AS_SHAPE&#39;</span><span class="p">,</span> <span class="s1">&#39;as_shape&#39;</span><span class="p">,</span> <span class="s1">&#39;As_shape&#39;</span><span class="p">):</span>
+        <span class="c1"># Subplots given by phase</span>
+        <span class="k">if</span> <span class="n">E</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+            <span class="n">Nsubplots</span><span class="p">,</span> <span class="n">Ncurves</span> <span class="o">=</span> <span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">Nsubplots</span><span class="p">,</span> <span class="n">Ncurves</span> <span class="o">=</span> <span class="p">(</span><span class="n">Nx</span> <span class="o">*</span> <span class="n">Ny</span><span class="p">,</span> <span class="n">E</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="p">(</span><span class="n">Nx</span> <span class="o">*</span> <span class="n">Ny</span><span class="p">))</span>
+        <span class="n">indS</span><span class="p">,</span> <span class="n">indE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">subplots</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;individual&#39;</span><span class="p">,</span> <span class="s1">&#39;Individual&#39;</span><span class="p">,</span> <span class="s1">&#39;INDIVIDUAL&#39;</span><span class="p">):</span>
+        <span class="n">Ny</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">)))</span>
+        <span class="n">Nx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="n">Ny</span><span class="p">))</span>
+        <span class="n">Nsubplots</span><span class="p">,</span> <span class="n">Ncurves</span> <span class="o">=</span> <span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> is not a valid subplots option.&#39;</span><span class="p">)</span>
+    <span class="c1"># If contour lines or probability must be plotted, calculate the probability distributions and linestyles</span>
+    <span class="k">if</span> <span class="n">depol_contour</span> <span class="ow">or</span> <span class="n">depol_prob</span><span class="p">:</span>
+        <span class="c1"># Create the basic probability distribution</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">N_prob</span><span class="p">)</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">E0U</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">E0u</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">E0U</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+        <span class="c1"># Create the ellipse distribution</span>
+        <span class="n">indX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Ex</span><span class="p">))</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+        <span class="n">indY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Ey</span><span class="p">))</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+        <span class="n">indE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">),</span> <span class="n">N_angles</span><span class="p">)</span>
+        <span class="c1"># indE = np.flip(indE)</span>
+        <span class="n">ellipse_3D</span> <span class="o">=</span> <span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">ellipse_3D</span><span class="p">[</span><span class="n">indE</span><span class="p">,</span> <span class="n">indY</span><span class="p">,</span> <span class="n">indX</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1"># Convolute them adn normalize to 1</span>
+        <span class="n">prob</span> <span class="o">=</span> <span class="n">fftconvolve</span><span class="p">(</span><span class="n">ellipse_3D</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">MAX</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">prob</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">prob</span> <span class="o">=</span> <span class="n">prob</span> <span class="o">/</span> <span class="n">MAX</span>
+        <span class="c1"># Remove info for totally polarized vectors</span>
+        <span class="n">prob</span><span class="p">[</span><span class="o">~</span><span class="n">is_depol</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># Linestyles</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">contour_levels</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">linestyles</span><span class="p">):</span>
+            <span class="n">line_styles</span> <span class="o">=</span> <span class="n">linestyles</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">contour_levels</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">line_styles</span> <span class="o">=</span> <span class="p">[</span><span class="n">linestyles</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+    <span class="c1"># Main loop</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>  <span class="c1"># Loop in curves</span>
+        <span class="c1"># Initial considerations for the subplot</span>
+        <span class="n">indS</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ind</span> <span class="o">/</span> <span class="n">Ncurves</span><span class="p">))</span>
+        <span class="n">indC</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ind</span> <span class="o">%</span> <span class="n">Ncurves</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">indC</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span><span class="p">,</span> <span class="n">indS</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">Nsubplots</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">subplots</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;individual&#39;</span><span class="p">,</span> <span class="s1">&#39;Individual&#39;</span><span class="p">,</span> <span class="s1">&#39;INDIVIDUAL&#39;</span><span class="p">):</span>
+                    <span class="n">string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">indS</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">indS</span><span class="p">,</span> <span class="p">(</span><span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span><span class="p">))))</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span>
+        <span class="c1"># Other considerations</span>
+        <span class="k">if</span> <span class="n">depol_prob</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">name_colors</span><span class="p">[</span><span class="n">ind</span> <span class="o">%</span> <span class="mi">10</span><span class="p">]]</span>
+        <span class="k">if</span> <span class="n">subplots</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;AS_SHAPE&#39;</span><span class="p">,</span> <span class="s1">&#39;as_shape&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;As_shape&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">Nx</span> <span class="o">*</span> <span class="n">Ny</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">Ncurves</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">E</span><span class="o">.</span><span class="n">shape</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">Ncurves</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;Polarized&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">E</span><span class="o">.</span><span class="n">shape</span><span class="p">)))</span>
+        <span class="c1"># Plot the probability distribution</span>
+        <span class="k">if</span> <span class="n">depol_prob</span> <span class="ow">and</span> <span class="n">is_depol</span><span class="p">[</span><span class="n">ind</span><span class="p">]:</span>
+            <span class="n">IDimage</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+                <span class="n">prob</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span>
+                <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+                <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span>
+                <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span>
+                <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span><span class="p">])</span>
+            <span class="c1"># axis = axis[0]</span>
+        <span class="c1"># Plot the curve</span>
+        <span class="k">if</span> <span class="n">is_pol</span><span class="p">[</span><span class="n">ind</span><span class="p">]:</span>
+            <span class="n">axis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ex</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">:],</span> <span class="n">Ey</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">:],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">string</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">draw_arrow</span> <span class="ow">and</span> <span class="o">~</span><span class="n">is_linear</span><span class="p">[</span><span class="n">ind</span><span class="p">]:</span>
+                <span class="n">axis</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span>
+                    <span class="n">Ex</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                    <span class="n">Ey</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                    <span class="n">Ex</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">Ex</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                    <span class="n">Ey</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">Ey</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                    <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="n">head_width</span><span class="o">=</span><span class="mf">0.075</span> <span class="o">*</span> <span class="n">limit</span><span class="p">,</span>
+                    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                    <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">E</span><span class="o">.</span><span class="n">_type</span> <span class="o">==</span> <span class="s1">&#39;Stokes&#39;</span> <span class="ow">and</span> <span class="n">depol_central</span> <span class="ow">and</span> <span class="o">~</span><span class="n">is_depol</span><span class="p">[</span><span class="n">ind</span><span class="p">]:</span>
+            <span class="n">axis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">string</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">depol_central</span> <span class="ow">or</span> <span class="n">depol_prob</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Field </span><span class="si">{}</span><span class="s1"> is empty.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Field </span><span class="si">{}</span><span class="s1"> is empty or totally depolarized.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
+        <span class="c1"># Add the depolarization for Stokes vectors</span>
+        <span class="k">if</span> <span class="n">E</span><span class="o">.</span><span class="n">_type</span> <span class="o">==</span> <span class="s1">&#39;Stokes&#39;</span> <span class="ow">and</span> <span class="n">depol_central</span> <span class="ow">and</span> <span class="n">is_depol</span><span class="p">[</span><span class="n">ind</span><span class="p">]:</span>
+            <span class="n">axis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Exu</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">:],</span> <span class="n">Eyu</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">:],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">E</span><span class="o">.</span><span class="n">_type</span> <span class="o">==</span> <span class="s1">&#39;Stokes&#39;</span> <span class="ow">and</span> <span class="n">depol_contour</span> <span class="ow">and</span> <span class="n">is_pol</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="ow">and</span> <span class="n">is_depol</span><span class="p">[</span><span class="n">ind</span><span class="p">]:</span>
+            <span class="n">CS</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
+                <span class="n">x</span><span class="p">,</span>
+                <span class="n">x</span><span class="p">,</span>
+                <span class="n">prob</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span>
+                <span class="n">contour_levels</span><span class="p">,</span>
+                <span class="n">colors</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="p">),</span>
+                <span class="n">linewidths</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+                <span class="n">linestyles</span><span class="o">=</span><span class="n">line_styles</span><span class="p">)</span>
+            <span class="c1"># linestyles=(&#39;dashdot&#39;))</span>
+        <span class="c1"># Additions to figure</span>
+        <span class="k">if</span> <span class="n">indC</span> <span class="o">==</span> <span class="n">Ncurves</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">axis</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+            <span class="n">axis</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+            <span class="n">axis</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$E_x$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+            <span class="n">axis</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$E_y$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">Ncurves</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">depol_contour</span> <span class="ow">and</span> <span class="n">indC</span> <span class="o">==</span> <span class="n">Ncurves</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">contour_levels</span><span class="p">):</span>
+                    <span class="n">CS</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;P = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elem</span><span class="p">))</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">depol_prob</span> <span class="ow">and</span> <span class="n">is_depol</span><span class="p">[</span><span class="n">indS</span><span class="p">]:</span>
+                <span class="n">divider</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+                <span class="n">cax</span> <span class="o">=</span> <span class="n">divider</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+                <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">IDimage</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">)</span>
+                <span class="n">IDimage</span><span class="o">.</span><span class="n">set_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Nsubplots</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span>
+    <span class="c1"># Save the image if required</span>
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">[],</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Image </span><span class="si">{}</span><span class="s1"> saved succesfully!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
+
+
+<span class="c1">#</span>
+<span class="c1"># def draw_ellipse_stokes(stokes_0,</span>
+<span class="c1">#                         kind=&#39;&#39;,</span>
+<span class="c1">#                         limit=&#39;&#39;,</span>
+<span class="c1">#                         has_line=True,</span>
+<span class="c1">#                         filename=&#39;&#39;):</span>
+<span class="c1">#     &quot;&quot;&quot; Draws polarization ellipse in stokes vector. If unpolarized light is present, a distribution of probability is given.</span>
+<span class="c1">#</span>
+<span class="c1">#     Parameters:</span>
+<span class="c1">#         stokes_0 (Stokes): Stokes vector</span>
+<span class="c1">#         kind (str): &#39;line&#39; &#39;probabilities&#39;. &#39;Line&#39;: polarized + unpolarized ellipses. &#39;probabilities&#39; is for unpolarized. Provides probabilities&#39;</span>
+<span class="c1">#         limit (float): limit for drawing. If empty itis obtained from ampltiudes</span>
+<span class="c1">#         has_line (bool or float): If True  draws polarized and 0.1 probability lines. If it is a number draws that probability.</span>
+<span class="c1">#         filename (str): if filled, name for drawing</span>
+<span class="c1">#</span>
+<span class="c1">#     Returns:</span>
+<span class="c1">#         ax (handle): handle to axis.</span>
+<span class="c1">#         fig (handle): handle to figure.</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#     parameters = stokes_0.parameters.get_all()</span>
+<span class="c1">#</span>
+<span class="c1">#     E0x, E0y, E0_unpol = parameters[&#39;amplitudes&#39;]</span>
+<span class="c1">#     delay = parameters[&#39;delay&#39;]</span>
+<span class="c1">#</span>
+<span class="c1">#     angles = linspace(0, 360 * degrees, 256)</span>
+<span class="c1">#     Ex = E0x * cos(angles)</span>
+<span class="c1">#     Ey = E0y * cos(angles + delay)</span>
+<span class="c1">#     E_unpolarized_x = E0_unpol * cos(angles)</span>
+<span class="c1">#     E_unpolarized_y = E0_unpol * sin(angles)</span>
+<span class="c1">#</span>
+<span class="c1">#     if limit in [0, &#39;&#39;, [], None]:</span>
+<span class="c1">#         radius_max = sqrt(</span>
+<span class="c1">#             ((Ex + E_unpolarized_x)**2 + (Ey + E_unpolarized_y)**2).max())</span>
+<span class="c1">#         limit = radius_max * 1.25</span>
+<span class="c1">#</span>
+<span class="c1">#     x = linspace(-limit, limit, 256)</span>
+<span class="c1">#     y = linspace(-limit, limit, 256)</span>
+<span class="c1">#     X, Y = meshgrid(x, y)</span>
+<span class="c1">#</span>
+<span class="c1">#     if abs(E0_unpol) &lt; eps or kind == &#39;line&#39;:</span>
+<span class="c1">#         fig = plt.figure()</span>
+<span class="c1">#         ax = fig.add_subplot(111)</span>
+<span class="c1">#         ax.plot(Ex, Ey, &#39;k&#39;, lw=2, label=&#39;polarized&#39;)</span>
+<span class="c1">#         ax.plot(E_unpolarized_x,</span>
+<span class="c1">#                 E_unpolarized_y,</span>
+<span class="c1">#                 &#39;r--&#39;,</span>
+<span class="c1">#                 lw=2,</span>
+<span class="c1">#                 label=&#39;unpolarized&#39;)</span>
+<span class="c1">#         plt.grid(True)</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         sigma = E0_unpol</span>
+<span class="c1">#</span>
+<span class="c1">#         u_random = exp(-(X**2 + Y**2) / (sigma**2))</span>
+<span class="c1">#</span>
+<span class="c1">#         ellipse_2D = zeros_like(X, dtype=float)</span>
+<span class="c1">#         i_positions, _, _ = nearest2(x, Ex)</span>
+<span class="c1">#         j_positions, _, _ = nearest2(y, Ey)</span>
+<span class="c1">#         ellipse_2D[j_positions, i_positions] = 1</span>
+<span class="c1">#</span>
+<span class="c1">#         prob = fftconvolve(ellipse_2D, u_random, mode=&#39;same&#39;)</span>
+<span class="c1">#         prob = prob / prob.max()</span>
+<span class="c1">#</span>
+<span class="c1">#         fig, ax, IDimage = draw2D(prob, x, y)</span>
+<span class="c1">#         if isinstance(has_line, (int, float)):</span>
+<span class="c1">#             plt.contour(x,</span>
+<span class="c1">#                         y,</span>
+<span class="c1">#                         prob, (has_line, ),</span>
+<span class="c1">#                         colors=(&#39;w&#39;),</span>
+<span class="c1">#                         linestyles=(&#39;dashed&#39;))</span>
+<span class="c1">#         if has_line is True:</span>
+<span class="c1">#             plt.contour(x,</span>
+<span class="c1">#                         y,</span>
+<span class="c1">#                         prob, (0.1, ),</span>
+<span class="c1">#                         colors=(&#39;w&#39;),</span>
+<span class="c1">#                         linestyles=(&#39;dashed&#39;))</span>
+<span class="c1">#         if has_line is not False:</span>
+<span class="c1">#             plt.plot(Ex, Ey, &#39;k&#39;, lw=1)</span>
+<span class="c1">#</span>
+<span class="c1">#         plt.grid(False)</span>
+<span class="c1">#</span>
+<span class="c1">#     plt.axis(&#39;equal&#39;)</span>
+<span class="c1">#     plt.axis(&#39;square&#39;)</span>
+<span class="c1">#     ax.set_xlabel(&#39;$E_x$&#39;, fontsize=22)</span>
+<span class="c1">#     ax.set_ylabel(&#39;$E_y$&#39;, fontsize=22)</span>
+<span class="c1">#     ax.set_xlim(-limit, limit)</span>
+<span class="c1">#     ax.set_ylim(-limit, limit)</span>
+<span class="c1">#     plt.legend()</span>
+<span class="c1">#     plt.tight_layout()</span>
+<span class="c1">#     if filename not in (None, [], &#39;&#39;):</span>
+<span class="c1">#         plt.savefig(filename)</span>
+<span class="c1">#     return ax, fig</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def set_aspect_equal_3d(ax):</span>
+<span class="c1">#     &quot;&quot;&quot;Fix equal aspect bug for 3D plots.&quot;&quot;&quot;</span>
+<span class="c1">#     xlim = (-1, 1)</span>
+<span class="c1">#     ylim = (-1, 1)</span>
+<span class="c1">#     zlim = (-1, 1)</span>
+<span class="c1">#</span>
+<span class="c1">#     xmean = mean(xlim)</span>
+<span class="c1">#     ymean = mean(ylim)</span>
+<span class="c1">#     zmean = mean(zlim)</span>
+<span class="c1">#</span>
+<span class="c1">#     plot_radius = max([</span>
+<span class="c1">#         abs(lim - mean_)</span>
+<span class="c1">#         for lims, mean_ in ((xlim, xmean), (ylim, ymean), (zlim, zmean))</span>
+<span class="c1">#         for lim in lims</span>
+<span class="c1">#     ])</span>
+<span class="c1">#</span>
+<span class="c1">#     factor = 1</span>
+<span class="c1">#     ax.set_xlim3d([xmean - factor * plot_radius, xmean + factor * plot_radius])</span>
+<span class="c1">#     ax.set_ylim3d([ymean - factor * plot_radius, ymean + factor * plot_radius])</span>
+<span class="c1">#     ax.set_zlim3d([zmean - 1 * plot_radius, zmean + 1 * plot_radius])</span>
+
+
+<div class="viewcode-block" id="draw_poincare"><a class="viewcode-back" href="../../source/py_pol/drawings.html#py_pol.drawings.draw_poincare">[docs]</a><span class="k">def</span> <span class="nf">draw_poincare</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">draw_axes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">draw_guides</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> <span class="n">depol</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">in_degrees</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">hover</span><span class="o">=</span><span class="s2">&quot;components&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;Blackbody&quot;</span><span class="p">,</span> <span class="n">show_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Function to draw the Jones or Stokes vectors in the Poincare sphere using plotly.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        S (Jones_vector or Stokes): Object to be represented.</span>
+<span class="sd">        fig (plotly.graph_objects.Figure): Figure to plot the data. Default: None</span>
+<span class="sd">        figsize (2-element iterable): Figure size. Default: (6,6)</span>
+<span class="sd">        draw_axes (bool): If True, it draws the three axes of the Poincare space. Default: True</span>
+<span class="sd">        draw_guides (bool): If True, it draws the circles of S1, S2 and S3 = 0. Default: True</span>
+<span class="sd">        kind (str): Choose between &#39;scatter&#39;, &#39;line&#39;, &#39;scatterline&#39; or &#39;surf&#39; to represent the data. If surf, the object must be 2D, 3D or 4D. Else, it must be 0D, 1D, 2D or 3D. Default: &#39;scatter&#39;.</span>
+<span class="sd">        depol (bool): If True, the depolarization is taking into account for scatter and line plots shrinking the radius below 1. Default: False.</span>
+<span class="sd">        param (str, np.ndarray or None): If str, parameter to use as information for the color. Must be a method of Parameters class which returns a single variable. If np.ndarray, must have the same shape as S. Default: None.</span>
+<span class="sd">        subplots (bool): If True, it tries to use the first two dimensions as rows and columns. If method == &#39;surf&#39;, this is mandatory. Default: False.</span>
+<span class="sd">        in_degrees (bool): If True, transforms the parameters to degrees. Default: False.</span>
+<span class="sd">        log (bool): If True, it calculates it in logarithmic scale. Default: False.</span>
+<span class="sd">        hover (str): Choose between &#39;components&#39; (S1, S2, S3) or &#39;angles&#39; (azimuth, ellipticity). Default: &#39;components&#39;.</span>
+<span class="sd">        colormap (str): Colormap of the plots. Default: &#39;Blackbody&#39;.</span>
+<span class="sd">        show_fig (bool): If True, the figure is inmediately plotted. Default: False.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        fig (go.Figure): Plotly figure.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Unrelated problems</span>
+    <span class="k">if</span> <span class="n">hover</span> <span class="o">==</span> <span class="s2">&quot;angles&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;surf&quot;</span><span class="p">:</span>
+            <span class="n">hover</span> <span class="o">=</span> <span class="s2">&quot;components&quot;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING: Plotly has an issue in the hover of surfaces. Hover mode changed to components.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING: Plotly has an issue in the hover of surfaces. Values are not correct.&quot;</span><span class="p">)</span>
+    <span class="c1"># Allow several figures. Indices: [row, column, trace, dots inside trace]</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">Ndim</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">ndim</span>
+    <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;surf&quot;</span><span class="p">:</span>
+        <span class="c1"># Surf requires pseudo-1D, 2D, and higher dimensions to be separated in subplots</span>
+        <span class="k">if</span> <span class="n">Ndim</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">Ndim</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Object has a wrong number of dimensions (</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Ndim</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">Ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">param</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Object has a too few dimensions (</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Ndim</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># TODO: Interpolate</span>
+                <span class="n">Nrows</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">Ncolumns</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">S</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">S</span><span class="o">.</span><span class="n">size</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">Ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">Nrows</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">Ncolumns</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">S</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span>
+        <span class="k">elif</span> <span class="n">Ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">Nrows</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">Ncolumns</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">S</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">elif</span> <span class="n">Ndim</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="n">Nrows</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">Ncolumns</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">S</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+        <span class="n">Ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span>
+    <span class="k">elif</span> <span class="n">subplots</span><span class="p">:</span>
+        <span class="c1"># When subplots is True, elements of 2D and 3D are separated in differentsubplots. Higher dimensions are taken as part of the 3rd dimension</span>
+        <span class="k">if</span> <span class="n">Ndim</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">Nrows</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">Ncolumns</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">S</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">S</span><span class="o">.</span><span class="n">size</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">Ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">Nrows</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">Ncolumns</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">S</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="k">elif</span> <span class="n">Ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">Nrows</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">Ncolumns</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">S</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">Nrows</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">Ncolumns</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">S</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">:])]</span>
+        <span class="n">Ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># When subplots is false, all traces are plotted in the same sphere. Dimensions higher than 2D are included in the 2nd dimension.</span>
+        <span class="n">Nrows</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">Ncolumns</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">Ndim</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">S</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">size</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">S</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])]</span>
+        <span class="n">Ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="c1"># Reshape param</span>
+    <span class="k">if</span> <span class="n">param</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">param</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+
+    <span class="c1"># Figure and figure options</span>
+    <span class="n">add_auxiliar</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">fig</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">specs</span> <span class="o">=</span> <span class="p">[[{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;surface&#39;</span><span class="p">}]</span> <span class="o">*</span> <span class="n">Ncolumns</span><span class="p">]</span> <span class="o">*</span> <span class="n">Nrows</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="n">Nrows</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">Ncolumns</span><span class="p">,</span> <span class="n">specs</span><span class="o">=</span><span class="n">specs</span><span class="p">)</span>
+        <span class="n">add_auxiliar</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">lighting</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ambient</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">diffuse</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">roughness</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">specular</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">fresnel</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">hover</span> <span class="o">==</span> <span class="s1">&#39;components&#39;</span><span class="p">:</span>
+        <span class="n">hovertemplate</span> <span class="o">=</span> <span class="s2">&quot;S1: %</span><span class="si">{x:.3f}</span><span class="s2">&lt;br&gt;S2: %</span><span class="si">{y:.3f}</span><span class="s2">&lt;br&gt;S3: %</span><span class="si">{z:.3f}</span><span class="s2">&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">hovertemplate</span> <span class="o">=</span> <span class="s2">&quot;Az: %</span><span class="si">{customdata[0]:.1f}</span><span class="s2">&lt;br&gt;El: %</span><span class="si">{customdata[1]:.1f}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Axes</span>
+    <span class="k">if</span> <span class="n">draw_axes</span> <span class="ow">and</span> <span class="n">add_auxiliar</span><span class="p">:</span>
+        <span class="n">line_p</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+        <span class="n">line_m</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s2">&quot;dash&quot;</span><span class="p">)</span>
+        <span class="n">marker</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">axis_px</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.2</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">line</span><span class="o">=</span><span class="n">line_p</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">hoverinfo</span><span class="o">=</span><span class="s2">&quot;skip&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;$S_1$&quot;</span><span class="p">)</span>
+        <span class="n">axis_mx</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.2</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">line</span><span class="o">=</span><span class="n">line_m</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">hoverinfo</span><span class="o">=</span><span class="s2">&quot;skip&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;$-S_1$&quot;</span><span class="p">)</span>
+        <span class="n">line_p</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span> <span class="n">line_m</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
+        <span class="n">axis_py</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.2</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">line</span><span class="o">=</span><span class="n">line_p</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">hoverinfo</span><span class="o">=</span><span class="s2">&quot;skip&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;$S_2$&quot;</span><span class="p">)</span>
+        <span class="n">axis_my</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.2</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">line</span><span class="o">=</span><span class="n">line_m</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">hoverinfo</span><span class="o">=</span><span class="s2">&quot;skip&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;$-S_2$&quot;</span><span class="p">)</span>
+        <span class="n">line_p</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span> <span class="n">line_m</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+        <span class="n">axis_pz</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.2</span><span class="p">],</span> <span class="n">line</span><span class="o">=</span><span class="n">line_p</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">hoverinfo</span><span class="o">=</span><span class="s2">&quot;skip&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;$S_3$&quot;</span><span class="p">)</span>
+        <span class="n">axis_mz</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.2</span><span class="p">],</span> <span class="n">line</span><span class="o">=</span><span class="n">line_m</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">hoverinfo</span><span class="o">=</span><span class="s2">&quot;skip&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;$-S_3$&quot;</span><span class="p">)</span>
+        <span class="n">size</span><span class="o">=</span><span class="mi">15</span>
+        <span class="n">annotations</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="nb">dict</span><span class="p">(</span><span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;$S_1$&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">),</span> <span class="n">xshift</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">yshift</span><span class="o">=</span><span class="mi">15</span><span class="p">),</span>
+            <span class="nb">dict</span><span class="p">(</span><span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">x</span><span class="o">=-</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;$-S_1$&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">),</span> <span class="n">xshift</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">yshift</span><span class="o">=-</span><span class="mi">15</span><span class="p">),</span>
+            <span class="nb">dict</span><span class="p">(</span><span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;$S_2$&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">),</span> <span class="n">xshift</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">yshift</span><span class="o">=</span><span class="mi">15</span><span class="p">),</span>
+            <span class="nb">dict</span><span class="p">(</span><span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;$-S_2$&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">),</span> <span class="n">xshift</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">yshift</span><span class="o">=-</span><span class="mi">15</span><span class="p">),</span>
+            <span class="nb">dict</span><span class="p">(</span><span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;$S_3$&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">),</span> <span class="n">xshift</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">yshift</span><span class="o">=</span><span class="mi">15</span><span class="p">),</span>
+            <span class="nb">dict</span><span class="p">(</span><span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=-</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;$-S_3$&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">),</span> <span class="n">xshift</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">yshift</span><span class="o">=-</span><span class="mi">15</span><span class="p">),</span>
+        <span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">annotations</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Curves</span>
+    <span class="k">if</span> <span class="n">draw_guides</span> <span class="ow">and</span> <span class="n">add_auxiliar</span><span class="p">:</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">361</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkslategrey&quot;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s2">&quot;dashdot&quot;</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">circle_z</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;S3=0&quot;</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">circle_y</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;S2=0&quot;</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">circle_x</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;S1=0&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Poincare sphere</span>
+    <span class="k">if</span> <span class="n">kind</span> <span class="o">!=</span> <span class="s2">&quot;surf&quot;</span> <span class="ow">and</span> <span class="n">add_auxiliar</span><span class="p">:</span>
+        <span class="c1"># az, el = np.mgrid[0:180*degrees:100j, -45*degrees:45*degrees:100j]</span>
+        <span class="n">el</span><span class="p">,</span> <span class="n">az</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">:</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">:</span><span class="mi">100</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">180</span><span class="o">*</span><span class="n">degrees</span><span class="p">:</span><span class="mi">100</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">azel_2_xyz</span><span class="p">(</span><span class="n">az</span><span class="p">,</span> <span class="n">el</span><span class="p">)</span>
+        <span class="n">customdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">az</span><span class="o">/</span><span class="n">degrees</span><span class="p">,</span> <span class="n">el</span><span class="o">/</span><span class="n">degrees</span><span class="p">))</span> <span class="k">if</span> <span class="n">hover</span> <span class="o">==</span> <span class="s2">&quot;angles&quot;</span> <span class="k">else</span> <span class="p">[]</span>
+        <span class="n">level</span> <span class="o">=</span> <span class="mf">0.2</span>
+        <span class="n">Psphere</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">surfacecolor</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">level</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">colorscale</span><span class="o">=</span><span class="s2">&quot;Greys&quot;</span><span class="p">,</span> <span class="n">showscale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lighting</span><span class="o">=</span><span class="n">lighting</span><span class="p">,</span> <span class="n">customdata</span><span class="o">=</span><span class="n">customdata</span><span class="p">,</span>
+            <span class="n">hovertemplate</span><span class="o">=</span><span class="n">hovertemplate</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sphere&quot;</span><span class="p">,</span> <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Loop in rows</span>
+    <span class="k">for</span> <span class="n">indR</span><span class="p">,</span> <span class="n">Srow</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">indC</span><span class="p">,</span> <span class="n">Scol</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Srow</span><span class="p">):</span>
+
+            <span class="c1"># Axes</span>
+            <span class="k">if</span> <span class="n">draw_axes</span> <span class="ow">and</span> <span class="n">add_auxiliar</span><span class="p">:</span>
+                <span class="n">fig</span><span class="o">.</span><span class="n">add_traces</span><span class="p">([</span><span class="n">axis_px</span><span class="p">,</span> <span class="n">axis_mx</span><span class="p">,</span> <span class="n">axis_py</span><span class="p">,</span> <span class="n">axis_my</span><span class="p">,</span> <span class="n">axis_pz</span><span class="p">,</span> <span class="n">axis_mz</span><span class="p">],</span> <span class="n">rows</span><span class="o">=</span><span class="n">indR</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">indC</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Curves</span>
+            <span class="k">if</span> <span class="n">draw_guides</span> <span class="ow">and</span> <span class="n">add_auxiliar</span><span class="p">:</span>
+                <span class="n">fig</span><span class="o">.</span><span class="n">add_traces</span><span class="p">([</span><span class="n">circle_z</span><span class="p">,</span> <span class="n">circle_y</span><span class="p">,</span> <span class="n">circle_x</span><span class="p">],</span> <span class="n">rows</span><span class="o">=</span><span class="n">indR</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">indC</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Loop in traces</span>
+            <span class="k">for</span> <span class="n">indT</span><span class="p">,</span> <span class="n">Strace</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Scol</span><span class="p">):</span>
+
+                <span class="c1"># Parameter</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                    <span class="n">colorbar</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">param</span><span class="p">)</span>
+                    <span class="n">Scolor</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s2">&quot;Strace.parameters.&quot;</span> <span class="o">+</span> <span class="n">param</span> <span class="o">+</span> <span class="s2">&quot;(out_number=False)&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">param</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">colorbar</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">S</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                    <span class="n">Scolor</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="n">indR</span><span class="p">,</span> <span class="n">indC</span><span class="p">,</span> <span class="n">indT</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">colorbar</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="n">Scolor</span> <span class="o">=</span> <span class="n">Ones</span> <span class="o">*</span> <span class="p">(</span><span class="n">indT</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">Scol</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">param</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
+                        <span class="n">cond</span> <span class="o">=</span> <span class="n">Scolor</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+                        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">cond</span><span class="p">):</span>
+                            <span class="n">Scolor</span><span class="p">[</span><span class="n">cond</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+                            <span class="n">Scolor</span><span class="p">[</span><span class="n">cond</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">Scolor</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span>
+                        <span class="n">Scolor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">Scolor</span><span class="p">)</span>
+                        <span class="n">colorbar</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;log(&quot;</span> <span class="o">+</span> <span class="n">colorbar</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+                    <span class="k">elif</span> <span class="n">in_degrees</span><span class="p">:</span>
+                        <span class="n">Scolor</span> <span class="o">=</span> <span class="n">Scolor</span> <span class="o">/</span> <span class="n">degrees</span>
+                        <span class="n">colorbar</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot; (deg)&quot;</span>
+
+                <span class="c1"># Plot data</span>
+                <span class="k">if</span> <span class="n">kind</span> <span class="o">!=</span> <span class="s2">&quot;surf&quot;</span><span class="p">:</span>
+                    <span class="c1"># Poincare sphere</span>
+                    <span class="k">if</span> <span class="n">add_auxiliar</span><span class="p">:</span>
+                        <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">Psphere</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="n">indR</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">indC</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+                    <span class="c1"># Data</span>
+                    <span class="k">if</span> <span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> <span class="s2">&quot;scatterline&quot;</span><span class="p">):</span>
+                        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">az</span><span class="p">,</span> <span class="n">el</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">obj_2_xyz</span><span class="p">(</span><span class="n">Strace</span><span class="p">,</span> <span class="n">in_degrees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depol</span><span class="o">=</span><span class="n">depol</span><span class="p">)</span>
+                        <span class="n">customdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">az</span><span class="p">,</span> <span class="n">el</span><span class="p">)))</span> <span class="k">if</span> <span class="n">hover</span> <span class="o">==</span> <span class="s2">&quot;angles&quot;</span> <span class="k">else</span> <span class="p">[]</span>
+                        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;scatter&quot;</span><span class="p">:</span>
+                            <span class="n">marker</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Scolor</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="n">colorbar</span><span class="p">,</span> <span class="n">colorscale</span><span class="o">=</span><span class="n">colormap</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">marker</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Scolor</span><span class="p">,</span> <span class="n">colorscale</span><span class="o">=</span><span class="n">colormap</span><span class="p">)</span>
+                        <span class="n">Fdata</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">S</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;markers&quot;</span><span class="p">,</span> <span class="n">customdata</span><span class="o">=</span><span class="n">customdata</span><span class="p">,</span> <span class="n">hovertemplate</span><span class="o">=</span><span class="n">hovertemplate</span><span class="p">)</span>
+                        <span class="c1"># TODO: Should be possible to link colorbars. Not right now due to a bug in Plotly.</span>
+                        <span class="c1"># marker = dict(size=10, color=Scolor, colorscale=colormap)</span>
+                        <span class="c1"># Fdata = go.Scatter3d(x=x, y=y, z=z, marker=marker, name=S.name,</span>
+                        <span class="c1">#                 mode=&quot;markers&quot;, customdata=customdata, hovertemplate=hovertemplate, coloraxis=&quot;coloraxis&quot;)</span>
+                        <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">Fdata</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="n">indR</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">indC</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="s2">&quot;scatterline&quot;</span><span class="p">):</span>
+                        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">az</span><span class="p">,</span> <span class="n">el</span><span class="p">,</span> <span class="n">Scolor</span> <span class="o">=</span> <span class="n">obj_2_xyz</span><span class="p">(</span><span class="n">Strace</span><span class="p">,</span> <span class="n">DAinterp</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">in_degrees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">Scolor</span><span class="p">,</span> <span class="n">depol</span><span class="o">=</span><span class="n">depol</span><span class="p">)</span>
+                        <span class="n">customdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">az</span><span class="p">,</span> <span class="n">el</span><span class="p">)))</span> <span class="k">if</span> <span class="n">hover</span> <span class="o">==</span> <span class="s2">&quot;angles&quot;</span> <span class="k">else</span> <span class="p">[]</span>
+                        <span class="n">line</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Scolor</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="n">colorbar</span><span class="p">,</span> <span class="n">colorscale</span><span class="o">=</span><span class="n">colormap</span><span class="p">)</span>
+                        <span class="n">Fdata</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">S</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot; int.&quot;</span><span class="p">,</span>
+                                        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span> <span class="n">customdata</span><span class="o">=</span><span class="n">customdata</span><span class="p">,</span> <span class="n">hovertemplate</span><span class="o">=</span><span class="n">hovertemplate</span><span class="p">)</span>
+                        <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">Fdata</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="n">indR</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">indC</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">az</span><span class="p">,</span> <span class="n">el</span><span class="p">,</span> <span class="n">Scolor</span> <span class="o">=</span> <span class="n">obj_2_xyz</span><span class="p">(</span><span class="n">Strace</span><span class="p">,</span> <span class="n">in_degrees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">Scolor</span><span class="p">,</span> <span class="n">interp_to_surf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                    <span class="c1"># customdata = [az[0,:], el[:, 0]] if hover == &quot;angles&quot; else None</span>
+                    <span class="n">customdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">az</span><span class="p">,</span> <span class="n">el</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span> <span class="k">if</span> <span class="n">hover</span> <span class="o">==</span> <span class="s2">&quot;angles&quot;</span> <span class="k">else</span> <span class="kc">None</span>
+                    <span class="c1"># print(customdata[0], customdata[1])</span>
+                    <span class="n">Psphere</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">surfacecolor</span><span class="o">=</span><span class="n">Scolor</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">colorscale</span><span class="o">=</span><span class="n">colormap</span><span class="p">,</span> <span class="n">lighting</span><span class="o">=</span><span class="n">lighting</span><span class="p">,</span> <span class="n">customdata</span><span class="o">=</span><span class="n">customdata</span><span class="p">,</span>
+                        <span class="n">hovertemplate</span><span class="o">=</span><span class="n">hovertemplate</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">S</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="n">colorbar</span><span class="p">)</span>
+                    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">Psphere</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="n">indR</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">indC</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+
+    <span class="c1"># Plot figure</span>
+    <span class="n">axis</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">showbackground</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">showgrid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">zeroline</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">camera</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">up</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">center</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">eye</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">0.75</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">figsize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span>
+                    <span class="n">height</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">figsize</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span> <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_scenes</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">,</span> <span class="n">xaxis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">yaxis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">zaxis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">camera</span><span class="o">=</span><span class="n">camera</span><span class="p">)</span>
+    <span class="c1"># TODO: Annotations do not render. Why???</span>
+
+    <span class="k">if</span> <span class="n">show_fig</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">fig</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Jesus del Hoyo Muñoz / Luis Miguel Sanchez Brea.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

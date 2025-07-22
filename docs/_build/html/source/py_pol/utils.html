@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.7. py_pol.utils module &mdash; Python polarization 1.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. Contributing" href="../../contributing.html" />
+    <link rel="prev" title="1.6. py_pol.drawings module" href="drawings.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Python polarization
+          </a>
+              <div class="version">
+                1.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">1. Python polarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../modules.html">4. py_pol</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../py_pol.html">1. py_pol package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="py_pol.html">1.1. py_pol.py_pol module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jones_vector.html">1.2. py_pol.jones_vector module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jones_matrix.html">1.3. py_pol.jones_matrix module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stokes.html">1.4. py_pol.stokes module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mueller.html">1.5. py_pol.mueller module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drawings.html">1.6. py_pol.drawings module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1.7. py_pol.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">3. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">4. History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">5. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python polarization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../modules.html"><span class="section-number">4. </span>py_pol</a> &raquo;</li>
+          <li><a href="../../py_pol.html"><span class="section-number">1. </span>py_pol package</a> &raquo;</li>
+      <li><span class="section-number">1.7. </span>py_pol.utils module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/py_pol/utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="module-py_pol.utils">
+<span id="py-pol-utils-module"></span><h1><span class="section-number">1.7. </span>py_pol.utils module<a class="headerlink" href="#module-py_pol.utils" title="Permalink to this headline"></a></h1>
+<p>Common functions to classes</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.prepare_variables">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">prepare_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[False]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">give_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#prepare_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.prepare_variables" title="Permalink to this definition"></a></dt>
+<dd><p>Function that forces all variables of creation methods to be arrays, checks if all variables are a number or arrays of the same size, and expands the required variables if neccessary. If an object is introduced, it also checks that the length of the variables corresponds to the required lengtth for the object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vars</strong> (<em>list</em>) -- List of variables.</p></li>
+<li><p><strong>expand</strong> (<em>bool</em><em> or </em><em>list</em>) -- List of bools indicating which variables must be expanded.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If some variables must be expanded but all of them have length 1, this will be the length of the new variables.</p></li>
+<li><p><strong>obj</strong> (<em>Py_pol object</em>) -- Optical element object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of prepared variables.
+obj (Py_pol object): Optical element object (only if an obj was given to the function).
+shape (tuple): Shape of the variable with higher dimensionality.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>vars (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.expand_objects">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">expand_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lista</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#expand_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.expand_objects" title="Permalink to this definition"></a></dt>
+<dd><p>Expand a list of objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lista</strong> (<em>list</em>) -- List of py_pol objects.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If some variables must be expanded but all of them have length 1, this will be the length of the new variables. Default: 1.</p></li>
+<li><p><strong>copy</strong> (<em>bool</em>) -- If True, the object are copied. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of expanded objects.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>new_list (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.reshape">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">reshape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_fun</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#reshape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.reshape" title="Permalink to this definition"></a></dt>
+<dd><p>Reshapes an array of parameters to have the desired shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vars</strong> (<em>list</em>) -- List of variables.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object to reshape the variables.</p></li>
+<li><p><strong>shape_fun</strong> (<em>tuple</em><em>, </em><em>list</em><em> or </em><em>string</em>) -- User-defined shape. If it is a string (like 'array') no manipulation is performed.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- Default shape.</p></li>
+<li><p><strong>obj</strong> (<em>py_pol object</em>) -- Py_pol object to take the shape from. Its preference is less than shape_like.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Reshaped list of variables.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>vars (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.select_shape">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">select_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_fun</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#select_shape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.select_shape" title="Permalink to this definition"></a></dt>
+<dd><p>Selects which shape to save.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>py_pol object</em>) -- Object to be applied the shape. It is given here to check if the new shape is correct.</p></li>
+<li><p><strong>shape_var</strong> (<em>tuple</em><em> or </em><em>list</em>) -- Shape of variables.</p></li>
+<li><p><strong>shape_fun</strong> (<em>tuple</em><em> or </em><em>list</em>) -- Shape introduced manually by the user.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Object to take the shape from.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Selected shape.
+ndim (int): Number of dimensions.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>shape (tuple or list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.multitake">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">multitake</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#multitake"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.multitake" title="Permalink to this definition"></a></dt>
+<dd><p>Function that implements the numpy.take function in multiple axes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>numpy.ndarray</em>) -- Original array.</p></li>
+<li><p><strong>indices</strong> (<em>tuple</em><em> or </em><em>list</em>) -- List with the indices values. In this function, only one value per axis is allowed.</p></li>
+<li><p><strong>axes</strong> (<em>tuple</em><em> or </em><em>list</em>) -- List of axes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Taken array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>arr (numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.merge_indices">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">merge_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ind1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ind2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#merge_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.merge_indices" title="Permalink to this definition"></a></dt>
+<dd><p>Merges two sets of indices with poritions given by axis.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.combine_indices">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">combine_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_ind</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#combine_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.combine_indices" title="Permalink to this definition"></a></dt>
+<dd><p>Combines the information given by np.unravel_index.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.PrintParam">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">PrintParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heading</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#PrintParam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.PrintParam" title="Permalink to this definition"></a></dt>
+<dd><p>Function to print the information during the calculation of some parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>param</strong> (<em>np.array</em><em>, </em><em>list</em><em> or </em><em>tuple</em>) -- List of variables to be represented.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True, print the numeric values. Default: True.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True, plot 1D and 2D parameters. Default: True.</p></li>
+<li><p><strong>statistics</strong> (<em>bool</em>) -- If True, a basic statistical analysis will be performed. Default: True.</p></li>
+<li><p><strong>shape</strong> (<em>list</em><em> or </em><em>tuple</em>) -- Shape of the elements.</p></li>
+<li><p><strong>title</strong> (<em>string</em><em> or </em><em>list</em>) -- Title or list of titles (1-D and 2-D elements).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.take_shape">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">take_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#take_shape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.take_shape" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the shape with higher dimensionality.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.kron_axis">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">kron_axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#kron_axis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.kron_axis" title="Permalink to this definition"></a></dt>
+<dd><p>Function that implements the kronecker product along a given axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>numpy.ndarray</em>) -- Arrays to perform the operation.</p></li>
+<li><p><strong>b</strong> (<em>numpy.ndarray</em>) -- Arrays to perform the operation.</p></li>
+<li><p><strong>axis</strong> (<em>int</em>) -- Axis to perform the operation. a and b sizes in the rest of dimensions must be the same. If None, default np.kron is used.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Result:</dt><dd><p>(numpy.ndarray): Result.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.prepare_variables_blocks">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">prepare_variables_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M00</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Dv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Pv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiply_by_M00</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">give_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#prepare_variables_blocks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.prepare_variables_blocks" title="Permalink to this definition"></a></dt>
+<dd><p>Function that forces Mueller matrix block variables to be arrays of the desired size, checks they are compatible between them, and expands the required variables. If an object is introduced, it also checks that the length of the variables corresponds to the required lengtth for the object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>M00</strong> (<em>numpy.ndarray</em><em> or </em><em>float</em>) -- Mean transmission coefficient.</p></li>
+<li><p><strong>Dv</strong> (<em>numpy.ndarray</em>) -- Diattenuation vector. At least one of its dimensions must be of size 3.</p></li>
+<li><p><strong>Pv</strong> (<em>numpy.ndarray</em>) -- Polarizance vector. At least one of its dimensions must be of size 3.</p></li>
+<li><p><strong>m</strong> (<em>numpy.ndarray</em>) -- Small matrix m. At least two of its dimensions must be of size 3.</p></li>
+<li><p><strong>extend</strong> (<em>tuple</em><em> or </em><em>list with 4 bools</em>) -- For each value, stretch the corresponding variable to match max size. Default: [False] * 4.</p></li>
+<li><p><strong>multiply_by_M00</strong> (<em>bool</em>) -- If True, multiplies Dv, Pv and m by M00.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If some variables must be expanded but all of them have length 1, this will be the length of the new variables.</p></li>
+<li><p><strong>obj</strong> (<em>Py_pol object</em>) -- Optical element object.</p></li>
+<li><p><strong>give_shape</strong> (<em>bool</em>) -- If True, the output includes the shape variable.</p></li>
+<li><p><strong>other_shape</strong> (<em>int</em><em>, </em><em>tuple</em><em> or </em><em>list</em>) -- Other suggested shape given by prepare_variables function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>1xN array.
+Dv (numpy.ndarray): 3xN array.
+Pv (numpy.ndarray): 3xN array.
+m (numpy.ndarray): 3x3xN array.
+obj (Py_pol object): Optical element object (only if an obj was given to the function).
+shape (tuple): Shape of the variable with higher dimensionality.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>M00 (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.NumberOfSubplots">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">NumberOfSubplots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#NumberOfSubplots"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.NumberOfSubplots" title="Permalink to this definition"></a></dt>
+<dd><p>Auxiliar function to calculate the number of desired subplots.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.PrintMatrices">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">PrintMatrices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nspaces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#PrintMatrices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.PrintMatrices" title="Permalink to this definition"></a></dt>
+<dd><p>Creates the print string of a list of matrices to be printed in a line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list</strong> (<em>list</em>) -- list of matrices.</p></li>
+<li><p><strong>Nspaces</strong> (<em>int</em>) -- Number of spaces between matrices.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>String to be printed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str (string)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.rotation_matrix_Jones">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">rotation_matrix_Jones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#rotation_matrix_Jones"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.rotation_matrix_Jones" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an array of Jones 2x2 rotation matrices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>np.array</em>) -- array of angle of rotation, in radians.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If some variables must be expanded but all of them have length 1, this will be the length of the new variables.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>2x2xN matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.rotation_matrix_Mueller">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">rotation_matrix_Mueller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#rotation_matrix_Mueller"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.rotation_matrix_Mueller" title="Permalink to this definition"></a></dt>
+<dd><p>Mueller 4x4 matrix for rotation</p>
+<p class="rubric">References</p>
+<p>Gil, Ossikovski (4.30) - p. 131
+Handbook of Optics vol 2. 22.16 (eq.8) is with changed sign in sin</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>angle</strong> (<em>float</em>) -- angle of rotation with respect to 0 deg.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>4x4xN rotation matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.azimuth_elipt_2_charac_angles">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">azimuth_elipt_2_charac_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">azimuth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ellipticity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#azimuth_elipt_2_charac_angles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.azimuth_elipt_2_charac_angles" title="Permalink to this definition"></a></dt>
+<dd><p>Function that converts azimuth and elipticity to characteristic angles in Jones space.</p>
+<div class="math notranslate nohighlight">
+\[cos(2 \alpha) = cos(2 \phi) * cos(2 \chi)\]</div>
+<div class="math notranslate nohighlight">
+\[tan(\delta) = \frac{tan(2 \chi)}{sin(2 \phi)}\]</div>
+<p>TODO: Improve the 2D way of calculating</p>
+<p class="rubric">References</p>
+<p>J.J. Gil, R. Ossikovsky &quot;Polarized light and the Mueller Matrix approach&quot;, CRC Press (2016), pp 137 and 1543.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>azimuth</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Azimuth (angle of rotation).</p></li>
+<li><p><strong>ellipticity</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Elipticity angle.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- if True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tan(alpha) is the ratio between the maximum amplitudes of the polarization elipse in X-Y coordinates.
+delta (float) [0, 2*pi]: phase difference between both components of the eigenstates in Jones formalism.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>alpha (float) [0,np.pi]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.charac_angles_2_azimuth_elipt">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">charac_angles_2_azimuth_elipt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#charac_angles_2_azimuth_elipt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.charac_angles_2_azimuth_elipt" title="Permalink to this definition"></a></dt>
+<dd><p>Function that converts azimuth and elipticity to characteristic angles in Jones space.</p>
+<div class="math notranslate nohighlight">
+\[cos(2 \alpha) = cos(2 \phi) * cos(2 \chi)\]</div>
+<div class="math notranslate nohighlight">
+\[tan(\delta) = \frac{tan(2 \chi)}{sin(2 \phi)}\]</div>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="10">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Gil, &quot;Polarized light and the Mueller Matrix approach&quot;, pp 137 and 154.</p></li>
+</ol>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha</strong> (<em>float</em>) -- tan(alpha) is the ratio between the maximum</p></li>
+<li><p><strong>coordinates.</strong> (<em>amplitudes of the polarization elipse in X-Y</em>) -- </p></li>
+<li><p><strong>delta</strong> (<em>float</em>) -- phase difference between both components of
+the eigenstates in Jones formalism.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Azimuth (angle of rotation).
+ellipticity (float) [-pi/4,np.pi/4]: Elipticity angle.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>azimuth (float) [0,np.pi]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.extract_azimuth_elipt">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">extract_azimuth_elipt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#extract_azimuth_elipt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.extract_azimuth_elipt" title="Permalink to this definition"></a></dt>
+<dd><p>Function that extracts azimuth and ellipticity from a diattenuation, polarizance or retardance vector. All of them are of the form of: TODO.</p>
+<div class="math notranslate nohighlight">
+\[cos(2 \alpha) = cos(2 \phi) * cos(2 \chi)\]</div>
+<div class="math notranslate nohighlight">
+\[tan(\delay) = \tan(2 \chi) / sin(2 \phi)\]</div>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="10">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Gil, &quot;Polarized light and the Mueller Matrix approach&quot;, pp 128 and 142.</p></li>
+</ol>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vector</strong> (<em>np.array 1x3</em><em> or </em><em>3x1</em>) -- vector to be measured</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Azimuth (angle of rotation).
+ellipticity (float) [-pi/4,np.pi/4]: Elipticity angle.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>azimuth (float) [0,np.pi]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.extract_charac_angles">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">extract_charac_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diattenuator'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#extract_charac_angles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.extract_charac_angles" title="Permalink to this definition"></a></dt>
+<dd><p>Function that extracts azimuth and ellipticity from a diattenuation, polarizance or retardance vector. All of them are of the form of: TODO.</p>
+<div class="math notranslate nohighlight">
+\[cos(2 \alpha) = cos(2 \phi) * cos(2 \chi)\]</div>
+<div class="math notranslate nohighlight">
+\[tan(\delay) = \frac{tan(2 \chi)}{sin(2 \phi)}\]</div>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="10">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Gil, &quot;Polarized light and the Mueller Matrix approach&quot;, pp 128 and 142.</p></li>
+</ol>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vector</strong> (<em>np.array 1x3</em><em> or </em><em>3x1</em>) -- vector to be measured</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tan(alpha) is the ratio between the maximum amplitudes of the polarization elipse in X-Y coordinates.
+delay (float) [0, 2*pi]: phase difference between both components of the eigenstates in Jones formalism.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>alpha (float) [0,np.pi]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.which_quad">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">which_quad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">octant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#which_quad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.which_quad" title="Permalink to this definition"></a></dt>
+<dd><p>Auxiliary function to calculate which quadrant or octant angle belongs to.
+Half angles means that it is exactly between two quarants.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>(</strong><strong>float</strong><strong>)</strong> -- Angle to determine the quadrant.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Quadrant</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.put_in_limits">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">put_in_limits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typev</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#put_in_limits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.put_in_limits" title="Permalink to this definition"></a></dt>
+<dd><p>When dealing with polarization elipse coordinates, make sure that they
+are in the valid limits, which are set in the declaration of this class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>1xN array</em>) -- Value</p></li>
+<li><p><strong>typev</strong> (<em>string</em>) -- Which type of variable is: alpha, delta, azimuth or ellipticity.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- if True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Corresponding angle inside the valid limits.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>y (1xN array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.execute_multiprocessing">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">execute_multiprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">__function_process__</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_processors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#execute_multiprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.execute_multiprocessing" title="Permalink to this definition"></a></dt>
+<dd><p>Executes multiprocessing reading a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>__function_process__</strong> (<em>func</em>) -- function to process, it only accepts a dictionary</p></li>
+<li><p><strong>dict_parameters</strong> (<em>dict</em>) -- dictionary / array with parameters</p></li>
+<li><p><strong>num_processors</strong> (<em>int</em>) -- Number of processors. if 1 no multiprocessing is used</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- Prints processing time.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>results of multiprocessing
+(float): processing time</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>data</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__function_process__</span><span class="p">(</span><span class="n">xd</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">xd</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">xd</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+    <span class="c1"># grt = copy.deepcopy(grating)</span>
+    <span class="n">suma</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">sumas</span><span class="o">=</span><span class="n">suma</span><span class="p">,</span> <span class="n">ij</span><span class="o">=</span><span class="n">xd</span><span class="p">[</span><span class="s1">&#39;ij&#39;</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">creation_dictionary_multiprocessing</span><span class="p">():</span>
+    <span class="c1"># create parameters for multiprocessing</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">dict_parameters</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ij</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">dict_parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">ij</span><span class="o">=</span><span class="p">[</span><span class="n">ij</span><span class="p">]))</span>
+            <span class="n">ij</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="s2">&quot;time creation dictionary = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dict_parameters</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.divide_in_blocks">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">divide_in_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#divide_in_blocks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.divide_in_blocks" title="Permalink to this definition"></a></dt>
+<dd><p>Function that creates a mueller matrix from their block components.</p>
+<p>References: J.J. Gil, R. Ossikovsky &quot;Polarized light and the Mueller Matrix approach&quot;, CRC Press (2016)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>M</strong> (<em>4x4 matrix</em>) -- Mueller matrix of the diattenuator.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Diattenuation vector.
+Pv (1x3 or 3x1 float): Diattenuation vector.
+m (3x3 matrix): Small m matrix.
+m00 (float, default 1): [0, 1] Parameter of average intensity.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dv (1x3 or 3x1 float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.list_of_objects_depercated">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">list_of_objects_depercated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#list_of_objects_depercated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.list_of_objects_depercated" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a list of objects.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.inv_pypol">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">inv_pypol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#inv_pypol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.inv_pypol" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the inverse matrix of the matrix of a py_pol object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>M</strong> (<em>numpy.ndarray</em>) -- Array to calculate the inverse. Its shape must be (NxNxM). The result will have the same shape.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.obj_error">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">obj_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#obj_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.obj_error" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the difference between two abjects and calculates the error as the norm.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.matmul_pypol">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">matmul_pypol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#matmul_pypol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.matmul_pypol" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the multiplication of two matrices from pypol objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>M1</strong> (<em>numpy.ndarray</em>) -- Left array to multiply. Its shape must be (NxNxM).</p>
+</dd>
+</dl>
+<p>:param : Left array to multiply. Its shape must be (NxNxM).
+:type : numpy.ndarray
+:param M1: Right array to multiply. Its shape must be (NxNxM) or (NxM). The result will have the same shape.
+:type M1: numpy.ndarray
+:param : Right array to multiply. Its shape must be (NxNxM) or (NxM). The result will have the same shape.
+:type : numpy.ndarray</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Result.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>(numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.list_of_objects">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">list_of_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#list_of_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.list_of_objects" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a list of objects.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.iscolumn">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">iscolumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#iscolumn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.iscolumn" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if the array v is a column array or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>array</em>) -- Array to be tested.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if v is a column array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>cond (bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.isrow">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">isrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#isrow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.isrow" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if the array v is a row array or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>array</em>) -- Array to be tested.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if v is a row array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>cond (bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.delta_kron">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">delta_kron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#delta_kron"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.delta_kron" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the Kronecker delta.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>int</em>) -- Numbers.</p></li>
+<li><p><strong>b</strong> (<em>int</em>) -- Numbers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>d (int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.order_eig">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">order_eig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#order_eig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.order_eig" title="Permalink to this definition"></a></dt>
+<dd><p>Function that orders the eigenvalues from max to min, and then orders
+the eigenvectors following the same order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>val</strong> (<em>numpy.ndarray</em>) -- Array of eigenvalues.</p></li>
+<li><p><strong>vect</strong> (<em>numpy.ndarray</em>) -- Matrix with the eigenvectors as columns.</p></li>
+<li><p><strong>kind</strong> (<em>string</em>) -- Choses if the sort order is normal (min to max) or reverse (max to min).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of ordered eigenvalues.
+m (numpy.ndarray): Matrix with the eigenvectors ordered as columns.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>q (numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.check_eig">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">check_eig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#check_eig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.check_eig" title="Permalink to this definition"></a></dt>
+<dd><p>Function that checks the eigenvalues and eigenvectors.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.distance">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.distance" title="Permalink to this definition"></a></dt>
+<dd><p>Compute distance between two vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>numpy.ndarray</em>) -- vector 1</p></li>
+<li><p><strong>x2</strong> (<em>numpy.ndarray</em>) -- vector 2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>distance between vectors.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.nearest">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">nearest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#nearest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.nearest" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the nearest element in vector to number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vector</strong> (<em>numpy.ndarray</em>) -- array with numbers</p></li>
+<li><p><strong>number</strong> (<em>float</em>) -- number to determine position</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>index - index of vector which is closest to number.
+(float): value  - value of vector[index].
+(float): distance - difference between number and chosen element.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.nearest2">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">nearest2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numbers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#nearest2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.nearest2" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the nearest element in vector to numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vector</strong> (<em>numpy.ndarray</em>) -- array with numbers</p></li>
+<li><p><strong>number</strong> (<em>numpy.ndarray</em>) -- numbers to determine position</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>index - indexes of vector which is closest to number.
+(numpy.ndarray): value  - values of vector[indexes].
+(numpy.ndarray): distance - difference between numbers and chosen elements.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.repair_name">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">repair_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_initial</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#repair_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.repair_name" title="Permalink to this definition"></a></dt>
+<dd><p>Repairs name when several angles are included.</p>
+<p class="rubric">Example</p>
+<p>M1 &#64;45.00deg &#64;45.00deg &#64;45.00deg &#64;45.00deg &#64;45.00deg &#64;45.00deg &#64;45.00deg</p>
+<p>passes to:</p>
+<p>M1 &#64;135.00deg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name_initial</strong> (<em>str</em>) -- String with the name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Repaired name</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.comparison">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">comparison</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proposal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximum_diff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#comparison"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.comparison" title="Permalink to this definition"></a></dt>
+<dd><p>This functions is mainly for testing. It compares compares proposal to solution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>proposal</strong> (<em>numpy.matrix</em>) -- proposal of result.</p></li>
+<li><p><strong>solution</strong> (<em>numpy.matrix</em>) -- results of the test.</p></li>
+<li><p><strong>maximum_diff</strong> (<em>float</em>) -- maximum difference allowed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if comparison is possitive, else False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.params_to_list">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">params_to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#params_to_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.params_to_list" title="Permalink to this definition"></a></dt>
+<dd><p>Makes a list from data provided at parameters.dict_params</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>J</strong> (<em>object</em>) -- Object Jones_vector, Jones_matrix, Stokes or Mueller.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameters</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List with parameters from dict_params.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.fit_distribution">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">fit_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">irrelevant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#fit_distribution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.fit_distribution" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.fit_cos">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">fit_cos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#fit_cos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.fit_cos" title="Permalink to this definition"></a></dt>
+<dd><p>Function to fit a cos function using the least_squares function from scipy.optimize.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.fit_sine">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">fit_sine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">has_draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#fit_sine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.fit_sine" title="Permalink to this definition"></a></dt>
+<dd><p>fit a sine function</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.obj_2_xyz">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">obj_2_xyz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ninterp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DAinterp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_degrees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_to_surf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#obj_2_xyz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.obj_2_xyz" title="Permalink to this definition"></a></dt>
+<dd><p>Function to calculate the x, y and z coordinates of the Poincare sphere.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="jones_vector.html#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector"><em>Jones_vector</em></a><em> or </em><a class="reference internal" href="stokes.html#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes"><em>Stokes</em></a>) -- 0D or 1D object to be represented.</p></li>
+<li><p><strong>Ninterp</strong> (<em>number</em>) -- Multiplication factor to interpolate angles if DAinterp is not None. Default: 1.</p></li>
+<li><p><strong>DAinterp</strong> (<em>number</em>) -- Angle step for interpolation. Default: None.</p></li>
+<li><p><strong>return_azel</strong> (<em>bool</em>) -- If True, returns interpolated azimuth and ellipticity. Default: False.</p></li>
+<li><p><strong>in_degrees</strong> (<em>bool</em>) -- If True, azimuth and ellipticity are returned in degrees. Default: False.</p></li>
+<li><p><strong>interp_to_surf</strong> (<em>bool</em>) -- If True and S is 1D, transform it to 2D. Default: True.</p></li>
+<li><p><strong>depol</strong> (<em>bool</em>) -- If True, the depolarization is taking into account for scatter and line plots shrinking the radius below 1. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Calculated coordinates.
+az, el (np.ndarray): Interpolated azimuth and ellipticity.
+param (np.ndarray): Calculated and interpolated parameter.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>x, y, z (np.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.utils.azel_2_xyz">
+<span class="sig-prename descclassname"><span class="pre">py_pol.utils.</span></span><span class="sig-name descname"><span class="pre">azel_2_xyz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">az</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">el</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/utils.html#azel_2_xyz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.utils.azel_2_xyz" title="Permalink to this definition"></a></dt>
+<dd><p>Transforms azimuth and ellipticity angle to x, y and z coordinates of the Poincare sphere.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>az</strong> (<em>np.ndarray</em>) -- Azimuth.</p></li>
+<li><p><strong>el</strong> (<em>np.ndarray</em>) -- Ellipticity angle.</p></li>
+<li><p><strong>pol</strong> (<em>np.ndarray</em>) -- Polarization degree.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Calculated coordinates.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>x, y, z (np.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="drawings.html" class="btn btn-neutral float-left" title="1.6. py_pol.drawings module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../contributing.html" class="btn btn-neutral float-right" title="3. Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Jesus del Hoyo Muñoz / Luis Miguel Sanchez Brea.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

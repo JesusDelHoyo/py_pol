@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.1. Example 3: Analysis &mdash; Python polarization 1.1.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2.2. Example 4: Light polarimetry" href="Example_4_Light_polarimetry.html" />
+    <link rel="prev" title="2. Advanced" href="example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Python polarization
+          </a>
+              <div class="version">
+                1.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">1. Python polarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">2. Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../examples.html">3. Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introductory/example.html">1. Introductory</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="example.html">2. Advanced</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">2.1. Example 3: Analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Analysis-of-light-waves">2.1.1. Analysis of light waves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Analysis-of-optical-elements">2.1.2. Analysis of optical elements</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Example_4_Light_polarimetry.html">2.2. Example 4: Light polarimetry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Example_5_Optical_elements_polarimetry.html">2.3. Example 5: Optical elements polarimetry</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">4. py_pol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">3. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">4. History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">5. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Python polarization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../examples.html"><span class="section-number">3. </span>Examples</a> &raquo;</li>
+          <li><a href="example.html"><span class="section-number">2. </span>Advanced</a> &raquo;</li>
+      <li><span class="section-number">2.1. </span>Example 3: Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/source/examples/advanced/Example_3_Analysis.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Example-3:-Analysis">
+<h1><span class="section-number">2.1. </span>Example 3: Analysis<a class="headerlink" href="#Example-3:-Analysis" title="Permalink to this headline"></a></h1>
+<p>In Optics, polarimetry is the discipline that studies the measurement and interpretation of the polarization of light waves, and the behavior of optical elements upon the polarization of light waves. In other words, it studies the measurement and analysis of Jones/Stokes vectors (light waves) and Jones/Mueller matrices (optical objects). This example is devoted to show the different analysis possibilities offered by py_pol.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">py_pol</span> <span class="kn">import</span> <span class="n">degrees</span>
+<span class="kn">from</span> <span class="nn">py_pol.jones_vector</span> <span class="kn">import</span> <span class="n">Jones_vector</span>
+<span class="kn">from</span> <span class="nn">py_pol.jones_matrix</span> <span class="kn">import</span> <span class="n">Jones_matrix</span>
+<span class="kn">from</span> <span class="nn">py_pol.stokes</span> <span class="kn">import</span> <span class="n">Stokes</span><span class="p">,</span> <span class="n">create_Stokes</span>
+<span class="kn">from</span> <span class="nn">py_pol.mueller</span> <span class="kn">import</span> <span class="n">Mueller</span>
+</pre></div>
+</div>
+</div>
+<section id="Analysis-of-light-waves">
+<h2><span class="section-number">2.1.1. </span>Analysis of light waves<a class="headerlink" href="#Analysis-of-light-waves" title="Permalink to this headline"></a></h2>
+<section id="Theory-of-Jones-vectors">
+<h3><span class="section-number">2.1.1.2. </span>Theory of Jones vectors<a class="headerlink" href="#Theory-of-Jones-vectors" title="Permalink to this headline"></a></h3>
+<p>A transversal light wave can be described as:</p>
+<p><span class="math notranslate nohighlight">\(\overrightarrow{E}=\left[\begin{array}{c} E_{x}\\ E_{y}\\ 0 \end{array}\right]e^{i\left(kz-\omega t\right)}e^{i\varphi}=\overrightarrow{E}_{pol}e^{i\left(kz-\omega t\right)}\)</span></p>
+<p>Being <span class="math notranslate nohighlight">\(\varphi\)</span> the global phase, <span class="math notranslate nohighlight">\(z\)</span> the propagation direction of light, $k=:nbsphinx-math:<cite>left</cite><span class="math">\Vert `:nbsphinx-math:</span>overrightarrow{k}`:nbsphinx-math:<cite>right</cite><span class="math">\Vert `$ the wavevector modulus, :math:</span>omega` the angular frequency and <span class="math notranslate nohighlight">\(\overrightarrow{E}_{pol}\)</span> the polarization Jones vector composed of two complex components <span class="math notranslate nohighlight">\(E_x\)</span> and <span class="math notranslate nohighlight">\(E_y\)</span>. Any complex 2x1 vector can describe a physically realizable light wave polarization state.</p>
+<p>The Jones vector is completely described by four parameters. There are several sets of parameters that can be used. Some of the most used ones are the following:</p>
+<ol class="arabic simple">
+<li><p>The real and imaginary parts of <span class="math notranslate nohighlight">\(E_x\)</span> and <span class="math notranslate nohighlight">\(E_y\)</span>.</p></li>
+<li><p>Global phase (phase of <span class="math notranslate nohighlight">\(E_x\)</span>, <span class="math notranslate nohighlight">\(\varphi\)</span>), electric field amplitudes (<span class="math notranslate nohighlight">\(\left|E_{x}\right|\)</span> and <span class="math notranslate nohighlight">\(\left|E_{y}\right|\)</span>) and the phase difference between components (<span class="math notranslate nohighlight">\(\delta\)</span>).</p></li>
+<li><p>Global phase, semimajor and semiminor ellipse axes (<span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> respectively) and the semimajor axis azimuth (<span class="math notranslate nohighlight">\(\phi\)</span>).</p></li>
+<li><p>Global phase, wave intensity (<span class="math notranslate nohighlight">\(I=\left|E_{x}\right|^{2}+\left|E_{y}\right|^{2}\)</span>) and the characteristic angles <span class="math notranslate nohighlight">\(\alpha\)</span> (ratio angle: <span class="math notranslate nohighlight">\(\tan\alpha=\frac{\left|E_{y}\right|}{\left|E_{x}\right|}\)</span>) and <span class="math notranslate nohighlight">\(\delta\)</span>.</p></li>
+<li><p>Global phase, wave intensity, azimuth (<span class="math notranslate nohighlight">\(\phi\)</span>) and ellipticity angle (<span class="math notranslate nohighlight">\(\tan\chi=\frac{b}{a}\)</span>).</p></li>
+</ol>
+<p>Most of these parameters can be easily visualized in the ellipse produced by the real part of <span class="math notranslate nohighlight">\(\overrightarrow{E}\)</span>:</p>
+<p><img alt="2f7cde7f87ee42d7a011babd8c7e4598" class="no-scaled-link" src="../../../_images/ellipse_angles.png" style="width: 495px; height: 320px;" /></p>
+<p>It is worth noting that not all the values for the four angles should be used. Specifically:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\;\alpha\;\in\;[0º, 90º]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\;\delta\;\in\;[0º, 360º)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\;\phi\;\in\;[0º, 180º)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\;\chi\;\in\;[-45º, 45º]\)</span></p></li>
+</ol>
+<p>Also, there are some cases where two or more different values correspond to the same polarization state. For example, right-handed circular polarization corresponds to <span class="math notranslate nohighlight">\(\chi=45º\)</span> and any azimuth value.</p>
+<p>Analyze a Jones vector means calculating one set of 4 parameters. We chose to use mainly the two last sets of parameters, as their physical meaning is easily understood and highly compatible with polarimetry experiments.</p>
+<p>In some special cases, one one of the parameters used to describe the light wave may be undetermined. For example, circular polarization states does not have a determined azimuth.</p>
+</section>
+<section id="Example-of-analysis-of-Jones-vectors">
+<h3><span class="section-number">2.1.1.2. </span>Example of analysis of Jones vectors<a class="headerlink" href="#Example-of-analysis-of-Jones-vectors" title="Permalink to this headline"></a></h3>
+<p>All the parameters described above can be easily calculated from a <em>Jones_vector</em> object through the <em>parameters</em> subclass. This subclass also provides some other parameters that can be useful.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a random Jones vector</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">Jones_vector</span><span class="p">(</span><span class="s1">&#39;Random polarization&#39;</span><span class="p">)</span>
+<span class="n">E_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">E_imag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">E</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="n">E_real</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">E_imag</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Random polarization =
+[+0.611 + +0.042j]   [+0.115 + +0.143j]   [+0.460 + +0.362j]   [+0.336 + +0.089j]   [+0.759 + +0.967j]   [+0.430 + +0.081j]   [+0.170 + +0.355j]   [+0.775 + +0.502j]   [+0.209 + +0.336j]   [+0.910 + +0.555j]
+[+0.521 + +0.111j]   [+0.977 + +0.880j]   [+0.471 + +0.975j]   [+0.052 + +0.317j]   [+0.840 + +0.659j]   [+0.484 + +0.508j]   [+0.484 + +0.042j]   [+0.118 + +0.491j]   [+0.377 + +0.191j]   [+0.936 + +0.963j]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate a set of parameters</span>
+<span class="n">gp</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">global_phase</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">intensity</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">azimuth</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">azimuth</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ellipticity</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">ellipticity_angle</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The global phase of Random polarization is (deg.):
+[ 3.93837815 51.24825327 38.17561704 14.83122596 51.84739025 10.63523802
+ 64.38101984 32.9254776  58.16464824 31.35144831]
+The mean value is 35.749869669267426 +- 19.836854695525744
+
+The intensity of Random polarization is (a.u.):
+[0.65841176 1.76353029 1.51604907 0.22373311 2.65142412 0.68394414
+ 0.39102532 1.10776135 0.33543762 2.94046887]
+The mean value is 1.2271785642156625 +- 0.9202757817955234
+
+azimuth (10,)
+The azimuth of Random polarization is (deg.):
+[40.98926992 82.14653398 63.02853497 39.66826606 40.8657103  60.58807385
+ 56.21219625 24.24151122 47.19130125 51.77191342]
+The mean value is 50.67033112260028 +- 15.150079415893934
+
+The ellipticity angle of Random polarization is (deg.):
+[  4.00944089  -1.25855236  10.7709465   32.7070527   -6.79636782
+  15.82616594 -28.68147503  17.73355527 -15.60529763   7.04709159]
+The mean value is 3.5752560064644756 +- 16.740820023303353
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate some other parameters</span>
+<span class="n">dlp</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">degree_linear_polarization</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dcp</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">degree_circular_polarization</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The degree of linear polarization of Random polarization is:
+[0.99022215 0.99903516 0.93014934 0.41605694 0.97199081 0.85124799
+ 0.53931544 0.81444872 0.85526845 0.96989674]
+The mean value is 0.8337631740724044 +- 0.19001130785843334
+
+The degree of circular polarization of Random polarization is:
+[ 0.13949944 -0.04391763  0.36718142  0.90933856 -0.23501888  0.52476362
+ -0.84210383  0.58023553 -0.51818518  0.24351655]
+The mean value is 0.11253096079095519 +- 0.5060350336785997
+
+</pre></div></div>
+</div>
+<p>The <em>checks</em> subclass has some methods that allow analyzing the Jones vectors to see if some conditions are met.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cond</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_linear</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Random polarization is linearly polarized:
+[False False False False False False False False False False]
+The mean value is 0.0 +- 0.0
+
+</pre></div></div>
+</div>
+</section>
+<section id="Theory-of-Stokes-vectors">
+<h3><span class="section-number">2.1.1.3. </span>Theory of Stokes vectors<a class="headerlink" href="#Theory-of-Stokes-vectors" title="Permalink to this headline"></a></h3>
+<p>Stokes vectors can also be used to represent the polarization state of light waves. They are composed of four real elements:</p>
+<p><span class="math notranslate nohighlight">\(S=\left[\begin{array}{c} I\\ Q\\ U\\ V \end{array}\right]=\left[\begin{array}{c} S_{0}\\ S_{1}\\ S_{2}\\ S_{3} \end{array}\right]=\left[\begin{array}{c} I_{total}\\ I_{0\text{º}}-I_{90\text{º}}\\ I_{45\text{º}}-I_{135\text{º}}\\ I_{right}-I_{left} \end{array}\right]\)</span></p>
+<p>The four elements of the Stokes vector represent some intensities: <span class="math notranslate nohighlight">\(I_{total}\)</span> is the total intensity, <span class="math notranslate nohighlight">\(I_x\)</span> is the partial intensity of linear polarization of angle <span class="math notranslate nohighlight">\(x\)</span>, and <span class="math notranslate nohighlight">\(I_{right}\)</span> and <span class="math notranslate nohighlight">\(I_{left}\)</span> are the partial right-handed and left-handed circular polarizations. Not every 4x1 real vector is a physically realizable Stokes vector, as it must fulfill the conservation of energy:</p>
+<p><span class="math notranslate nohighlight">\(S_{0}^{2}\geq S_{1}^{2}+S_{2}^{2}+S_{3}^{2}\)</span>.</p>
+<p>There are some differences between Stokes and Jones vectors. Stokes vectors use intensity, while Jones vectors use electric field. This means that Jones vectors have the information of the wave global phase, while Stokes vectors can be used to describe partially depolarized light. Totally polarized states (pure states) have their electric field totally described by the equation above. Totally depolarized light (or natural light) electric field is random (with the module of the electric field
+limited by the wave intensity). Partially polarized light can be divided into the sum of a totally polarized state plus a totally unpolarized state:</p>
+<p><span class="math notranslate nohighlight">\(S=\wp S_{pol}+(1-\wp)S_{depol}\)</span>.</p>
+<p>Being <span class="math notranslate nohighlight">\(\wp\)</span> the polarization degree, <span class="math notranslate nohighlight">\(S_{pol}\)</span> the pure Stokes vector. The totally polarized Stokes vector fulfills the equation:</p>
+<p><span class="math notranslate nohighlight">\(S_{0}^{2} = S_{1}^{2}+S_{2}^{2}+S_{3}^{2}\)</span>.</p>
+<p>While a totally unpolarized Stokes vectors have <span class="math notranslate nohighlight">\(S_1=S_2=S_3=0\)</span>.</p>
+<p><strong>NOTE:</strong> Even if Stokes vectors do not contain neither use the global phase of the light wave, <em>Stokes</em> objects do. So it is possible to calculate the result of interference experiments using <em>Stokes</em> objects.</p>
+<p>A Stokes vector can be analyzed by describing some of their parameters. Like Jones vectors, there are several sets of 4 parameters that completely describe a Stokes vector. The most usual are:</p>
+<ol class="arabic simple">
+<li><p>The four components of the vector.</p></li>
+<li><p>Polarization degree, wave total intensity and the characteristic angles <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\delta\)</span>.</p></li>
+<li><p>Polarization degree, wave total intensity, azimuth (<span class="math notranslate nohighlight">\(\phi\)</span>) and ellipticity angle (<span class="math notranslate nohighlight">\(\chi\)</span>).</p></li>
+</ol>
+<p>It is important noting that the four angles are defined only for pure states. In the case of partially depolarized states, those angles are referred to the totally polarized part of the Stokes vector.</p>
+</section>
+<section id="Example-of-analysis-of-Stokes-vectors">
+<h3><span class="section-number">2.1.1.4. </span>Example of analysis of Stokes vectors<a class="headerlink" href="#Example-of-analysis-of-Stokes-vectors" title="Permalink to this headline"></a></h3>
+<p>All the parameters described above can be easily calculated from a <em>Stokes</em> object through the <em>parameters</em> subclass. This subclass also provides some other parameters that can be useful.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a random Stokes vector</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Random polarization&#39;</span><span class="p">)</span>
+<span class="n">S_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">S_matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>   <span class="c1"># This assures that the Stokes vectors are physically realizable.</span>
+<span class="n">S</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="n">S_matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Random polarization =
+[+1.732]   [+1.732]   [+1.732]   [+1.732]   [+1.732]   [+1.732]   [+1.732]   [+1.732]   [+1.732]   [+1.732]
+[+0.038]   [+0.515]   [+0.383]   [+0.316]   [+0.109]   [+0.784]   [+0.585]   [+0.450]   [+0.216]   [+0.618]
+[+0.164]   [+0.089]   [+0.500]   [+0.014]   [+0.013]   [+0.310]   [+0.956]   [+0.754]   [+0.013]   [+0.486]
+[+0.354]   [+0.278]   [+0.935]   [+0.366]   [+0.598]   [+0.388]   [+0.013]   [+0.914]   [+0.861]   [+0.213]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate a set of parameters# Calculate a set of parameters</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">degree_polarization</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">intensity</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">azimuth</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">azimuth</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ellipticity</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">ellipticity_angle</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The degree of polarization of Random polarization is:
+[0.22603166 0.34208981 0.65125548 0.27931878 0.35089367 0.53580554
+ 0.64739223 0.73187421 0.51231959 0.47014339]
+The mean value is 0.4747124344364745 +- 0.16285764727988405
+
+The intensity of Random polarization is (a.u.):
+[1.73205081 1.73205081 1.73205081 1.73205081 1.73205081 1.73205081
+ 1.73205081 1.73205081 1.73205081 1.73205081]
+The mean value is 1.7320508075688772 +- 0.0
+
+The azimuth of Random polarization is (deg):
+[38.50981184  4.91384278 26.27462142  1.23002572  3.49470723 10.77507868
+ 29.27118234 29.59214112  1.68917258 19.10618662]
+The mean value is 16.48567703297244 +- 13.076530820546264
+
+The ellipticity angle of Random polarization is (deg):
+[32.2932454  14.00430216 28.01469235 24.59408389 39.79868809 12.36192695
+  0.32501925 23.06875537 37.93833636  7.57919225]
+The mean value is 21.997824207488556 +- 12.471611255030032
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate some other parameters</span>
+<span class="n">dlp</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">degree_linear_polarization</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dcp</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">degree_circular_polarization</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The degree of linear polarization of Random polarization is:
+[0.09700106 0.30202325 0.36390049 0.18255631 0.06335883 0.48669046
+ 0.64735056 0.50713755 0.12501103 0.45378554]
+The mean value is 0.32288150875733673 +- 0.1904035725478243
+
+The degree of circular polarization of Random polarization is:
+[0.20415951 0.1606468  0.54010196 0.21140524 0.3451261  0.22409814
+ 0.00734471 0.5276849  0.49683358 0.12293695]
+The mean value is 0.2840337871516376 +- 0.17519511210662467
+
+</pre></div></div>
+</div>
+<p>The <em>checks</em> subclass has some methods that allow analyzing the Stokes vectors to see if some conditions are met.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cond</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_linear</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Random polarization is linearly polarized:
+[False False False False False False False False False False]
+The mean value is 0.0 +- 0.0
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="o">.</span><span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># This forces the first Stokes vector to not be physically realizable</span>
+<span class="n">cond</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_physical</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Random polarization is physically realizable:
+[False  True  True  True  True  True  True  True  True  True]
+The mean value is 0.9 +- 0.30000000000000004
+
+</pre></div></div>
+</div>
+</section>
+<section id="Error-filtering">
+<h3><span class="section-number">2.1.1.5. </span>Error filtering<a class="headerlink" href="#Error-filtering" title="Permalink to this headline"></a></h3>
+<p>Stokes vectors must fulfill a single equation to be physically realizable, i.e., to describe a physical light state:</p>
+<p><span class="math notranslate nohighlight">\(S_0 \geq \sqrt{S_1^2 + S_2^2 + S_3^2}\)</span></p>
+<p>Experimental error during the measurement of a Stokes vector may produce that the calculated vectors are unphysicallspecially for pure vectors which are in the threshold of not fulfilling the equation.</p>
+<p>If a Stokes vector is not physically realizable, it can be solved by increasing <span class="math notranslate nohighlight">\(S_0\)</span> or decreasing the rest of the vector components. Usually, the error in <span class="math notranslate nohighlight">\(S_0\)</span> is smaller than the error in the rest of the elements, so it is safer to do the later. The method <em>filter_physical_conditions</em> performs that correction to all elements of a <em>Stokes</em> object which are unphysicall:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s2">&quot;Original&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">S</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_physical</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">intensity</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">filter_physical_conditions</span><span class="p">()</span>
+<span class="n">S</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Filtered&quot;</span>
+<span class="n">S</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_physical</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">intensity</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Original is physically realizable:
+[False False False False  True False]
+The mean value is 0.16666666666666666 +- 0.37267799624996495
+
+The intensity of Original is (a.u.):
+[0.66572699 0.03286369 0.40515951 0.90130522 0.79255909 0.3986525 ]
+The mean value is 0.5327111667988825 +- 0.2901621322397332
+
+Filtered is physically realizable:
+[ True  True  True  True  True  True]
+The mean value is 1.0 +- 0.0
+
+The intensity of Filtered is (a.u.):
+[0.66572699 0.03286369 0.40515951 0.90130522 0.79255909 0.3986525 ]
+The mean value is 0.5327111667988825 +- 0.2901621322397332
+
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Analysis-of-optical-elements">
+<h2><span class="section-number">2.1.2. </span>Analysis of optical elements<a class="headerlink" href="#Analysis-of-optical-elements" title="Permalink to this headline"></a></h2>
+<section id="Theory-of-Jones-matrix-objects">
+<h3><span class="section-number">2.1.2.1. </span>Theory of Jones matrix objects<a class="headerlink" href="#Theory-of-Jones-matrix-objects" title="Permalink to this headline"></a></h3>
+<p>Pure optical elements (elements that do not depolarize totally polarized light states) can be described by a Jones matrix, a 2x2 matrix of complex numbers:</p>
+<p><span class="math notranslate nohighlight">\(J=\left[\begin{array}{cc} J_{00} &amp; J_{01}\\ J_{10} &amp; J_{11} \end{array}\right]\)</span>.</p>
+<p>The effect of an optical element upon an incident light wave is calculated by multiplying the Jones matrix of the optical object by the Jones vector of the light wave:</p>
+<p><span class="math notranslate nohighlight">\(E_{out}=J\,E_{in}\)</span>.</p>
+<p>There are three things that an optical object can do to a light wave in Jones formalism:</p>
+<ol class="arabic simple">
+<li><p>Diattenuate (vary the electric field amplitude).</p></li>
+<li><p>Retard (vary the delay between electric field components).</p></li>
+<li><p>Increase the global phase.</p></li>
+</ol>
+<p>The first two phenomena define two types of optical elements: diattenuator and retarders. Both diattenuators and retarders may increase the global phase of light waves.</p>
+<p>Diattenuators are element that vary the electric field amplitude of the incident wave. Usually, this variation is different on both electric field components. These variations are described by the maximum and minimum field transmissions (<span class="math notranslate nohighlight">\(p_1\)</span> and <span class="math notranslate nohighlight">\(p_2\)</span> respectively). Alternatively, intensity transmissions can be used: <span class="math notranslate nohighlight">\(T_{max}=p_1^2\)</span> and <span class="math notranslate nohighlight">\(T_{min}=p2^2\)</span>. Passive diattenuators have both <span class="math notranslate nohighlight">\(T_{i}\leq1\)</span>, while active diattenuators have one or both <span class="math notranslate nohighlight">\(T_{i}&gt;1\)</span>. The
+last ones are usually called amplifiers. Diattenuators are often called polarizers (it will be explained for Mueller formalism) and usually have <span class="math notranslate nohighlight">\(p_{1}\simeq1\)</span> and <span class="math notranslate nohighlight">\(p_{2}\simeq0\)</span>.</p>
+<p>Retarders introduce a phase delay between electric field components called retardance (<span class="math notranslate nohighlight">\(\Delta\)</span>). This allows changing from linear to elliptical polarization. Retardance is between 0º and 180º, as different values are equivalent to a retardance between those values and/or a rotation. Special cases of retarders are quarter and half-waveplates, which present a retardance of 90º and 180º respectively.</p>
+<p>Every Jones matrix due to being a 2x2 matrix, has at least two eigenvectors, often referred as eigenstates. If those eigenstates are orthogonal, the optical element is referred as homogeneous. The eigenvalues of a diattenuator are <span class="math notranslate nohighlight">\(p_1e^{i\varphi}\)</span> and <span class="math notranslate nohighlight">\(p_2e^{i\varphi}\)</span>. The eigenstate associated to <span class="math notranslate nohighlight">\(p_1\)</span> is called the transmission axis and the eigenstate associated to <span class="math notranslate nohighlight">\(p_2\)</span> the extinction axis (due to the usual values for polarizers). In the case of retarders, the two
+eigenvalues are <span class="math notranslate nohighlight">\(e^{i\varphi}\)</span> and <span class="math notranslate nohighlight">\(e^{i(\varphi + \Delta}\)</span>. The eigenstate associated with those eigenvalues are called the fast and slow axes respectively, due to the difference in phase.</p>
+<p>Independently of the optical element, its eigenstates are usually characterized using two angles: the characteristic angles or azimuth and ellipticity. The reason is that, if a Jones vector is an eigenvector of <span class="math notranslate nohighlight">\(J\)</span>, it remains an eigenvector even if its intensity or global phase is varied. If the optical element is homogeneous, then only one eigenstate is characterized, as the other is orthogonal to the given one. In the case of diattenuators and retarders, the given eigenstate is usually
+the transmission axis and the fast axis respectively.</p>
+<p>The global phase introduced by the Jones matrix can be a difficult topic. First, this parameter is rarely measured, as most experiments only consider intensity and do not introduce interferences between light waves. Also, the global phase introduced by a Jones matrix may depend on the incident light wave. That renders difficult to define a good reference for global phase. We choose that reference to be when <span class="math notranslate nohighlight">\(J_{00}\)</span> is real and positive.</p>
+</section>
+<section id="Examples-of-characterization-of-Jones-matrices">
+<h3><span class="section-number">2.1.2.2. </span>Examples of characterization of Jones matrices<a class="headerlink" href="#Examples-of-characterization-of-Jones-matrices" title="Permalink to this headline"></a></h3>
+<p>Many parameters can be easily calculated from a <em>Jones_matrix</em> object through the <em>parameters</em> subclass.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a random Jones matrix</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s1">&#39;Random element&#39;</span><span class="p">)</span>
+<span class="n">M_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">M_imag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="n">M_real</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">M_imag</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Random element =
+[+0.596 + +0.044j +0.157 + +0.251j]   [+0.059 + +0.092j +0.246 + +0.245j]   [+0.087 + +0.436j +0.994 + +0.788j]   [+0.409 + +0.296j +0.299 + +0.517j]   [+0.575 + +0.042j +0.210 + +0.227j]
+[+0.956 + +0.702j +0.081 + +0.978j]   [+0.147 + +0.412j +0.556 + +0.969j]   [+0.305 + +0.667j +0.493 + +0.982j]   [+0.250 + +0.913j +0.762 + +0.129j]   [+0.525 + +0.135j +0.932 + +0.706j]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the transmission and retardance of the random eleemnt</span>
+<span class="n">trans</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">transmissions</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">retardance</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The intensity transmissions of Random element are:
+  Maximum (int.)
+[2.79475736 1.57052013 3.43794023 1.85267438 1.94960192]
+  Minimum (int.)
+[0.0204081  0.00059715 0.11354962 0.25123443 0.13868806]
+The mean value of param Maximum (int.) is 2.3210988026985553 +- 0.6917350543367412
+The mean value of param Minimum (int.) is 0.10489547036857894 +- 0.09016449578003846
+
+The field transmissions of Random element are:
+  Maximum (int.)
+[1.67175278 1.25320395 1.85416834 1.36112982 1.39628146]
+  Minimum (int.)
+[0.14285691 0.02443662 0.33697124 0.50123291 0.37240845]
+The mean value of param Maximum (int.) is 1.5073072684907527 +- 0.22163844669529084
+The mean value of param Minimum (int.) is 0.27558122731169954 +- 0.170148339756685
+
+The retardance of Random element is (deg.):
+[ 87.5553015  193.72791656 222.5924594  102.14526775  32.81859222]
+The mean value is 127.76790748691549 +- 70.18741234504354
+
+</pre></div></div>
+</div>
+<p>The <em>checks</em> subclass also includes some interesting methods to calculate if an optical element fulfills some conditions. For example, we can calculate if an element is an homogeneous diattenuator:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cond</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_diattenuator</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Random element is an homogeneous diattenuator:
+[False False False False False]
+The mean value is 0.0 +- 0.0
+
+</pre></div></div>
+</div>
+<p>Homogeneous diattenuators and retarders are well understood. They are characterized by the transmissions (diattenuators) and retardance (retarders), plus the transmission/fast eigenstate (as the other one is perpendicular). The <em>analysis</em> subclass have two methods to extract those parameters from an homogeneous diattenuator or retarder.</p>
+<p>For example, we can create the most general diattenuator and compare the calculations with the original values:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create random values</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.5</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">degrees</span>
+
+<span class="c1"># Create the py_pol object</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s1">&#39;General random diattenuator&#39;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">diattenuator_charac_angles</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="n">p2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">)</span>
+
+<span class="c1"># Analyze it</span>
+<span class="n">trans</span><span class="p">,</span> <span class="n">angles</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">diattenuator</span><span class="p">(</span><span class="n">angles</span><span class="o">=</span><span class="s1">&#39;charac&#39;</span><span class="p">,</span> <span class="n">transmissions</span><span class="o">=</span><span class="s1">&#39;field&#39;</span><span class="p">)</span>
+
+<span class="c1"># Compare the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in p1:&#39;</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">p1</span> <span class="o">-</span> <span class="n">trans</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in p2:&#39;</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">p2</span> <span class="o">-</span> <span class="n">trans</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in alpha:&#39;</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">alpha</span> <span class="o">-</span> <span class="n">angles</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">degrees</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in delay&#39;</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">delay</span> <span class="o">-</span> <span class="n">angles</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">degrees</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Error in p1:
+3.84912897629868e-15
+Error in p2:
+3.512808705868506e-14
+Error in alpha:
+4.93814094081266e-13
+Error in delay
+4.418441231203291e-13
+</pre></div></div>
+</div>
+<p>Same for the most general homogeneous retarder with randomized values.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create random values</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">180</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">degrees</span>
+
+<span class="c1"># Create the py_pol object</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s1">&#39;General random diattenuator&#39;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">retarder_charac_angles</span><span class="p">(</span><span class="n">R</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">)</span>
+
+<span class="c1"># Analyze it</span>
+<span class="n">R_calc</span><span class="p">,</span> <span class="n">angles</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">retarder</span><span class="p">(</span><span class="n">angles</span><span class="o">=</span><span class="s1">&#39;charac&#39;</span><span class="p">)</span>
+
+<span class="c1"># Compare the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in retardance:&#39;</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">R</span> <span class="o">-</span> <span class="n">R_calc</span><span class="p">)</span><span class="o">/</span><span class="n">degrees</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in alpha:&#39;</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">alpha</span> <span class="o">-</span> <span class="n">angles</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">degrees</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in delay&#39;</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">delay</span> <span class="o">-</span> <span class="n">angles</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">degrees</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Error in retardance:
+1.136276205612844e-11
+Error in alpha:
+8.282962939155284e-10
+Error in delay
+3.1983429115963354e-13
+</pre></div></div>
+</div>
+</section>
+<section id="Decomposition-of-Jones-matrices">
+<h3><span class="section-number">2.1.2.3. </span>Decomposition of Jones matrices<a class="headerlink" href="#Decomposition-of-Jones-matrices" title="Permalink to this headline"></a></h3>
+<p>The analysis of homogeneous diattenuators and retarders is very useful and easy to understand. However, not every optical element is an homogeneous diattenuator or retarder. Some of them may be inhomogeneous diattenuators or retarders, easy to understand but not so much to identify. Even more common are optical elements that show both diattenuation and retardance. We provide an easy method to analyze these matrices taking advantage from the polar decomposition theorem. This theorem states that
+every Jones matrix can be decomposed in the product of an homogeneous diattenuator <span class="math notranslate nohighlight">\(J_D\)</span> and an homogeneous retarder <span class="math notranslate nohighlight">\(J_R\)</span>. There are two possible combinations:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(J=J_D*J_R\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(J=J_R*J_D\)</span></p></li>
+</ol>
+<p>Then, each element can be easily analyzed separately. This means that Jones matrix is decomposed in seven parameters: <span class="math notranslate nohighlight">\(p_1\)</span> and <span class="math notranslate nohighlight">\(p_2\)</span> from <span class="math notranslate nohighlight">\(J_D\)</span>, <span class="math notranslate nohighlight">\(\phi_D\)</span> and <span class="math notranslate nohighlight">\(\chi_D\)</span> (or <span class="math notranslate nohighlight">\(\alpha_D\)</span> and <span class="math notranslate nohighlight">\(\delta_D\)</span>) of the transmission axis of the diattenuator, and <span class="math notranslate nohighlight">\(\Delta\)</span>, <span class="math notranslate nohighlight">\(\phi_R\)</span> and <span class="math notranslate nohighlight">\(\chi_R\)</span> (or <span class="math notranslate nohighlight">\(\alpha_R\)</span> and <span class="math notranslate nohighlight">\(\delta_R\)</span>) of the fast axis of the retarder, plus a global phase phase factor.</p>
+<p>Here we present an example of the decomposition and analysis of random matrices.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create random Jones matrices</span>
+<span class="n">M_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">M_imag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Create the pypol object</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s1">&#39;Random element&#39;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="n">M_real</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">M_imag</span><span class="p">)</span>
+
+<span class="c1"># Decompose the matrix and measure all the relevant aprameters</span>
+<span class="n">Jr</span><span class="p">,</span> <span class="n">Jd</span><span class="p">,</span> <span class="n">parameters</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">decompose_pure</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">all_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+------------------------------------------------------
+Polar decomposition of Random element as M = RP.
+
+Analysis of Random element Diattenuator as polarizer:
+
+- Transmissions of Random element Diattenuator are:
+  Max. transmission
+[2.40764319 3.21502322 3.4495616  2.4862596  2.43598106]
+  Min. transmission
+[0.08175962 0.04627776 0.04233821 0.36341963 0.00113591]
+  p1
+[1.55165821 1.79304858 1.85729955 1.57678775 1.56076297]
+  p2
+[0.28593639 0.21512267 0.20576252 0.60284295 0.03370328]
+The mean value of param Max. transmission is 2.7988937347972636 +- 0.44250539386501003
+The mean value of param Min. transmission is 0.10698622654884589 +- 0.1307391618446966
+The mean value of param p1 is 1.667911411309759 +- 0.13025075362526908
+The mean value of param p2 is 0.26867356172642504 +- 0.1865495745856386
+
+- Angles of Random element Diattenuator are:
+  Alpha
+[33.91174113 39.5267862  45.7629621  28.53549923 16.73494752]
+  Delay
+[349.45927025 329.50299943 349.50093469 324.84633643   6.35919198]
+  Azimuth
+[33.7402846  38.67444269 45.7759469  25.80824562 16.6537038 ]
+  Ellipticity angle
+[ -4.87652406 -14.94245803  -5.24764995 -14.44961582   1.75103539]
+The mean value of param Alpha is 32.89438723544218 +- 9.907081713639666
+The mean value of param Delay is 271.9337465563481 +- 133.1695765391939
+The mean value of param Azimuth is 32.13052472190712 +- 10.11053840691845
+The mean value of param Ellipticity angle is -7.553042492032691 +- 6.343668283739094
+
+
+Analysis of Random element Retarder as retarder:
+
+- Retardance of Random element Retarder is:
+[113.70742796  89.18951223  95.51231097 163.81722716  87.86762442]
+The mean value is 110.01882054844734 +- 28.435360993207976
+
+- Angles of Random element Retarder are:
+  Alpha
+[34.84585995 44.24754007 23.50303119 32.75764742 42.15255844]
+  Delay
+[327.96717238 334.70126048  18.11657712 344.65602892 335.79169339]
+  Azimuth
+[33.20836836 44.16776023 22.77553139 32.3607934  41.88008457]
+  Ellipticity
+[-14.91520443 -12.64469928   6.57313888  -6.96738443 -12.04061553]
+The mean value of param Alpha is 35.50132741504756 +- 7.384465313911762
+The mean value of param Delay is 272.2465464601314 +- 127.17589364314031
+The mean value of param Azimuth is 34.87850758941872 +- 7.627877523637993
+The mean value of param Ellipticity is -7.99895295919212 +- 7.735147365101789
+
+Random element decomposition mean square error:
+[1.16043536e-15 6.08094194e-16 1.34950337e-15 3.64010962e-16
+ 2.34481232e-15]
+The mean value is 1.1653712408193328e-15 +- 6.896007921423872e-16
+
+</pre></div></div>
+</div>
+</section>
+<section id="Theory-of-Mueller-objects">
+<h3><span class="section-number">2.1.2.4. </span>Theory of Mueller objects<a class="headerlink" href="#Theory-of-Mueller-objects" title="Permalink to this headline"></a></h3>
+<p>All the theory of Jones matrices can be directly extrapolated to pure Mueller matrices. However, Mueller-Stokes formalism allows working with partially polarized light and optical elements which depolarize light. This allows defining a third basic optical element: the depolarizer. A depolarizer is an optical element that increases the depolarization degree of incoming light waves.</p>
+<p>A Mueller matrix is a 4x4 matrix of real elements. Its 16 components are usually divided in blocks that allow describing its properties easily:</p>
+<p><span class="math notranslate nohighlight">\(M=\left[\begin{array}{cccc} M_{00} &amp; M_{01} &amp; M_{02} &amp; M_{03}\\ M_{10} &amp; M_{11} &amp; M_{12} &amp; M_{13}\\ M_{20} &amp; M_{21} &amp; M_{22} &amp; M_{23}\\ M_{30} &amp; M_{31} &amp; M_{32} &amp; M_{33} \end{array}\right]=M\left[\begin{array}{cc} 1 &amp; \overrightarrow{D}\\ \overrightarrow{P} &amp; m \end{array}\right]=M_{00}\left[\begin{array}{cccc} 1 &amp; D_{1} &amp; D_{2} &amp; D_{3}\\ P_{1} &amp; m_{11} &amp; m_{12} &amp; m_{13}\\ P_{2} &amp; m_{21} &amp; m_{22} &amp; m_{23}\\ P_{3} &amp; m_{31} &amp; m_{32} &amp; m_{33} \end{array}\right]\)</span>.</p>
+<p>This divides the Mueller matrix in four blocks:</p>
+<ol class="arabic simple">
+<li><p><strong>:math:`M_{00}`</strong>: Mean transmission coefficient. This number describes the mean transmission of the object.</p></li>
+<li><p><strong>:math:`overrightarrow{D}`</strong>: Diattenuation vector. This 1x3 vector describes the properties of the object to reduce the intensity of the light that gets through it.</p></li>
+<li><p><strong>:math:`overrightarrow{P}`</strong>: Polarizance vector. This 3x1 vector describes the properties of the object to transform depolarized light into polarized light.</p></li>
+<li><p><strong>:math:`m`</strong>: Small matrix m. This 3x3 matrix describes the depolarization and retardance properties of the optical object.</p></li>
+</ol>
+<p>These four blocks allow start to analyze de behavior of a Mueller matrix, as the three basic optical elements fulfill some conditions:</p>
+<ol class="arabic simple">
+<li><p>Diattenuator:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(M_{00}=\frac{p_{1}^{2}+p_{2}^{2}}{2}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\overrightarrow{D}=\overrightarrow{P}^{T}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(m=m^T\)</span> with <span class="math notranslate nohighlight">\(det(m)=0\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Retarder:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(M_{00}=1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_{i}=D_{i}=0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(det(m)=\pm1\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Depolarizer:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(m=m^T\)</span>.</p></li>
+</ul>
+</li>
+</ol>
+<p>This also explains the reason why diattenuators are commonly referred as polarizers: due to the condition <span class="math notranslate nohighlight">\(\overrightarrow{D}=\overrightarrow{P}^{T}\)</span>. This means that a diatenuator reduces the depolarization degree of light waves, behaving also as a polarizer.</p>
+</section>
+<section id="Examples-of-characterization-of-Mueller-matrices">
+<h3><span class="section-number">2.1.2.5. </span>Examples of characterization of Mueller matrices<a class="headerlink" href="#Examples-of-characterization-of-Mueller-matrices" title="Permalink to this headline"></a></h3>
+<p>Again, the <em>parameters</em> class includes many methods to characterize Mueller matrices.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create optical elements. We start from Jones matrices because it is  easier to create physically realizable random matrices.</span>
+<span class="n">M_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">M_imag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Create the pypol object</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">Jones_matrix</span><span class="p">(</span><span class="s1">&#39;Random element&#39;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="n">M_real</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">M_imag</span><span class="p">)</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s1">&#39;Random element&#39;</span><span class="p">)</span>
+<span class="n">M</span><span class="o">.</span><span class="n">from_Jones</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Random element =
+[+0.769 +0.156 +0.416 +0.032]   [+1.392 +0.135 +1.220 -0.077]   [+2.016 -0.497 +1.469 -0.066]   [+0.947 +0.328 +0.780 -0.125]   [+1.346 -0.466 +1.062 -0.290]
+[-0.210 -0.615 -0.143 -0.198]   [+0.311 +0.651 +0.273 -0.160]   [-0.545 +0.176 -0.633 +1.233]   [+0.322 +0.375 +0.271 +0.233]   [+0.204 +0.440 +0.367 -0.309]
+[+0.380 +0.028 +0.706 -0.193]   [+0.860 -0.110 +0.964 -0.475]   [+1.453 -0.581 +1.814 +0.371]   [+0.723 +0.106 +0.814 -0.118]   [+1.079 -0.633 +0.961 -0.472]
+[-0.101 +0.197 -0.216 -0.564]   [+0.821 +0.097 +0.954 +0.427]   [+0.050 -1.238 -0.351 -0.025]   [-0.325 -0.347 -0.195 +0.334]   [+0.472 -0.072 +0.672 +0.385]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the transmissions and retardance of the random matrices</span>
+<span class="n">trans</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">transmissions</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The intensity transmissions of Random element are:
+  Maximum (int.)
+[1.21449964 2.62182672 3.56872911 1.80246559 2.54083437]
+  Minimum (int.)
+[0.32372211 0.16307192 0.46348723 0.09122147 0.15029378]
+The mean value of param Maximum (int.) is 2.349671085503489 +- 0.7980930521817647
+The mean value of param Minimum (int.) is 0.23835930378774822 +- 0.13641309308501898
+
+</pre></div></div>
+</div>
+<p>The <em>checks</em> subclass also includes some interesting methods to calculate if an optical element fulfills some conditions. For example, we can calculate if an element is pure (it must be, as it comes from a Jones matrix):</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cond</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_pure</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Random element is pure (non-depolarizing):
+[ True  True  True  True  True]
+The mean value is 1.0 +- 0.0
+
+</pre></div></div>
+</div>
+<p>One thing that may be done in order to try to understand the meaning of a Mueller matrix is analyze which is its behavior as diattenuator, retarder or depolarizer. There are four methods that can be used: <em>diattenuator</em>, <em>polarizer</em>, <em>retarder</em> and <em>depolarizer</em>. Those methods analyze the mueller matrix <strong>AS IF</strong> they correspond to an homogeneous diattenuator, a polarizer or a retarder, or a depolarizer. Take a note that it is a big if. Fortunately, py_pol allows checking that condition with the
+methods <em>is_diattenuator</em>, <em>is_retarder</em> and <em>is_depolarizer</em> of the <em>checks</em> class.</p>
+<p>Here it is an example of a diattenuator:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M1</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s1">&#39;diattenuator&#39;</span><span class="p">)</span>
+<span class="n">M1</span><span class="o">.</span><span class="n">diattenuator_charac_angles</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+
+<span class="n">cond</span> <span class="o">=</span> <span class="n">M1</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_diattenuator</span><span class="p">(</span><span class="n">give_all</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">),</span> <span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">delay</span><span class="p">)</span> <span class="o">=</span> <span class="n">M1</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">diattenuator</span><span class="p">(</span><span class="n">transmissions</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;charac&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;M1 has the following diattenuator parameters:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Transmission coefs: -p1 = </span><span class="si">{}</span><span class="s2">.           -p2 = </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Transparent state:  -alpha = </span><span class="si">{}</span><span class="s2"> deg.    -delay = </span><span class="si">{}</span><span class="s2"> deg.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alpha</span><span class="o">/</span><span class="n">degrees</span><span class="p">,</span> <span class="n">delay</span><span class="o">/</span><span class="n">degrees</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;M1 is an homogeneous diattenuator.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+M1 has the following diattenuator parameters:
+  Transmission coefs: -p1 = 0.75.           -p2 = 0.24999999999999997.
+  Transparent state:  -alpha = [45.] deg.    -delay = [0.] deg.
+M1 is an homogeneous diattenuator.
+</pre></div></div>
+</div>
+<p>Homogeneous diattenuators and retarders are well understood. They are characterized by the transmissions (diattenuators) and retardance (retarders), plus the transmission/fast eigenstate (as the other one is perpendicular). The <em>analysis</em> subclass have two methods to extract those parameters from an homogeneous diattenuator or retarder.</p>
+<p>For example, we can create the most general diattenuator and compare the calculations with the original values:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create random values</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.5</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">degrees</span>
+
+<span class="c1"># Create the py_pol object</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s1">&#39;General random diattenuator&#39;</span><span class="p">)</span>
+<span class="n">M</span><span class="o">.</span><span class="n">diattenuator_charac_angles</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="n">p2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">)</span>
+
+<span class="c1"># Analyze it</span>
+<span class="n">trans</span><span class="p">,</span> <span class="n">angles</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">diattenuator</span><span class="p">(</span><span class="n">angles</span><span class="o">=</span><span class="s1">&#39;charac&#39;</span><span class="p">,</span> <span class="n">transmissions</span><span class="o">=</span><span class="s1">&#39;field&#39;</span><span class="p">)</span>
+
+<span class="c1"># Compare the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in p1:&#39;</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">p1</span> <span class="o">-</span> <span class="n">trans</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in p2:&#39;</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">p2</span> <span class="o">-</span> <span class="n">trans</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in alpha:&#39;</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">alpha</span> <span class="o">-</span> <span class="n">angles</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">degrees</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in delay&#39;</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">delay</span> <span class="o">-</span> <span class="n">angles</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">degrees</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Error in p1:
+1.211110335867595e-15
+Error in p2:
+1.700749243171892e-14
+Error in alpha:
+6.977779141662347e-12
+Error in delay
+2.8626825682656586e-09
+</pre></div></div>
+</div>
+<p>Depolarizers are slightly harder to characterize. The most general depolarizer is easily understood using its division in blocks. First, a depolarizer may present diattenuation ($D=:nbsphinx-math:<cite>left</cite><span class="math">\Vert `:nbsphinx-math:</span>overrightarrow{D}`:nbsphinx-math:<cite>right</cite><span class="math">\Vert `\ :math:</span>) or polarizance (<cite>P=:nbsphinx-math:</cite>left`:nbsphinx-math:<cite>Vert `:nbsphinx-math:</cite>overrightarrow{P}`:nbsphinx-math:<cite>right</cite><span class="math">\Vert `$). That may seem strange, but in
+some cases a depolarized can increase the polarization degree of light (also, in some cases a non-depolarizing element may decrease the polarization degree of light). Second, the small *m* matrix has three 3x1 orthonormal eigenvectors :math:</span>overrightarrow{v_{i}}`. Those eigenvectors can be transformed into six Stokes vectors in order to describe the principal states as:</p>
+<p><span class="math notranslate nohighlight">\(S_{i}=\left[\begin{array}{c} 1\\ \overrightarrow{v_{i}} \end{array}\right]\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(S_{i+3}=\left[\begin{array}{c} 1\\ -\overrightarrow{v_{i}} \end{array}\right]\)</span>.</p>
+<p>Its associated eigenvalues (which are lower than 1) are called its depolarization factors.</p>
+<p>The principal states are not orthogonal in a polarization sense. Also, in general those states will not be eigenstates of the Mueller matrix of the depolarizer. As the last three states are easily calculated from the first three, only the first ones are usually calculated.</p>
+<p>We can check this using a random depolarizer.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the random variables</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">alphaD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">delayD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">Dv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">D</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">alphaD</span><span class="p">),</span> <span class="n">D</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">alphaD</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">delayD</span><span class="p">),</span> <span class="n">D</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">alphaD</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delayD</span><span class="p">)])</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">alphaP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">delayP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">Pv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">P</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">alphaP</span><span class="p">),</span> <span class="n">P</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">alphaP</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">delayP</span><span class="p">),</span> <span class="n">P</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">alphaP</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delayP</span><span class="p">)])</span>
+
+<span class="n">d1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">alpha1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">45</span> <span class="o">*</span> <span class="n">degrees</span> <span class="c1"># Alpha can go up to 90º, but then we could have a problem calculating the orthogonal principal states</span>
+<span class="n">alpha2</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span>  <span class="c1"># If we can compare the results, S1, S2 and S3 3x1 vectors must be orthogonal</span>
+<span class="n">alpha3</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span> <span class="o">-</span> <span class="n">alpha1</span>
+<span class="n">delay1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">delay2</span> <span class="o">=</span> <span class="n">delay1</span> <span class="o">-</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">delay3</span> <span class="o">=</span> <span class="n">delay1</span> <span class="o">+</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span>
+
+<span class="c1"># Create the pypol objects</span>
+<span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="n">S3</span> <span class="o">=</span> <span class="n">create_Stokes</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">general_charac_angles</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha1</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay1</span><span class="p">)</span>
+<span class="n">S2</span><span class="o">.</span><span class="n">general_charac_angles</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha2</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay2</span><span class="p">)</span>
+<span class="n">S3</span><span class="o">.</span><span class="n">general_charac_angles</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha3</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay3</span><span class="p">)</span>
+
+<span class="n">M</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s1">&#39;Random general depolarizer&#39;</span><span class="p">)</span>
+<span class="n">M</span><span class="o">.</span><span class="n">depolarizer_states</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="p">[</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">],</span> <span class="n">S</span><span class="o">=</span><span class="p">[</span><span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="n">S3</span><span class="p">],</span> <span class="n">Pv</span><span class="o">=</span><span class="n">Pv</span><span class="p">,</span> <span class="n">Dv</span><span class="o">=</span><span class="n">Dv</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+
+<span class="c1"># Analyze the depolarizer</span>
+<span class="n">trans_D</span><span class="p">,</span> <span class="n">trans_P</span><span class="p">,</span> <span class="n">ang_D</span><span class="p">,</span> <span class="n">ang_P</span><span class="p">,</span> <span class="n">depolar</span><span class="p">,</span> <span class="n">principal_states</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">depolarizer</span><span class="p">(</span><span class="n">angles</span><span class="o">=</span><span class="s1">&#39;Charac&#39;</span><span class="p">,</span> <span class="n">transmissions</span><span class="o">=</span><span class="s1">&#39;Intensity&#39;</span><span class="p">,</span> <span class="n">depolarization</span><span class="o">=</span><span class="s1">&#39;Factors&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Random general depolarizer =
+[+1.000 -0.092 -0.003 -0.057]   [+1.000 -0.816 +0.479 +0.091]   [+1.000 -0.455 +0.080 +0.102]   [+1.000 +0.103 -0.062 -0.090]   [+1.000 +0.488 -0.185 -0.299]
+[+0.138 +0.297 +0.112 -0.072]   [+0.716 +0.403 +0.012 -0.038]   [+0.186 +0.055 +0.121 +0.075]   [+0.398 +0.395 +0.169 +0.091]   [-0.589 +0.511 +0.025 +0.026]
+[+0.199 +0.112 +0.397 +0.321]   [+0.371 +0.012 +0.196 -0.049]   [-0.162 +0.121 +0.490 +0.262]   [+0.032 +0.169 +0.299 -0.372]   [+0.090 +0.025 +0.535 -0.077]
+[+0.219 -0.072 +0.321 +0.695]   [+0.153 -0.038 -0.049 +0.339]   [-0.032 +0.075 +0.262 +0.230]   [+0.124 +0.091 -0.372 +0.790]   [-0.431 +0.026 -0.077 +0.533]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">depolar</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">depolar</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">depolar</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.38787164 0.42547992 0.6845797  0.0046061  0.5287186 ]
+[0.89997527 0.18052719 0.06724238 0.99025581 0.61136536]
+[0.10105016 0.33149721 0.02286883 0.48925556 0.43854679]
+
+
+[0.38787164 0.42547992 0.02286883 0.0046061  0.5287186 ]
+[0.10105016 0.33149721 0.6845797  0.48925556 0.43854679]
+[0.89997527 0.18052719 0.06724238 0.99025581 0.61136536]
+
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Diattenuation vector errors</span>
+<span class="n">Dcalc</span> <span class="o">=</span> <span class="p">(</span><span class="n">trans_D</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">trans_D</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">D</span><span class="o">-</span><span class="n">Dcalc</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The error in the diattenuation is:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">alphaD</span><span class="o">-</span><span class="n">ang_D</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The error in the diattenuation alpha is:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">delayD</span><span class="o">-</span><span class="n">ang_D</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The error in the diattenuation delay is:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The error in the diattenuation is:
+1.2412670766236366e-16
+The error in the diattenuation alpha is:
+1.1102230246251565e-16
+The error in the diattenuation delay is:
+5.458471087369456e-15
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Polarizance vector errors</span>
+<span class="n">Pcalc</span> <span class="o">=</span> <span class="p">(</span><span class="n">trans_P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">trans_P</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">P</span><span class="o">-</span><span class="n">Pcalc</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The error in the polarizance is:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">alphaP</span><span class="o">-</span><span class="n">ang_P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The error in the polarizance alpha is:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">delayP</span><span class="o">-</span><span class="n">ang_P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The error in the polarizance delay is:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The error in the polarizance is:
+1.5700924586837752e-16
+The error in the polarizance alpha is:
+3.7238012298709097e-16
+The error in the polarizance delay is:
+6.909521850709086e-15
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First depolarization factor / principal state errorserror1 = d1-depolar[0]</span>
+<span class="n">error1</span> <span class="o">=</span> <span class="n">d1</span><span class="o">-</span><span class="n">depolar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">error2</span> <span class="o">=</span> <span class="n">d1</span><span class="o">-</span><span class="n">depolar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">error3</span> <span class="o">=</span> <span class="n">d1</span><span class="o">-</span><span class="n">depolar</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="o">.</span><span class="n">reduce</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error3</span><span class="p">)])</span> <span class="c1"># Eig algorithms dont give the same order we used, so we have to compare to all</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The error in the first depolarization factor is:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+<span class="n">error1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S1</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S1</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S1</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span> <span class="o">=</span> <span class="o">-</span><span class="n">S1</span><span class="o">.</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span>
+<span class="n">error4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S1</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S1</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S1</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="o">.</span><span class="n">reduce</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error6</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The error in the first principal state is:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The error in the first depolarization factor is:
+1.6653345369377348e-16
+The error in the first principal state is:
+2.130500338636875e-15
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Second depolarization factor / principal state errors</span>
+<span class="n">error1</span> <span class="o">=</span> <span class="n">d2</span><span class="o">-</span><span class="n">depolar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">error2</span> <span class="o">=</span> <span class="n">d2</span><span class="o">-</span><span class="n">depolar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">error3</span> <span class="o">=</span> <span class="n">d2</span><span class="o">-</span><span class="n">depolar</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="o">.</span><span class="n">reduce</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error3</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The error in the second depolarization factor is:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+<span class="n">error1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S2</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S2</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S2</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">S2</span><span class="o">.</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span> <span class="o">=</span> <span class="o">-</span><span class="n">S2</span><span class="o">.</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span>
+<span class="n">error4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S2</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S2</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S2</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="o">.</span><span class="n">reduce</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error6</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The error in the second principal state is:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The error in the second depolarization factor is:
+2.7651296315394197e-16
+The error in the second principal state is:
+2.2608349685324004e-15
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Third depolarization factor / principal state errors</span>
+<span class="n">error1</span> <span class="o">=</span> <span class="n">d3</span><span class="o">-</span><span class="n">depolar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">error2</span> <span class="o">=</span> <span class="n">d3</span><span class="o">-</span><span class="n">depolar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">error3</span> <span class="o">=</span> <span class="n">d3</span><span class="o">-</span><span class="n">depolar</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="o">.</span><span class="n">reduce</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error3</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The error in the third depolarization factor is:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+<span class="n">error1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S3</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S3</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S3</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">S3</span><span class="o">.</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span> <span class="o">=</span> <span class="o">-</span><span class="n">S3</span><span class="o">.</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span>
+<span class="n">error4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S3</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S3</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">S3</span><span class="o">.</span><span class="n">M</span> <span class="o">-</span> <span class="n">principal_states</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="o">.</span><span class="n">reduce</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error6</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The error in the third principal state is:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The error in the third depolarization factor is:
+2.0062885096040707e-16
+The error in the third principal state is:
+2.5555108781655925e-15
+</pre></div></div>
+</div>
+</section>
+<section id="Decomposition-of-Mueller-matrices">
+<h3><span class="section-number">2.1.2.6. </span>Decomposition of Mueller matrices<a class="headerlink" href="#Decomposition-of-Mueller-matrices" title="Permalink to this headline"></a></h3>
+<p>Again, most optical elements do not belong to one of the three basic groups of basic elements, but are a mix of them. In the case of non-pure optical elements, the polar decomposition theorem states that every Mueller matrix can be decomposed in the product of a pure homogeneous diattenuator <span class="math notranslate nohighlight">\(M_D\)</span>, a pure homogeneous retarder <span class="math notranslate nohighlight">\(M_R\)</span> and a depolarizer <span class="math notranslate nohighlight">\(M_P\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(M = M_R*M_P*M_D\)</span>.</p>
+<p>There are six possible combinations, altering the order of the elements.</p>
+<p>This decomposition allows analyzing the three elements separately. The method <em>decompose_polar</em> of <em>analysis</em> class calculates the polar decomposition of Mueller matrices. If only pure matrices are analyzed, <em>decompose_pure</em> can be used instead. For example, if we build the most general element:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the diattenuator</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">Md</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s1">&#39;Diattenuator&#39;</span><span class="p">)</span>
+<span class="n">Md</span><span class="o">.</span><span class="n">diattenuator_charac_angles</span><span class="p">(</span><span class="n">p1</span><span class="o">=</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="n">p2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">)</span>
+
+<span class="c1"># Create the retarder</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">Mr</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s1">&#39;Retarder&#39;</span><span class="p">)</span>
+<span class="n">Mr</span><span class="o">.</span><span class="n">retarder_charac_angles</span><span class="p">(</span><span class="n">R</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">)</span>
+
+<span class="c1"># Create the depolarizer</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">alphaP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">delayP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">Pv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">P</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">alphaP</span><span class="p">),</span> <span class="n">P</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">alphaP</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">delayP</span><span class="p">),</span> <span class="n">P</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">alphaP</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delayP</span><span class="p">)])</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">alpha1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">alpha2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">alpha3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">delay1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">delay2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">delay3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">degrees</span>
+<span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="n">S3</span> <span class="o">=</span> <span class="n">create_Stokes</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">S1</span><span class="o">.</span><span class="n">general_charac_angles</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha1</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay1</span><span class="p">)</span>
+<span class="n">S2</span><span class="o">.</span><span class="n">general_charac_angles</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha2</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay2</span><span class="p">)</span>
+<span class="n">S3</span><span class="o">.</span><span class="n">general_charac_angles</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha3</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay3</span><span class="p">)</span>
+<span class="n">Mp</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s1">&#39;Depolarizer&#39;</span><span class="p">)</span>
+<span class="n">Mp</span><span class="o">.</span><span class="n">depolarizer_states</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="p">[</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">],</span> <span class="n">S</span><span class="o">=</span><span class="p">[</span><span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="n">S3</span><span class="p">],</span> <span class="n">Pv</span><span class="o">=</span><span class="n">Pv</span><span class="p">)</span>
+
+<span class="c1"># Calculate the product</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">Mp</span> <span class="o">*</span> <span class="n">Mr</span> <span class="o">*</span> <span class="n">Md</span>
+<span class="n">M</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;General matrix&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+General matrix =
+[+0.043 +0.003 +0.026 -0.031]   [+0.409 -0.393 -0.033 +0.063]   [+0.033 +0.006 +0.002 -0.001]   [+0.100 +0.040 +0.048 -0.069]   [+0.379 -0.046 +0.054 +0.117]
+[-0.009 +0.021 -0.012 +0.003]   [+0.188 -0.178 -0.058 +0.041]   [+0.006 +0.032 -0.017 +0.001]   [+0.083 +0.079 +0.030 -0.044]   [-0.094 +0.045 +0.019 -0.112]
+[-0.014 +0.003 -0.011 +0.008]   [+0.122 -0.115 -0.093 +0.022]   [-0.002 -0.017 +0.013 +0.002]   [+0.006 -0.006 +0.008 -0.005]   [+0.003 +0.026 +0.233 +0.110]
+[-0.002 +0.005 -0.005 -0.001]   [-0.013 +0.023 -0.034 +0.052]   [-0.001 +0.003 +0.000 +0.008]   [-0.052 -0.033 -0.017 +0.034]   [+0.191 -0.105 +0.087 +0.412]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Mr</span><span class="p">,</span> <span class="n">Md</span><span class="p">,</span> <span class="n">Mp</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">decompose_polar</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+------------------------------------------------------
+Polar decomposition of General matrix as M = .
+
+Analysis of Diattenuator of General matrix as diattenuator:
+
+- Transmissions of Diattenuator of General matrix are:
+  Max. transmission
+[0.08372213 0.80822939 0.03884885 0.19316006 0.51568779]
+  Min. transmission
+[0.00287628 0.00879382 0.02659563 0.00740281 0.24286267]
+  p1
+[0.28934777 0.89901579 0.19710113 0.43949978 0.71811405]
+  p2
+[0.05363095 0.09377537 0.16308166 0.08603956 0.49281098]
+The mean value of param Max. transmission is 0.3279296451487134 +- 0.29233843996469466
+The mean value of param Min. transmission is 0.05770623984706345 +- 0.0929300356621544
+The mean value of param p1 is 0.5086157044629007 +- 0.26313439593185206
+The mean value of param p2 is 0.177867704239356 +- 0.16145996294959453
+
+- Angles of Diattenuator of General matrix are:
+  Alpha
+[43.12486913 84.84894033 11.9144195  32.34501019 54.81993051]
+  Delay
+[309.89752446 117.75316737 324.82750335 304.48696602  65.36176273]
+  Azimuth
+[42.08252414 92.41908244  9.92523277 25.0655332  65.28225459]
+  Ellipticity angle
+[-24.97797443   4.55311274  -6.72873404 -24.08527103  29.43953901]
+The mean value of param Alpha is 45.41063393128312 +- 24.256324946930608
+The mean value of param Delay is 224.46538478839784 +- 109.9782875783591
+The mean value of param Azimuth is 46.954925427815574 +- 29.247100683823106
+The mean value of param Ellipticity angle is -4.359865549558513 +- 20.207179437859207
+
+
+Analysis of Retarder of General matrix as retarder:
+
+- Retardance of Retarder of General matrix is:
+[163.13315418 169.12459209   4.03791289  55.56431195   4.67567061]
+The mean value is 79.30712834461981 +- 73.33895282993629
+
+- Angles of Retarder of General matrix are:
+  Alpha
+[ 0.88295641 50.13811522  4.73325172 82.92065432  1.49607744]
+  Delay
+[178.09261695 277.76465706 325.60213782 159.05194005  93.28825704]
+  Azimuth
+[179.1175325   71.65346888   3.91690895  96.62850755 179.91410804]
+  Ellipticity angle
+[ 2.93836435e-02 -3.85726723e+01 -2.66568112e+00  2.50854130e+00
+  1.49361205e+00]
+The mean value of param Alpha is 28.034211023834633 +- 33.122506258516395
+The mean value of param Delay is 206.7599217846692 +- 83.83177122229104
+The mean value of param Azimuth is 106.24610518189142 +- 67.07851017399867
+The mean value of param Ellipticity angle is -7.441363279142306 +- 15.662771049025478
+
+
+Analysis of Depolarizer of General matrix as depolarizer:
+- Depolarization index of Depolarizer of General matrix is:
+[0.40436442 0.56221039 0.63314269 0.42166068 0.59123312]
+The mean value is 0.5225222588769515 +- 0.09237699128239983
+
+- First depolarization factor of Depolarizer of General matrix is:
+[1.52745281 1.27272633 1.31137374 1.39160167 0.00776603]
+The mean value is 1.1021841163017903 +- 0.5541140441659361
+
+The alpha of First principal state is (deg):
+[ 9.7449171  32.38184964 15.45010877  8.74683369 10.34778445]
+The mean value is 15.334298729427065 +- 8.833273587174494
+
+The delay of First principal state is (deg):
+[ 50.66642333  31.08083515 173.60841215 237.5143123  125.83032609]
+The mean value is 123.74006180368217 +- 76.63066040322992
+
+The azimuth of First principal state is (deg):
+[  6.32180883  30.58699039 164.62848591 175.19607632 173.76494152]
+The mean value is 110.09966059131398 +- 75.3077836159965
+
+The ellipticity angle of First principal state is (deg):
+[ 7.47748603 13.91905116  1.63867408 -7.34425997  8.32493927]
+The mean value is 4.8031781152217015 +- 7.214266472905797
+
+- Second depolarization factor of Depolarizer of General matrix is:
+[0.23163171 0.01201607 0.0770972  0.184453   1.23234303]
+The mean value is 0.3475082025845485 +- 0.44913786324280286
+
+The alpha of Second principal state is (deg):
+[35.25636295 12.7035509  59.81211709 53.71093537 49.91322572]
+The mean value is 42.27923840669194 +- 16.854704767377687
+
+The delay of Second principal state is (deg):
+[229.70063898 203.97476979 155.43516481 232.15648313  63.11953642]
+The mean value is 176.87731862582308 +- 63.21544120442961
+
+The azimuth of Second principal state is (deg):
+[149.34203217 168.26940757 118.992631   121.45544544  55.48059966]
+The mean value is 122.70802316931376 +- 38.262539760662335
+
+The ellipticity angle of Second principal state is (deg):
+[-22.98541876  -5.02002623  10.59254298 -24.44563212  30.7529422 ]
+The mean value is -2.22111838735169 +- 20.901663354471737
+
+- Third depolarization factor of Depolarizer of General matrix is:
+[2.34478474e-03 5.68169042e-01 2.62066375e-01 4.13863342e-08
+ 5.96521343e-01]
+The mean value is 0.28582031731962665 +- 0.2603350868137629
+
+The alpha of Third principal state is (deg):
+[45.15187627 46.37592001 40.99824998 44.23268624 35.986582  ]
+The mean value is 42.549062900128476 +- 3.7343068079386317
+
+The delay of Third principal state is (deg):
+[139.80812855 119.78267805  70.02099309 142.6381705  336.35087311]
+The mean value is 161.72016865989434 +- 91.1127159197669
+
+The azimuth of Third principal state is (deg):
+[134.80118114 132.23641453  33.81616389 135.96525971  35.22060339]
+The mean value is 94.40792453250339 +- 48.916505156070684
+
+The ellipticity angle of Third principal state is (deg):
+[ 20.09559562  30.05103858  34.26925075  18.6730703  -11.2115648 ]
+The mean value is 18.37547808913917 +- 15.920874314945912
+
+- Depolarizer of General matrix has no diattenuation.
+- Transmissions of Depolarizer of General matrix from polarizance are:
+  Max. transmission
+[1.35028191 1.33009949 1.05538205 1.70429304 1.27706109]
+  Min. transmission
+[0.64971809 0.66990051 0.94461795 0.29570696 0.72293891]
+  p1
+[1.16201631 1.15329939 1.02731789 1.30548575 1.13007127]
+  p2
+[0.80605092 0.8184745  0.97191458 0.54378944 0.85025815]
+The mean value of param Max. transmission is 1.3434235155935608 +- 0.20872146000307626
+The mean value of param Min. transmission is 0.6565764844064392 +- 0.20872146000307626
+The mean value of param p1 is 1.1556381241993015 +- 0.08901708538635217
+The mean value of param p2 is 0.7980975184806312 +- 0.14006011352807754
+
+- Angles of Depolarizer of General matrix from diattenuation are:
+  Alpha
+[45. 45. 45. 45. 45.]
+  Delay
+[0. 0. 0. 0. 0.]
+  Azimuth
+[45. 45. 45. 45. 45.]
+  Ellipticity angle
+[0. 0. 0. 0. 0.]
+The mean value of param Alpha is 45.0 +- 0.0
+The mean value of param Delay is 0.0 +- 0.0
+The mean value of param Azimuth is 45.0 +- 0.0
+The mean value of param Ellipticity angle is 0.0 +- 0.0
+
+General matrix decomposition mean square error:
+[0.12345938 0.12597292 0.1223222  0.11856355 0.09559044]
+The mean value is 0.11718169811033832 +- 0.01105632241944768
+
+------------------------------------------------------
+
+</pre></div></div>
+</div>
+</section>
+<section id="id1">
+<h3><span class="section-number">2.1.2.7. </span>Error filtering<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p>There are many conditions a Mueller matrix must fulfill to be physically realizable:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(M_{ij}\in\mathbb{R}\)</span>.</p></li>
+<li><p>0 <span class="math">\leq `\ :math:`M_{00} \leq 1</span>, which can be translated as maximum transmission can’t be higher than 1 (except for active media, i.e., media which produce gain).</p></li>
+<li><p><span class="math notranslate nohighlight">\(M_{ij} \leq M_{00}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\left\Vert \overrightarrow{P}\right\Vert \leq1\)</span> and <span class="math notranslate nohighlight">\(\left\Vert \overrightarrow{D}\right\Vert \leq1\)</span> (except for active media).</p></li>
+<li><p><span class="math notranslate nohighlight">\(M_{00} (1 + D) \leq 1\)</span> and and <span class="math notranslate nohighlight">\(M_{00} (1 + P) \leq 1\)</span>, which can be translated as maximum transmission can’t be higher than 1 (except for active media).</p></li>
+<li><p><span class="math notranslate nohighlight">\(Tr(M*M^T)\leq 4(M_{00})^2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(M_{00}^{2}\left(1-D\right)^{2}\geq\mathop{\sum_{i=1}^{3}M_{0i}^{2}\left(1-\sum_{j=1}^{3}\frac{M_{ij}}{M_{00}D}\right)}^{2}\)</span> and <span class="math notranslate nohighlight">\(M_{00}^{2}\left(1-P\right)^{2}\geq\mathop{\sum_{i=1}^{3}M_{i0}^{2}\left(1-\sum_{j=1}^{3}\frac{M_{ji}}{M_{00}P}\right)}^{2}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda_{i}\in\mathbb{R}\)</span> (being <span class="math notranslate nohighlight">\(\lambda_{i}\)</span> the eigenvalues of the covariance matrix of <span class="math notranslate nohighlight">\(M\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(0 \leq \lambda_{i} \leq 1\)</span> (except for active media, where the values can be above 1).</p></li>
+</ol>
+<p>Experimental error may render some unphysicall matrices. The method <em>filter_physical_conditions</em> tries to fix those problems in the same order presented here. However, sometimes the matrices may be too far from physical realizability to solve all its problems. This can be easily visiualized using random matrices.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s2">&quot;Original&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">M</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_physical</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">M</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">filter_physical_conditions</span><span class="p">()</span>
+<span class="n">M</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Filtered&quot;</span>
+<span class="n">M</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_physical</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Original is physically realizable:
+[False False False False False]
+The mean value is 0.0 +- 0.0
+
+Filtered is physically realizable:
+[ True False False  True  True]
+The mean value is 0.6 +- 0.48989794855663565
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([ True, False, False,  True,  True])
+</pre></div></div>
+</div>
+<p>The error has been reduced in a factor of ~4. We can also see that the elemnts of the diagonal are almost exactly 1, and the errors in the rest of the ellementrs are at most in the 3rd decimal.</p>
+</section>
+<section id="Purification-of-Mueller-matrices">
+<h3><span class="section-number">2.1.2.8. </span>Purification of Mueller matrices<a class="headerlink" href="#Purification-of-Mueller-matrices" title="Permalink to this headline"></a></h3>
+<p>Many times, we know beforehand some information about the optical element that is measured by a polarimeter. One of the most common facts we can know is if the element does not depolarize, i.e., it is a pure element. Due to the experimental errors, most probably the Mueller matrix retrieved by the polarimeter will not be pure.</p>
+<p>A pure Mueller matrix is pure if all the eigenvalues of the covariance matrix are 0 except one. We have implemented two methods that works similarly in order to purify the Mueller matrix: <em>filter_purify_number</em> and <em>filter_purify_threshold</em>. Both make 0 some eigenvalues of the covariance matrix.</p>
+<p>Example: Transmission measurement of a chiral turbid famtom (<em>Ghosh, N. et al. 2008. Mueller matrix decomposition for extraction of individual polarization parameters from complex turbid media exhibiting multiple scattering, optical activity, and linear birefringence. Journal of Biomedical Optics 13, 044036-14.</em>). This example is performed mathematically in <em>J.J. Gil, R. Ossikovsky “Polarized light and the Mueller Matrix approach”, CRC Press (2016) pp 226</em>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">py_pol.utils</span> <span class="kn">import</span> <span class="n">order_eig</span>
+
+<span class="c1"># Create the object of the experimental measurement</span>
+<span class="n">m_exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0229</span><span class="p">,</span> <span class="mf">0.0027</span><span class="p">,</span> <span class="mf">0.0058</span><span class="p">],</span>
+              <span class="p">[</span><span class="o">-</span><span class="mf">0.0186</span><span class="p">,</span> <span class="mf">0.9956</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0361</span><span class="p">,</span> <span class="mf">0.0318</span><span class="p">],</span>
+               <span class="p">[</span><span class="o">-</span><span class="mf">0.0129</span><span class="p">,</span> <span class="mf">0.0392</span><span class="p">,</span> <span class="mf">0.2207</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.9656</span><span class="p">],</span>
+               <span class="p">[</span><span class="mf">0.0014</span><span class="p">,</span> <span class="mf">0.028</span><span class="p">,</span> <span class="mf">0.9706</span><span class="p">,</span> <span class="mf">0.2231</span><span class="p">]</span>
+              <span class="p">])</span> <span class="c1"># This is a normalized matrix, so we will always show normalized ones</span>
+<span class="n">M_exp</span> <span class="o">=</span> <span class="n">Mueller</span><span class="p">(</span><span class="s1">&#39;Experimental&#39;</span><span class="p">)</span>
+<span class="n">M_exp</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">m_exp</span><span class="p">)</span>
+
+<span class="c1"># Calculate the covariance matrix</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">M_exp</span><span class="o">.</span><span class="n">covariance_matrix</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The covariance matrix is:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+
+<span class="c1"># Calculate eigenvalues</span>
+<span class="n">qi</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">values_as_matrix</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vectors_as_matrix</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">qi</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">order_eig</span><span class="p">(</span><span class="n">qi</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">The eigenvalues are:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">qi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The covariance matrix is:
+Covariant of Experimental =
+[+0.489 + +0.000j -0.008 + +0.009j +0.007 + -0.007j +0.111 + -0.484j]
+[-0.008 + -0.009j +0.002 + +0.000j -0.001 + -0.001j -0.013 + +0.007j]
+[+0.007 + +0.007j -0.001 + +0.001j +0.000 + +0.000j +0.010 + -0.007j]
+[+0.111 + +0.484j -0.013 + -0.007j +0.010 + +0.007j +0.509 + +0.000j]
+
+
+The eigenvalues are:
+[[-1.04579885e-03]
+ [ 8.03161335e-04]
+ [ 4.02577388e-03]
+ [ 9.96216864e-01]]
+</pre></div></div>
+</div>
+<p>The last eigenvalue is lower than 0, which is not true in physical Mueller matrices. It must be made zero so M is physical (this operation is also performed by <em>filter_physical_conditions</em>, along with other ones).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M_filter1</span> <span class="o">=</span> <span class="n">M_exp</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">filter_purify_number</span><span class="p">(</span><span class="n">Neig</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">M_filter1</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Filter 1 eig&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">M_filter1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Filter 1 eig =
+[+0.494 +0.003 +0.007 +0.116]
+[+0.003 -0.004 -0.000 -0.010]
+[+0.007 -0.000 -0.004 +0.012]
+[+0.106 -0.011 +0.011 +0.504]
+
+</pre></div></div>
+</div>
+<p>As the second and third eigenvalues are very small, it is reasonable to think that the measured optical element is pure. So we can filter all three eigenvalues.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M_filter3</span> <span class="o">=</span> <span class="n">M_exp</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">filter_purify_number</span><span class="p">(</span><span class="n">Neig</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">M_filter3</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Filter 3 eig&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">M_filter3</span><span class="p">)</span>
+
+<span class="n">cond</span> <span class="o">=</span> <span class="n">M_filter3</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">is_pure</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Filter 3 eig =
+[+0.305 -0.004 +0.009 +0.305]
+[-0.004 -0.001 -0.000 -0.004]
+[+0.009 -0.000 -0.001 +0.009]
+[+0.305 -0.004 +0.009 +0.305]
+
+Filter 3 eig is pure (non-depolarizing):
+True
+
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="example.html" class="btn btn-neutral float-left" title="2. Advanced" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Example_4_Light_polarimetry.html" class="btn btn-neutral float-right" title="2.2. Example 4: Light polarimetry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Jesus del Hoyo Muñoz / Luis Miguel Sanchez Brea.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

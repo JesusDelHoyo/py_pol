@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.4. py_pol.stokes module &mdash; Python polarization 1.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.5. py_pol.mueller module" href="mueller.html" />
+    <link rel="prev" title="1.3. py_pol.jones_matrix module" href="jones_matrix.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Python polarization
+          </a>
+              <div class="version">
+                1.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">1. Python polarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../modules.html">4. py_pol</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../py_pol.html">1. py_pol package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="py_pol.html">1.1. py_pol.py_pol module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jones_vector.html">1.2. py_pol.jones_vector module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jones_matrix.html">1.3. py_pol.jones_matrix module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1.4. py_pol.stokes module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mueller.html">1.5. py_pol.mueller module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drawings.html">1.6. py_pol.drawings module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">1.7. py_pol.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">3. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">4. History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">5. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python polarization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../modules.html"><span class="section-number">4. </span>py_pol</a> &raquo;</li>
+          <li><a href="../../py_pol.html"><span class="section-number">1. </span>py_pol package</a> &raquo;</li>
+      <li><span class="section-number">1.4. </span>py_pol.stokes module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/py_pol/stokes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="module-py_pol.stokes">
+<span id="py-pol-stokes-module"></span><h1><span class="section-number">1.4. </span>py_pol.stokes module<a class="headerlink" href="#module-py_pol.stokes" title="Permalink to this headline"></a></h1>
+<p>Stokes objects describe light polarization states in the Mueller-Stokes formalism.</p>
+<dl class="simple">
+<dt><strong>Class fields</strong></dt><dd><ul class="simple">
+<li><p><strong>M</strong>: 2xN array containing all the Stokes vectors.</p></li>
+<li><p><strong>global_phase</strong>: Global phase of the light state.</p></li>
+<li><p><strong>name</strong>: Name of the object for print purposes.</p></li>
+<li><p><strong>shape</strong>: Shape desired for the outputs.</p></li>
+<li><p><strong>size</strong>: Number of stores Stokes vectors.</p></li>
+<li><p><strong>type</strong>: Type of the object ('Jones_vector'). This is used for determining the object class as using isinstance may throw unexpected results in .ipynb files.</p></li>
+<li><p><strong>parameters</strong>: Object of class <em>Parameters_Jones_vector</em>.</p></li>
+<li><p><strong>checks</strong>: Object of class <em>Checks_Jones_vector</em>.</p></li>
+</ul>
+</dd>
+<dt><strong>Parent methods</strong></dt><dd><ul class="simple">
+<li><p><strong>clear</strong>:  Removes data and name form Jones vector.</p></li>
+<li><p><strong>copy</strong>:  Creates a copy of the Jones_vector object.</p></li>
+<li><p><strong>stretch</strong>:  Stretches a Jones vector of size 1.</p></li>
+<li><p><strong>shape_like</strong>:  Takes the shape of another object to use as its own.</p></li>
+<li><p><strong>reshape</strong>: Changes the shape of the object.</p></li>
+<li><p><strong>flatten</strong>:  Transforms N-D objects into 1-D objects (0-D if only 1 element).</p></li>
+<li><p><strong>flip</strong>: Flips the object along some dimensions.</p></li>
+<li><p><strong>get_list</strong>: Creates a list with single elements.</p></li>
+<li><p><strong>from_list</strong>: Creates the object from a list of single elements.</p></li>
+<li><p><strong>concatenate</strong>: Canocatenates several objects into a single one.</p></li>
+<li><p><strong>draw</strong>: Draws the components of the object.</p></li>
+<li><p><strong>clear</strong>: Clears the information of the object.</p></li>
+</ul>
+</dd>
+<dt><strong>Generation methods</strong></dt><dd><ul class="simple">
+<li><p><strong>from_components</strong>: Creates Stokes vectors directly from the 4 elements $S_0$, $S_1$, $S_2$, $S_3$.</p></li>
+<li><p><strong>from_matrix</strong>: Creates Stokes vectors from an external 4 x shape numpy array.</p></li>
+<li><p><strong>from_list</strong>: Creates a Jones_vector object directly from a list of 4 or 4x1 numpy arrays.</p></li>
+<li><p><strong>from_Jones</strong>: Creates Stokes vectors from a Jones_vector object.</p></li>
+<li><p><strong>linear_light</strong>: Creates Stokes vectors for pure linear polarizer light.</p></li>
+<li><p><strong>circular_light</strong>: Creates Stokes vectors for pure circular polarizer light.</p></li>
+<li><p><strong>elliptical_light</strong> Creates Stokes vectors for polarizer elliptical light.</p></li>
+<li><p><strong>general_charac_angles</strong> Creates Stokes vectors given by their characteristic angles.</p></li>
+<li><p><strong>general_azimuth_ellipticity</strong> Creates Stokes vectors given by their azimuth and ellipticity.</p></li>
+</ul>
+</dd>
+<dt><strong>Manipulation methods</strong></dt><dd><ul class="simple">
+<li><p><strong>simplify</strong>:  Simplifies the Stokes vectors in several ways.</p></li>
+<li><p><strong>rotate</strong>: Rotates the Stokes vectors.</p></li>
+<li><p><strong>sum</strong>: Calculates the summatory of the Stokes vectors in the object.</p></li>
+<li><p><strong>reciprocal</strong>: Calculates the Stokes vectors that propagates backwards.</p></li>
+<li><p><strong>orthogonal</strong>: Calculates the orthogonal Stokes vectors.</p></li>
+<li><p><strong>normalize</strong>: Normalize the electric field to be normalized in electric field amplitude or intensity.</p></li>
+<li><p><strong>rotate_to_azimuth</strong>: Rotates the Stokes vectors to have a certain azimuth.</p></li>
+<li><p><strong>remove_global_phase</strong>: Calculates the global phase of the electric field (respect to the X component) and removes it.</p></li>
+<li><p><strong>add_global_phase</strong>: Adds a global phase to the Stokes vectors.</p></li>
+<li><p><strong>set_global_phase</strong>: Sets the global phase of the Stokes vectors.</p></li>
+<li><p><strong>set_depolarization</strong>: Sets the degree of depolarization.</p></li>
+<li><p><strong>add_depolarization</strong>: Increases the degree of depolarization.</p></li>
+</ul>
+</dd>
+<dt><strong>Drawing methods</strong></dt><dd><ul class="simple">
+<li><p><strong>draw_ellipse</strong>:  Draws the polarization ellipse of the Stokes vectors.</p></li>
+<li><p><strong>draw_poincare</strong>: Draws the Stokes vectors in the Poincare sphere.</p></li>
+</ul>
+</dd>
+<dt><strong>Parameters subclass methods</strong></dt><dd><ul class="simple">
+<li><p><strong>matrix</strong>:  Gets a numpy array with the Stokes vectors.</p></li>
+<li><p><strong>components</strong>: Calculates the electric field components of the Stokes vectors.</p></li>
+<li><p><strong>amplitudes</strong>: Calculates the electric field amplitudes of the Stokes vectors.</p></li>
+<li><p><strong>intensity</strong>: Calculates the intensity of the Stokes vectors.</p></li>
+<li><p><strong>irradiance</strong>: Calculates the irradiance of the Stokes vectors.</p></li>
+<li><p><strong>alpha</strong>: Calculates the ratio between electric field amplitudes ($E_x$/$E_y$).</p></li>
+<li><p><strong>delay / delta</strong>: Calculates the delay (phase shift) between Ex and Ey components of the electric field.</p></li>
+<li><p><strong>charac_angles</strong>: Calculates both alpha and delay, the characteristic angles of the Stokes vectors.</p></li>
+<li><p><strong>azimuth</strong>: Calculates azimuth, that is, the orientation angle of the major axis.</p></li>
+<li><p><strong>ellipticity_angle</strong>: Calculates the ellipticity angle.</p></li>
+<li><p><strong>azimuth_ellipticity</strong>: Calculates both azimuth and ellipticity angles.</p></li>
+<li><p><strong>ellipse_axes</strong>: Calculates the length of major and minor axis (a,b).</p></li>
+<li><p><strong>ellipticity_param</strong>: Calculates the ellipticity parameter, b/a.</p></li>
+<li><p><strong>eccentricity</strong>: Calculates the eccentricity, the complementary of the ellipticity parameter.</p></li>
+<li><p><strong>global_phase</strong>: Calculates the global phase of the Stokes vectors (respect to the X component of the electric field).</p></li>
+<li><p><strong>degree_polarization</strong>: Calculates the degree of polarization of the Stokes vectors.</p></li>
+<li><p><strong>degree_depolarization</strong>: Calculates the degree of depolarization of the Stokes vectors.</p></li>
+<li><p><strong>degree_linear_polarization</strong>: Calculates the degree of linear polarization of the Stokes vectors.</p></li>
+<li><p><strong>degree_circular_polarization</strong>: Calculates the degree of circular polarization of the Stokes vectors.</p></li>
+<li><p><strong>norm</strong>: Calculates the norm of the Stokes vectors.</p></li>
+<li><p><strong>polarized_unpolarized</strong>: Divides the Stokes vector in Sp+Su, where Sp is fully-polarized and Su fully-unpolarized.</p></li>
+<li><p><strong>get_all</strong>: Returns a dictionary with all the parameters of Stokes vectors.</p></li>
+</ul>
+</dd>
+<dt><strong>Checks subclass methods</strong></dt><dd><ul class="simple">
+<li><p><strong>is_physical</strong>: Checks if the Stokes vectors are physically realizable.</p></li>
+<li><p><strong>is_linear</strong>: Checks if the Stokes vectors are lienarly polarized.</p></li>
+<li><p><strong>is_circular</strong>: Checks if the Stokes vectors are circularly polarized.</p></li>
+<li><p><strong>is_right_handed</strong>: Checks if the Stokes vectors rotation direction are right handed.</p></li>
+<li><p><strong>is_left_handed</strong>: Checks if the Stokes vectors rotation direction are left handed.</p></li>
+<li><p><strong>is_polarized</strong>: Checks if the Stokes vectors are at least partially polarized.</p></li>
+<li><p><strong>is_totally_polarized</strong>: Checks if the Stokes vectors are totally polarized.</p></li>
+<li><p><strong>is_depolarized</strong>: Checks if the Stokes vectors are at least partially depolarized.</p></li>
+<li><p><strong>is_totally_depolarized</strong>: Checks if the Stokes vectors are totally depolarized.</p></li>
+<li><p><strong>get_all</strong>: Returns a dictionary with all the checks of Stokes vectors.</p></li>
+</ul>
+</dd>
+<dt><strong>Analysis subclass methods</strong></dt><dd><ul class="simple">
+<li><p><strong>filter_physical_conditions</strong>: Forces the Stokes vectors to be physically realizable.</p></li>
+<li><p><strong>density</strong>: Calculates the density of states around the Poincaré sphere.</p></li>
+<li><p><strong>existence</strong>: Checks the existence of states around the Poincaré sphere.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.stokes.create_Stokes">
+<span class="sig-prename descclassname"><span class="pre">py_pol.stokes.</span></span><span class="sig-name descname"><span class="pre">create_Stokes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#create_Stokes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.create_Stokes" title="Permalink to this definition"></a></dt>
+<dd><p>Function that creates several Stokes objects at the same time from a list of names or a number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>names</strong> (<em>str</em><em>, </em><em>list</em><em> or </em><em>tuple</em>) -- name of vector for string representation. If list or tuple, it also represents the number of objects to be created. Default: 'S'.</p></li>
+<li><p><strong>N</strong> (<em>int</em>) -- Number of elements to be created. This parameter is overrided if name is a list or tuple. Defeult: 1.</p></li>
+<li><p><strong>out_object</strong> (<em>bool</em>) -- If True and the result is a list of length 1, return a Stokes object instead. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of Stokes vectors</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>S (<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a> or list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py_pol.stokes.set_printoptions">
+<span class="sig-prename descclassname"><span class="pre">py_pol.stokes.</span></span><span class="sig-name descname"><span class="pre">set_printoptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_spaces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#set_printoptions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.set_printoptions" title="Permalink to this definition"></a></dt>
+<dd><p>Function that modifies the global print options parameters.</p>
+<p>TODO: Single global function for all modules.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N_list</strong> (<em>int</em>) -- Number of matrices that will be printed as a list if the shape of the object is 1D. Default: None.</p></li>
+<li><p><strong>list_spaces</strong> (<em>int</em>) -- Number of spaces between matrices if they are printed as a list. Default: None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_pol.stokes.</span></span><span class="sig-name descname"><span class="pre">Stokes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'S'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="py_pol.html#py_pol.py_pol.Py_pol" title="py_pol.py_pol.Py_pol"><code class="xref py py-class docutils literal notranslate"><span class="pre">py_pol.py_pol.Py_pol</span></code></a></p>
+<p>Class for Stokes vectors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>M</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- 4xN array containing all the Stokes vectors.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) -- Name of the object for print purposes.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- Shape desired for the outputs.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) -- Number of stored Stokes vectors.</p></li>
+<li><p><strong>ndim</strong> (<em>int</em>) -- Number of dimensions for representation purposes.</p></li>
+<li><p><strong>global_phase</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Global phase of the Stokes vector. If it is a numpy.ndarray, it must have the same number of elements than self.size. It is used for addition and substraction.</p></li>
+<li><p><strong>type</strong> (<em>string</em>) -- Type of the object ('Stokes'). This is used for determining the object class as using isinstance may throw unexpected results in .ipynb files.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.self.parameters">
+<span class="sig-prename descclassname"><span class="pre">self.</span></span><span class="sig-name descname"><span class="pre">parameters</span></span><a class="headerlink" href="#py_pol.stokes.Stokes.self.parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Class containing the measurable parameters of Stokes vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.self.checks">
+<span class="sig-prename descclassname"><span class="pre">self.</span></span><span class="sig-name descname"><span class="pre">checks</span></span><a class="headerlink" href="#py_pol.stokes.Stokes.self.checks" title="Permalink to this definition"></a></dt>
+<dd><p>Class containing the methods that check something about the Stokes vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.self.analysis">
+<span class="sig-prename descclassname"><span class="pre">self.</span></span><span class="sig-name descname"><span class="pre">analysis</span></span><a class="headerlink" href="#py_pol.stokes.Stokes.self.analysis" title="Permalink to this definition"></a></dt>
+<dd><p>Class containing the methods to analyze the Stokes vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.global_phase">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">global_phase</span></span><a class="headerlink" href="#py_pol.stokes.Stokes.global_phase" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.sum">
+<span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.sum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.sum" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the sum of Stokes vectors stored in the object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>list</em><em> or </em><em>tuple</em>) -- Axes along which the sum is performed. If None, all vectors are summed. Default: None.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, the original element is not updated. Default: False.</p></li>
+<li><p><strong>change_name</strong> (<em>bool</em>) -- If True, changes the object name adding Sum of at the beggining of the name. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Modified object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.rotate">
+<span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.rotate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.rotate" title="Permalink to this definition"></a></dt>
+<dd><p>Rotates a jones vector a certain angle.</p>
+<p>M_rotated = rotation_matrix_Jones(-angle) * self.M</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float</em>) -- Rotation angle in radians. Default: 0.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, the original element is not updated. Default: False.</p></li>
+<li><p><strong>change_name</strong> (<em>bool</em>) -- If True and angle is of size 1, changes the object name adding &#64; XX deg, being XX the total rotation angle. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Rotated object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.set_depolarization">
+<span class="sig-name descname"><span class="pre">set_depolarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree_pol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_depol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([1.,</span> <span class="pre">1.,</span> <span class="pre">1.])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.set_depolarization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.set_depolarization" title="Permalink to this definition"></a></dt>
+<dd><p>Function that reduces de polarization degree of a Stokes vector among the three last components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>degree_pol</strong> (<em>float</em>) -- Polarization degree.</p></li>
+<li><p><strong>degree_depol</strong> (<em>float</em>) -- Depolarization degree. Overrides degree_pol if different than None. Default: None.</p></li>
+<li><p><strong>ratio</strong> (<em>np.array</em>) -- Ratio between the three components of the depolarization degree. When different from [1, 1, 1]. Default: [1, 1, 1].</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, the original element is not updated. Default: True.</p></li>
+<li><p><strong>change_name</strong> (<em>bool</em>) -- If True, changes the object name adding Normalized of at the end of the name. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.add_depolarization">
+<span class="sig-name descname"><span class="pre">add_depolarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree_pol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_depol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([1.,</span> <span class="pre">1.,</span> <span class="pre">1.])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.add_depolarization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.add_depolarization" title="Permalink to this definition"></a></dt>
+<dd><p>Function that reduces de polarization degree of a Stokes vector among the three last components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>degree_pol</strong> (<em>float</em>) -- Polarization degree.</p></li>
+<li><p><strong>degree_depol</strong> (<em>float</em>) -- Depolarization degree. Overrides degree_pol if different than None. Default: None.</p></li>
+<li><p><strong>ratio</strong> (<em>np.array</em>) -- Ratio between the three components of the depolarization degree. When different from [1, 1, 1]. Default: [1, 1, 1].</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, the original element is not updated. Default: True.</p></li>
+<li><p><strong>change_name</strong> (<em>bool</em>) -- If True, changes the object name adding Normalized of at the end of the name. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.normalize" title="Permalink to this definition"></a></dt>
+<dd><p>Function that normalizes the Stokes vectors to have Intensity = 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, the original element is not updated. Default: False.</p></li>
+<li><p><strong>change_name</strong> (<em>bool</em>) -- If True, changes the object name adding Normalized of at the end of the name. Default: True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.add_global_phase">
+<span class="sig-name descname"><span class="pre">add_global_phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unknown_as_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.add_global_phase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.add_global_phase" title="Permalink to this definition"></a></dt>
+<dd><p>Function that adds a phase to the Stokes object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phase</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) -- Phase to be added to the Stokes vectors. Default: 0.</p></li>
+<li><p><strong>unknown_as_zero</strong> (<em>bool</em>) -- If True, takes unknown phase as zero. Default: False.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, self is not updated. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Recalculated Stokes object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.set_global_phase">
+<span class="sig-name descname"><span class="pre">set_global_phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.set_global_phase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.set_global_phase" title="Permalink to this definition"></a></dt>
+<dd><p>Function that sets the phase to the Stokes object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phase</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) -- Phase to be added to the Stokes vectors. Default: 0.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, self is not updated. Default: False.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If amplitude and azimuth are not specified, it is created a 4 x length array of jones vectors. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Recalculated Stokes object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.remove_global_phase">
+<span class="sig-name descname"><span class="pre">remove_global_phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.remove_global_phase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.remove_global_phase" title="Permalink to this definition"></a></dt>
+<dd><p>Function that removes the phase to the Stokes object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>keep</strong> (<em>bool</em>) -- If True, self is not updated. Default: False.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Recalculated Stokes object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.rotate_to_azimuth">
+<span class="sig-name descname"><span class="pre">rotate_to_azimuth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">azimuth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.rotate_to_azimuth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.rotate_to_azimuth" title="Permalink to this definition"></a></dt>
+<dd><p>Function that rotates the Stokes vectors to have a certain azimuth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>azimuth</strong> (<em>string</em><em> or </em><em>np.ndarray</em>) -- Azimuth of the Stokes vectors. 'X', 'Y', '-X' and '-Y' are the same as 0, 90, 180 and 270 degrees respectively. Default: 0.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, self is not updated. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Normalized Stokes vectors.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.from_components">
+<span class="sig-name descname"><span class="pre">from_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">components</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_pol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_depol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.from_components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.from_components" title="Permalink to this definition"></a></dt>
+<dd><p>Creates Stokes vectors directly from the 4 elements [s0, s1, s2, s3]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>components</strong> (<em>tuple</em>) -- A 4 element tuple containing the 4 components of the Stokes vectors (S0, S1, S2, S3).</p></li>
+<li><p><strong>degree_pol</strong> (<em>float</em>) -- Polarization degree. Default: 1</p></li>
+<li><p><strong>degree_depol</strong> (<em>float</em>) -- Depolarization degree. Overrides degree_pol if different than None. Default: None.</p></li>
+<li><p><strong>global_phase</strong> (<em>numpy.ndarray</em>) -- Adds a global phase to the Stokes object. Default: 0.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If amplitude and azimuth are not specified, it is created a 4 x length array of stokes vectors. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.from_matrix">
+<span class="sig-name descname"><span class="pre">from_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_pol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_depol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.from_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.from_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a Stokes object from an external array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>M</strong> (<em>numpy.ndarray</em>) -- New matrix. At least one dimension must be of size 4.</p></li>
+<li><p><strong>degree_pol</strong> (<em>float</em>) -- Polarization degree. Default: 1</p></li>
+<li><p><strong>degree_depol</strong> (<em>float</em>) -- Depolarization degree. Overrides degree_pol if different than None. Default: None.</p></li>
+<li><p><strong>global_phase</strong> (<em>numpy.ndarray</em>) -- Adds a global phase to the Stokes object. Default: 0.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.from_distribution">
+<span class="sig-name descname"><span class="pre">from_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Ex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ind_d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_periods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.from_distribution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.from_distribution" title="Permalink to this definition"></a></dt>
+<dd><p>Determine the Stokes vectors from a temporal or spatial electric field distribution [(Ex(t), Ey(t)].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Ex</strong> (<em>numpy.ndarray</em><em> or </em><em>float</em>) -- X component of the electric field.</p></li>
+<li><p><strong>Ey</strong> (<em>numpy.ndarray</em><em> or </em><em>float</em>) -- Y component of the electric field.</p></li>
+<li><p><strong>ind_d</strong> (<em>int</em>) -- Index of the spatial or temporal dimension. Default: -1.</p></li>
+<li><p><strong>method</strong> (<em>string</em>) -- Method for calculating the field amplitude and delay: DIRECT or FIT. Default: direct.</p></li>
+<li><p><strong>N_periods</strong> (<em>float</em>) -- Number of periods in the representation data. It is used by the fit algorithm (real case only) for calculating the frequency. If the value is not exact, convergency may decrease. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="jones_vector.html#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector">Jones_vector</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.from_Jones">
+<span class="sig-name descname"><span class="pre">from_Jones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">E</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_pol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_depol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.from_Jones"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.from_Jones" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a Stokes object from a Jones vectors object or a matrix corresponding to a Jones vectors.</p>
+<div class="math notranslate nohighlight">
+\[s_0 = abs(E_x)^2 + abs(E_y)^2\]</div>
+<div class="math notranslate nohighlight">
+\[s_1 = (abs(E_x)^2 - abs(E_y)^2)   p_1\]</div>
+<div class="math notranslate nohighlight">
+\[s_2 = 2  real(E_x  E_y^*)   p_1\]</div>
+<div class="math notranslate nohighlight">
+\[s_3 = -2  imag(E_x  E_y^*)   p_2\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>E</strong> (<em>Jones_vector object</em>) -- Jones vectors.</p></li>
+<li><p><strong>degree_pol</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Degree of polarization of the new Stokes vector. Default: 1.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If final object is of size 1, it is stretched to match this size. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.linear_light">
+<span class="sig-name descname"><span class="pre">linear_light</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azimuth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_pol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_depol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.linear_light"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.linear_light" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a Stokes vector of linear polarizer light.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>intensity</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of intensity. Default: 1.</p></li>
+<li><p><strong>azimuth</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of azimuths. Default: 0.</p></li>
+<li><p><strong>amplitude</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of electric field amplitude. Overrides intensity if it is different than None. Default: None.</p></li>
+<li><p><strong>degree_pol</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of polarization degree. Default: 1.</p></li>
+<li><p><strong>degree_depol</strong> (<em>float</em>) -- Depolarization degree. Overrides degree_pol if different than None. Default: None.</p></li>
+<li><p><strong>global_phase</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Adds a global phase to the Stokes object. Default: default_phase.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If final object is of size 1, it is stretched to match this size. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.circular_light">
+<span class="sig-name descname"><span class="pre">circular_light</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'d'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_pol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_depol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.circular_light"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.circular_light" title="Permalink to this definition"></a></dt>
+<dd><p>Creates Stokes vectors for pure circular polarizer light.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kind</strong> (<em>str</em>) -- 'd','r' - right, dextro.
+'l', 'i' - left, levo.</p></li>
+<li><p><strong>intensity</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of intensity. Default: 1.</p></li>
+<li><p><strong>amplitude</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of electric field amplitude. Overrides inetnsity if it is different than None. Default: None.</p></li>
+<li><p><strong>degree_pol</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of polarization degree. Default: 1.</p></li>
+<li><p><strong>degree_depol</strong> (<em>float</em>) -- Depolarization degree. Overrides degree_pol if different than None. Default: None.</p></li>
+<li><p><strong>global_phase</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Adds a global phase to the Stokes object. Default: default_phase.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If final object is of size 1, it is stretched to match this size. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.elliptical_light">
+<span class="sig-name descname"><span class="pre">elliptical_light</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azimuth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_pol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_depol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.elliptical_light"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.elliptical_light" title="Permalink to this definition"></a></dt>
+<dd><p>Stokes object of the most general light calculated from the polarization ellipse parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of electric amplitude of x axis. Default: 1.</p></li>
+<li><p><strong>b</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of electric amplitude of y axis. Default: 1.</p></li>
+<li><p><strong>kind</strong> (<em>str</em>) -- 'd','r' - right, dextro.
+'l', 'i' - left, levo.</p></li>
+<li><p><strong>azimuth</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Angle of the a axis respect to the x axis. Default: 0.</p></li>
+<li><p><strong>degree_pol</strong> (<em>float</em>) -- Polarization degree. Default: 1</p></li>
+<li><p><strong>degree_depol</strong> (<em>float</em>) -- Depolarization degree. Overrides degree_pol if different than None. Default: None.</p></li>
+<li><p><strong>global_phase</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Adds a global phase to the Stokes object. Default: default_phase.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If final object is of size 1, it is stretched to match this size. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.general_charac_angles">
+<span class="sig-name descname"><span class="pre">general_charac_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_pol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_depol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.general_charac_angles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.general_charac_angles" title="Permalink to this definition"></a></dt>
+<dd><p>Creates Stokes vectors given by their characteristic angles.</p>
+<p class="rubric">References</p>
+<p>J.J. Gil, R. Ossikovsky &quot;Polarized light and the Mueller Matrix approach&quot;, CRC Press (2016),pp 137.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha</strong> (<em>float</em>) -- [0, pi]: tan(alpha) is the ratio between field amplitudes of X and Y components. Default: 0</p></li>
+<li><p><strong>delay</strong> (<em>float</em>) -- [0, 2*pi]: phase difference between X and Y field components. Default: 0</p></li>
+<li><p><strong>intensity</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of intensity. Default: 1.</p></li>
+<li><p><strong>amplitude</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of electric field amplitude. Overrides intensity if it is different than None. Default: None.</p></li>
+<li><p><strong>degree_pol</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of polarization degree. Default: 1.</p></li>
+<li><p><strong>degree_depol</strong> (<em>float</em>) -- Depolarization degree. Overrides degree_pol if different than None. Default: None.</p></li>
+<li><p><strong>global_phase</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Adds a global phase to the Stokes object. Default: default_phase.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If final object is of size 1, it is stretched to match this size. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Stokes vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>S (4x1 numpy.matrix)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.general_azimuth_ellipticity">
+<span class="sig-name descname"><span class="pre">general_azimuth_ellipticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">azimuth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ellipticity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_pol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_depol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.general_azimuth_ellipticity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.general_azimuth_ellipticity" title="Permalink to this definition"></a></dt>
+<dd><p>Creates Stokes vectors given by their azimuth and ellipticity.</p>
+<p class="rubric">References</p>
+<p>J.J. Gil, R. Ossikovsky &quot;Polarized light and the Mueller Matrix approach&quot;, CRC Press (2016), pp 137.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>azimuth</strong> (<em>float</em>) -- [0, pi]: azimuth. Default: 0</p></li>
+<li><p><strong>ellipticity</strong> (<em>float</em>) -- [-pi/4, pi/4]: ellipticity. Default: 0</p></li>
+<li><p><strong>intensity</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of intensity. Default: 1.</p></li>
+<li><p><strong>amplitude</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of electric field amplitude. Overrides intensity if it is different than None. Default: None.</p></li>
+<li><p><strong>degree_pol</strong> (<em>numpy.array</em><em> or </em><em>float</em>) -- Array of polarization degree. Default: 1.</p></li>
+<li><p><strong>degree_depol</strong> (<em>float</em>) -- Depolarization degree. Overrides degree_pol if different than None. Default: None.</p></li>
+<li><p><strong>global_phase</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Adds a global phase to the Stokes object. Default: default_phase.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) -- If final object is of size 1, it is stretched to match this size. Default: 1.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Stokes vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>S (4x1 numpy.matrix)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.draw_poincare">
+<span class="sig-name descname"><span class="pre">draw_poincare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.draw_poincare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.draw_poincare" title="Permalink to this definition"></a></dt>
+<dd><p>&quot;Draws stokes vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="jones_vector.html#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector"><em>Jones_vector</em></a><em> or </em><a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes"><em>Stokes</em></a>) -- Object to be represented.</p></li>
+<li><p><strong>fig</strong> (<em>plotly.graph_objects.Figure</em>) -- Figure to plot the data. Default: None</p></li>
+<li><p><strong>figsize</strong> (<em>2-element iterable</em>) -- Figure size. Default: (6,6)</p></li>
+<li><p><strong>draw_axes</strong> (<em>bool</em>) -- If True, it draws the three axes of the Poincare space. Default: True</p></li>
+<li><p><strong>draw_guides</strong> (<em>bool</em>) -- If True, it draws the circles of S1, S2 and S3 = 0. Default: True</p></li>
+<li><p><strong>kind</strong> (<em>str</em>) -- Choose between 'scatter', 'line', 'scatterline' or 'surf' to represent the data. If surf, the object must be 2D, 3D or 4D. Else, it must be 0D, 1D, 2D or 3D. Default: 'scatter'.</p></li>
+<li><p><strong>depol</strong> (<em>bool</em>) -- If True, the depolarization is taking into account for scatter and line plots shrinking the radius below 1. Default: False.</p></li>
+<li><p><strong>param</strong> (<em>str</em><em>, </em><em>np.ndarray</em><em> or </em><em>None</em>) -- If str, parameter to use as information for the color. Must be a method of Parameters class which returns a single variable. If np.ndarray, must have the same shape as S. Default: None.</p></li>
+<li><p><strong>subplots</strong> (<em>bool</em>) -- If True, it tries to use the first two dimensions as rows and columns. If method == 'surf', this is mandatory. Default: False.</p></li>
+<li><p><strong>in_degrees</strong> (<em>bool</em>) -- If True, transforms the parameters to degrees. Default: False.</p></li>
+<li><p><strong>log</strong> (<em>bool</em>) -- If True, it calculates it in logarithmic scale. Default: False.</p></li>
+<li><p><strong>hover</strong> (<em>str</em>) -- Choose between 'components' (S1, S2, S3) or 'angles' (azimuth, ellipticity). Default: 'components'.</p></li>
+<li><p><strong>colormap</strong> (<em>str</em>) -- Colormap of the plots. Default: 'Blackbody'.</p></li>
+<li><p><strong>show_fig</strong> (<em>bool</em>) -- If True, the figure is inmediately plotted. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Plotly figure.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>fig (go.Figure)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Stokes.draw_ellipse">
+<span class="sig-name descname"><span class="pre">draw_ellipse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Stokes.draw_ellipse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Stokes.draw_ellipse" title="Permalink to this definition"></a></dt>
+<dd><p>Draws polarization ellipse of Stokes vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>E</strong> (<a class="reference internal" href="jones_vector.html#py_pol.jones_vector.Jones_vector" title="py_pol.jones_vector.Jones_vector"><em>Jones_vector</em></a><em> or </em><a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes"><em>Stokes</em></a>) -- Light object.</p></li>
+<li><p><strong>N_angles</strong> (<em>int</em>) -- Number of angles to plot the ellipses. Default: 91.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) -- name of filename to save the figure.</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em>) -- A tuple of length 2 containing the figure size. Default: (8,8).</p></li>
+<li><p><strong>limit</strong> (<em>float</em>) -- limit for drawing. If empty, it is obtained from amplitudes.</p></li>
+<li><p><strong>draw_arrow</strong> (<em>bool</em>) -- If True, draws an arrow containing the turning sense of the polarization. Does not work with linear polarization vectors. Default: True.</p></li>
+<li><p><strong>depol_central</strong> (<em>bool</em>) -- If True, draws a central circle containing the unpolarized field amplitude. Default: False.</p></li>
+<li><p><strong>depol_contour</strong> (<em>bool</em>) -- If True, draws a line enveloping the polarization ellipse in order to plot the depolarization. Default: False.</p></li>
+<li><p><strong>depol_prob</strong> (<em>bool</em>) -- If True, plots the probability distribution of the electric field. Default: False.</p></li>
+<li><p><strong>subplots</strong> (<em>string</em><em>, </em><em>tuple</em><em> or </em><em>None</em>) -- If AS_SHAPE, divides the figure in several subplots as the shape of the py_pol object. If INDIVIDUAL, each vector is represented in its own subaxis, trying to use a square grid. If tuple, divides the figure in that same number of subplots. If None, all ellipses are plot in the same axes. Default: None.</p></li>
+<li><p><strong>N_prob</strong> (<em>int</em>) -- Number of points in each dimension for probability distributions. Default: 256.</p></li>
+<li><p><strong>contour_levels</strong> (<em>float</em><em>, </em><em>np.ndarray</em><em>, </em><em>tuple</em><em> or </em><em>list</em>) -- Contains the contour levels (normalized to 1). Default: 0.9.</p></li>
+<li><p><strong>cmap</strong> (<em>str</em><em> or </em><em>color object</em>) -- Default colormap for probability distributions. Default: hot.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>handle to axis.
+fig (handle): handle to figure.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ax (handle)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_pol.stokes.</span></span><span class="sig-name descname"><span class="pre">Parameters_Stokes_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Stokes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for Stokes vector Parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Stokes_vector</strong> (<em>Stokes_vector</em>) -- Stokes Vector</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.self.parent">
+<span class="sig-prename descclassname"><span class="pre">self.</span></span><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.self.parent" title="Permalink to this definition"></a></dt>
+<dd><p>parent object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Stokes_vector</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.get_all" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a dictionary with all the parameters of Stokes vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.matrix">
+<span class="sig-name descname"><span class="pre">matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the numpy array of the Stokes object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(float or numpy.ndarray) 2xN numpy array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.global_phase">
+<span class="sig-name descname"><span class="pre">global_phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">give_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.global_phase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.global_phase" title="Permalink to this definition"></a></dt>
+<dd><p>Extracts the global phase of the Stokes vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>give_nan</strong> (<em>bool</em>) -- If False, NaN values are transformed into 0. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.components">
+<span class="sig-name descname"><span class="pre">components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.components" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the $S_0$, $S_1$, $S_2$ and $S_3$ components of the Stokes vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of total intensity.
+S1 (float or numpy.ndarray): Array of linearly horizontal or vertical polarized intensity.
+S2 (float or numpy.ndarray): Array of linearly 45º or 135º polarized intensity.
+S3 (float or numpy.ndarray): Array of circularly polarized intensity.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>S0 (float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.intensity">
+<span class="sig-name descname"><span class="pre">intensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.intensity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.intensity" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the intensity of the Stokes vector ($S_0$).</p>
+<p class="rubric">References</p>
+<p>Handbook of Optics vol 2. 22.16 (eq.2)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.irradiance">
+<span class="sig-name descname"><span class="pre">irradiance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.irradiance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.irradiance" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the irradiance of the Stokes vector ($S_0$).</p>
+<p class="rubric">References</p>
+<p>Handbook of Optics vol 2. 22.16 (eq.2)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.degree_polarization">
+<span class="sig-name descname"><span class="pre">degree_polarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.degree_polarization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.degree_polarization" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the degree of polarization (DP) of the Stokes vectors.</p>
+<blockquote>
+<div><p>$DP=</p>
+</div></blockquote>
+<p>rac{sqrt{S_{1}^{2}+S_{2}^{2}+S_{3}^{2}}}{S_{0}}$</p>
+<blockquote>
+<div><dl class="simple">
+<dt>References:</dt><dd><p>Handbook of Optics vol 2. 22.16 (eq.3)</p>
+</dd>
+<dt>Parameters:</dt><dd><p>use_nan (bool): If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.
+out_number (bool): If True and the result is a 1x1 array, return a number instead. Default: True.
+shape_like (float or numpy.ndarray): Use the shape of this array. Default: None.
+shape (tuple or list): If no shape_like array is given, use this shape instead. Default: None.
+verbose (bool): If True prints the parameter. Default: False.
+draw (bool): If True and the object is a 1D or 2D, plot it. Default: False.</p>
+</dd>
+<dt>Returns:</dt><dd><p>(float or numpy.ndarray): Result</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.degree_depolarization">
+<span class="sig-name descname"><span class="pre">degree_depolarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.degree_depolarization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.degree_depolarization" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the degree of depolarization (DD) of the Stokes vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.degree_linear_polarization">
+<span class="sig-name descname"><span class="pre">degree_linear_polarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.degree_linear_polarization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.degree_linear_polarization" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the degree of linear polarization (DLP) of the Stokes vectors.</p>
+<blockquote>
+<div><p>$DLP=</p>
+</div></blockquote>
+<p>rac{sqrt{S_{1}^{2}+S_{2}^{2}{S_{0}}$</p>
+<blockquote>
+<div><dl class="simple">
+<dt>References:</dt><dd><p>Handbook of Optics vol 2. 22.16 (eq.4)</p>
+</dd>
+<dt>Parameters:</dt><dd><p>use_nan (bool): If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.
+out_number (bool): If True and the result is a 1x1 array, return a number instead. Default: True.
+shape_like (float or numpy.ndarray): Use the shape of this array. Default: None.
+shape (tuple or list): If no shape_like array is given, use this shape instead. Default: None.
+verbose (bool): If True prints the parameter. Default: False.
+draw (bool): If True and the object is a 1D or 2D, plot it. Default: False.</p>
+</dd>
+<dt>Returns:</dt><dd><p>(float or numpy.ndarray): Result</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.degree_circular_polarization">
+<span class="sig-name descname"><span class="pre">degree_circular_polarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.degree_circular_polarization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.degree_circular_polarization" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the degree of circular polarization (DCP) of the Stokes vectors.</p>
+<blockquote>
+<div><p>$DCP=</p>
+</div></blockquote>
+<p>rac{S_{3}}{S_{0}}$</p>
+<blockquote>
+<div><dl class="simple">
+<dt>References:</dt><dd><p>Handbook of Optics vol 2. 22.16 (eq.5)</p>
+</dd>
+<dt>Parameters:</dt><dd><p>use_nan (bool): If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.
+out_number (bool): If True and the result is a 1x1 array, return a number instead. Default: True.
+shape_like (float or numpy.ndarray): Use the shape of this array. Default: None.
+shape (tuple or list): If no shape_like array is given, use this shape instead. Default: None.
+verbose (bool): If True prints the parameter. Default: False.
+draw (bool): If True and the object is a 1D or 2D, plot it. Default: False.</p>
+</dd>
+<dt>Returns:</dt><dd><p>(float or numpy.ndarray): Result</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.alpha">
+<span class="sig-name descname"><span class="pre">alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.alpha"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.alpha" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the ratio angle between electric field amplitudes.</p>
+<div class="math notranslate nohighlight">
+\[arcsin(E_y/Ex).\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.delay">
+<span class="sig-name descname"><span class="pre">delay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.delay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.delay" title="Permalink to this definition"></a></dt>
+<dd><p>Phase shift between $E_x$ and $E_y$ electric field components.</p>
+<div class="math notranslate nohighlight">
+\[\delta_2 - \delta_1.\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.delta">
+<span class="sig-name descname"><span class="pre">delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.delta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.delta" title="Permalink to this definition"></a></dt>
+<dd><p>Phase shift between $E_x$ and $E_y$ electric field components. This is the same as <em>delay</em>.</p>
+<div class="math notranslate nohighlight">
+\[\delta_2 - \delta_1.\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.charac_angles">
+<span class="sig-name descname"><span class="pre">charac_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.charac_angles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.charac_angles" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the characteristic angles of the Stokes object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[0, pi/2]: tan(alpha) is the ratio angle between amplitudes of the electric field.
+delay (float): [0, 2*pi]: phase difference between both components of the electric field.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>alpha (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.ellipticity_param">
+<span class="sig-name descname"><span class="pre">ellipticity_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.ellipticity_param"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.ellipticity_param" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the ellipticity parameter: the ratio between the minor and major polarization ellipse axes. It takes only into account the fully polarized part of the Stokes vector. It goes from 0 for linearly polarized light to 1 for circulary polarized light. Positive sign means left-handed and negative values right-handed rotation direction.</p>
+<p class="rubric">References</p>
+<p>Handbook of Optics vol 2. 22.16 (eq.7)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.ellipticity_angle">
+<span class="sig-name descname"><span class="pre">ellipticity_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.ellipticity_angle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.ellipticity_angle" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the ratio angle between the major and minor axis length. It goes from 0 degrees for linearly polarized light to 45 degrees for circular polarized light. Positive sign means left-handed and negative values right-handed rotation direction.</p>
+<p class="rubric">References</p>
+<p>J.J. Gil, R. Ossikovsky &quot;Polarized light and the Mueller Matrix approach&quot;, CRC Press (2016) pp 13.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- if True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.azimuth">
+<span class="sig-name descname"><span class="pre">azimuth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.azimuth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.azimuth" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the rotation angle of the polarization elipse major axis. If S is not fully polarized, azimuth is computed on the fully polarized part of S. Azimuth ranges from 0 to 180 degres (not included this last value).</p>
+<p class="rubric">References</p>
+<p>Handbook of Optics vol 2. 22.16 (eq.8)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.azimuth_ellipticity">
+<span class="sig-name descname"><span class="pre">azimuth_ellipticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.azimuth_ellipticity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.azimuth_ellipticity" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates both the azimuth and ellipticity of the Stokes object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[0, pi): Azimuth.
+ellipticity (float or numpy.ndarray): [-pi/4, pi/4]: Ellipticity angle.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>azimuth (float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.eccentricity">
+<span class="sig-name descname"><span class="pre">eccentricity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.eccentricity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.eccentricity" title="Permalink to this definition"></a></dt>
+<dd><p>The eccentricity of the polarization ellipse (0 for circular polarization, 1 for linear).</p>
+<p class="rubric">References</p>
+<p>Handbook of Optics vol 2. 22.16 (eq.9)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to 0. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.ellipse_axes">
+<span class="sig-name descname"><span class="pre">ellipse_axes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.ellipse_axes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.ellipse_axes" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the length of major and minor axis (a,b) of the polarization ellipse. This is a wrapper around the Parameters_Jones_Vector.ellipse_axes function.</p>
+<p class="rubric">References</p>
+<ol class="upperalpha simple" start="4">
+<li><p>Golstein &quot;Polarized light&quot; 2nd ed Marcel Dekker (2003), 3.4 eq.3-30a and 3-30b</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>sort</strong> (<em>bool</em>) -- If True, it sorts a and b to be the major and minor axis respectively. Default: True. TODO: Check why this is neccessary.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Major axis
+b (numpy.ndarray or float): Minor axis</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>a (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.polarized_unpolarized">
+<span class="sig-name descname"><span class="pre">polarized_unpolarized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.polarized_unpolarized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.polarized_unpolarized" title="Permalink to this definition"></a></dt>
+<dd><p>Divides the Stokes vector in two, one totally polarized and the other totally unpolarized.</p>
+<p class="rubric">References</p>
+<p>Handbook of Optics vol 2. 22.16 (eq.6)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Totally polarized Stokes object.
+Su (Stokes): Totally unpolarized Stokes object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Sp (<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.amplitudes">
+<span class="sig-name descname"><span class="pre">amplitudes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">give_Ez</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">give_unpol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.amplitudes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.amplitudes" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the $E_x$ and $E_y$ field amplitudes of the polarized part of the Stokes vectos. It may also calculate $E_z$ and the field amplitude of the unpolarized part.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>give_Ez</strong> (<em>bool</em>) -- If True, it returns the z component of the electric field (all values will be 0). Default: False.</p></li>
+<li><p><strong>give_unpol</strong> (<em>bool</em>) -- If True, it returns the unpolarized component of the electric field. Default: False.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of electric field amplitude along x axis.
+E0y (numpy.ndarray or float): Array of electric field amplitude along y axis.
+E0z (numpy.array, optional): Array of electric field amplitude along z axis.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>E0x (numpy.ndarray or float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.norm">
+<span class="sig-name descname"><span class="pre">norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.norm" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the algebraic norm of the Stokes vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>float</em><em> or </em><em>numpy.ndarray</em>) -- Use the shape of this array. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of total intensity.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>S0 (float or numpy.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Parameters_Stokes_vector.density">
+<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Parameters_Stokes_vector.density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Parameters_Stokes_vector.density" title="Permalink to this definition"></a></dt>
+<dd><p>Maintained here just for compatibility. Look for Stokes.analysis.density instead.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_pol.stokes.Analysis_Stokes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_pol.stokes.</span></span><span class="sig-name descname"><span class="pre">Analysis_Stokes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Analysis_Stokes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Analysis_Stokes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for Analysis of Stokes vetors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stokes_vector</strong> (<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes"><em>Stokes</em></a>) -- Stokes vector</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_pol.stokes.Analysis_Stokes.self.parent">
+<span class="sig-prename descclassname"><span class="pre">self.</span></span><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#py_pol.stokes.Analysis_Stokes.self.parent" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Analysis_Stokes.filter_physical_conditions">
+<span class="sig-name descname"><span class="pre">filter_physical_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Analysis_Stokes.filter_physical_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Analysis_Stokes.filter_physical_conditions" title="Permalink to this definition"></a></dt>
+<dd><p>Function that filters experimental errors by forcing the Stokes vector to fulfill the conditions necessary for a vector to be real light.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tol</strong> (<em>float</em>) -- Tolerance in equalities. Default: tol_default = 1e-6.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) -- If True, the object is updated to the filtered result. If false, a new fresh copy is created. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Filtered Stokes vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>S (<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Analysis_Stokes.density">
+<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.017453292519943295</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_coor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Analysis_Stokes.density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Analysis_Stokes.density" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the density of elements in the Poincare sphere. Unlike many other parameters methods, the return object is always a 2D object covering the whole Poincare Sphere.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>number</em>) -- Unit radius to compute density. Must be positive and lower than 1. Default: 0.1.</p></li>
+<li><p><strong>sampling</strong> (<em>number</em>) -- Resolution in azimuth and ellipticity. Default: 1 degree.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True, plot it. Default: False.</p></li>
+<li><p><strong>return_coor</strong> (<em>bool</em>) -- If True, it returns the x, y and z coordinates of the Poincare sphere. Default: False.</p></li>
+<li><p><strong>return_fig</strong> (<em>bool</em>) -- If True, the figure object will be returned. Default: False.</p></li>
+<li><p><strong>**kwargs</strong> -- If draw is True, these arguments will be passed to draw_poincare method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result. Units: points / srad.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>density (np.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Analysis_Stokes.existence">
+<span class="sig-name descname"><span class="pre">existence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.017453292519943295</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_coor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Analysis_Stokes.existence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Analysis_Stokes.existence" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the density of elements in the Poincare sphere. Unlike many other parameters methods, the return object is always a 2D object covering the whole Poincare Sphere.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>number</em>) -- Unit radius to compute density. Must be positive and lower than 1. Default: 0.1.</p></li>
+<li><p><strong>sampling</strong> (<em>number</em>) -- Resolution in azimuth and ellipticity. Default: 1 degree.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True, plot it. Default: False.</p></li>
+<li><p><strong>return_coor</strong> (<em>bool</em>) -- If True, it returns the x, y and z coordinates of the Poincare sphere. Default: False.</p></li>
+<li><p><strong>return_fig</strong> (<em>bool</em>) -- If True, the figure object will be returned. Default: False.</p></li>
+<li><p><strong>**kwargs</strong> -- If draw is True, these arguments will be passed to draw_poincare method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result.
+fig (plotly.graph_objects.Figure): Figure. Returned only if return_fig is True.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>existence (np.ndarray of bools)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_pol.stokes.Check_Stokes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_pol.stokes.</span></span><span class="sig-name descname"><span class="pre">Check_Stokes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Check_Stokes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Check_Stokes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for Check of Stokes vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stokes_vector</strong> (<a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes"><em>Stokes</em></a>) -- Stokes vector</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_pol.stokes.Check_Stokes.self.parent">
+<span class="sig-prename descclassname"><span class="pre">self.</span></span><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#py_pol.stokes.Check_Stokes.self.parent" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#py_pol.stokes.Stokes" title="py_pol.stokes.Stokes">Stokes</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Check_Stokes.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Check_Stokes.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Check_Stokes.get_all" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a dictionary with all the checks of Stokes vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Check_Stokes.is_physical">
+<span class="sig-name descname"><span class="pre">is_physical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">give_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Check_Stokes.is_physical"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Check_Stokes.is_physical" title="Permalink to this definition"></a></dt>
+<dd><p>Tests the conditions of physical realizability:</p>
+<ul class="simple">
+<li><p>Condition 1: All components must be real.</p></li>
+<li><p>Condition 2: S0 must be positive.</p></li>
+<li><p>Condition 3: The square sum of S1, S2 and S3 must be equal or lower than S0.</p></li>
+</ul>
+<p class="rubric">References</p>
+<p>Handbook of Optics vol 2. 22.34
+&quot;Polarized light and the Mueller Matrix approach&quot;, J. J. Gil, pp 187.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tol</strong> (<em>float</em>) -- Tolerance in equality conditions. Default: tol_default = 1e-6.</p></li>
+<li><p><strong>give_all</strong> (<em>bool</em>) -- If True, the function will return the individual conditions. Default: False.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Is real or not.
+ind (dictionary, optional): dictionary with condition, True/False, distance</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>cond (bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Check_Stokes.is_linear">
+<span class="sig-name descname"><span class="pre">is_linear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Check_Stokes.is_linear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Check_Stokes.is_linear" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates if the Stokes vectors are linearly polarized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tol</strong> (<em>float</em>) -- Tolerance. Default: tol_default = 1e-6.</p></li>
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to False. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- if True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- if True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the condition.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Check_Stokes.is_circular">
+<span class="sig-name descname"><span class="pre">is_circular</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Check_Stokes.is_circular"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Check_Stokes.is_circular" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates if the Stokes vectors are circularly polarized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tol</strong> (<em>float</em>) -- Tolerance. Default: tol_default: 1e-6.</p></li>
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to False. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- if True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- if True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the condition.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Check_Stokes.is_right_handed">
+<span class="sig-name descname"><span class="pre">is_right_handed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Check_Stokes.is_right_handed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Check_Stokes.is_right_handed" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates if the polarization rotation direction is right-handed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tol</strong> (<em>float</em>) -- Tolerance. Default: tol_default: 1e-6.</p></li>
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to False. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the condition.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Check_Stokes.is_left_handed">
+<span class="sig-name descname"><span class="pre">is_left_handed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Check_Stokes.is_left_handed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Check_Stokes.is_left_handed" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates if the polarization rotation direction is left-handed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tol</strong> (<em>float</em>) -- Tolerance. Default: tol_default: 1e-6.</p></li>
+<li><p><strong>use_nan</strong> (<em>bool</em>) -- If True, unknown values are set to np.nan, otherwise they are set to False. Default: True.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the condition.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Check_Stokes.is_polarized">
+<span class="sig-name descname"><span class="pre">is_polarized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Check_Stokes.is_polarized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Check_Stokes.is_polarized" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates if the Stokes vectors are at least partially polarized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tol</strong> (<em>float</em>) -- Tolerance. Default: tol_default = 1e-6.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- if True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the condition.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Check_Stokes.is_totally_polarized">
+<span class="sig-name descname"><span class="pre">is_totally_polarized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Check_Stokes.is_totally_polarized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Check_Stokes.is_totally_polarized" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates if the Stokes vectors are totally polarized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tol</strong> (<em>float</em>) -- Tolerance. Default: tol_default: 1e-6.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the condition.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Check_Stokes.is_depolarized">
+<span class="sig-name descname"><span class="pre">is_depolarized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Check_Stokes.is_depolarized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Check_Stokes.is_depolarized" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates if the Stokes vectors are at least partially depolarized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tol</strong> (<em>float</em>) -- Tolerance. Default: tol_default: 1e-6.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the condition.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_pol.stokes.Check_Stokes.is_totally_depolarized">
+<span class="sig-name descname"><span class="pre">is_totally_depolarized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/py_pol/stokes.html#Check_Stokes.is_totally_depolarized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_pol.stokes.Check_Stokes.is_totally_depolarized" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates if the Stokes vectors are totally depolarized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tol</strong> (<em>float</em>) -- Tolerance. Default: tol_default: 1e-6.</p></li>
+<li><p><strong>out_number</strong> (<em>bool</em>) -- If True and the result is a 1x1 array, return a number instead. Default: True.</p></li>
+<li><p><strong>shape_like</strong> (<em>numpy.ndarray</em><em> or </em><em>py_pol object</em>) -- Use the shape of this object. Default: None.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) -- If no shape_like array is given, use this shape instead. Default: None.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) -- If True prints the parameter. Default: False.</p></li>
+<li><p><strong>draw</strong> (<em>bool</em>) -- If True and the object is a 1D or 2D, plot it. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of the condition.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(numpy.ndarray or bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="jones_matrix.html" class="btn btn-neutral float-left" title="1.3. py_pol.jones_matrix module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mueller.html" class="btn btn-neutral float-right" title="1.5. py_pol.mueller module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Jesus del Hoyo Muñoz / Luis Miguel Sanchez Brea.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

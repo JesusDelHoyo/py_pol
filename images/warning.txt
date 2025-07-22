@@ -1,0 +1,1 @@
+For the readthedocs page, if required, pass these images to doc/ folder

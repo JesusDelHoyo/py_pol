@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. Draw &mdash; Python polarization 1.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. py_pol" href="../../modules.html" />
+    <link rel="prev" title="4. Mueller class" href="Mueller.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Python polarization
+          </a>
+              <div class="version">
+                1.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">1. Python polarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">3. Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Jones_vector.html">1. Jones_vector class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jones_matrix.html">2. Jones_matrix class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stokes.html">3. Stokes class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mueller.html">4. Mueller class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Draw</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Polarization-ellipse">5.1. Polarization ellipse</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Pure-states">5.1.1. Pure states</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Plot-multiple-ellipses-in-a-single-plot">5.1.2. Plot multiple ellipses in a single plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Plot-several-ellipses-in-multiple-plots">5.1.3. Plot several ellipses in multiple plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Plot-partially-polarized-states">5.1.4. Plot partially polarized states</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Save-the-figure-as-an-image-file">5.1.5. Save the figure as an image file</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Poincaré-sphere">5.2. Poincaré sphere</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Plotting-multiple-states">5.2.1. Plotting multiple states</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Plotting-parameters">5.2.2. Plotting parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">4. py_pol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">5. Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">6. History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">7. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python polarization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../tutorials.html">Tutorials</a> &raquo;</li>
+      <li><span class="section-number">5. </span>Draw</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/tutorial/Drawing_docs.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Draw">
+<h1><span class="section-number">5. </span>Draw<a class="headerlink" href="#Draw" title="Permalink to this headline"></a></h1>
+<p>There are two usual methods for light waves polarization representation: polarization ellipse and Poincaré sphere.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">py_pol.jones_vector</span> <span class="kn">import</span> <span class="n">Jones_vector</span><span class="p">,</span> <span class="n">degrees</span>
+<span class="kn">from</span> <span class="nn">py_pol.stokes</span> <span class="kn">import</span> <span class="n">Stokes</span>
+</pre></div>
+</div>
+</div>
+<section id="Polarization-ellipse">
+<h2><span class="section-number">5.1. </span>Polarization ellipse<a class="headerlink" href="#Polarization-ellipse" title="Permalink to this headline"></a></h2>
+<section id="Pure-states">
+<h3><span class="section-number">5.1.1. </span>Pure states<a class="headerlink" href="#Pure-states" title="Permalink to this headline"></a></h3>
+<p>The trajectory of the electric field vector of pure (totally polarized) light waves is an ellipse. This ellipse is often used to represent polarization states, as it allows identifying easily some of its properties. <em>py_pol</em> has a method in <em>Jones_vector</em> and <em>Stokes</em> classes to plot the polarization ellipses: <em>draw_ellipse</em>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_vector</span><span class="p">(</span><span class="s1">&#39;Circular light&#39;</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">circular_light</span><span class="p">(</span><span class="n">intensity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+<span class="n">axis</span><span class="p">,</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">draw_ellipse</span><span class="p">(</span><span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Circular light =
+[+1.000 + +0.000j]
+[+0.000 + +1.000j]
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Drawing_docs_3_1.png" src="../../_images/source_tutorial_Drawing_docs_3_1.png" />
+</div>
+</div>
+<p>Same for Stokes objects.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Circular light&#39;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">circular_light</span><span class="p">(</span><span class="n">intensity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="n">axis</span><span class="p">,</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_ellipse</span><span class="p">(</span><span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Circular light =
+[+2.000]
+[+0.000]
+[+0.000]
+[+2.000]
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Drawing_docs_5_1.png" src="../../_images/source_tutorial_Drawing_docs_5_1.png" />
+</div>
+</div>
+</section>
+<section id="Plot-multiple-ellipses-in-a-single-plot">
+<h3><span class="section-number">5.1.2. </span>Plot multiple ellipses in a single plot<a class="headerlink" href="#Plot-multiple-ellipses-in-a-single-plot" title="Permalink to this headline"></a></h3>
+<p><em>py_pol</em> objects may have more than one element stored inside. The most basic method of representation consists on plotting all the ellipses in the same figure:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># It is the same for Stokes class</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Elliptical light&#39;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="mi">15</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">draw_ellipse</span><span class="p">(</span><span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(&lt;Figure size 432x432 with 1 Axes&gt;,
+ [&lt;AxesSubplot:title={&#39;center&#39;:&#39;Elliptical light&#39;}, xlabel=&#39;$E_x$&#39;, ylabel=&#39;$E_y$&#39;&gt;])
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Drawing_docs_7_1.png" src="../../_images/source_tutorial_Drawing_docs_7_1.png" />
+</div>
+</div>
+</section>
+<section id="Plot-several-ellipses-in-multiple-plots">
+<h3><span class="section-number">5.1.3. </span>Plot several ellipses in multiple plots<a class="headerlink" href="#Plot-several-ellipses-in-multiple-plots" title="Permalink to this headline"></a></h3>
+<p>It is possible to divide the plots into several ones using the <em>subplots</em> argument. The first option is INDIVIDUAL, which represents each ellipse in its own subplot. These subplots are represented in a square grid (or the closest to a square grid, depending on the number of elements of the object):</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_vector</span><span class="p">(</span><span class="s1">&#39;Linear light&#39;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="n">angles</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">draw_ellipse</span><span class="p">(</span><span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="s1">&#39;Individual&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Drawing_docs_9_0.png" src="../../_images/source_tutorial_Drawing_docs_9_0.png" />
+</div>
+</div>
+<p>The second option is AS_SHAPE, which uses the shape of the object. 1D objects will be plotted as a row array of plots with one ellipse in each subplot. 2D arrays will be plotted as a matrix array with the same shape as the object. Objects of higher dimensionality will be plotted as a matrix array with the shape of the two first dimensions, plotting more than one ellipse per subplot.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1D object</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">Jones_vector</span><span class="p">(</span><span class="s1">&#39;Linear light&#39;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="n">angles</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">draw_ellipse</span><span class="p">(</span><span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="s1">&#39;As_shape&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Drawing_docs_11_0.png" src="../../_images/source_tutorial_Drawing_docs_11_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2D object</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">Jones_vector</span><span class="p">(</span><span class="s1">&#39;Light source&#39;</span><span class="p">)</span>
+<span class="n">az</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">el</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">AZ</span><span class="p">,</span> <span class="n">EL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">az</span><span class="p">,</span> <span class="n">el</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="n">AZ</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="n">EL</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">draw_ellipse</span><span class="p">(</span><span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="s1">&#39;as_shape&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Drawing_docs_12_0.png" src="../../_images/source_tutorial_Drawing_docs_12_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Higher dimensionality object</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">Jones_vector</span><span class="p">(</span><span class="s1">&#39;Light source&#39;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">ell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">intensity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">Ell</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">Angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">ell</span><span class="p">,</span> <span class="n">intensity</span><span class="p">,</span> <span class="n">angles</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">Angles</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="n">Ell</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="n">I</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">draw_ellipse</span><span class="p">(</span><span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depol_central</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="s1">&#39;as_shape&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Drawing_docs_13_0.png" src="../../_images/source_tutorial_Drawing_docs_13_0.png" />
+</div>
+</div>
+<p>Finally, it is possible to give the method a 2-element tuple as the desired shape.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">Jones_vector</span><span class="p">(</span><span class="s1">&#39;Light source&#39;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">ell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">Ell</span><span class="p">,</span> <span class="n">Angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">ell</span><span class="p">,</span> <span class="n">angles</span><span class="p">)</span>
+<span class="n">J</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">Angles</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="n">Ell</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">J</span><span class="o">.</span><span class="n">draw_ellipse</span><span class="p">(</span><span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depol_central</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Drawing_docs_15_0.png" src="../../_images/source_tutorial_Drawing_docs_15_0.png" />
+</div>
+</div>
+</section>
+<section id="Plot-partially-polarized-states">
+<h3><span class="section-number">5.1.4. </span>Plot partially polarized states<a class="headerlink" href="#Plot-partially-polarized-states" title="Permalink to this headline"></a></h3>
+<p>Partially polarized states can be decomposed in a totally polarized state plus a totally depolarized state. The totally unpolarized light electric field vector position will be random, with its module dependent on the unpolarized intensity. Then, the total electric field will be the coherent sum of both fields.</p>
+<p><em>py_pol</em> can plot partially polarized states in three different ways. The first one is plotting at the same time the totally polarized part ellipse and the circle whose radius is the expected electric field amplitude of the unpolarized part. This is done by setting the <em>depol_central</em> argument as True.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Light source&#39;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">ell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">Ell</span><span class="p">,</span> <span class="n">Deg</span><span class="p">,</span> <span class="n">Angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">ell</span><span class="p">,</span> <span class="n">deg</span><span class="p">,</span> <span class="n">angles</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="n">Angles</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="n">Ell</span><span class="p">,</span> <span class="n">degree_depol</span><span class="o">=</span><span class="n">Deg</span><span class="p">)</span>
+<span class="c1"># print(J)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_ellipse</span><span class="p">(</span><span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depol_central</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="s1">&#39;as_shape&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Drawing_docs_17_0.png" src="../../_images/source_tutorial_Drawing_docs_17_0.png" />
+</div>
+</div>
+<p>The second way is plotting the ellipses which outline the region with a certain probability of finding the total electric field vector. This is done by setting the <em>depol_contour</em> argument as True. The argument <em>contour_levels</em> contains the probability levels which the lines contain. If several ones are used, several lines will be plotted.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Light source&#39;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="mi">15</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">degree_depol</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_ellipse</span><span class="p">(</span><span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depol_contour</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">contour_levels</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Drawing_docs_19_0.png" src="../../_images/source_tutorial_Drawing_docs_19_0.png" />
+</div>
+</div>
+<p>The last method is plotting the probability distribution of the electric field. This is done by setting the <em>depol_prob</em> argument to True. The colormap of the probability distribution is varied using the <em>cmap</em> argument.</p>
+<p><strong>NOTE:</strong> This possibility forces the INDIVIDUAL option of subplots.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Light source&#39;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="mi">15</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">degree_depol</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_ellipse</span><span class="p">(</span><span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depol_prob</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depol_contour</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">contour_levels</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Drawing_docs_21_0.png" src="../../_images/source_tutorial_Drawing_docs_21_0.png" />
+</div>
+</div>
+</section>
+<section id="Save-the-figure-as-an-image-file">
+<h3><span class="section-number">5.1.5. </span>Save the figure as an image file<a class="headerlink" href="#Save-the-figure-as-an-image-file" title="Permalink to this headline"></a></h3>
+<p>Finally, it is possible to save the figures if a valid file name is given to the <em>filename</em> argument.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Light state&#39;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">ell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">degrees</span>
+<span class="n">deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">Ell</span><span class="p">,</span> <span class="n">Deg</span><span class="p">,</span> <span class="n">Angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">ell</span><span class="p">,</span> <span class="n">deg</span><span class="p">,</span> <span class="n">angles</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="n">Angles</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="n">Ell</span><span class="p">,</span> <span class="n">degree_depol</span><span class="o">=</span><span class="n">Deg</span><span class="p">)</span>
+<span class="c1"># print(J)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_ellipse</span><span class="p">(</span><span class="n">draw_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depol_central</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="s1">&#39;as_shape&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;Subplots figure.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Image Subplots figure.jpg saved succesfully!
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/source_tutorial_Drawing_docs_23_1.png" src="../../_images/source_tutorial_Drawing_docs_23_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="Poincaré-sphere">
+<h2><span class="section-number">5.2. </span>Poincaré sphere<a class="headerlink" href="#Poincaré-sphere" title="Permalink to this headline"></a></h2>
+<p>The second representation method is using the Poincaré sphere. Each Stokes vector can be represented in a sphere using <span class="math notranslate nohighlight">\(S_1\)</span>, <span class="math notranslate nohighlight">\(S_2\)</span> and <span class="math notranslate nohighlight">\(S_3\)</span> as <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> coordinates (noralized to <span class="math notranslate nohighlight">\(S_0 = 1\)</span>). Pure states represent the surface of the wphere, the origin of the sphere for a totally depolarized state (natural light), and the rest of the sphere volume correspond to partially polarized light.</p>
+<p>A <em>Stokes</em> and <em>Jones_vector</em>object can be plotted in a Poincaré sphere using the <em>draw_poincare</em> method.</p>
+<p><strong>New in version 1.1.2</strong>: Poincaré sphere representation has been changed from Matplotlib to Pyplot.</p>
+<p><strong>Note:</strong> Sphinx and nbsphinx have some problems saving Plotly figures in the htmlfiles of the documentation. In order to show the figures, some png files were saved and plotted in the documentation instead of proper interactive Plotly figures. In all cases, the code line responsible of rendering the figure is commented and the figure included as image.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Linear light&#39;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="c1"># S.draw_poincare()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Linear light =
+[+1.000]
+[+1.000]
+[+0.000]
+[+0.000]
+
+</pre></div></div>
+</div>
+<p><img alt="52aec4a4cf054dc086267b83fe833489" src="../../_images/Plotly_1.png" /></p>
+<p>By default, all states are represented on the surface of the Poincaré sphere. In order to plot depolarized states inside the sphere, the <em>depol</em> argument must be set to True.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Linear light&#39;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">degree_pol</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_poincare</span><span class="p">(</span><span class="n">depol</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># fig.show()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="52fe43bf4ef14b268503d3668b8fc8c8" src="../../_images/Plotly_2.png" /></p>
+<p>The figure size may be varied using the <em>figsize</em> argument. This argument must be a (width, height) tuple where the size is given in hundreds of pixels.</p>
+<p>The axes and guide lines may be removed from the drawing. Also, it is possible to avoid having to manually show the figure.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Linear light&#39;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">90</span><span class="o">*</span><span class="n">degrees</span><span class="p">)</span>
+<span class="c1"># fig = S.draw_poincare(figsize=(4,4), draw_axes=False, draw_guides=False, show_fig=True)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Linear light =
+[+1.000 ]
+[-1.000 ]
+[+0.000 ]
+[+0.000 ]
+</pre></div></div>
+</div>
+<p><img alt="0fc68492cdc7458aa9534256e475d0fd" src="../../_images/Plotly_3.png" /></p>
+<section id="Plotting-multiple-states">
+<h3><span class="section-number">5.2.1. </span>Plotting multiple states<a class="headerlink" href="#Plotting-multiple-states" title="Permalink to this headline"></a></h3>
+<p>Objects with more than one vector can be used. If the object is 1D, a line may be drawn between elements.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Linear light&#39;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">179</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span><span class="mi">13</span><span class="p">),</span> <span class="n">ellipticity</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span><span class="mi">13</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_poincare</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatterline&quot;</span><span class="p">)</span>
+<span class="c1"># fig.show()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="8de6219d064e4a4da866076c876a330f" src="../../_images/Plotly_4.png" /></p>
+<p>If the object is 2D, several lines are drawn in the same sphere. In this case, the first index of the object will be used to get the lines.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Light source&#39;</span><span class="p">)</span>
+<span class="n">az</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">179</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">19</span><span class="p">)</span>
+<span class="n">el</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">44</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">AZ</span><span class="p">,</span> <span class="n">EL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">az</span><span class="p">,</span> <span class="n">el</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="n">AZ</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="n">EL</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_poincare</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">)</span>
+<span class="c1"># fig.show()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="139bee2481bb4204aab3656fe9c89515" src="../../_images/Plotly_5.png" /></p>
+<p>If an object has multiple Stokes vectors, the figure may be divided into subplots using the <em>subplots</em> argument:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Light source&#39;</span><span class="p">)</span>
+<span class="n">az</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">179</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">19</span><span class="p">)</span>
+<span class="n">el</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">44</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">AZ</span><span class="p">,</span> <span class="n">EL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">az</span><span class="p">,</span> <span class="n">el</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="n">AZ</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="n">EL</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_poincare</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatterline&quot;</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="c1"># fig.show()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="ea63a3fde9ac4862ba2f4de5f9026345" src="../../_images/Plotly_6.png" /></p>
+</section>
+<section id="Plotting-parameters">
+<h3><span class="section-number">5.2.2. </span>Plotting parameters<a class="headerlink" href="#Plotting-parameters" title="Permalink to this headline"></a></h3>
+<p><em>py_pol</em> has a powerful option to improve the data representation. By using the <em>param</em> argument, we can plot the information of one parameter. This parameter may be a string representing one method of the <em>Parameters_Stokes</em> class.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Linear light&#39;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_poincare</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatterline&quot;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="s1">&#39;intensity&#39;</span><span class="p">)</span>
+<span class="c1"># fig.show()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="943e47be38964f7fa68bd7c4f977c053" src="../../_images/Plotly_7.png" /></p>
+<p><em>param</em> can also be a numpy.ndarray of the same shape as the py_pol object.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Linear light&#39;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_poincare</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatterline&quot;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">S</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">intensity</span><span class="p">())</span>
+<span class="c1"># fig.show()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="2e1ea3f8dbcf4523a63e9cfdfe7030c2" src="../../_images/Plotly_8.png" /></p>
+<p>Angular parameters may be easily represented in degrees.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Linear light&#39;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_poincare</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatterline&quot;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="s2">&quot;azimuth&quot;</span><span class="p">,</span> <span class="n">in_degrees</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># fig.show()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="de93735d34104b918c74ee5bd27b59bd" src="../../_images/Plotly_9.png" /></p>
+<p>The colormap can be varied.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Linear light&#39;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">linear_light</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_poincare</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatterline&quot;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="s2">&quot;azimuth&quot;</span><span class="p">,</span> <span class="n">in_degrees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+<span class="c1"># fig.show()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="0a113f62d00b422e8c8c692c4e579001" src="../../_images/Plotly_10.png" /></p>
+<p>Finally, if the object is 2D, a parameter may be represented in surface mode:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">Stokes</span><span class="p">(</span><span class="s1">&#39;Light source&#39;</span><span class="p">)</span>
+<span class="n">az</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">179.99</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">37</span><span class="p">)</span>
+<span class="n">el</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">45</span><span class="o">*</span><span class="n">degrees</span><span class="p">,</span> <span class="mi">19</span><span class="p">)</span>
+<span class="n">AZ</span><span class="p">,</span> <span class="n">EL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">az</span><span class="p">,</span> <span class="n">el</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">general_azimuth_ellipticity</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="n">AZ</span><span class="p">,</span> <span class="n">ellipticity</span><span class="o">=</span><span class="n">EL</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">draw_poincare</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;surf&quot;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="s2">&quot;azimuth&quot;</span><span class="p">)</span>
+<span class="c1"># fig.show()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="1e7527efdae4484a842675e21bbee32a" src="../../_images/Plotly_11.png" /></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Mueller.html" class="btn btn-neutral float-left" title="4. Mueller class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../modules.html" class="btn btn-neutral float-right" title="4. py_pol" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Jesus del Hoyo Muñoz / Luis Miguel Sanchez Brea.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
