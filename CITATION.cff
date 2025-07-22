@@ -1,12 +1,35 @@
 cff-version: 1.3.0
 message: "If you use this software, please cite it as below."
 authors:
-  - family-names: Hoyo
-    given-names: Jesus del
+  - family-names: del Hoyo
+    given-names: Jesus 
     orcid: https://orcid.org/0000-0001-9335-2213
+  - family-names: Sanchez-Brea
+    given-names: Luis Miguel 
+    orcid: https://orcid.org/0000-0003-1337-969X
 title: "Py_pol"
 version: 1.3.0
 identifiers:
   - type: doi
     value: 10.1117/12.2597163
 date-released: 2019-01-01
+url: https://github.com/JesusDelHoyo/py_pol
+preferred-citation:
+  type: proceeding
+  authors:
+  - family-names: del Hoyo
+    given-names: Jesus 
+    orcid: https://orcid.org/0000-0001-9335-2213
+  - family-names: Sanchez-Brea
+    given-names: Luis Miguel 
+    orcid: https://orcid.org/0000-0003-1337-969X
+  - family-names: Soria-Garcia
+    given-names: Angela
+    orcid: https://orcid.org/0000-0003-0602-6773
+  doi: "10.1117/12.2597163"
+  booktitle: "Computational Optics 2021"
+  pages: 1187506
+  title: "Open source library for polarimetric calculations “py_pol”"
+  volume: 11875
+  year: 2021
+  publisher: "SPIE"
