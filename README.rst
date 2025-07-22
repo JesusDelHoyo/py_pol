@@ -18,6 +18,7 @@ Python polarization
 
 * Free software: MIT license
 * Documentation: https://py-pol.readthedocs.io/en/master/
+* Source code moved to GitHub: https://github.com/JesusDelHoyo/py_pol
 
 .. image:: logo.png
    :width: 75
