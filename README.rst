@@ -2,6 +2,7 @@
 Python polarization
 ========================
 
+
 .. image:: https://img.shields.io/pypi/dm/py_pol
         :target: https://pypi.org/project/py_pol/
 
@@ -16,7 +17,7 @@ Python polarization
 
 
 * Free software: MIT license
-* Documentation: https://py-pol.readthedocs.io
+* Documentation: https://py-pol.readthedocs.io/en/master/
 
 .. image:: logo.png
    :width: 75
@@ -349,6 +350,41 @@ Drawing Stokes vectors in Poincare sphere.
 
 .. image:: poincare4.png
    :width: 600
+
+
+Conventions
+-----------
+In this module we assume the light is propagated along the z direction. Then, the electric field is defined as:
+
+.. math::
+
+ \overrightarrow{E}(x,y,z)=\left[\begin{array}{c}
+ E_{x}(x,y)\\
+ E_{y}(x,y)\\
+ 0
+ \end{array}\right]e^{i(kz-\omega t)},
+
+where :math:`E_x` and :math:`E_y` are the two components of the Jones vector. Also, we define the x component as the origin of global phase, so it is 0 when :math:`E_x` is real and positive. In the extraordinary case when :math:`E_x = 0`, the global phase is extracted from the y component. Then, the most general unitary Jones vector can be described as:
+
+.. math::
+
+ E=E_{0}e^{i\Phi}\left[\begin{array}{c}
+ \cos(\alpha)\\
+ \sin(\alpha)e^{i\delta}
+ \end{array}\right]
+
+where :math:`E_0` is the electric field amplitude, :math:`\Phi` is the global phase, and :math:`\alpha` and :math:`\delta` are the characteristic angles of the light state.
+
+This phase convention also affects the description of retarders. For example, a linear retarder with an azimuth of 0º for its fast eigenstate will have the following Jones matrix:
+
+.. math::
+
+ J_{R}=\left[\begin{array}{cc}
+ 1 & 0\\
+ 0 & e^{-i\Delta}
+ \end{array}\right],
+
+where :math:`\Delta` is the retarder retardance.
 
 
 Authors

@@ -57,7 +57,7 @@ setup(
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://bitbucket.org/optbrea/py_pol/src/master/',
+    url='https://github.com/JesusDelHoyo/py_pol',
     version='1.3.0',
     zip_safe=False,
 )
