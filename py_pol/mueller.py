@@ -1674,7 +1674,7 @@ class Mueller(Py_pol):
         m = m1 + m2 + m3
 
         # Create the object
-        self.from_blocks(M00=M00, Dv=Dv, Pv=Pv, m=m)
+        self.from_blocks(M00=M00, Dv=Dv, Pv=Pv, m=m, global_phase=global_phase)
         self.shape, _ = select_shape(obj=self,
                                              shape_var=new_shape,
                                              shape_fun=shape,
