@@ -2648,8 +2648,8 @@ class Mueller(Py_pol):
         if force_limits:
             azimuth = put_in_limits(azimuth, "azimuth")
             ellipticity = put_in_limits(ellipticity, "ellipticity")
-        # Restrict retardance between 0 and 360 degrees
-        R = put_in_limits(R, "delay", out_number=False)
+            # Restrict retardance between 0 and 360 degrees
+            R = put_in_limits(R, "delay", out_number=False)
         # Create the two objects
         name = self.name
         E1 = Mueller().diattenuator_azimuth_ellipticity(p1=p1,
@@ -2662,8 +2662,10 @@ class Mueller(Py_pol):
         # Orthogonal state for R > 180º
         cond = R > np.pi
         if cond.size > 0:
+            R[cond] = 2*np.pi - R[cond]
             azimuth[cond] = azimuth[cond] + np.pi/2
             ellipticity[cond] = -ellipticity[cond]
+
         E2 = Mueller().retarder_azimuth_ellipticity(R=R,
                                         azimuth=azimuth,
                                         ellipticity=ellipticity,
