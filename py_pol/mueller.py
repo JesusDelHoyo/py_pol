@@ -2523,10 +2523,11 @@ class Mueller(Py_pol):
             Tmax = p1**2
         if Tmin is None:
             Tmin = p2**2
+        R = R if R is not None else ret
         # Prepare variables
         (p1, p2,
-         azimuth), new_shape = prepare_variables(vars=[p1, p2, azimuth],
-                                                 expand=[False, False, False],
+         azimuth, R), new_shape = prepare_variables(vars=[p1, p2, azimuth, R],
+                                                 expand=[False, False, False, False],
                                                  length=length,
                                                  give_shape=True)
         # Calculate intensity transmission coefficients
