@@ -2,6 +2,10 @@
 History
 =======
 
+1.3.1
+-----------------------
+* Bugfix diattenuator_retarder_general.
+
 1.3.0
 -----------------------
 * Adition of ret as variable name for retardance in all retarder creation methods.

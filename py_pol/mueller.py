@@ -2551,8 +2551,17 @@ class Mueller(Py_pol):
                                     ellipticity=0,
                                     alpha=None,
                                     delay=None,
-                                    *args,
-                                    **kwargs):
+                                    p1=1,
+                                    p2=0,
+                                    Tmax=None,
+                                    Tmin=None,
+                                    ret=0,
+                                    global_phase=0,
+                                    length=1,
+                                    shape_like=None,
+                                    shape=None,
+                                    force_limits=False,
+                                    R=None):
         """Creates the most general homogenous diattenuator retarder.
 
         Parameters:
@@ -2579,24 +2588,20 @@ class Mueller(Py_pol):
             Jr = self.retarder_azimuth_ellipticity(
                 azimuth=azimuth,
                 ellipticity=ellipticity,
-                *args,
-                **kwargs)
+                ret=ret, R=R, length=length, shape_like=shape_like, shape=shape, force_limits=force_limits, global_phase=global_phase)
             Jd = self.diattenuator_azimuth_ellipticity(
                 azimuth=azimuth,
                 ellipticity=ellipticity,
-                *args,
-                **kwargs)
+                p1=p1, p2=p2, Tmax=Tmax, Tmin=Tmin, force_limits=force_limits)
         else:
             Jr = self.retarder_charac_angles(
                 alpha=alpha,
                 delay=delay,
-                *args,
-                **kwargs)
+                ret=ret, R=R, length=length, shape_like=shape_like, shape=shape, force_limits=force_limits, global_phase=global_phase)
             Jd = self.diattenuator_charac_angles(
                 alpha=alpha,
                 delay=delay,
-                *args,
-                **kwargs)
+                p1=p1, p2=p2, Tmax=Tmax, Tmin=Tmin, force_limits=force_limits)
             
         return Jd * Jr
 
