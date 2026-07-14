@@ -45,6 +45,7 @@ Jones_vector objects describe light polarization states in the Jones formalism.
     * **general**: Creates the most general Jones vector.
     * **general_azimuth_ellipticity**: Creates a Jones vector from the azimuth, ellipticity parameters.
     * **general_charac_angles**: Creates a Jones vector from the characteristic angles parameters.
+    * **Fibonacci_spiral**: Creates a Jones vector with the light states in a Fibonacci spiral in the Poincare sphere.
 
 
 **Manipulation methods**
@@ -113,7 +114,7 @@ from .drawings import draw_ellipse, draw_poincare
 from .utils import (charac_angles_2_azimuth_elipt, put_in_limits, repair_name,
                     rotation_matrix_Jones, prepare_variables, reshape, 
                     PrintParam, take_shape, select_shape, PrintMatrices,
-                    fit_distribution)
+                    fit_distribution, fill_sphere_fibonacci, Nsolids, solids)
 
 warnings.filterwarnings('ignore')
 
@@ -1428,6 +1429,32 @@ class Jones_vector(Py_pol):
         self.shape, _ = select_shape(
             self, shape_var=new_shape, shape_fun=shape, shape_like=shape_like)
         return self
+    
+
+    def Fibonacci_spiral(self, N=100, intensity=1, degree_pol=1, global_phase=0):
+        """Creates Jones vectors uniformly distributed on the Poincare sphere.
+
+        Parameters:
+            N (int or tuple of ints): Number of points in the spiral. Default: 100.
+            intensity (numpy.array or float): Array of intensity. Default: 1.
+            degree_pol (numpy.array or float): Array of polarization degree (radius in the Poincare sphere). Default: 1.
+            global_phase (float or numpy.ndarray): Adds a global phase to the Jones vector. Default: 0.
+
+        Returns:
+            S (Jones_vector): Created object.
+        """
+        # Calculate the angles for the Fibonacci spiral
+        az, el = [], []
+        N = [N] if isinstance(N, int) else N
+        for Npoints in np.array(N):
+            az_aux, el_aux = fill_sphere_fibonacci(num_samples=Npoints)
+            az.append(az_aux)
+            el.append(el_aux)
+        # Grid
+        az = np.meshgrid(*az, indexing='ij')
+        el = np.meshgrid(*el, indexing='ij')
+        # Calculate vector        
+        return self.general_azimuth_ellipticity(azimuth=az, ellipticity=el, intensity=intensity, degree_pol=degree_pol, global_phase=global_phase)
 
 
 ################################################################################

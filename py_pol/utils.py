@@ -24,6 +24,25 @@ from .__init__ import (degrees, eps, limAlpha, limDelta, limAz, limEl, limRet,
 tol_default = eps
 NoneType = type(None)
 
+# Perfect solids
+phi = (1+np.sqrt(5))/2
+r3 = np.sqrt(3)
+raiz = np.sqrt(1 + phi**2)
+
+tetrahedron = np.array([[1, 1, 0, 0], [1, -1/3, np.sqrt(8)/3, 0], [1, -1/3, -np.sqrt(2)/3, np.sqrt(6)/3], [1, -1/3, -np.sqrt(2)/3, -np.sqrt(6)/3]])
+octahedron = np.array([[1, 1, 0, 0], [1, -1, 0, 0], [1, 0, 1, 0], [1, 0, -1, 0], [1, 0, 0, 1], [1, 0, 0, -1] ])
+cube = np.array([[r3, 1, 1, 1], [r3, 1, 1, -1], [r3, 1, -1, 1], [r3, -1, 1, 1], [r3, -1, -1, 1], [r3, -1, 1, -1], [r3, 1, -1, -1], [r3, -1, -1, -1]]) / r3
+icosahedron = np.array([[raiz, 0, 1, phi], [raiz, 0, -1, phi], [raiz, 0, 1, -phi], [raiz, 0, -1, -phi], 
+    [raiz, 1, phi, 0], [raiz, -1, phi, 0], [raiz, 1, -phi, 0], [raiz, -1, -phi, 0],
+    [raiz, phi, 0, 1], [raiz, -phi, 0, 1], [raiz, phi, 0, -1], [raiz, -phi, 0, -1],
+]) / raiz
+dodecahedron = np.array([[r3, 1, 1, 1], [r3, 1, 1, -1], [r3, 1, -1, 1], [r3, -1, 1, 1], [r3, -1, -1, 1], [r3, -1, 1, -1], [r3, 1, -1, -1], [r3, -1, -1, -1], 
+    [r3, 0, phi, 1/phi], [r3, 0, -phi, 1/phi], [r3, 0, phi, -1/phi], [r3, 0, -phi, -1/phi], 
+    [r3, 1/phi, 0, phi], [r3, -1/phi, 0, phi], [r3, 1/phi, 0, -phi], [r3, -1/phi, 0, -phi], 
+    [r3, phi, 1/phi, 0], [r3, -phi, 1/phi, 0], [r3, phi, -1/phi, 0], [r3, -phi, -1/phi, 0], ]) / r3
+Nsolids = np.array([4, 6, 8, 12, 20])
+solids = {4: tetrahedron, 6: octahedron, 8: cube, 12: icosahedron, 20: dodecahedron}
+
 
 def prepare_variables(vars,
                       expand=[False],
@@ -1893,6 +1912,31 @@ def fit_sine(t, data, has_draw=True):
     return est_amp, est_freq, est_phase, est_mean
 
 
+def fill_sphere_fibonacci(num_samples=4):
+    """Generate a quasi - uniform distribution around the poincare sphere.
+
+    Arguments:
+        num_samples(int): number of samples. Default is 4.
+        include_poles(bool): whether to force to include the poles. Default is False.
+
+    Returns:
+        az, el (np.ndarray): Azimuth and ellipticity angles.
+
+    Reference:
+         https://link.springer.com/article/10.1007/s11004-009-9257-x
+    """
+    golden_angle = np.pi * (3. - np.sqrt(5.)) / 2 # half of golden angle in radians
+    N_2 = num_samples // 2
+    ind = np.arange(-N_2, N_2 + 1)
+    el = np.arcsin(2*ind / (2*N_2 + 1)) / 2
+    az = golden_angle * ind 
+    if N_2 * 2 == num_samples:
+        az = az[:num_samples]
+        el = el[:num_samples]
+
+    return az, el
+
+
 def obj_2_xyz(S, Ninterp=1, DAinterp=None, in_degrees=False, param=None, interp_to_surf=False, depol=False):
     """Function to calculate the x, y and z coordinates of the Poincare sphere.
 
@@ -1913,6 +1957,7 @@ def obj_2_xyz(S, Ninterp=1, DAinterp=None, in_degrees=False, param=None, interp_
     # Calculate actual spherical coordinates
    
     az, el = S.parameters.azimuth_ellipticity(out_number=False, use_nan=False)
+    az = np.unwrap(az, period=np.pi)
     if depol:
         pol = S.parameters.degree_polarization(out_number=False, use_nan=False)
         pol[np.isnan(pol)] = eps
@@ -1940,7 +1985,7 @@ def obj_2_xyz(S, Ninterp=1, DAinterp=None, in_degrees=False, param=None, interp_
         # Interpolate in angles step
         if DAinterp is not None:
             Daz, Del = (np.diff(az), np.diff(el))
-            Dstep = np.maximum(Daz, Del)
+            Dstep = np.maximum(np.abs(Daz), np.abs(Del))
             Nstep = np.array(np.ceil(Dstep/DAinterp), dtype=int)
             Nincr = np.repeat(1/Nstep, Nstep)
             x = np.cumsum(Nincr)

@@ -45,6 +45,8 @@ Stokes objects describe light polarization states in the Mueller-Stokes formalis
     * **general**: Creates the most general Stokes vectors.
     * **general_charac_angles** Creates Stokes vectors given by their characteristic angles.
     * **general_azimuth_ellipticity** Creates Stokes vectors given by their azimuth and ellipticity.
+    * **Fibonacci_spiral**: Creates a Jones vector with the light states in a Fibonacci spiral in the Poincare sphere.
+    * **perfect_solids**: Creates a Jones vector with the light states in a perfect solid in the Poincare sphere.
 
 
 **Manipulation methods**
@@ -130,7 +132,7 @@ from .utils import (azimuth_elipt_2_charac_angles, put_in_limits, repair_name,
                     rotation_matrix_Mueller, prepare_variables, reshape,
                     PrintParam, take_shape, select_shape, PrintMatrices,
                     combine_indices, merge_indices, multitake,
-                    fit_distribution, azel_2_xyz)
+                    fit_distribution, azel_2_xyz, fill_sphere_fibonacci, Nsolids, solids)
 
 warnings.filterwarnings('ignore')
 
@@ -1850,6 +1852,64 @@ class Stokes(Py_pol):
                                      shape_fun=shape,
                                      shape_like=shape_like)
         return self
+    
+
+    def Fibonacci_spiral(self, N=100, intensity=1, degree_pol=1, global_phase=default_phase):
+        """Creates Stokes vectors uniformly distributed on the Poincare sphere.
+
+        Parameters:
+            N (int or tuple of ints): Number of points in the spiral. Default: 100.
+            intensity (numpy.array or float): Array of intensity. Default: 1.
+            degree_pol (numpy.array or float): Array of polarization degree (radius in the Poincare sphere). Default: 1.
+            global_phase (float or numpy.ndarray): Adds a global phase to the Stokes object. Default: default_phase.
+
+        Returns:
+            S (Stokes): Created object.
+        """
+        # Calculate the angles for the Fibonacci spiral
+        az, el = [], []
+        N = [N] if isinstance(N, int) else N
+        for Npoints in np.array(N):
+            az_aux, el_aux = fill_sphere_fibonacci(num_samples=Npoints)
+            az.append(az_aux)
+            el.append(el_aux)
+        # Grid
+        az = np.meshgrid(*az, indexing='ij')
+        el = np.meshgrid(*el, indexing='ij')
+        # Calculate vector        
+        return self.general_azimuth_ellipticity(azimuth=az, ellipticity=el, intensity=intensity, degree_pol=degree_pol, global_phase=global_phase)
+    
+
+    def perfect_solids(self, N=4, intensity=1, degree_pol=1, global_phase=default_phase):
+        """Creates Stokes vectors uniformly distributed on the Poincare sphere.
+
+        Parameters:
+            N (int or tuple of ints): Number of points of vertices of the solid (4, 6, 8, 12, or 20). Default: 4.
+            intensity (numpy.array or float): Array of intensity. Default: 1.
+            degree_pol (numpy.array or float): Array of polarization degree (radius in the Poincare sphere). Default: 1.
+            global_phase (float or numpy.ndarray): Adds a global phase to the Stokes object. Default: default_phase.
+
+        Returns:
+            S (Stokes): Created object.
+        """
+        S0, S1, S2, S3 = [], [], [], []
+        N = [N] if isinstance(N, int) else N
+        for Npoints in np.array(N):
+            if Npoints not in Nsolids:
+                raise ValueError(f"Invalid number of points {Npoints} for perfect solids. Must be one of {Nsolids}.")
+            else:
+                S0.append(solids[Npoints][:,0])
+                S1.append(solids[Npoints][:,1])
+                S2.append(solids[Npoints][:,2])
+                S3.append(solids[Npoints][:,3])
+        # Grid
+        S0 = np.meshgrid(*S0, indexing='ij') * intensity
+        S1 = np.meshgrid(*S1, indexing='ij') * intensity * degree_pol
+        S2 = np.meshgrid(*S2, indexing='ij') * intensity * degree_pol
+        S3 = np.meshgrid(*S3, indexing='ij') * intensity * degree_pol
+        # Calculate vector
+        return self.from_components((S0, S1, S2, S3), global_phase=global_phase)
+    
 
     #######################################################################
     # Draw
