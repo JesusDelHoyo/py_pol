@@ -2667,7 +2667,7 @@ class Mueller(Py_pol):
                                             length=length)
         # Orthogonal state for R > 180º
         cond = R > np.pi
-        if cond.size > 0:
+        if np.any(cond) > 0:
             R[cond] = 2*np.pi - R[cond]
             azimuth[cond] = azimuth[cond] + np.pi/2
             ellipticity[cond] = -ellipticity[cond]
@@ -2744,7 +2744,7 @@ class Mueller(Py_pol):
                                       length=length)
         # Orthogonal state for R > 180º
         cond = R > np.pi
-        if cond.size > 0:
+        if np.any(cond):
             alpha[cond] = np.pi/2 - alpha[cond]
             delay[cond] = delay[cond] + np.pi
         E2 = Mueller().retarder_charac_angles(R=R,

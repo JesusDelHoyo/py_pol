@@ -6,6 +6,7 @@ History
 -----------------------
 * Bugfix diattenuator_retarder_general.
 * Bugfix draw_Poincare.
+* Bugfix Mueller diattenuator_retarder.
 * Fibonacci_spiral y perfect_solids methods added to Stokes and Jones_vector classes
 
 1.3.0
